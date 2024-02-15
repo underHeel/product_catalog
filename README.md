@@ -46,7 +46,7 @@ Visit http://localhost:5173/
 
 ### Git
 
-Before starting to work on the task and before push, run the command: 
+Before starting to work on the task and before push, run the command:
 
 ```
 git pull origin main
