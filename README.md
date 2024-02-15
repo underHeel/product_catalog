@@ -1,4 +1,3 @@
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development.
@@ -11,12 +10,14 @@ npm version = 10.2.3
 ```
 
 #### NVM
+
 ```
 Install NVM (https://github.com/nvm-sh/nvm):
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 ```
 
 Install Node and NPM (https://github.com/creationix/nvm#usage):
+
 ```
 nvm list
 nvm ls-remote
