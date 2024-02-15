@@ -47,6 +47,14 @@ Visit http://localhost:5173/
 
 When working on task, create branch with name *task_taskId*
 
+### Deploying
+
+Deploy on github pages
+
+```
+npm run deploy
+```
+
 ## Built With
 
 [Vite](https://vitejs.dev/)
