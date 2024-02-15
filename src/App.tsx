@@ -1,8 +1,11 @@
-function App() {
-  return (
-    <>
-    </>
-  )
-}
+import React from 'react';
 
-export default App
+type MyComponentProps = {
+  name: string;
+};
+
+const MyComponent: React.FC<MyComponentProps> = ({ name }) => {
+  return <div>Hello, {name}!</div>;
+};
+
+export default MyComponent;
