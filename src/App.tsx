@@ -1,11 +1,8 @@
 import React from 'react';
 
-type MyComponentProps = {
-  name: string;
-};
-
-const MyComponent: React.FC<MyComponentProps> = ({ name }) => {
-  return <div>Hello, {name}!</div>;
+const MyComponent: React.FC = () => {
+  return <div
+  >Hello, world!</div>;
 };
 
 export default MyComponent;
