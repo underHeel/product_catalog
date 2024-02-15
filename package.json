@@ -11,8 +11,8 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "npm run predeploy && gh-pages -d dist",
-    "format": "prettier . --ignore-path .gitignore --write",
-    "lint": "eslint . --ignore-path .gitignore --fix",
+    "format": "prettier src/**/*.{ts,tsx} --ignore-path .gitignore --write",
+    "lint": "eslint src/**/*.{ts,tsx} --ignore-path .gitignore --fix",
     "fix-style": "npm run format & npm run lint",
     "prepare": "husky install"
   },

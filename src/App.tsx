@@ -1,11 +1,13 @@
 import React from 'react';
+import { BurgerIcon } from './components/ui/icons/BurgerIcon';
 
-type MyComponentProps = {
-  name: string;
-};
-
-const MyComponent: React.FC<MyComponentProps> = ({ name }) => {
-  return <div>Hello, {name}!</div>;
+const MyComponent: React.FC = () => {
+  return (
+    <div>
+      Hello, world!
+      <BurgerIcon />
+    </div>
+  );
 };
 
 export default MyComponent;
