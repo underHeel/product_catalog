@@ -43,9 +43,19 @@ npm start/npm run dev/npm run start
 
 Visit http://localhost:5173/
 
-### Branches
+### Git
 
-When working on task, create branch with name *task_taskId*
+Before starting to work on the task and before push, run the command: 
+
+```
+git pull origin main
+```
+
+When working on task, create branch with name:
+
+```
+task_taskId
+```
 
 ### Deploying
 
