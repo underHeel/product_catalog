@@ -1,0 +1,39 @@
+@import '../../../../styles/utils/variables';
+
+.iconButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    & svg path {
+        fill: $primary-color;
+    }
+
+    &:hover {
+        border-color: $primary-color;
+    }
+
+    &:disabled {
+        border-color: $elements-color;
+        color: $icons-color;
+
+        & svg path {
+            fill: $icons-color;
+        }
+    }
+
+    &.selected {
+        border-color: $primary-color;
+        background-color: $primary-color;
+        color: $white-color;
+
+        & svg path {
+            fill: $white-color;
+        }
+    }
+}

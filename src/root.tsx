@@ -22,7 +22,7 @@ export const Root = () => (
             <Route path="accessories" element={<Accessories />} />
           </Route>
         </Route>
-        <Route path="*" element={<h1 className="title">Page not found</h1>} />
+        <Route path="*" element={<h1>Page not found</h1>} />
       </Route>
     </Routes>
   </BrowserRouter>
