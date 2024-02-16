@@ -9,6 +9,9 @@ module.exports = {
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
     parser: '@typescript-eslint/parser',
+    parserOptions: {
+      "extraFileExtensions": [".scss"]
+    },
     plugins: ['react-refresh'],
     rules: {
         'react-refresh/only-export-components': [
