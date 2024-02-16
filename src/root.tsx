@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { Accessories } from './components/pages/Accessories';
-import { Home } from './components/pages/Home/Home';
-import { Phones } from './components/pages/Phones/Phones';
-import { Tablets } from './components/pages/Tablets/Tablets';
+import { Accessories } from './pages/Accessories';
+import { Home } from './pages/Home/Home';
+import { Phones } from './pages/Phones/Phones';
+import { Tablets } from './pages/Tablets/Tablets';
 
 export const Root = () => (
   <BrowserRouter>
