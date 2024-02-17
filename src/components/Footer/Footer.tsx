@@ -1,8 +1,8 @@
 import styles from './Footer.module.scss';
 import NiceGadgetsLogo from '../../images/nice-gadgets.png';
 import NiceGadgetsOk from '../../images/nice-gadgets-ok.png';
-import ButtonCircle from '../../images/buttons/go-to-top/circle.png';
-import ButtonArrow from '../../images/buttons/go-to-top/arrow-up.png';
+import { IconButton } from '../ui/buttons/IconButton';
+import { ArrowUpIcon } from '../ui/icons/ArrowUpIcon';
 
 export const Footer = () => {
   return (
@@ -26,20 +26,11 @@ export const Footer = () => {
         <a href="/" className={styles.footer__link}>
           Back to top
         </a>
-        <button type="submit" className={styles.footer__arrow}>
-          <div className={styles.container}>
-            <img
-              src={ButtonArrow}
-              alt="ButtonArrow"
-              className={styles.inner_image}
-            />
-            <img
-              src={ButtonCircle}
-              alt="ButtonCircle"
-              className={styles.outer_image}
-            />
-          </div>
-        </button>
+        <div className={styles.footer__arrow}>
+          <IconButton onClick={() => {}}>
+            <ArrowUpIcon />
+          </IconButton>
+        </div>
       </div>
     </footer>
   );
