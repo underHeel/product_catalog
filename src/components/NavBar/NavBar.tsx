@@ -1,21 +1,22 @@
+import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 
 export const NavBar: React.FC = () => {
   return (
     <nav className={styles.nav}>
-      <a href="/">Logo</a>
+      <NavLink to="/">Logo</NavLink>
       <ul>
         <li className={styles.active}>
-          <a href="./Home">Home</a>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <a href="./phones">Phones</a>
+          <NavLink to="/phones">Phones</NavLink>
         </li>
         <li>
-          <a href="./Tablets">Tablets</a>
+          <NavLink to="/tablets">Tablets</NavLink>
         </li>
         <li>
-          <a href="./Accessories">Accessories</a>
+          <NavLink to="/accessories">Accessories</NavLink>
         </li>
       </ul>
     </nav>
