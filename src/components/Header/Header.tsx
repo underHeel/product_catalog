@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
 
         <NavBar />
 
-        <div className={styles.header__icons}>
+        <div className={styles.icons}>
           <Link to="/" className={`${styles.container} ${styles.burger}`}>
             <BurgerIcon />
           </Link>

@@ -5,8 +5,8 @@ import styles from './NavBar.module.scss';
 
 export const NavBar: React.FC = () => {
   const isActiveLink = ({ isActive }: { isActive: boolean }) =>
-    classNames(`${styles.nav__link}`, {
-      [styles.nav__border]: isActive,
+    classNames(styles.link, {
+      [styles.active]: isActive,
     });
 
   return (
