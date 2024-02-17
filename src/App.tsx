@@ -9,8 +9,6 @@ const App: React.FC = () => {
   return (
     <div>
       <NavBar />
-      <Footer />
-      <ArrowUpIcon />
       <Outlet />
     </div>
   );
