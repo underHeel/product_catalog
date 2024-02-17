@@ -3,74 +3,34 @@
 .header {
   display: flex;
   align-items: center;
-  height: max-content;
-  box-shadow: 0 1px 0 0 #E2E6E9;
   justify-content: space-between;
+  height: 48px;
+  box-shadow: 0 1px 0 0 #E2E6E9;
 
   @include on-tablet {
     justify-content: flex-start;
   }
 
-
-  .logo {
-    width: 64px;
-
-    @include on-desktop {
-      width: 80px;
-    }
-  }
-
-
-  .link {
-    height: 48px;
-    padding: 13px 16px;
+  @include on-desktop {
+    height: 64px;
   }
 }
 
+.logo {
+  width: 64px;
+  margin-left: auto;
+  margin-right: auto;
 
-.nav {
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  &__link {
-
-    @include on-tablet {
-      width: max-content;
-      color: $secondary-color;
-      font-weight: bold;
-    }
-
-    @include hover(color, $primary-color)
+  @include on-desktop {
+    width: 80px;
   }
 
-  .list {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  @include hover(transform, scale(1.2), 0.7s);
+}
 
-    @include on-tablet {
-      width: max-content;
-      gap: 32px;
-      margin-left: 16px;
-    }
-
-    @include on-desktop {
-      gap: 64px;
-    }
-  }
-
-  .item {
-    display: none;
-
-
-    @include on-tablet {
-      display: flex;
-    }
-  }
+.link {
+  height: 48px;
+  padding: 13px 16px;
 }
 
 .header__icons {
@@ -81,14 +41,23 @@
 .container {
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding: 16px;
   box-shadow: -1px 0 0 0 $elements-color;
   height: 100%;
-  align-items: center;
-
+  
+  
   @include on-desktop {
     padding: 24px;
   }
+}
+
+.icon {
+  transition: transform 0.3s ease;
+}
+
+.container:hover .icon {
+  transform: scale(1.2);
 }
 
 .cart {
@@ -113,8 +82,4 @@
   @include on-tablet {
     display: none;
   }
-}
-
-.icon {
-  @include hover(transform, scale(1.2));
 }
