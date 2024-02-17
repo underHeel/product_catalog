@@ -1,22 +1,18 @@
 import React from 'react';
 import cn from 'classnames';
-import styles from './IconButton.module.scss';
+import styles from './Button.module.scss';
 
 interface Props {
   children: React.ReactNode;
+  variant: 'text' | 'contained' | 'outlined';
   onClick: () => void;
-  isFilled?: boolean;
 }
 
-export const IconButton: React.FC<Props> = ({
-  children,
-  onClick,
-  isFilled,
-}) => {
+export const Button: React.FC<Props> = ({ children, onClick, variant }) => {
   return (
     <button
       type="button"
-      className={cn(styles.iconButton, { [styles.filled]: isFilled })}
+      className={cn(styles.button, styles[variant])}
       onClick={onClick}
     >
       {children}
