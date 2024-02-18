@@ -1,0 +1,74 @@
+@import '../../../../styles/utils/main';
+
+.dropdownWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 176px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid $icons-color;
+    color: $primary-color;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+
+    @include hover (border-color, $secondary-color);
+}
+
+.description {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 600;
+    color: $secondary-color;
+}
+
+.selectedOption {
+    position: relative;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.iconWrapper {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+    transition: .3s;
+
+    &.open {
+        transform: rotate(180deg) translateY(50%);
+    }
+}
+
+.options {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    padding: 8px 0;
+    overflow: auto;
+    border: 1px solid $elements-color;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px 0 #0000000D;
+}
+
+.option {
+    cursor: pointer;
+    padding: 6px 12px;
+    color: $secondary-color;
+
+    &:hover,
+    &.selected {
+        color: $primary-color;
+        background-color: $bg-hover-color;
+    }
+
+}
