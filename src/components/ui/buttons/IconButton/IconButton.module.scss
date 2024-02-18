@@ -10,10 +10,6 @@
     background-color: $white-color;
     border: 1px solid $icons-color;
 
-    & svg path {
-        fill: $primary-color;
-    }
-
     &:hover {
         border-color: $primary-color;
     }
@@ -21,6 +17,7 @@
     &:disabled {
         border-color: $elements-color;
         color: $icons-color;
+        cursor: not-allowed;
 
         & svg path {
             fill: $icons-color;
