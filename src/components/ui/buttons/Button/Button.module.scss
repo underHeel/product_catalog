@@ -1,5 +1,4 @@
-@import '../../../../styles/utils/variables';
-@import '../../../../styles/utils/mixins';
+@import '../../../../styles/utils/main';
 
 .button {
     display: flex;
@@ -12,21 +11,11 @@
     line-height: 21px;
     font-weight: 600;
 
-    @include on-tablet {
-      width: 125px;
-    }
-  
-    @include on-desktop { 
-      width: 160px;
-    }
-
     &.contained {
         background-color: $accent-color;
         color: $white-color;
 
-        &:hover {
-            box-shadow: 0 3px 13px 0 #17203166;
-        }
+        @include hover (box-shadow, 0 3px 13px 0 #17203166);
     }
 
     &.outlined {

@@ -1,4 +1,4 @@
-@import '../../../../styles/utils/variables';
+@import '../../../../styles/utils/main';
 
 .iconButton {
     display: flex;
@@ -10,9 +10,7 @@
     background-color: $white-color;
     border: 1px solid $icons-color;
 
-    &:hover {
-        border-color: $primary-color;
-    }
+    @include hover (border-color, $primary-color);
 
     &:disabled {
         border-color: $elements-color;
