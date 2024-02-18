@@ -1,0 +1,51 @@
+@import '../../../../styles/utils/variables';
+@import '../../../../styles/utils/mixins';
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+
+    @include on-tablet {
+      width: 125px;
+    }
+  
+    @include on-desktop { 
+      width: 160px;
+    }
+
+    &.contained {
+        background-color: $accent-color;
+        color: $white-color;
+
+        &:hover {
+            box-shadow: 0 3px 13px 0 #17203166;
+        }
+    }
+
+    &.outlined {
+        color: $accent-color;
+        border: 1px solid $elements-color;
+    }
+
+    &.text {
+        gap: 4px;
+        font-size: 12px;
+        line-height: 100%;
+        color: $secondary-color;
+        width: auto;
+        height: auto;
+        padding: 5px;
+        align-items: start;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}
