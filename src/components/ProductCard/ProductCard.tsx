@@ -25,7 +25,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       <div className={styles.card_header}>
         <img className={styles.card_image} src={image} alt={name} />
 
-        <h2 className={styles.card_title}>{`${name} (iMT9G2FS/A)`}</h2>
+        <h2 className={styles.card_title}>{`${name}`}</h2>
 
         <div className={styles.card_price}>
           <p className={styles.card_price_actual}>{`$${price}`}</p>
