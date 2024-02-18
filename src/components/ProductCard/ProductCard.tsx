@@ -58,12 +58,21 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           variant={inCart ? 'outlined' : 'contained'}
           onClick={clickHandler}
         />
-        <IconButton
-          onClick={() => {
-            setIsFilled(true);
-          }}
-          children={isFilled ? <FavoriteFilledIcon /> : <FavoriteIcon />}
-        />
+        {isFilled ? (
+          <IconButton
+            onClick={() => {
+              setIsFilled(false);
+            }}
+            children={<FavoriteFilledIcon />}
+          />
+        ) : (
+          <IconButton
+            onClick={() => {
+              setIsFilled(true);
+            }}
+            children={<FavoriteIcon />}
+          />
+        )}
       </div>
     </div>
   );
