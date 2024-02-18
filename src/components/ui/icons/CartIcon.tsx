@@ -1,8 +1,13 @@
 import React from 'react';
 
-export const CartIcon: React.FC = () => {
+interface Props {
+  className?: string;
+}
+
+export const CartIcon: React.FC<Props> = ({ className }) => {
   return (
     <svg
+      className={className}
       width="16"
       height="16"
       viewBox="0 0 16 16"
