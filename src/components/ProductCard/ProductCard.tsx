@@ -12,7 +12,8 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = phone;
+  const { name, priceRegular, priceDiscount, screen, capacity, ram, images } =
+    phone;
   const [isFilled, setIsFilled] = useState(false);
   const [inCart, setInCart] = useState(false);
 
@@ -23,13 +24,13 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
-        <img className={styles.cardImage} src={image} alt={name} />
+        <img className={styles.cardImage} src={images[0]} alt={name} />
 
         <h2 className={styles.cardTitle}>{`${name}`}</h2>
 
         <div className={styles.cardPrice}>
-          <p className={styles.cardPriceActual}>{`$${price}`}</p>
-          <p className={styles.cardPriceFull}>{`$${fullPrice}`}</p>
+          <p className={styles.cardPriceActual}>{`$${priceDiscount}`}</p>
+          <p className={styles.cardPriceFull}>{`$${priceRegular}`}</p>
         </div>
       </div>
 

@@ -1,16 +1,22 @@
-export type Phone = {
+import { Description } from './description';
+
+export interface Phone {
   id: string;
-  category: string;
-  phoneId: string;
-  itemId: string;
+  namespaceId: string;
   name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
+  capacityAvailable: string[];
   capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
   color: string;
+  images: string[];
+  description: Description[];
+  screen: string;
+  resolution: string;
+  processor: string;
   ram: string;
-  year: number;
-  image: string;
-  count?: number;
-};
+  camera: string;
+  zoom: string;
+  cell: string[];
+}

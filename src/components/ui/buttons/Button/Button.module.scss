@@ -1,4 +1,6 @@
 @import '../../../../styles/utils/main';
+@import '../../../../styles/utils/variables';
+@import '../../../../styles/utils/mixins';
 
 .button {
     display: flex;
@@ -10,6 +12,14 @@
     font-size: 14px;
     line-height: 21px;
     font-weight: 600;
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    @include on-desktop { 
+      width: 160px;
+    }
 
     &.contained {
         background-color: $accent-color;
