@@ -22,37 +22,37 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
 
   return (
     <div className={styles.card}>
-      <div className={styles.card_header}>
-        <img className={styles.card_image} src={image} alt={name} />
+      <div className={styles.cardHeader}>
+        <img className={styles.cardImage} src={image} alt={name} />
 
-        <h2 className={styles.card_title}>{`${name}`}</h2>
+        <h2 className={styles.cardTitle}>{`${name}`}</h2>
 
-        <div className={styles.card_price}>
-          <p className={styles.card_price_actual}>{`$${price}`}</p>
-          <p className={styles.card_price_full}>{`$${fullPrice}`}</p>
+        <div className={styles.cardPrice}>
+          <p className={styles.cardPriceActual}>{`$${price}`}</p>
+          <p className={styles.cardPriceFull}>{`$${fullPrice}`}</p>
         </div>
       </div>
 
-      <div className={styles.card_line} />
+      <div className={styles.cardLine} />
 
-      <div className={styles.card_specs}>
-        <div className={styles.card_container}>
-          <p className={styles.card_specs_text}>Screen</p>
-          <p className={styles.card_specs_value}>{screen}</p>
+      <div className={styles.cardSpecs}>
+        <div className={styles.cardContainer}>
+          <p className={styles.cardSpecsText}>Screen</p>
+          <p className={styles.cardSpecsValue}>{screen}</p>
         </div>
 
-        <div className={styles.card_container}>
-          <p className={styles.card_specs_text}>Capacity</p>
-          <p className={styles.card_specs_value}>{capacity}</p>
+        <div className={styles.cardContainer}>
+          <p className={styles.cardSpecsText}>Capacity</p>
+          <p className={styles.cardSpecsValue}>{capacity}</p>
         </div>
 
-        <div className={styles.card_container}>
-          <p className={styles.card_specs_text}>RAM</p>
-          <p className={styles.card_specs_value}>{ram}</p>
+        <div className={styles.cardContainer}>
+          <p className={styles.cardSpecsText}>RAM</p>
+          <p className={styles.cardSpecsValue}>{ram}</p>
         </div>
       </div>
 
-      <div className={styles.card_buy}>
+      <div className={styles.cardBuy}>
         <Button
           children={inCart ? 'Added' : 'Add to cart'}
           variant={inCart ? 'outlined' : 'contained'}

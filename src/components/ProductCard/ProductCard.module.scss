@@ -23,20 +23,20 @@
   }
 }
 
-.card_header {
+.cardHeader {
   display: flex;
   flex-direction: column;
   height: 293px;
 }
 
-.card_image {
+.cardImage {
   object-fit: contain;  
   min-height: 100px;
   flex-grow: 1;
   margin: 0 auto 24px;
 }
 
-.card_title {
+.cardTitle {
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -44,14 +44,14 @@
   color: $primary-color;
 }
 
-.card_price {
+.cardPrice {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   margin-bottom: 8px;
 }
 
-.card_price_actual {
+.cardPriceActual {
   margin-right: 8px;
   font-style: normal;
   font-weight: 800;
@@ -60,7 +60,7 @@
   color: $primary-color;
 }
 
-.card_price_full {
+.cardPriceFull {
   font-style: normal;
   font-weight: 500;
   font-size: 22px;
@@ -69,20 +69,20 @@
   text-decoration: line-through;
 }
 
-.card_line {
+.cardLine {
   width: 100%;
   border-bottom: 1px solid $elements-color;
   margin-bottom: 16px;
 }
 
-.card_specs {
+.cardSpecs {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 16px;
 }
 
-.card_specs_text {
+.cardSpecsText {
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -90,7 +90,7 @@
   color: $secondary-color;
 }
 
-.card_specs_value {
+.cardSpecsValue {
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -98,13 +98,13 @@
   color: $primary-color;
 }
 
-.card_container {
+.cardContainer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
 }
 
-.card_buy {
+.cardBuy {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
