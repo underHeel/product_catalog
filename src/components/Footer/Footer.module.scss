@@ -1,57 +1,104 @@
+@import '../../styles/utils/main';
+
+.topBorder {
+  border-top: 2px solid $secondary-color;
+}
+
 .footer {
-  width: 1440px;
-  height: 96px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
-  padding: 32px 152px;
-  background-color: #FFF;
-  color: #89939A;
-  font-family: Arial, sans-serif;
+  max-height: 280px;
+  padding-left: 16px;
+  background-color: $white-color;
+  color: $secondary-color;
+  font-size: 12px;
+
+  @include on-tablet {
+    max-height: 96px;
+    padding-left: 32px;
+    padding-right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+}
+
+.logo {
+  padding-top: 32px;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+}
+
+.additional {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &Link {
+    text-decoration: none;
+    text-align: left;
+    padding-top: 16px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      padding: 8px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      flex-direction: row;
+      padding: 64px;
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+    
+    &:active {
+      color: $primary-color;
+    }
+    
+  }
+}
+
+.goTopButton {
+  display: flex;
   align-items: center;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  &:hover {
+    color: $primary-color;
+  }
+  
+  &:active {
+    color: $primary-color;
+  }
 }
 
-.footer__center {
-  grid-template-columns: 1fr 1fr 1fr;
-  text-decoration: none;
-}
+.button {
+  display: flex;
+  align-items: center;
 
-.footer__link {
-  text-decoration: none;
-  color: #89939A;
-}
-
-.footer__button {
-  box-sizing: border-box;
-}
-
-.footer__arrow {
-  border: none;
-  background-color: #FFF;
-  cursor: pointer;
-}
-
-.container {
-  position: relative;
-  margin-left: 16px;
-  color: #FFF;
-}
-
-.container:hover {
-  transform: scale(1.2);
-}
-
-.outer_image {
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.inner_image {
-  position: relative;
-  width: 16px;
-  height: 16px;
+  &Top {
+    padding-right: 16px;
+  }
 }
