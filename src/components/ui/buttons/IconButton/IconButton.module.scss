@@ -12,6 +12,10 @@
 
     @include hover (border-color, $primary-color);
 
+    &:hover svg path {
+      fill: $primary-color;
+    }
+
     &:disabled {
         border-color: $elements-color;
         color: $icons-color;
