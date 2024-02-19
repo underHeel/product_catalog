@@ -1,12 +1,22 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import styles from './Header.module.scss';
 import Logo from '/img/Logo.png';
 import { BurgerIcon } from '../ui/icons/BurgerIcon';
 import { CartIcon } from '../ui/icons/CartIcon';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { NavBar } from '../NavBar/NavBar';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
+  };
+
   return (
     <>
       <header className={styles.header}>
@@ -17,9 +27,12 @@ export const Header: React.FC = () => {
         <NavBar />
 
         <div className={styles.icons}>
-          <Link to="/" className={`${styles.container} ${styles.burger}`}>
+          <div
+            className={`${styles.container} ${styles.burger}`}
+            onClick={toggleMenu}
+          >
             <BurgerIcon />
-          </Link>
+          </div>
 
           <Link to="/" className={`${styles.container} ${styles.favourite} `}>
             <FavoriteIcon className={styles.icon} />
@@ -30,6 +43,7 @@ export const Header: React.FC = () => {
           </Link>
         </div>
       </header>
+      <BurgerMenu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
     </>
   );
 };
