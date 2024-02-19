@@ -1,5 +1,6 @@
 /* eslint-disable no-plusplus */
-
+import { ArrowLeftIcon } from 'src/components/ui/icons/ArrowLeftIcon';
+import { IconButton } from 'src/components/ui/buttons/IconButton';
 import styles from './Paginate.module.scss';
 
 interface Props {
@@ -23,6 +24,11 @@ export const Paginate: React.FC<Props> = ({
   return (
     <div className={styles.pagination}>
       <ul className={styles.pageNumbers}>
+        <li>
+          <IconButton onClick={() => {}}>
+            <ArrowLeftIcon />
+          </IconButton>
+        </li>
         {pageNumbers.map((number) => (
           <li key={number}>
             <a href="!#" onClick={() => paginate(number)}>

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Phone } from 'src/types/Phone';
-import { getPhones } from '../api/phones';
+import { getPhones } from '../../api/phones';
 import styles from './PhonesPage.module.scss';
 import { PhonePage } from './PhonesList/PhonesList';
 import { Paginate } from './Paginate/Paginate';
 
-export const GetPagination = () => {
+export const PhonesPage = () => {
   const [products, setProducts] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);

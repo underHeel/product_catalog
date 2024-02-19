@@ -1,5 +1,5 @@
 import { Phone } from 'src/types/Phone';
-import { ProductCard } from '../../components/ProductCard';
+import { ProductCard } from 'src/components/ProductCard';
 import styles from './PhonesList.module.scss';
 
 interface Props {
