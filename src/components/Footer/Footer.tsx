@@ -24,15 +24,13 @@ export const Footer = () => {
             RIGHTS
           </a>
         </div>
-        <div className={styles.goTopButton}>
-          <div className={styles.button}>
-            <Link to="/" className={styles.buttonTop}>
-              Back to top
-            </Link>
-            <IconButton onClick={() => {}}>
-              <ArrowUpIcon />
-            </IconButton>
-          </div>
+        <div className={styles.button}>
+          <Link to="/" className={styles.text}>
+            Back to top
+          </Link>
+          <IconButton onClick={() => {}} classNames={styles.iconButton}>
+            <ArrowUpIcon />
+          </IconButton>
         </div>
       </footer>
     </div>
