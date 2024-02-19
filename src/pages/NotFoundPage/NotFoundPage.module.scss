@@ -1,0 +1,29 @@
+@import './../../styles/utils/variables';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.main {
+  text-align: center;
+}
+
+.main-numbers {
+  font-size: 5rem;
+  color: #333; 
+}
+
+.main-letters {
+  margin-top: 40px;
+  font-size: 1.5rem;
+  color: #666; 
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}

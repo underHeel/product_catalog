@@ -7,6 +7,7 @@ import { Phone } from './types/Phone';
 import * as phonesAPI from './api/phones';
 
 const App: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [phones, setPhones] = useState<Phone[]>([]);
 
   useEffect(() => {
@@ -17,9 +18,6 @@ const App: React.FC = () => {
     <div>
       <Header />
       <Outlet />
-      {phones.map(({ name }) => (
-        <p key={name}>{name}</p>
-      ))}
     </div>
   );
 };

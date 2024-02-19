@@ -4,6 +4,7 @@ import { Accessories } from './pages/Accessories';
 import { Home } from './pages/Home/Home';
 import { Phones } from './pages/Phones/Phones';
 import { Tablets } from './pages/Tablets/Tablets';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const Root = () => (
   <HashRouter>
@@ -22,8 +23,8 @@ export const Root = () => (
             <Route index element={<Accessories />} />
           </Route>
         </Route>
-        <Route path="*" element={<h1>Page not found</h1>} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </HashRouter>
 );
