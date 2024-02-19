@@ -7,14 +7,13 @@
 .footer {
   max-height: 280px;
   padding-left: 16px;
-  background-color: $white-color;
   color: $secondary-color;
   font-size: 12px;
+  font-weight: 600;
 
   @include on-tablet {
     max-height: 96px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +28,7 @@
 
 .logo {
   padding-top: 32px;
-  
+
   @include on-tablet {
     display: flex;
     justify-content: space-between;
@@ -64,43 +63,45 @@
 
   @include on-tablet {
     display: flex;
-    flex-direction: row;
     padding: 8px;
   }
 
   @include on-desktop {
     display: flex;
-    flex-direction: row;
     margin: 0 64px;
   }
 
   @include hover(color, $primary-color);
-  
+
   &:active {
     color: $primary-color;
   }
-  
+
 }
 
-.goTopButton {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  
-  @include hover(color, $primary-color);
-  
-  &:active {
-    color: $primary-color;
-  }
+.text {
+  padding-right: 16px;
 }
 
 .button {
   display: flex;
   align-items: center;
 
-  &Top {
-    padding-right: 16px;
+  &:hover .text {
+    color: $primary-color;
+  }
+
+  &:hover .iconButton {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+    border-color: $primary-color;
+
+    & svg path {
+      fill: $primary-color;
+    }
+  }
+
+  &:active {
+    color: $primary-color;
   }
 }

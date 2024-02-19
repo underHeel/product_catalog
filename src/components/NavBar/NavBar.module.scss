@@ -15,7 +15,7 @@
 
 .link {
   display: flex;
-  padding-bottom: 8px;
+  padding: 8px 0;
   align-items: center;
   width: max-content;
   height: 100%;
@@ -91,6 +91,8 @@
 }
 
 .item {
+  height: 100%;
+
   @include on-tablet {
     display: flex;
   }

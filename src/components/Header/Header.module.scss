@@ -91,6 +91,10 @@
 
 .burger {
   display: flex;
+  padding: 16px;
+  box-shadow: -1px 0 0 0 $elements-color;
+  height: 100%;
+  cursor: pointer;
 
   @include on-tablet {
     display: none;
