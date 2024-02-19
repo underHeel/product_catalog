@@ -29,7 +29,7 @@
 
 .logo {
   padding-top: 32px;
-
+  
   @include on-tablet {
     display: flex;
     justify-content: space-between;
@@ -50,32 +50,33 @@
     align-items: center;
   }
 
-  &Link {
-    text-decoration: none;
-    text-align: left;
-    padding-top: 16px;
+}
 
-    @include on-tablet {
-      display: flex;
-      flex-direction: row;
-      padding: 8px;
-    }
+.additionalLink {
+  text-decoration: none;
+  text-align: left;
+  padding-top: 16px;
 
-    @include on-desktop {
-      display: flex;
-      flex-direction: row;
-      padding: 64px;
-    }
-
-    &:hover {
-      color: $primary-color;
-    }
-    
-    &:active {
-      color: $primary-color;
-    }
-    
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
   }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    margin: 0 64px;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+  
+  &:active {
+    color: $primary-color;
+  }
+  
 }
 
 .goTopButton {
