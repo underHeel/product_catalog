@@ -1,7 +1,7 @@
 @import '../../styles/utils/main';
 
-.topBorder {
-  box-shadow: 0 -1px 0 0 #E2E6E9;
+.footerWrapper {
+  box-shadow: 0 -1px 0 0 $elements-color;
 }
 
 .footer {
@@ -10,7 +10,6 @@
   background-color: $white-color;
   color: $secondary-color;
   font-size: 12px;
-
 
   @include on-tablet {
     max-height: 96px;

@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowUpIcon } from '../ui/icons/ArrowUpIcon';
-import Logo from '../../../public/img/Logo.png';
+import Logo from '/img/Logo.png';
 
 export const Footer = () => {
   return (
-    <div className={styles.topBorder}>
+    <div className={styles.footerWrapper}>
       <footer className={styles.footer}>
         <div className={styles.logo}>
           <Link to="/" className={styles.link}>
