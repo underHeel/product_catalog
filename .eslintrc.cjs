@@ -19,6 +19,6 @@ module.exports = {
         'react/jsx-indent': ['error', 2],
         'react/jsx-indent-props': ['error', 2],
         'import/no-extraneous-dependencies': 'off',
-        "import/no-absolute-path": "off"
+        'import/no-absolute-path': 'off'
     },
 };

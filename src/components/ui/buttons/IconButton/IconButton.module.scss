@@ -12,8 +12,12 @@
 
     @include hover (border-color, $primary-color);
 
+    svg path {
+        transition: .3s;
+    }
+
     &:hover svg path {
-      fill: $primary-color;
+        fill: $primary-color;
     }
 
     &:disabled {

@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import './styles/utils/main.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import * as api from './api/phones';
 import { Phone } from './types/Phone';
+
+import './styles/utils/main.scss';
 
 const App: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
