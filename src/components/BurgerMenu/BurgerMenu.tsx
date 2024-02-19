@@ -31,7 +31,7 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
       </section>
 
       <div
-        className={`${styles.menuBody} ${isMenuOpen ? styles.show : styles.hide}}`}
+        className={`${styles.menuBody} ${isMenuOpen ? styles.show : styles.hide}`}
       >
         <NavBar displayMobile />
 

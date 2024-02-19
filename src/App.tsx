@@ -21,9 +21,9 @@ const App: React.FC = () => {
         <>
           <Header toggleMenu={toggleMenu} />
           <Outlet />
+          <Footer />
         </>
       )}
-      <Footer />
     </div>
   );
 };

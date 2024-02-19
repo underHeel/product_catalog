@@ -1,25 +1,5 @@
 @import '../../styles/utils/main';
 
-@keyframes slide-in {
-  from {
-    transform: scaleX(0);
-  }
-
-  to {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes slide-out {
-  from {
-    transform: scaleX(1);
-  }
-
-  to {
-    transform: scaleX(0);
-  }
-}
-
 .menu {
   display: flex;
   flex-direction: column;
@@ -27,11 +7,11 @@
 }
 
 .show {
-  animation: slide-in 1s forwards;
+  animation: slideIn 1s forwards;
 }
 
 .hide {
-  animation: slide-out 1s forwards;
+  animation: slideOut 1s forwards;
 }
 
 .header {
