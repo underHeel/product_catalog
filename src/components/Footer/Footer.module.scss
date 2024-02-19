@@ -1,7 +1,7 @@
 @import '../../styles/utils/main';
 
 .topBorder {
-  border-top: 2px solid $secondary-color;
+  box-shadow: 0 -1px 0 0 #E2E6E9;
 }
 
 .footer {
@@ -10,6 +10,7 @@
   background-color: $white-color;
   color: $secondary-color;
   font-size: 12px;
+
 
   @include on-tablet {
     max-height: 96px;
@@ -60,6 +61,7 @@
   text-decoration: none;
   text-align: left;
   padding-top: 16px;
+  letter-spacing: 0.04em;
 
   @include on-tablet {
     display: flex;
@@ -73,9 +75,7 @@
     margin: 0 64px;
   }
 
-  &:hover {
-    color: $primary-color;
-  }
+  @include hover(color, $primary-color);
   
   &:active {
     color: $primary-color;
@@ -90,9 +90,7 @@
   padding-top: 32px;
   padding-bottom: 32px;
 
-  &:hover {
-    color: $primary-color;
-  }
+  @include hover(color, $primary-color);
   
   &:active {
     color: $primary-color;
