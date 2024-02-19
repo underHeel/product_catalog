@@ -9,15 +9,18 @@
     border-radius: 100%;
     background-color: $white-color;
     border: 1px solid $icons-color;
-
-    @include hover (border-color, $primary-color);
+    transition: .3s;
 
     svg path {
         transition: .3s;
     }
 
-    &:hover svg path {
-        fill: $primary-color;
+    &:hover {
+        border-color: $primary-color;
+
+        & svg path {
+            fill: $primary-color;
+        }
     }
 
     &:disabled {
