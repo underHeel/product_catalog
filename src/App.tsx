@@ -23,7 +23,6 @@ const App: React.FC = () => {
           <Outlet />
         </>
       )}
-      <Outlet />
       <Footer />
     </div>
   );
