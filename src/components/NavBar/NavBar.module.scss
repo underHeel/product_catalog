@@ -93,5 +93,6 @@
 .item {
   @include on-tablet {
     display: flex;
+    height: 100%;
   }
 }
