@@ -1,0 +1,106 @@
+@import '../../styles/utils/main';
+
+.footerWrapper {
+  box-shadow: 0 -1px 0 0 $elements-color;
+}
+
+.footer {
+  max-height: 280px;
+  padding-left: 16px;
+  background-color: $white-color;
+  color: $secondary-color;
+  font-size: 12px;
+
+  @include on-tablet {
+    max-height: 96px;
+    padding-left: 32px;
+    padding-right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+}
+
+.logo {
+  padding-top: 32px;
+  
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+}
+
+.image {
+  width: 89px;
+}
+
+.additional {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+}
+
+.additionalLink {
+  text-decoration: none;
+  text-align: left;
+  padding-top: 16px;
+  letter-spacing: 0.04em;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    margin: 0 64px;
+  }
+
+  @include hover(color, $primary-color);
+  
+  &:active {
+    color: $primary-color;
+  }
+  
+}
+
+.goTopButton {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  @include hover(color, $primary-color);
+  
+  &:active {
+    color: $primary-color;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+
+  &Top {
+    padding-right: 16px;
+  }
+}
