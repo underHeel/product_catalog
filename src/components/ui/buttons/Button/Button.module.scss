@@ -1,15 +1,25 @@
 @import '../../../../styles/utils/main';
+@import '../../../../styles/utils/variables';
+@import '../../../../styles/utils/mixins';
 
 .button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 176px;
+    width: 100px;
     height: 40px;
     border-radius: 8px;
     font-size: 14px;
     line-height: 21px;
     font-weight: 600;
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    @include on-desktop { 
+      width: 160px;
+    }
 
     &.contained {
         background-color: $accent-color;
