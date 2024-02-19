@@ -3,14 +3,21 @@ import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 
-export const NavBar: React.FC = () => {
+interface Props {
+  displayMobile: boolean | undefined;
+}
+
+export const NavBar: React.FC<Props> = ({ displayMobile }) => {
   const isActiveLink = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.link, {
       [styles.active]: isActive,
     });
 
   return (
-    <nav className={styles.nav}>
+    <nav
+      className={styles.nav}
+      style={{ display: displayMobile ? 'flex' : '' }}
+    >
       <ul className={styles.list}>
         <li className={styles.item}>
           <NavLink to="/" className={isActiveLink}>

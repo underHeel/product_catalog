@@ -1,15 +1,43 @@
 @import '../../styles/utils/main';
 
 .nav {
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  padding: 0 32px;
-  height: 100%;
-  list-style: none;
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0 32px;
+    height: 100%;
+    list-style: none;
+  }
 }
 
 .link {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 100%;
+  color: $secondary-color;
+  font-weight: bold;
+  padding-bottom: 8px;
+
+  &.active {
+    position: relative;
+    color: $primary-color;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: $primary-color;
+      border-radius: 8px;
+    }
+  }
+
   @include on-tablet {
     display: flex;
     align-items: center;
@@ -40,11 +68,17 @@
 
 .list {
   display: flex;
-  margin: 0;
-  padding: 0;
+  flex-direction: column;
   list-style: none;
+  align-items: center;
+  gap: 16px;
 
   @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    list-style: none;
     width: max-content;
     gap: 32px;
   }
@@ -55,8 +89,6 @@
 }
 
 .item {
-  display: none;
-
   @include on-tablet {
     display: flex;
   }
