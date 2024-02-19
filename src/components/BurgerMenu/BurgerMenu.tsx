@@ -23,10 +23,7 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
           <img src={Logo} alt="header_logo" className={styles.logo} />
         </Link>
 
-        <div
-          className={cn(styles.container, styles.close)}
-          onClick={toggleMenu}
-        >
+        <div className={styles.close} onClick={toggleMenu}>
           <CloseIcon />
         </div>
       </section>
