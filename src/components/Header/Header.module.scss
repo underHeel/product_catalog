@@ -29,11 +29,18 @@
 .link {
   display: flex;
   padding: 13px 16px;
+
+  @include on-tablet {
+    display: flex;
+    padding: 13px 16px;
+  }
 }
 
 .icons {
-  display: flex;
-  margin-left: auto;
+  @include on-tablet {
+    display: flex;
+    margin-left: auto;
+  }
 }
 
 .container {
@@ -43,7 +50,16 @@
   padding: 16px;
   box-shadow: -1px 0 0 0 $elements-color;
   height: 100%;
-  
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    box-shadow: -1px 0 0 0 $elements-color;
+    height: 100%;
+  }
+
   @include on-desktop {
     padding: 24px;
   }
