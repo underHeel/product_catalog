@@ -11,9 +11,10 @@ import { NavBar } from '../NavBar';
 
 interface Props {
   toggleMenu: () => void;
+  isMenuOpen: boolean;
 }
 
-export const BurgerMenu: React.FC<Props> = ({ toggleMenu }) => {
+export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
   return (
     <div className={styles.menu}>
       <section className={styles.header}>
@@ -29,7 +30,9 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu }) => {
         </div>
       </section>
 
-      <div className={styles.menuBody}>
+      <div
+        className={`${styles.menuBody} ${isMenuOpen ? styles.show : styles.hide}}`}
+      >
         <NavBar displayMobile />
 
         <div className={styles.icons}>

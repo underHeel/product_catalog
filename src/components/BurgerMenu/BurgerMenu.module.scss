@@ -1,14 +1,43 @@
 @import '../../styles/utils/main';
 
+@keyframes slide-in {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
 .menu {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
+.show {
+  animation: slide-in 1s forwards;
+}
+
+.hide {
+  animation: slide-out 1s forwards;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
+  height: 48px;
   box-shadow: 0 1px 0 0 #E2E6E9;
 }
 
@@ -18,18 +47,20 @@
 }
 
 .logo {
-  width: 64px;
   margin-left: auto;
   margin-right: auto;
+  width: 64px;
 }
 
 .menuBody {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  height: 100%;
   padding-top: 24px;
+  height: 100%;
+  animation: slideIn 1s forwards;
+  transform-origin: right;
 }
 
 .container {

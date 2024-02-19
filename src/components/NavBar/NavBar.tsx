@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 
 interface Props {
-  displayMobile: boolean | undefined;
+  displayMobile?: boolean | undefined;
 }
 
 export const NavBar: React.FC<Props> = ({ displayMobile }) => {

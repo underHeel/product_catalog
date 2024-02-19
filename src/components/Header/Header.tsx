@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import Logo from '/img/Logo.png';
@@ -5,17 +7,12 @@ import { BurgerIcon } from '../ui/icons/BurgerIcon';
 import { CartIcon } from '../ui/icons/CartIcon';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { NavBar } from '../NavBar/NavBar';
-// import { BurgerMenu } from '../BurgerMenu';
 
 interface Props {
   toggleMenu: () => void;
 }
 
 export const Header: React.FC<Props> = ({ toggleMenu }) => {
-  // const toggleBurgerMenu = () => {
-  //   setIsBurgerMenuOpen(!isBurgerMenuOpen);
-  // };
-
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.link}>

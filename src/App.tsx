@@ -8,13 +8,13 @@ const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = useCallback(() => {
-    setIsMenuOpen(!isMenuOpen);
-  }, [isMenuOpen]);
+    setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
+  }, []);
 
   return (
     <div>
       {isMenuOpen ? (
-        <BurgerMenu toggleMenu={toggleMenu} />
+        <BurgerMenu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       ) : (
         <>
           <Header toggleMenu={toggleMenu} />
