@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pageNumbers {
+  list-style-type: none;
+  display: flex;
+  gap: 5px;
+}
+
+.pageNumbers li {
+  margin: 0;
+}
+
+.pageNumbers li a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.pageNumbers li a:hover {
+  background-color: #e0e0e0;
+}
