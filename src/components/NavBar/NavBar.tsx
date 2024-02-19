@@ -1,17 +1,24 @@
 import React from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 
 interface Props {
   displayMobile?: boolean | undefined;
+  toggleMenu?: () => void;
 }
 
-export const NavBar: React.FC<Props> = ({ displayMobile }) => {
+export const NavBar: React.FC<Props> = ({ displayMobile, toggleMenu }) => {
   const isActiveLink = ({ isActive }: { isActive: boolean }) =>
-    classNames(styles.link, {
+    cn(styles.link, {
       [styles.active]: isActive,
     });
+
+  const handleClick = () => {
+    if (toggleMenu) {
+      toggleMenu();
+    }
+  };
 
   return (
     <nav
@@ -20,25 +27,29 @@ export const NavBar: React.FC<Props> = ({ displayMobile }) => {
     >
       <ul className={styles.list}>
         <li className={styles.item}>
-          <NavLink to="/" className={isActiveLink}>
+          <NavLink to="/" onClick={handleClick} className={isActiveLink}>
             HOME
           </NavLink>
         </li>
 
         <li className={styles.item}>
-          <NavLink to="/phones" className={isActiveLink}>
+          <NavLink to="/phones" onClick={handleClick} className={isActiveLink}>
             PHONES
           </NavLink>
         </li>
 
         <li className={styles.item}>
-          <NavLink to="/tablets" className={isActiveLink}>
+          <NavLink to="/tablets" onClick={handleClick} className={isActiveLink}>
             TABLETS
           </NavLink>
         </li>
 
         <li className={styles.item}>
-          <NavLink to="/accessories" className={isActiveLink}>
+          <NavLink
+            to="/accessories"
+            onClick={handleClick}
+            className={isActiveLink}
+          >
             ACCESSORIES
           </NavLink>
         </li>
