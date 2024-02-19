@@ -8,7 +8,8 @@ export default defineConfig({
   base: '/product_catalog/',
   resolve: {
     alias: {
-      $fonts: resolve('./public/fonts')
+      $fonts: resolve('/fonts'),
+      $img: resolve('/img'),
     }
   }
 });
