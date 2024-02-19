@@ -1,0 +1,113 @@
+@import '../../styles/utils/main';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 212px;
+  padding: 32px;
+  border: 1px solid $elements-color;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  @include on-tablet {
+    max-width: 237px;
+  }
+
+  @include on-desktop {
+    max-width: 272px;
+  }
+
+  &:hover {
+    border: 1px solid $secondary-color;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.cardImage {
+  object-fit: contain;
+  width: 100%;  
+  min-height: 100px;
+  flex-grow: 1;
+  margin: 0 auto 24px;
+}
+
+.cardTitle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary-color;
+}
+
+.cardPrice {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+.cardPriceActual {
+  margin-right: 8px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: $primary-color;
+}
+
+.cardPriceFull {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
+  color: $secondary-color;
+  text-decoration: line-through;
+}
+
+.cardLine {
+  width: 100%;
+  border-bottom: 1px solid $elements-color;
+  margin-bottom: 16px;
+}
+
+.cardSpecs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.cardSpecsText {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $secondary-color;
+}
+
+.cardSpecsValue {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: $primary-color;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cardBuy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

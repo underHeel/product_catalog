@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavBar } from './components/NavBar/NavBar';
+import { Outlet } from 'react-router-dom';
 import './styles/utils/main.scss';
-import { Footer } from './components/Footer';
+import { Header } from './components/Header';
 
 const App: React.FC = () => {
   return (
     <div>
-      <NavBar />
-      <Footer />
+      <Header />
+      <Outlet />
     </div>
   );
 };
