@@ -13,9 +13,7 @@ const Product: Phone = {
   colorsAvailable: ['black', 'green', 'yellow', 'white', 'purple', 'red'],
   color: 'black',
   images: [
-    'src/temp_phone_images/00.jpg',
-    'src/temp_phone_images/01.jpg',
-    'src/temp_phone_images/02.jpg',
+    'https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/i/p/iphone-13-midnight-select-2021.534x728_m_5.jpg',
   ],
   description: [
     {
