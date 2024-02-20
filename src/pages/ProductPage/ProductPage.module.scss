@@ -4,6 +4,15 @@
   margin: 16px;
   margin-top: 24px;
 
+  @include on-tablet {
+    margin: 24px;
+  }
+
+  @include on-desktop {
+    margin-left: 120px;
+    margin-right: 120px;
+  }
+
   .headerPath {
     display: flex;
     box-sizing: border-box;
@@ -34,5 +43,8 @@
     align-items: center;
     gap: 4px;
     color: $secondary-color;
+    @include on-tablet {
+      margin-top: 40px;
+    }
   }
 }
