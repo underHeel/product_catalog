@@ -1,6 +1,13 @@
+@import '../../styles/utils/main';
+
 .pagination {
   display: flex;
   justify-content: center;
+  padding-bottom: 32px;
+
+  @include on-desktop {
+    padding-bottom: 48px;
+  }
 }
 
 .pageNumbers {

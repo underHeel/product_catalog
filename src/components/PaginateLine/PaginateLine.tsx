@@ -1,18 +1,21 @@
 /* eslint-disable no-plusplus */
-import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
-import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
+import { calculatePageRange } from '../services/calculatePageRange';
 import { IconButton } from '../ui/buttons/IconButton';
+import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
+import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import styles from './PaginateLine.module.scss';
 
 interface Props {
   itemsPerPage: number;
   totalItems: number;
+  currentPage: number;
   paginate: (pageNumber: number) => void;
 }
 
-export const Paginate: React.FC<Props> = ({
+export const PaginateLine: React.FC<Props> = ({
   totalItems,
   itemsPerPage,
+  currentPage,
   paginate,
 }) => {
   const pageNumbers: number[] = [];
@@ -22,23 +25,40 @@ export const Paginate: React.FC<Props> = ({
     pageNumbers.push(i);
   }
 
+  const numbersToShow =
+    currentPage === 1 ? [0, 4] : calculatePageRange(currentPage, pageCount, 4);
+
+  const pageNumbersToShow = [...pageNumbers].slice(
+    numbersToShow[0],
+    numbersToShow[1],
+  );
+
   return (
     <div className={styles.pagination}>
       <ul className={styles.pageNumbers}>
         <li>
-          <IconButton onClick={() => {}} isDisabled>
+          <IconButton
+            onClick={() => paginate(currentPage - 1)}
+            isDisabled={currentPage === 1}
+          >
             <ArrowLeftIcon />
           </IconButton>
         </li>
-        {pageNumbers.map((number) => (
+        {pageNumbersToShow.map((number) => (
           <li key={number}>
-            <a href="!#" onClick={() => paginate(number)}>
+            <IconButton
+              isFilled={currentPage === number}
+              onClick={() => paginate(number)}
+            >
               {number}
-            </a>
+            </IconButton>
           </li>
         ))}
         <li>
-          <IconButton onClick={() => {}}>
+          <IconButton
+            onClick={() => paginate(currentPage + 1)}
+            isDisabled={currentPage === pageCount}
+          >
             <ArrowRightIcon />
           </IconButton>
         </li>

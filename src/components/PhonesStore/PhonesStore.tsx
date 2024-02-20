@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Phone } from 'src/types/Phone';
 import { getPhones } from '../../api/phones';
-import styles from './PhonesStore.module.scss';
 import { PhonesList } from '../PhonesList/PhonesList';
-import { Paginate } from '../PaginateLine/PaginateLine';
+import { PaginateLine } from '../PaginateLine/PaginateLine';
+import { IconButton } from '../ui/buttons/IconButton';
+import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
+import styles from './PhonesStore.module.scss';
 
-export const PhonesPage = () => {
+export const PhonesStore = () => {
   const [products, setProducts] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,16 +29,22 @@ export const PhonesPage = () => {
     setCurrentPage(pageNumber);
   };
 
+  const nextPage = () => setCurrentPage((prev) => prev + 1);
+
   return (
     <>
       <div className={styles.main}>
         <PhonesList phones={currentProducts} loading={isLoading} />
       </div>
-      <Paginate
+      <PaginateLine
         itemsPerPage={itemsPerPage}
         totalItems={products.length}
+        currentPage={currentPage}
         paginate={paginate}
       />
+      <IconButton onClick={nextPage}>
+        <ArrowRightIcon />
+      </IconButton>
     </>
   );
 };
