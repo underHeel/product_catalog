@@ -83,4 +83,3 @@ https://underheel.github.io/product_catalog/#/
 3. Redux Toolkit for State Management: Opt for Redux Toolkit to manage the application state efficiently, simplifying the process with its built-in utilities and debugging tools.
 
 4. Modular Styles and SCSS: Keep styles modular for easier maintenance and reuse, employing SCSS for advanced CSS features like variables and nesting to streamline development.
-
