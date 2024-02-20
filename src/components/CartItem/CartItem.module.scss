@@ -57,6 +57,30 @@
   cursor: pointer;
   margin-right: 28px;
   align-content: center;
+
+  &:hover {
+    color: $primary-color;
+    transform: scale(1.2);
+    transition: transform 0.5s;
+  }
+
+  & svg path {
+    fill: $secondary-color;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+    border-color: $primary-color;
+
+    & svg path {
+      fill: $primary-color;
+    }
+  }
+
+  &:active {
+    color: $primary-color;
+  }
 }
 
 .productName {
@@ -108,7 +132,30 @@
 }
 
 .onButton {
-  color: $icons-color;
+  color: $secondary-color;
+  border-color: $secondary-color;
+
+  &:hover .text {
+    color: $primary-color;
+  }
+
+  & svg path {
+    fill: $secondary-color;
+  }
+
+  &:hover .iconButton {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+    border-color: $primary-color;
+
+    & svg path {
+      fill: $primary-color;
+    }
+  }
+
+  &:active {
+    color: $primary-color;
+  }
 }
 
 .quantity {
