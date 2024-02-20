@@ -28,5 +28,5 @@ jobs:
         run: npm run format 
       - name: Run deploy script
         run: |
-          git config user.name "underHeel" && git config user.email "alyonana42@gmail.com"
+          git config user.name "nabokok" && git config user.email "alyonana42@gmail.com"
           npm run deploy
