@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "npm run predeploy && gh-pages -d dist",
-    "format": "prettier src/**/*.{ts,tsx} --ignore-path .gitignore --write",
+    "format": "prettier src/**/*.{ts,tsx} --ignore-path .gitignore --write --end-of-line lf",
     "lint": "eslint src/**/*.{ts,tsx} --ignore-path .gitignore --fix & stylelint --allow-empty-input \"**/*.{css,scss}\"",
     "fix-style": "npm run format & npm run lint",
     "prepare": "husky install"
@@ -19,6 +19,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.1",
     "classnames": "^2.5.1",
+    "css-modules": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
