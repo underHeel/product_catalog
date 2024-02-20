@@ -1,0 +1,18 @@
+import { Phone } from 'src/types/Phone';
+import { ProductCard } from '../ProductCard';
+import styles from './PaginatedItems.module.scss';
+
+interface Props {
+  currentItems: Phone[];
+}
+
+export const Items: React.FC<Props> = ({ currentItems }) => {
+  return (
+    <div className={styles.main}>
+      <div className={styles.items}>
+        {currentItems &&
+          currentItems.map((item) => <ProductCard phone={item} />)}
+      </div>
+    </div>
+  );
+};

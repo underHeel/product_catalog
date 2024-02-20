@@ -1,6 +1,6 @@
 import React from 'react';
-import { PhonesStore } from '../../components/PhonesStore/PhonesStore';
+import { PaginatedStore } from '../../components/PaginatedStore/PaginatedStore';
 
 export const Phones: React.FC = () => {
-  return <PhonesStore />;
+  return <PaginatedStore itemsPerPage={8} />;
 };
