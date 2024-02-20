@@ -21,7 +21,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
 
   const handlerDecreaseQuantity = () => {
     setQuantity((prev) => {
-      if (prev === 1) {
+      if (prev <= 1) {
         return 1;
       }
 
@@ -39,7 +39,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
         <div className={styles.cartItem}>
           <button
             className={styles.removeButton}
-            onClick={handlerIncreaseQuantity}
+            onClick={() => setQuantity(0)}
           >
             <CloseIcon />
           </button>
@@ -49,9 +49,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
             className={styles.cartImage}
           />
         </div>
-        <div className={styles.productDetails}>
-          <p className={styles.productName}>{name}</p>
-        </div>
+        <div className={styles.productName}>{name}</div>
       </div>
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>
@@ -63,7 +61,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
               <MinusIcon />
             </IconButton>
           </div>
-          <span className={styles.quantity}>{quantity}</span>
+          <span className={styles.quantityValue}>{quantity}</span>
           <div className={styles.onButton}>
             <IconButton
               onClick={handlerIncreaseQuantity}

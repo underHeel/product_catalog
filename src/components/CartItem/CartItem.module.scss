@@ -7,13 +7,26 @@
   flex-direction: column;
   border: 1px solid #E2E6E9;
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 16px auto;
+
+  @include on-tablet {
+    height: 128px;
+    width: 592px;
+    flex-direction: row;
+  }
 }
 
 .cartInfo {
   display: flex;
   flex-direction: row;
-  padding-top: 12px;
+  margin: 16px 0;
+  justify-content: space-between;
+
+  @include on-tablet {
+    flex-direction: row;
+    margin: 16px 0;
+    justify-content: flex-start;
+  }
 }
 
 .cartItem {
@@ -21,6 +34,15 @@
   flex-direction: row;
   align-items: center;
   padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+}
+
+.cartImage {
+  height: 66px;
+  width: auto;
 }
 
 .removeButton {
@@ -29,29 +51,39 @@
   font-size: 16px;
   cursor: pointer;
   margin-right: 28px;
-}
-
-.cartImage {
-  width: 66px;
-}
-
-.productDetails {
-  font-size: 8px;
-
+  align-content: center;
 }
 
 .productName {
   width: 128px;
   height: 80px;
   font-size: 14px;
+  font-weight: 600;
+  padding-right: 16px;
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    width: 176px;
+    height: 42px;
+    padding-right: 24px;
+    margin: auto;
+  }
 }
 
 
 .quantityControl {
-  padding-top: 16px;
+  width: 256px;
   display:flex;
-  box-sizing: content-box;
   font-size: 10px;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  @include on-tablet {
+    flex-direction: row;
+    margin: auto 0;
+    padding: 0 24px;
+  }
 }
 
 .quantityControl button {
@@ -70,17 +102,23 @@
 
 .quantity {
   display: flex;
-  margin: 0 8px;
-  padding-top: 5px;
-  justify-content: space-around;
-  text-align: center;
+  margin: 0 ;
+  margin-top: 5px;
+  align-items: center;
   font-size: 14px;
 }
 
+.quantityValue {
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  text-align: center;
+  padding-top: 6px;
+}
+
 .price {
-  display: flex;
+  display:flex;
   font-size: 18px;
   font-weight: bold;
-  padding-top: 10px;
-  padding-left: 120px;
+  margin-top: 10px;
 }
