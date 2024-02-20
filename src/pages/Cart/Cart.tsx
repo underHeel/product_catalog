@@ -3,15 +3,16 @@ import React, { useState } from 'react';
 import styles from './Cart.module.scss';
 import { Button } from '../../components/ui/buttons/Button';
 import { ArrowLeftIcon } from '../../components/ui/icons/ArrowLeftIcon';
+import EmptyCart from '../../../public/img/EmptyCart.png';
 
 export const Cart: React.FC = () => {
-  const [active, setActive] = useState(false);
+  const [active] = useState(false);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.topMenu}>
         <div className={styles.backButton}>
-          <Button variant="text" onClick={() => {}}>
+          <Button variant="text" onClick={() => window.history.back()}>
             <ArrowLeftIcon />
             Back
           </Button>
@@ -19,7 +20,7 @@ export const Cart: React.FC = () => {
         <h1 className={styles.title}>Cart</h1>
       </div>
 
-      {active ? (
+      {!active ? (
         <section className={styles.container}>
           <div className={styles.list}>
             <div className={styles.likePhone}>asd</div>
@@ -39,7 +40,10 @@ export const Cart: React.FC = () => {
           </div>
         </section>
       ) : (
-        <h2>Your cart is empty</h2>
+        <div className={styles.noItems}>
+          <img src={EmptyCart} alt="Empty Cart" className={styles.emptyCart} />
+          <h2 className={styles.title}>Your cart is empty</h2>
+        </div>
       )}
     </div>
   );
