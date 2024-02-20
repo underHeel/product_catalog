@@ -5,6 +5,7 @@ import { Home } from './pages/Home/Home';
 import { Phones } from './pages/Phones/Phones';
 import { Tablets } from './pages/Tablets/Tablets';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { ProductPage } from './pages/ProductPage/ProductPage';
 
 export const Root = () => (
   <HashRouter>
@@ -23,6 +24,7 @@ export const Root = () => (
             <Route index element={<Accessories />} />
           </Route>
         </Route>
+        <Route path="/product" element={<ProductPage />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

@@ -1,0 +1,38 @@
+@import '../../styles/utils/main';
+
+.cardWrapper {
+  margin: 16px;
+  margin-top: 24px;
+
+  .headerPath {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 8px;
+
+    .homeIcon {
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .categoryText {
+      cursor: pointer;
+    }
+
+    .productText {
+      color: $secondary-color;
+    }
+  }
+
+  .backButton {
+    display: flex;
+    width: 55px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-items: center;
+    gap: 4px;
+    color: $secondary-color;
+  }
+}
