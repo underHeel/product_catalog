@@ -1,7 +1,8 @@
 /* eslint-disable no-plusplus */
-import { ArrowLeftIcon } from 'src/components/ui/icons/ArrowLeftIcon';
-import { IconButton } from 'src/components/ui/buttons/IconButton';
-import styles from './Paginate.module.scss';
+import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
+import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
+import { IconButton } from '../ui/buttons/IconButton';
+import styles from './PaginateLine.module.scss';
 
 interface Props {
   itemsPerPage: number;
@@ -25,7 +26,7 @@ export const Paginate: React.FC<Props> = ({
     <div className={styles.pagination}>
       <ul className={styles.pageNumbers}>
         <li>
-          <IconButton onClick={() => {}}>
+          <IconButton onClick={() => {}} isDisabled>
             <ArrowLeftIcon />
           </IconButton>
         </li>
@@ -36,6 +37,11 @@ export const Paginate: React.FC<Props> = ({
             </a>
           </li>
         ))}
+        <li>
+          <IconButton onClick={() => {}}>
+            <ArrowRightIcon />
+          </IconButton>
+        </li>
       </ul>
     </div>
   );

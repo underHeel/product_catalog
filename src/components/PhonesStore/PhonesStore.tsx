@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Phone } from 'src/types/Phone';
 import { getPhones } from '../../api/phones';
-import styles from './PhonesPage.module.scss';
-import { PhonePage } from './PhonesList/PhonesList';
-import { Paginate } from './Paginate/Paginate';
+import styles from './PhonesStore.module.scss';
+import { PhonesList } from '../PhonesList/PhonesList';
+import { Paginate } from '../PaginateLine/PaginateLine';
 
 export const PhonesPage = () => {
   const [products, setProducts] = useState<Phone[]>([]);
@@ -30,7 +30,7 @@ export const PhonesPage = () => {
   return (
     <>
       <div className={styles.main}>
-        <PhonePage phones={currentProducts} loading={isLoading} />
+        <PhonesList phones={currentProducts} loading={isLoading} />
       </div>
       <Paginate
         itemsPerPage={itemsPerPage}

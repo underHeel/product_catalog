@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header';
-import { PhonesPage } from './components/Pagination/PhonesPage';
+import { PhonesPage } from './components/PhonesStore/PhonesStore';
 import { Footer } from './components/Footer';
 
 import './styles/utils/main.scss';

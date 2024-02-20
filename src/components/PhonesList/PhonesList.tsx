@@ -1,5 +1,5 @@
 import { Phone } from 'src/types/Phone';
-import { ProductCard } from 'src/components/ProductCard';
+import { ProductCard } from '../ProductCard';
 import styles from './PhonesList.module.scss';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   loading: boolean;
 }
 
-export const PhonePage: React.FC<Props> = ({ phones, loading }) => {
+export const PhonesList: React.FC<Props> = ({ phones, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
