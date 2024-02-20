@@ -5,14 +5,19 @@
   width: 288px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #E2E6E9;
-  border-radius: 10px;
+  border: 1px solid $elements-color;
+  border-radius: 16px;
   margin: 16px auto;
 
   @include on-tablet {
     height: 128px;
     width: 592px;
     flex-direction: row;
+  }
+
+  @include on-desktop {
+    display: flex;
+    width: 752px;
   }
 }
 
@@ -69,6 +74,12 @@
     padding-right: 24px;
     margin: auto;
   }
+
+  @include on-desktop {
+    display: flex;
+    width: 336px;
+    max-height: 21px;
+  }
 }
 
 
@@ -87,8 +98,8 @@
 }
 
 .quantityControl button {
-  background-color: #FFF;
-  border: 1px solid #E2E6E9;
+  background-color: $white-color;
+  border: 1px solid $secondary-color;
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -97,7 +108,7 @@
 }
 
 .onButton {
-  color: #B4BDC3;
+  color: $icons-color;
 }
 
 .quantity {
