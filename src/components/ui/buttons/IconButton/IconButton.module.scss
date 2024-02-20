@@ -15,11 +15,13 @@
         transition: .3s;
     }
 
-    &:hover {
-        border-color: $primary-color;
+    @include on-desktop {
+        &:hover {
+            border-color: $primary-color;
 
-        & svg path {
-            fill: $primary-color;
+            & svg path {
+                fill: $primary-color;
+            }
         }
     }
 
