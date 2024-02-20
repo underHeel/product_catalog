@@ -65,6 +65,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         )}
         {isFilled ? (
           <IconButton
+            size="large"
             onClick={() => {
               setIsFilled(false);
             }}
@@ -72,6 +73,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           />
         ) : (
           <IconButton
+            size="large"
             onClick={() => {
               setIsFilled(true);
             }}
