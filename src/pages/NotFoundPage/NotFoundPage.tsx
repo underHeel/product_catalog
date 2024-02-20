@@ -13,11 +13,11 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>
-        <div className={styles['main-numbers']}>404</div>
-        <div className={styles['main-letters']}>
+        <div className={styles.mainNumbers}>404</div>
+        <div className={styles.mainLetters}>
           Page not found. Try again later
         </div>
-        <div className={styles['button-wrapper']}>
+        <div className={styles.buttonWrapper}>
           <Button
             // eslint-disable-next-line react/no-children-prop
             children="Go Home"
