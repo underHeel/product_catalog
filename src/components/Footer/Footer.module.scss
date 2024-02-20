@@ -6,14 +6,16 @@
 
 .footer {
   max-height: 280px;
-  padding-left: 16px;
+  padding-block: 32px;
   color: $secondary-color;
   font-size: 12px;
+  line-height: 12px;
   font-weight: 600;
+
+  @include content-indents;
 
   @include on-tablet {
     max-height: 96px;
-    padding: 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,12 +29,10 @@
 }
 
 .logo {
-  padding-top: 32px;
+  margin-bottom: 32px;
 
   @include on-tablet {
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
+    margin: 0;
   }
 
 }
@@ -42,58 +42,49 @@
 }
 
 .additional {
-  text-decoration: none;
   display: flex;
   flex-direction: column;
-  font-weight: 800;
+  gap: 16px;
+  margin-bottom: 32px;
+  font-weight: bold;
 
   @include on-tablet {
+    margin: 0;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
+  @include on-desktop {
+    gap: 106px;
+  }
+
 }
 
 .additionalLink {
-  text-decoration: none;
-  text-align: left;
-  padding-top: 16px;
   letter-spacing: 0.04em;
-
-  @include on-tablet {
-    display: flex;
-    padding: 8px;
-  }
-
-  @include on-desktop {
-    display: flex;
-    margin: 0 64px;
-  }
-
-  @include hover(color, $primary-color);
 
   &:active {
     color: $primary-color;
   }
 
-}
+  @include on-desktop {
+    @include hover(color, $primary-color);
+  }
 
-.text {
-  padding-right: 16px;
 }
 
 .button {
   display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 16px;
 
-  &:hover .text {
+  &:active .text {
     color: $primary-color;
   }
 
-  &:hover .iconButton {
-    transform: scale(1.1);
-    transition: transform 0.5s;
+  &:active .iconButton {
     border-color: $primary-color;
 
     & svg path {
@@ -101,7 +92,19 @@
     }
   }
 
-  &:active {
-    color: $primary-color;
+  @include on-desktop {
+    &:hover .text {
+      color: $primary-color;
+    }
+
+    &:hover .iconButton {
+      transform: scale(1.1);
+      transition: transform 0.5s;
+      border-color: $primary-color;
+
+      & svg path {
+        fill: $primary-color;
+      }
+    }
   }
 }
