@@ -36,7 +36,7 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
             <FavoriteIcon className={styles.icon} />
           </Link>
 
-          <Link to="/" className={cn(styles.box, styles.cart)}>
+          <Link to="/cart" className={cn(styles.box, styles.cart)}>
             <CartIcon className={styles.icon} />
           </Link>
         </div>

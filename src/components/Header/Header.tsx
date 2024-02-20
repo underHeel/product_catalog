@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
             <FavoriteIcon className={styles.icon} />
           </Link>
 
-          <Link to="/" className={cn(styles.container, styles.cart)}>
+          <Link to="/cart" className={cn(styles.container, styles.cart)}>
             <CartIcon className={styles.icon} />
           </Link>
         </div>
