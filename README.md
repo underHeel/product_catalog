@@ -66,6 +66,21 @@ Deploy on github pages
 npm run deploy
 ```
 
+## DEMO LINK
+
+https://underheel.github.io/product_catalog/#/
+
 ## Built With
 
 [Vite](https://vitejs.dev/)
+
+## Development Guidelines:
+
+1. Mobile-First Design: Begin by designing for mobile screens, then scale up for larger devices, ensuring a smooth user experience regardless of screen size.
+
+2. Flex and Grid Layouts: Choose Flexbox for straightforward layouts and Grid for more intricate designs requiring precise control over both rows and columns. 
+
+3. Redux Toolkit for State Management: Opt for Redux Toolkit to manage the application state efficiently, simplifying the process with its built-in utilities and debugging tools.
+
+4. Modular Styles and SCSS: Keep styles modular for easier maintenance and reuse, employing SCSS for advanced CSS features like variables and nesting to streamline development.
+

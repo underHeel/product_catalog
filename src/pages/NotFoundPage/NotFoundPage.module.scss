@@ -1,0 +1,41 @@
+@import '../../styles/utils/main';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  @include on-tablet {
+    height: 100vh;
+  }
+}
+
+.main {
+  text-align: center;
+}
+
+.mainNumbers {
+  font-size: 8rem;
+  color: #333;
+  @include on-tablet {
+    font-size: 6rem;
+  }
+}
+
+.mainLetters {
+  margin-top: 55px;
+  font-size: 1.2rem;
+  @include on-tablet {
+    margin-top: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  @include on-tablet {
+    margin-top: 12px;
+  }
+}
