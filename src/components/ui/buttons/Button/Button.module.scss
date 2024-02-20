@@ -15,7 +15,14 @@
         background-color: $accent-color;
         color: $white-color;
 
-        @include hover (box-shadow, 0 3px 13px 0 #17203166);
+        &:active {
+            box-shadow: 0 3px 13px 0 #17203166;
+        }
+
+        @include on-desktop {
+            @include hover (box-shadow, 0 3px 13px 0 #17203166);
+        }
+
     }
 
     &.outlined {
@@ -25,16 +32,26 @@
 
     &.text {
         gap: 4px;
-        font-size: 12px;
-        line-height: 100%;
         color: $secondary-color;
         width: auto;
-        height: auto;
+        height: 20px;
+        font-size: 12px;
+        line-height: 20px;
         padding: 5px;
-        align-items: start;
 
-        &:hover {
+        & svg {
+            margin-bottom: 2px;
+        }
+
+        &:active {
             color: $primary-color;
         }
+
+        @include on-desktop {
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
     }
 }

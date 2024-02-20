@@ -5,6 +5,7 @@ import styles from './IconButton.module.scss';
 interface Props {
   children: React.ReactNode;
   onClick: () => void;
+  size?: 'small' | 'large';
   classNames?: string;
   isFilled?: boolean;
   isDisabled?: boolean;
@@ -13,6 +14,7 @@ interface Props {
 export const IconButton: React.FC<Props> = ({
   children,
   onClick,
+  size = 'small',
   classNames,
   isFilled,
   isDisabled,
@@ -23,6 +25,7 @@ export const IconButton: React.FC<Props> = ({
       className={cn(
         styles.iconButton,
         { [styles.filled]: isFilled },
+        styles[size],
         classNames,
       )}
       onClick={onClick}

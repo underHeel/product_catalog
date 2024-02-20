@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { CartIcon } from '../ui/icons/CartIcon';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
-import Logo from '../../../public/img/Logo.png';
+import Logo from '/img/Logo.png';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { NavBar } from '../NavBar';
 import styles from './BurgerMenu.module.scss';
