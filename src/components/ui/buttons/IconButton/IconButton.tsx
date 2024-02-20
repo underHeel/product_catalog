@@ -7,7 +7,6 @@ interface Props {
   onClick: () => void;
   size?: 'small' | 'large';
   classNames?: string;
-  isFilled?: boolean;
   isDisabled?: boolean;
 }
 
@@ -16,18 +15,12 @@ export const IconButton: React.FC<Props> = ({
   onClick,
   size = 'small',
   classNames,
-  isFilled,
   isDisabled,
 }) => {
   return (
     <button
       type="button"
-      className={cn(
-        styles.iconButton,
-        { [styles.filled]: isFilled },
-        styles[size],
-        classNames,
-      )}
+      className={cn(styles.iconButton, styles[size], classNames)}
       onClick={onClick}
       disabled={isDisabled}
     >
