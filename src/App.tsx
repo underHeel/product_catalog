@@ -1,39 +1,27 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import * as api from './api/phones';
 import { Phone } from './types/Phone';
 
 import './styles/utils/main.scss';
+import { CartItem } from './components/CartItem';
 
 const App: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [phone, setPhone] = useState<Phone>({} as Phone);
+  const phone = phones[70];
 
-  function loadPhones() {
-    api
-      .getPhones()
-      .then((data) => {
-        setPhones(data);
-      })
-      .catch((error) => console.log(error))
-      .finally(() => {
-        console.log('Finished');
-        console.log(phones);
-        setPhone(phones[54]);
-      });
-  }
+  useEffect(() => {
+    api.getPhones().then(setPhones);
+  }, []);
 
-  useEffect(loadPhones, []);
-
-  console.log(phone?.name);
+  console.log(phone);
 
   return (
     <div>
       <Header />
-      <Outlet />
+      {!!phones.length && <CartItem phone={phone} />}
       <Footer />
     </div>
   );
