@@ -26,8 +26,3 @@ jobs:
         run: npm run lint 
       - name: Prettier
         run: npm run format 
-      - name: Run deploy script
-        run: |
-          git config user.name "nabokok" && git config user.email "alyonana42@gmail.com"
-          git remote set-url origin https://nabokok:${{ secrets.MY_PASSWORD }}@github.com/underHeel/product_catalog.git
-          npm run deploy
