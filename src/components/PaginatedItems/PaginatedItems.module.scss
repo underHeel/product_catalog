@@ -1,12 +1,7 @@
-.main {
-  display: flex;
-  justify-content: center;
-}
+@import '../../styles/utils/main';
 
-.items {
-  max-width: 1200px;
-  display: flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  gap: 20px;
+.main {
+  @include content-indents;
+
+  @include page-grid;
 }
