@@ -5,6 +5,7 @@ import { Home } from './pages/Home/Home';
 import { Phones } from './pages/Phones/Phones';
 import { Tablets } from './pages/Tablets/Tablets';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { Cart } from './pages/Cart';
 
 export const Root = () => (
   <HashRouter>
@@ -15,6 +16,9 @@ export const Root = () => (
           <Route path="home" element={<Navigate to=".." />} />
           <Route path="/phones">
             <Route index element={<Phones />} />
+          </Route>
+          <Route path="/cart">
+            <Route index element={<Cart />} />
           </Route>
           <Route path="/tablets">
             <Route index element={<Tablets />} />

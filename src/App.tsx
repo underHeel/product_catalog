@@ -16,8 +16,6 @@ const App: React.FC = () => {
     api.getPhones().then(setPhones);
   }, []);
 
-  console.log(phone);
-
   return (
     <div>
       <Header />
