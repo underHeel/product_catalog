@@ -40,29 +40,26 @@
 .icons {
   @include on-tablet {
     display: flex;
+    height: 100%;
     margin-left: auto;
   }
 }
 
 .container {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  padding: 16px;
+  height: 64px;
   box-shadow: -1px 0 0 0 $elements-color;
-  height: 100%;
 
   @include on-tablet {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 16px;
+    width: 48px;
     box-shadow: -1px 0 0 0 $elements-color;
     height: 100%;
   }
 
   @include on-desktop {
-    padding: 24px;
+    width: 64px;
   }
 
   .icon {
