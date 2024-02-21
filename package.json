@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://underHeel.github.io/product_catalog/",
   "scripts": {
-    "start": "vite",
+    "start": "vite --open",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",

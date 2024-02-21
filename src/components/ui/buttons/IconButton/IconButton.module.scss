@@ -30,10 +30,6 @@
     @include on-desktop {
         &:hover {
             border-color: $primary-color;
-
-            & svg path {
-                fill: $primary-color;
-            }
         }
     }
 
@@ -44,16 +40,6 @@
 
         & svg path {
             fill: $icons-color;
-        }
-    }
-
-    &.filled {
-        border-color: $primary-color;
-        background-color: $primary-color;
-        color: $white-color;
-
-        & svg path {
-            fill: $white-color;
         }
     }
 }

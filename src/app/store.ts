@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import phonesReducer from '../ features/phones';
+import phonesReducer from '../features/phones';
 
 export const store = configureStore({ reducer: { phones: phonesReducer } });
 
