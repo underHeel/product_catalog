@@ -1,0 +1,5 @@
+@import '../../styles/utils/main';
+
+.container {
+    @include content-indents;
+}

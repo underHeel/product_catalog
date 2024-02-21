@@ -8,11 +8,11 @@ import { FavoriteFilledIcon } from '../ui/icons/FavoriteFilledIcon';
 import { Button } from '../ui/buttons/Button';
 
 type Props = {
-  phone: Product;
+  product: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = phone;
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { name, fullPrice, price, screen, capacity, ram, image } = product;
   const [isFilled, setIsFilled] = useState(false);
   const [inCart, setInCart] = useState(false);
 
@@ -48,25 +48,24 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         </div>
       </div>
 
-      <div className={styles.cardBuy}>
-        <div className={styles.buttonWrapper}>
-          {inCart ? (
-            <Button
-              children="Added"
-              variant="outlined"
-              onClick={() => setInCart(false)}
-            />
-          ) : (
-            <Button
-              children="Add to cart"
-              variant="contained"
-              onClick={() => setInCart(true)}
-            />
-          )}
-        </div>
+      <div className={styles.buttonWrapper}>
+        {inCart ? (
+          <Button
+            children="Added"
+            variant="outlined"
+            onClick={() => setInCart(false)}
+          />
+        ) : (
+          <Button
+            children="Add to cart"
+            variant="contained"
+            onClick={() => setInCart(true)}
+          />
+        )}
         {isFilled ? (
           <IconButton
             size="large"
+            classNames={styles.favoriteButton}
             onClick={() => {
               setIsFilled(false);
             }}
@@ -75,6 +74,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         ) : (
           <IconButton
             size="large"
+            classNames={styles.favoriteButton}
             onClick={() => {
               setIsFilled(true);
             }}
