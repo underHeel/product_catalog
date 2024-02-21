@@ -6,6 +6,7 @@
   justify-content: space-between;
   height: 48px;
   box-shadow: 0 1px 0 0 #E2E6E9;
+  background-color: $white-color;
 
   @include on-tablet {
     justify-content: flex-start;

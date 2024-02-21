@@ -13,41 +13,60 @@
   padding-bottom: 80px;
 }
 
-.links {
-  display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
-    background-color: $white-color;
-    border: 1px solid $icons-color;
-    transition: .3s;
-    min-width: 32px;
-    min-height: 32px;
-    max-width: 32px;
-    max-height: 32px;
+.cardsList {
+  @include page-grid;
 
-  svg path {
-      transition: .3s;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+}
+
+.cardWrapper {
+  grid-column-start: span 4;
+
+  @include on-tablet {
+    grid-column-start: span 6;
+  }
+
+  @include on-tablet-768 {
+    grid-column-start: span 4;
   }
 
   @include on-desktop {
-      &:hover {
-          border-color: $primary-color;
+    grid-column-start: span 6;
+  }
+}
 
-          & svg path {
-              fill: $primary-color;
-          }
-      }
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: $white-color;
+  border: 1px solid $icons-color;
+  min-width: 32px;
+  min-height: 32px;
+  max-width: 32px;
+  max-height: 32px;
+  transition: all 0s ease;
+
+  @include on-desktop {
+    &:hover {
+      border-color: $primary-color;
+    }
   }
 
   &:disabled {
-      border-color: $elements-color;
-      color: $icons-color;
-      cursor: not-allowed;
+    border-color: $elements-color;
+    color: $icons-color;
+    cursor: not-allowed;
 
-      & svg path {
-          fill: $icons-color;
-      }
+    & svg path {
+      fill: $icons-color;
+    }
   }
 }
 

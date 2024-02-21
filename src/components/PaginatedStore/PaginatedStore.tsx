@@ -1,63 +1,73 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { Product } from 'src/types/Product';
-import { Items } from '../PaginatedItems/PaginatedItems';
+import { useSearchParams } from 'react-router-dom';
 import { getPhones } from '../../api/phones';
+import { Product } from '../../types/Product';
 import styles from './PaginatedStore.module.scss';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
+import { ProductCard } from '../ProductCard';
 
 interface Props {
   itemsPerPage: number;
+  items: Product[];
 }
 
-export const PaginatedStore: React.FC<Props> = ({ itemsPerPage }) => {
-  const [itemOffset, setItemOffset] = useState(0);
-  const [items, setItems] = useState<Product[] | []>([]);
+export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [phones, setPhones] = useState<Product[]>([]);
 
-  useEffect(() => {
-    getPhones().then((data) => {
-      setItems(data);
-    });
-  }, []);
+  const currentPage = searchParams.get('page')
+    ? Number(searchParams.get('page'))
+    : 1;
 
-  const endOffset = itemOffset + itemsPerPage;
-
-  const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
-  const handlePageClick = (event: { selected: number }) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+  useEffect(() => {
+    getPhones(currentPage, 12).then(setPhones);
+  }, [currentPage]);
 
-    setItemOffset(newOffset);
+  const handlePageClick = (event: { selected: number }) => {
+    const paramsString = `page=${event.selected + 1}`;
+    const params = new URLSearchParams(paramsString);
+
+    setSearchParams(params);
   };
 
   return (
     <>
-      <Items currentItems={currentItems} />
+      <div className={styles.cardsList}>
+        {phones.map((phone) => (
+          <div className={styles.cardWrapper} key={phone.id}>
+            <ProductCard product={phone} />
+          </div>
+        ))}
+      </div>
 
       <div className={styles.paginateWrapper}>
         <ReactPaginate
-          breakLabel={<IconButton onClick={() => {}}>...</IconButton>}
+          breakLabel={<IconButton>...</IconButton>}
           nextLabel={
-            <IconButton onClick={() => {}}>
+            <IconButton>
               <ArrowRightIcon />
             </IconButton>
           }
           onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
+          pageRangeDisplayed={2}
           pageCount={pageCount}
           previousLabel={
-            <IconButton onClick={() => {}}>
+            <IconButton>
               <ArrowLeftIcon />
             </IconButton>
           }
+          initialPage={currentPage - 1}
           pageClassName={styles.buttons}
           renderOnZeroPageCount={null}
           className={styles.line}
           pageLinkClassName={styles.links}
           activeLinkClassName={styles.activeButton}
+          marginPagesDisplayed={2}
         />
       </div>
     </>

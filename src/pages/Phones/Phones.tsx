@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { ProductCard } from '../../components/ProductCard';
+import { PaginatedStore } from '../../components/PaginatedStore/PaginatedStore';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
+
+import styles from './Phones.module.scss';
 
 export const Phones: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -19,5 +21,10 @@ export const Phones: React.FC = () => {
     return <p>{error}</p>;
   }
 
-  return <>{!!phones.length && <ProductCard phone={phones[0]} />}</>;
+  return (
+    <div className={styles.container}>
+      <h1>Mobile phones</h1>
+      <PaginatedStore itemsPerPage={8} items={phones} />
+    </div>
+  );
 };
