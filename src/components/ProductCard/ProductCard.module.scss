@@ -104,16 +104,10 @@
   margin-bottom: 8px;
 }
 
-.cardBuy {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  width: 100%;
-}
-
 .buttonWrapper {
-  width: 160px
+  display: flex;
+  gap: 8px;
+  width: 100%;
 }
 
 .favoriteButton {

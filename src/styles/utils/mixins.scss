@@ -4,17 +4,25 @@
   }
 }
 
+@mixin on-tablet-768 {
+  @media (min-width: $tablet-768) {
+    @content;
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
+
 @mixin content-indents() {
   padding-inline: 16px;
 
   @include on-tablet {
     padding-inline: 24px;
+
   }
 
   @include on-desktop {
