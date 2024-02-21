@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './Cart.module.scss';
 import { Button } from '../../components/ui/buttons/Button';
 import { ArrowLeftIcon } from '../../components/ui/icons/ArrowLeftIcon';
-import EmptyCart from '../../../public/img/EmptyCart.png';
+import EmptyCart from '/img/EmptyCart.png';
 
 export const Cart: React.FC = () => {
   const [active] = useState(false);
@@ -13,7 +13,7 @@ export const Cart: React.FC = () => {
       <div className={styles.topMenu}>
         <div className={styles.backButton}>
           <Button variant="text" onClick={() => window.history.back()}>
-            <ArrowLeftIcon />
+            <ArrowLeftIcon fill="#0F0F11" />
             Back
           </Button>
         </div>
