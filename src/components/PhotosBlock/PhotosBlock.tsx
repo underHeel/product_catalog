@@ -1,16 +1,23 @@
+/* eslint-disable no-console */
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import styles from './PhotosBlock.module.scss';
 
 export const PhotosBlock = () => {
+  // const [isClicked, setIsClicked] = useState(false);
+
   return (
     <div className={styles.wrapper}>
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={() => 'slide change'}
-        // eslint-disable-next-line no-console
-        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => {
+          setInterval(() => {
+            swiper.slideTo(swiper.activeIndex + 1);
+          }, 2000);
+        }}
+        onClick={(swiper) => swiper.slideTo(swiper.activeIndex + 1)}
       >
         <SwiperSlide>Slide 1</SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>
