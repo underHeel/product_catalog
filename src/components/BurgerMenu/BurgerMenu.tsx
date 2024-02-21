@@ -3,12 +3,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import { useAppSelector } from '../../redux/hooks';
 import { CartIcon } from '../ui/icons/CartIcon';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import Logo from '/img/Logo.png';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { NavBar } from '../NavBar';
 import styles from './BurgerMenu.module.scss';
+import { Badge } from '../ui/badge';
 
 interface Props {
   toggleMenu: () => void;
@@ -16,6 +18,8 @@ interface Props {
 }
 
 export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
+  const { productsList } = useAppSelector((state) => state.cart);
+
   return (
     <div className={cn(styles.menu, { [styles.show]: isMenuOpen })}>
       <section className={styles.header}>
@@ -41,7 +45,13 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
             className={cn(styles.box, styles.cart)}
             onClick={toggleMenu}
           >
-            <CartIcon className={styles.icon} />
+            {productsList.length !== 0 ? (
+              <Badge value={productsList.length}>
+                <CartIcon className={styles.icon} />
+              </Badge>
+            ) : (
+              <CartIcon className={styles.icon} />
+            )}
           </Link>
         </div>
       </div>
