@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ProductCard } from '../../components/ProductCard';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import * as phonesActions from '../../features/phones';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import * as phonesActions from '../../redux/slices/phonesSlice';
 
 export const Phones: React.FC = () => {
   const dispatch = useAppDispatch();
