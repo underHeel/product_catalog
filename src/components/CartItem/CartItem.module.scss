@@ -7,12 +7,12 @@
   flex-direction: column;
   border: 1px solid $elements-color;
   border-radius: 16px;
-  margin: 16px auto;
 
   @include on-tablet {
     height: 128px;
     width: 592px;
     flex-direction: row;
+    justify-content: space-between;
   }
 
   @include on-desktop {
@@ -58,28 +58,19 @@
   margin-right: 28px;
   align-content: center;
 
-  &:hover {
-    color: $primary-color;
-    transform: scale(1.2);
-    transition: transform 0.5s;
-  }
-
   & svg path {
     fill: $secondary-color;
   }
 
-  &:hover {
-    transform: scale(1.1);
-    transition: transform 0.5s;
-    border-color: $primary-color;
-
-    & svg path {
-      fill: $primary-color;
+  @include on-desktop {
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.5s;
+  
+      & svg path {
+        fill: $primary-color;
+      }
     }
-  }
-
-  &:active {
-    color: $primary-color;
   }
 }
 
@@ -133,28 +124,27 @@
 
 .onButton {
   color: $secondary-color;
-  border-color: $secondary-color;
-
-  &:hover .text {
-    color: $primary-color;
-  }
 
   & svg path {
     fill: $secondary-color;
   }
 
-  &:hover .iconButton {
-    transform: scale(1.1);
-    transition: transform 0.5s;
-    border-color: $primary-color;
+  @include on-desktop {
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.5s;
 
-    & svg path {
-      fill: $primary-color;
+      &:hover .iconButton {
+        border-color: $secondary-color;
+      }
     }
-  }
 
-  &:active {
-    color: $primary-color;
+    &:active {
+      &:active .iconButton {
+        border-color: $primary-color;
+      }
+    }
+    
   }
 }
 

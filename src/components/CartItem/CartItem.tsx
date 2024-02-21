@@ -44,7 +44,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
             <CloseIcon />
           </button>
           <img
-            src={images[1]}
+            src={images[0]}
             alt={`${name} photo`}
             className={styles.cartImage}
           />
