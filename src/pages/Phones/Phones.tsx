@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { PaginatedStore } from '../../components/PaginatedStore/PaginatedStore';
-import { ProductCard } from '../../components/ProductCard';
+// import { ProductCard } from '../../components/ProductCard';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
 
@@ -25,14 +25,7 @@ export const Phones: React.FC = () => {
   return (
     <div className={styles.container}>
       <h1>Mobile phones</h1>
-      <div className={styles.cardsList}>
-        {[...phones].slice(0, 10).map((phone) => (
-          <div className={styles.cardWrapper} key={phone.id}>
-            <ProductCard product={phone} />
-          </div>
-        ))}
-      </div>
-      <PaginatedStore itemsPerPage={8} />
+      <PaginatedStore itemsPerPage={8} items={phones} />
     </div>
   );
 };

@@ -3,30 +3,3 @@
 .container {
     @include content-indents;
 }
-
-.cardsList {
-    @include page-grid;
-
-    margin-bottom: 24px;
-
-    @include on-tablet {
-        margin-bottom: 40px;
-    }
-
-}
-
-.cardWrapper {
-    grid-column-start: span 4;
-
-    @include on-tablet {
-        grid-column-start: span 6;
-    }
-
-    @include on-tablet-768 {
-        grid-column-start: span 4;
-    }
-
-    @include on-desktop {
-        grid-column-start: span 6;
-    }
-}
