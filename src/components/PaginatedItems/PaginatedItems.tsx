@@ -9,7 +9,8 @@ interface Props {
 export const Items: React.FC<Props> = ({ currentItems }) => {
   return (
     <div className={styles.main}>
-      {currentItems && currentItems.map((item) => <ProductCard phone={item} />)}
+      {currentItems &&
+        currentItems.map((item) => <ProductCard product={item} />)}
     </div>
   );
 };
