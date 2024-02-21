@@ -19,5 +19,10 @@ export const Phones: React.FC = () => {
     return <p>{error}</p>;
   }
 
-  return <>{!!phones.length && <ProductCard phone={phones[0]} />}</>;
+  return (
+    <>
+      {!!phones.length &&
+        phones.map((phone) => <ProductCard phone={phone} key={phone.id} />)}
+    </>
+  );
 };
