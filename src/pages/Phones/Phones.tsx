@@ -24,7 +24,7 @@ export const Phones: React.FC = () => {
   return (
     <div className={styles.container}>
       <h1>Mobile phones</h1>
-      <PaginatedStore itemsPerPage={8} items={phones} />
+      <PaginatedStore itemsPerPage={12} items={phones} />
     </div>
   );
 };
