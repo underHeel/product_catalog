@@ -20,23 +20,15 @@
     border-radius: 100%;
     background-color: $white-color;
     border: 1px solid $icons-color;
-    transition: .3s;
     min-width: 32px;
     min-height: 32px;
     max-width: 32px;
     max-height: 32px;
-
-  svg path {
-      transition: .3s;
-  }
+    transition: all 0s ease;
 
   @include on-desktop {
       &:hover {
           border-color: $primary-color;
-
-          & svg path {
-              fill: $primary-color;
-          }
       }
   }
 

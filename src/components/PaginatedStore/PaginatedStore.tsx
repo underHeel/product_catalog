@@ -18,7 +18,7 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage }) => {
 
   useEffect(() => {
     getPhones().then((data) => {
-      setItems(data);
+      setItems(data.filter((item) => item.category === 'phones'));
     });
   }, []);
 
@@ -46,7 +46,7 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage }) => {
             </IconButton>
           }
           onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
+          pageRangeDisplayed={3}
           pageCount={pageCount}
           previousLabel={
             <IconButton onClick={() => {}}>
@@ -58,6 +58,7 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage }) => {
           className={styles.line}
           pageLinkClassName={styles.links}
           activeLinkClassName={styles.activeButton}
+          marginPagesDisplayed={2}
         />
       </div>
     </>

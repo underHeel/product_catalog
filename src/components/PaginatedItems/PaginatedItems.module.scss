@@ -1,12 +1,13 @@
 .main {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .items {
   max-width: 1200px;
   display: flex;
   flex-wrap:wrap;
-  justify-content: center;
-  gap: 20px;
+  justify-content: left;
+  gap: 40px 16px;
 }
