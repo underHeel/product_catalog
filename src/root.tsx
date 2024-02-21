@@ -26,9 +26,9 @@ export const Root = () => (
           <Route path="/accessories">
             <Route index element={<Accessories />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </HashRouter>
 );

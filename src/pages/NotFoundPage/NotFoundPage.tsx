@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/ui/buttons/Button';
 import styles from './NotFoundPage.module.scss';
+import notFoundImg from '/img/404.png';
 
 export const NotFoundPage: React.FC = () => {
   const navigate = useNavigate();
@@ -13,17 +14,12 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>
-        <div className={styles.mainNumbers}>404</div>
-        <div className={styles.mainLetters}>
-          Page not found. Try again later
-        </div>
+        <img src={notFoundImg} alt="backImg" className={styles.image} />
+        <div className={styles.mainLetters}>Page Not Found</div>
         <div className={styles.buttonWrapper}>
-          <Button
-            // eslint-disable-next-line react/no-children-prop
-            children="Go Home"
-            variant="contained"
-            onClick={handleNavigateToHome}
-          />
+          <Button variant="contained" onClick={handleNavigateToHome}>
+            Go home
+          </Button>
         </div>
       </div>
     </div>
