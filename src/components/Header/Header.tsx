@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import cn from 'classnames';
 import Logo from '/img/Logo.png';
+import { useAppSelector } from '../../redux/hooks';
 import { BurgerIcon } from '../ui/icons/BurgerIcon';
 import { CartIcon } from '../ui/icons/CartIcon';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
@@ -14,6 +15,8 @@ import { Badge } from '../ui/badge';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { productsList } = useAppSelector((state) => state.cart);
 
   const toggleMenu = () => {
     setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
@@ -38,9 +41,13 @@ export const Header: React.FC = () => {
           </Link>
 
           <Link to="/cart" className={cn(styles.container, styles.cart)}>
-            <Badge value={12}>
+            {productsList.length !== 0 ? (
+              <Badge value={productsList.length}>
+                <CartIcon className={styles.icon} />
+              </Badge>
+            ) : (
               <CartIcon className={styles.icon} />
-            </Badge>
+            )}
           </Link>
         </div>
       </header>
