@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react/button-has-type */
 import { useState } from 'react';
-import { Phone } from 'src/types/Phone';
+import { Product } from 'src/types/Product';
 import styles from './CartItem.module.scss';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { IconButton } from '../ui/buttons/IconButton';
@@ -10,14 +10,14 @@ import { MinusIcon } from '../ui/icons/MinusIcon';
 import { PlusIcon } from '../ui/icons/PlusIcon';
 
 type Props = {
-  phone: Phone;
+  product: Product;
 };
 
-export const CartItem: React.FC<Props> = ({ phone }) => {
-  const { name, priceRegular, images } = phone;
+export const CartItem: React.FC<Props> = ({ product }) => {
+  const { name, price, image } = product;
   const [quantity, setQuantity] = useState<number>(1);
 
-  const totalAmount = quantity * priceRegular;
+  const totalAmount = quantity * price;
 
   const handlerDecreaseQuantity = () => {
     setQuantity((prev) => {
@@ -43,11 +43,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           >
             <CloseIcon />
           </button>
-          <img
-            src={images[0]}
-            alt={`${name} photo`}
-            className={styles.cartImage}
-          />
+          <img src={image} alt={`${name} photo`} className={styles.cartImage} />
         </div>
         <div className={styles.productName}>{name}</div>
       </div>
