@@ -53,8 +53,11 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage }) => {
               <ArrowLeftIcon />
             </IconButton>
           }
+          pageClassName={styles.buttons}
           renderOnZeroPageCount={null}
           className={styles.line}
+          pageLinkClassName={styles.links}
+          activeLinkClassName={styles.activeButton}
         />
       </div>
     </>
