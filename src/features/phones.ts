@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Phone } from 'src/types/Phone';
+import { Product } from 'src/types/Product';
 import { getPhones } from '../api/phones';
 
 interface PhonesState {
-  phones: Phone[];
+  phones: Product[];
   loading: boolean;
   error: string;
 }

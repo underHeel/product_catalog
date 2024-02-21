@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { ProductCard } from '../../components/ProductCard';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from 'src/app/hooks';
+import { ProductCard } from 'src/components/ProductCard';
 import * as phonesActions from '../../features/phones';
 
 export const Phones: React.FC = () => {

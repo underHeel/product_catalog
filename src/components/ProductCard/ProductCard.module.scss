@@ -3,18 +3,18 @@
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 212px;
+  width: 212px;
   padding: 32px;
   border: 1px solid $elements-color;
   border-radius: 8px;
   transition: all 0.3s ease;
 
   @include on-tablet {
-    max-width: 237px;
+    width: 237px;
   }
 
   @include on-desktop {
-    max-width: 272px;
+    width: 272px;
   }
 
   &:hover {
@@ -32,6 +32,7 @@
   object-fit: contain;
   width: 100%;  
   min-height: 100px;
+  max-height: 208px;
   flex-grow: 1;
   margin: 0 auto 24px;
 }
@@ -42,6 +43,7 @@
   font-size: 14px;
   line-height: 21px;
   color: $primary-color;
+  height: 42px;
 }
 
 .cardPrice {
@@ -96,6 +98,8 @@
   font-size: 12px;
   line-height: 15px;
   color: $primary-color;
+  max-width: 100px;
+  text-align: right;
 }
 
 .cardContainer {
@@ -107,7 +111,11 @@
 .cardBuy {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 8px;
   align-items: center;
   width: 100%;
+}
+
+.buttonWrapper {
+  width: 160px  
 }
