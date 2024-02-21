@@ -10,6 +10,7 @@ import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { NavBar } from '../NavBar/NavBar';
 import { BurgerMenu } from '../BurgerMenu';
 import styles from './Header.module.scss';
+import { Badge } from '../ui/badge';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +38,9 @@ export const Header: React.FC = () => {
           </Link>
 
           <Link to="/cart" className={cn(styles.container, styles.cart)}>
-            <CartIcon className={styles.icon} />
+            <Badge value={12}>
+              <CartIcon className={styles.icon} />
+            </Badge>
           </Link>
         </div>
       </header>

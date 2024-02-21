@@ -9,6 +9,7 @@ import Logo from '/img/Logo.png';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { NavBar } from '../NavBar';
 import styles from './BurgerMenu.module.scss';
+import { Badge } from '../ui/badge';
 
 interface Props {
   toggleMenu: () => void;
@@ -41,7 +42,9 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
             className={cn(styles.box, styles.cart)}
             onClick={toggleMenu}
           >
-            <CartIcon className={styles.icon} />
+            <Badge value={12}>
+              <CartIcon className={styles.icon} />
+            </Badge>
           </Link>
         </div>
       </div>
