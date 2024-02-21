@@ -13,7 +13,7 @@ const initialState: Cart = {
 };
 
 const cartSlice = createSlice({
-  name: 'phones',
+  name: 'cart',
   initialState,
   reducers: {
     add: (state, action: PayloadAction<Product>) => {

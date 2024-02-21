@@ -18,7 +18,7 @@ const initialState: PhonesState = {
 export const fetchPhones = createAsyncThunk('phones/fetch', () => getPhones());
 
 const phonesSlice = createSlice({
-  name: 'cart',
+  name: 'phones',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
