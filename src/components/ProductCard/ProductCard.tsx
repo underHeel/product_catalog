@@ -50,19 +50,21 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className={styles.cardBuy}>
-        {inCart ? (
-          <Button
-            children="Added"
-            variant="outlined"
-            onClick={() => setInCart(false)}
-          />
-        ) : (
-          <Button
-            children="Add to cart"
-            variant="contained"
-            onClick={() => setInCart(true)}
-          />
-        )}
+        <div className={styles.buttonWrapper}>
+          {inCart ? (
+            <Button
+              children="Added"
+              variant="outlined"
+              onClick={() => setInCart(false)}
+            />
+          ) : (
+            <Button
+              children="Add to cart"
+              variant="contained"
+              onClick={() => setInCart(true)}
+            />
+          )}
+        </div>
         {isFilled ? (
           <IconButton
             size="large"
