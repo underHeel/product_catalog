@@ -20,7 +20,7 @@ export const Cart: React.FC = () => {
         <h1 className={styles.title}>Cart</h1>
       </div>
 
-      {!active ? (
+      {active ? (
         <section className={styles.container}>
           <div className={styles.list}>
             <div className={styles.likePhone}>asd</div>
