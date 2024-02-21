@@ -1,0 +1,23 @@
+@import '../../styles/utils/main';
+
+.container {
+    @include content-indents;
+}
+
+.cardsList {
+    @include page-grid;
+
+    margin-bottom: 24px;
+
+    @include on-tablet {
+        margin-bottom: 40px;
+    }
+}
+
+.cardWrapper {
+    grid-column-start: span 4;
+
+    @include on-tablet {
+        grid-column-start: span 6;
+    }
+}

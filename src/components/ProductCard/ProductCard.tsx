@@ -8,11 +8,11 @@ import { FavoriteFilledIcon } from '../ui/icons/FavoriteFilledIcon';
 import { Button } from '../ui/buttons/Button';
 
 type Props = {
-  phone: Product;
+  product: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = phone;
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { name, fullPrice, price, screen, capacity, ram, image } = product;
   const [isFilled, setIsFilled] = useState(false);
   const [inCart, setInCart] = useState(false);
 
@@ -67,6 +67,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         {isFilled ? (
           <IconButton
             size="large"
+            classNames={styles.favoriteButton}
             onClick={() => {
               setIsFilled(false);
             }}
@@ -75,6 +76,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         ) : (
           <IconButton
             size="large"
+            classNames={styles.favoriteButton}
             onClick={() => {
               setIsFilled(true);
             }}
