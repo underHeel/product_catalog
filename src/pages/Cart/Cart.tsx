@@ -1,12 +1,15 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
-import styles from './Cart.module.scss';
+import React from 'react';
+import { useAppSelector } from '../../redux/hooks';
 import { Button } from '../../components/ui/buttons/Button';
 import { ArrowLeftIcon } from '../../components/ui/icons/ArrowLeftIcon';
+import styles from './Cart.module.scss';
 import EmptyCart from '/img/EmptyCart.png';
 
 export const Cart: React.FC = () => {
-  const [active] = useState(false);
+  const productsList = useAppSelector((state) => state.cart.productsList);
+  const active = productsList.length > 0;
 
   return (
     <div className={styles.wrapper}>
@@ -20,10 +23,9 @@ export const Cart: React.FC = () => {
         <h1 className={styles.title}>Cart</h1>
       </div>
 
-      {active ? (
+      {!active ? (
         <section className={styles.container}>
           <div className={styles.list}>
-            <div className={styles.likePhone}>asd</div>
             <div className={styles.likePhone}>asd</div>
             <div className={styles.likePhone}>asd</div>
           </div>

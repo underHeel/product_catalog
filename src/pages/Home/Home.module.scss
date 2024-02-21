@@ -1,0 +1,15 @@
+@import '../../styles/utils/main';
+
+.title {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  @include content-indents;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  
+  @include content-indents;
+}
