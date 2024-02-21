@@ -8,7 +8,7 @@ export const Phones: React.FC = () => {
   const { phones, loading, error } = useAppSelector((state) => state.phones);
 
   useEffect(() => {
-    dispatch(phonesActions.init());
+    dispatch(phonesActions.fetchPhones());
   }, [dispatch]);
 
   if (loading) {

@@ -15,23 +15,24 @@ const initialState: PhonesState = {
   error: '',
 };
 
-export const init = createAsyncThunk('phones/fetch', () => getPhones());
+export const fetchPhones = createAsyncThunk('phones/fetch', () => getPhones());
 
 const phonesSlice = createSlice({
   name: 'phones',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(init.pending, (state) => {
+    builder.addCase(fetchPhones.pending, (state) => {
+      state.error = '';
       state.loading = true;
     });
 
-    builder.addCase(init.fulfilled, (state, action) => {
+    builder.addCase(fetchPhones.fulfilled, (state, action) => {
       state.loading = false;
       state.phones = action.payload;
     });
 
-    builder.addCase(init.rejected, (state) => {
+    builder.addCase(fetchPhones.rejected, (state) => {
       state.loading = false;
       state.error = 'Something went wrong';
     });
