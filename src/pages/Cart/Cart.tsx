@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 import { CartItem } from '../../components/CartItem';
 import { useAppSelector } from '../../redux/hooks';
 import styles from './Cart.module.scss';
@@ -8,8 +8,6 @@ import { ArrowLeftIcon } from '../../components/ui/icons/ArrowLeftIcon';
 import EmptyCart from '/img/EmptyCart.png';
 
 export const Cart: React.FC = () => {
-  const [active] = useState(false);
-
   const { productsList, total } = useAppSelector((state) => state.cart);
 
   return (
@@ -24,11 +22,11 @@ export const Cart: React.FC = () => {
         <h1 className={styles.title}>Cart</h1>
       </div>
 
-      {!active ? (
+      {productsList.length !== 0 ? (
         <section className={styles.container}>
           <div className={styles.list}>
             {productsList.map((product) => (
-              <CartItem product={product} />
+              <CartItem product={product} key={product.id} />
             ))}
           </div>
 

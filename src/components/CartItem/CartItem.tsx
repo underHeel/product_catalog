@@ -37,10 +37,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     <div className={styles.cart}>
       <div className={styles.cartInfo}>
         <div className={styles.cartItem}>
-          <button
-            className={styles.removeButton}
-            onClick={() => setQuantity(0)}
-          >
+          <button className={styles.removeButton}>
             <CloseIcon />
           </button>
           <img src={image} alt={`${name} photo`} className={styles.cartImage} />
