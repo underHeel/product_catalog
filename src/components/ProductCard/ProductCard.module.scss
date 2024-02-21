@@ -3,19 +3,10 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 212px;
   padding: 32px;
   border: 1px solid $elements-color;
   border-radius: 8px;
   transition: all 0.3s ease;
-
-  @include on-tablet {
-    width: 237px;
-  }
-
-  @include on-desktop {
-    width: 272px;
-  }
 
   &:hover {
     border: 1px solid $secondary-color;
