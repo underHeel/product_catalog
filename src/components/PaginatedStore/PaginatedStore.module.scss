@@ -1,0 +1,57 @@
+@import '../../styles/utils/main';
+
+.line {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+}
+
+.paginateWrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.links {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+    transition: .3s;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+
+  svg path {
+      transition: .3s;
+  }
+
+  @include on-desktop {
+      &:hover {
+          border-color: $primary-color;
+
+          & svg path {
+              fill: $primary-color;
+          }
+      }
+  }
+
+  &:disabled {
+      border-color: $elements-color;
+      color: $icons-color;
+      cursor: not-allowed;
+
+      & svg path {
+          fill: $icons-color;
+      }
+  }
+}
+
+.activeButton {
+  background-color: $primary-color;
+  color: white;
+}
