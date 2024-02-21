@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Product } from 'src/types/Product';
-import { getPhones } from '../api/phones';
+import { getPhones } from '../../api/phones';
 
 interface PhonesState {
   phones: Product[];
