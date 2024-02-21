@@ -29,10 +29,17 @@
 .cardImage {
   object-fit: contain;
   width: 100%;
-  min-height: 100px;
-  max-height: 208px;
+  height: 130px;
   flex-grow: 1;
   margin: 0 auto 24px;
+
+  @include on-tablet {
+    height: 196px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+  }
 }
 
 .cardTitle {

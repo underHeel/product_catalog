@@ -67,6 +67,7 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
           className={styles.line}
           pageLinkClassName={styles.links}
           activeLinkClassName={styles.activeButton}
+          marginPagesDisplayed={2}
         />
       </div>
     </>
