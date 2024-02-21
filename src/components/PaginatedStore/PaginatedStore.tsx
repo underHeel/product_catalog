@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
-import { Phone } from 'src/types/Phone';
+import { Product } from 'src/types/Product';
 import { Items } from '../PaginatedItems/PaginatedItems';
 import { getPhones } from '../../api/phones';
 import styles from './PaginatedStore.module.scss';
@@ -14,7 +14,7 @@ interface Props {
 
 export const PaginatedStore: React.FC<Props> = ({ itemsPerPage }) => {
   const [itemOffset, setItemOffset] = useState(0);
-  const [items, setItems] = useState<Phone[] | []>([]);
+  const [items, setItems] = useState<Product[] | []>([]);
 
   useEffect(() => {
     getPhones().then((data) => {

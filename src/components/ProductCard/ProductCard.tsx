@@ -1,6 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import React, { useState } from 'react';
-import { Phone } from 'src/types/Phone';
+import { Product } from 'src/types/Product';
 import styles from './ProductCard.module.scss';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
@@ -8,25 +8,24 @@ import { FavoriteFilledIcon } from '../ui/icons/FavoriteFilledIcon';
 import { Button } from '../ui/buttons/Button';
 
 type Props = {
-  phone: Phone;
+  phone: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, priceRegular, priceDiscount, screen, capacity, ram, images } =
-    phone;
+  const { name, fullPrice, price, screen, capacity, ram, image } = phone;
   const [isFilled, setIsFilled] = useState(false);
   const [inCart, setInCart] = useState(false);
 
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
-        <img className={styles.cardImage} src={images[0]} alt={name} />
+        <img className={styles.cardImage} src={image} alt={name} />
 
         <h2 className={styles.cardTitle}>{`${name}`}</h2>
 
         <div className={styles.cardPrice}>
-          <p className={styles.cardPriceActual}>{`$${priceDiscount}`}</p>
-          <p className={styles.cardPriceFull}>{`$${priceRegular}`}</p>
+          <p className={styles.cardPriceActual}>{`$${price}`}</p>
+          <p className={styles.cardPriceFull}>{`$${fullPrice}`}</p>
         </div>
       </div>
 

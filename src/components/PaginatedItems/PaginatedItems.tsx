@@ -1,9 +1,9 @@
-import { Phone } from 'src/types/Phone';
+import { Product } from 'src/types/Product';
 import { ProductCard } from '../ProductCard';
 import styles from './PaginatedItems.module.scss';
 
 interface Props {
-  currentItems: Phone[];
+  currentItems: Product[];
 }
 
 export const Items: React.FC<Props> = ({ currentItems }) => {
