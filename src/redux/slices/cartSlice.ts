@@ -1,34 +1,77 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from 'src/types/Product';
+import { CartItem } from 'src/types/CartItem';
+import { getCartFromStorage, setProductToStorage } from '../storage';
 
 interface Cart {
-  productsList: Product[];
-  total: number;
+  productsList: CartItem[];
 }
 
 const initialState: Cart = {
-  productsList: [],
-  total: 0,
+  productsList: getCartFromStorage(),
+};
+
+const findProductIndexById = (productsList: CartItem[], id: number) => {
+  return productsList.findIndex((product) => product.id === id);
 };
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<Product>) => {
-      state.productsList.push(action.payload);
-      state.total += action.payload.price;
+    add: (state, action: PayloadAction<CartItem>) => {
+      const { payload } = action;
+      const existingProductIndex = findProductIndexById(
+        state.productsList,
+        payload.id,
+      );
+
+      if (existingProductIndex !== -1) {
+        state.productsList[existingProductIndex].count += 1;
+      } else {
+        state.productsList.push({ ...payload, count: 1 });
+      }
+
+      setProductToStorage(state.productsList);
     },
     remove: (state, action: PayloadAction<number>) => {
-      const indexToRemove = state.productsList.findIndex(
-        (product) => product.id === action.payload,
+      const indexToRemove = findProductIndexById(
+        state.productsList,
+        action.payload,
       );
 
       if (indexToRemove !== -1) {
-        state.total -= state.productsList[indexToRemove].price;
         state.productsList.splice(indexToRemove, 1);
       }
+
+      setProductToStorage(state.productsList);
+    },
+    increaseCount: (state, action: PayloadAction<number>) => {
+      const indexToIncrease = findProductIndexById(
+        state.productsList,
+        action.payload,
+      );
+
+      if (indexToIncrease !== -1) {
+        state.productsList[indexToIncrease].count += 1;
+      }
+
+      setProductToStorage(state.productsList);
+    },
+    decreaseCount: (state, action: PayloadAction<number>) => {
+      const indexToDecrease = findProductIndexById(
+        state.productsList,
+        action.payload,
+      );
+
+      if (
+        indexToDecrease !== -1 &&
+        state.productsList[indexToDecrease].count > 0
+      ) {
+        state.productsList[indexToDecrease].count -= 1;
+      }
+
+      setProductToStorage(state.productsList);
     },
   },
 });

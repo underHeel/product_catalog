@@ -29,10 +29,12 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
   }, [currentPage]);
 
   const handlePageClick = (event: { selected: number }) => {
-    const paramsString = `page=${event.selected + 1}`;
-    const params = new URLSearchParams(paramsString);
+    if (event.selected !== 0) {
+      const paramsString = `page=${event.selected + 1}`;
+      const params = new URLSearchParams(paramsString);
 
-    setSearchParams(params);
+      setSearchParams(params);
+    }
   };
 
   return (
