@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
+import { CartItem } from '../../components/CartItem';
 import { useAppSelector } from '../../redux/hooks';
 import { Button } from '../../components/ui/buttons/Button';
 import { ArrowLeftIcon } from '../../components/ui/icons/ArrowLeftIcon';
-import styles from './Cart.module.scss';
 import EmptyCart from '/img/EmptyCart.png';
+import styles from './Cart.module.scss';
 
 export const Cart: React.FC = () => {
-  const productsList = useAppSelector((state) => state.cart.productsList);
-  const active = productsList.length > 0;
+  const { productsList, total } = useAppSelector((state) => state.cart);
 
   return (
     <div className={styles.wrapper}>
@@ -23,15 +23,16 @@ export const Cart: React.FC = () => {
         <h1 className={styles.title}>Cart</h1>
       </div>
 
-      {active ? (
+      {productsList.length !== 0 ? (
         <section className={styles.container}>
           <div className={styles.list}>
-            <div className={styles.likePhone}>asd</div>
-            <div className={styles.likePhone}>asd</div>
+            {productsList.map((product) => (
+              <CartItem product={product} key={product.id} />
+            ))}
           </div>
 
           <div className={styles.total}>
-            <p className={styles.amount}>$2657</p>
+            <p className={styles.amount}>{`$${total}`}</p>
             <p className={styles.text}>Total for 3 items</p>
             <div className={styles.separator} />
             <div className={styles.checkoutButton}>

@@ -2,33 +2,30 @@
 
 .cart {
   height: 164px;
-  width: 288px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   border: 1px solid $elements-color;
   border-radius: 16px;
 
   @include on-tablet {
-    height: 128px;
+    min-height: 128px;
     width: 592px;
     flex-direction: row;
     justify-content: space-between;
   }
 
   @include on-desktop {
-    display: flex;
     width: 752px;
   }
 }
 
 .cartInfo {
   display: flex;
-  flex-direction: row;
   margin: 16px 0;
   justify-content: space-between;
 
   @include on-tablet {
-    flex-direction: row;
     margin: 16px 0;
     justify-content: flex-start;
   }
@@ -36,7 +33,6 @@
 
 .cartItem {
   display: flex;
-  flex-direction: row;
   align-items: center;
   padding: 0 16px;
 
@@ -64,9 +60,9 @@
 
   @include on-desktop {
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       transition: transform 0.5s;
-  
+
       & svg path {
         fill: $primary-color;
       }
@@ -99,11 +95,11 @@
 
 
 .quantityControl {
-  width: 256px;
-  display:flex;
+  width: 100%;
+  display: flex;
   font-size: 10px;
   justify-content: space-between;
-  margin: 0 auto;
+  padding-inline: 16px;
 
   @include on-tablet {
     flex-direction: row;
@@ -144,13 +140,13 @@
         border-color: $primary-color;
       }
     }
-    
+
   }
 }
 
 .quantity {
   display: flex;
-  margin: 0 ;
+  margin: 0;
   margin-top: 5px;
   align-items: center;
   font-size: 14px;
@@ -165,7 +161,7 @@
 }
 
 .price {
-  display:flex;
+  display: flex;
   font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
