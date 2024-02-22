@@ -10,7 +10,7 @@ export const Category: React.FC = () => {
     <section>
       <h2 className={styles.title}>Shop by category</h2>
       <div className={styles.container}>
-        <Link to="/phones">
+        <Link to="/phones?page=1">
           <img
             src={phonesCategory}
             alt="phones category"
