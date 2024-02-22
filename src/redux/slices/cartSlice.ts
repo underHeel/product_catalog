@@ -1,13 +1,14 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItem } from 'src/types/CartItem';
+import { getCartFromStorage, setProductToStorage } from '../storage';
 
 interface Cart {
   productsList: CartItem[];
 }
 
 const initialState: Cart = {
-  productsList: [],
+  productsList: getCartFromStorage(),
 };
 
 const findProductIndexById = (productsList: CartItem[], id: number) => {
@@ -30,6 +31,8 @@ const cartSlice = createSlice({
       } else {
         state.productsList.push({ ...payload, count: 1 });
       }
+
+      setProductToStorage(state.productsList);
     },
     remove: (state, action: PayloadAction<number>) => {
       const indexToRemove = findProductIndexById(
@@ -40,6 +43,8 @@ const cartSlice = createSlice({
       if (indexToRemove !== -1) {
         state.productsList.splice(indexToRemove, 1);
       }
+
+      setProductToStorage(state.productsList);
     },
     increaseCount: (state, action: PayloadAction<number>) => {
       const indexToIncrease = findProductIndexById(
@@ -50,6 +55,8 @@ const cartSlice = createSlice({
       if (indexToIncrease !== -1) {
         state.productsList[indexToIncrease].count += 1;
       }
+
+      setProductToStorage(state.productsList);
     },
     decreaseCount: (state, action: PayloadAction<number>) => {
       const indexToDecrease = findProductIndexById(
@@ -63,6 +70,8 @@ const cartSlice = createSlice({
       ) {
         state.productsList[indexToDecrease].count -= 1;
       }
+
+      setProductToStorage(state.productsList);
     },
   },
 });
