@@ -18,8 +18,8 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product, handleTotal }) => {
-  const { name, price, image } = product;
-  const [quantity, setQuantity] = useState<number>(1);
+  const { name, price, image, id } = product;
+  const [quantity, setQuantity] = useState(1);
 
   const dispatch = useAppDispatch();
 
@@ -29,21 +29,27 @@ export const CartItem: React.FC<Props> = ({ product, handleTotal }) => {
     setQuantity((prev) => {
       return prev === 1 ? 1 : prev - 1;
     });
-    dispatch(cartActions.decreaseQuantity());
+    dispatch(cartActions.decreaseQuantity(1));
     handleTotal(-price);
   };
 
   const handlerIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1);
-    dispatch(cartActions.increaseQuantity());
+    dispatch(cartActions.increaseQuantity(1));
     handleTotal(price);
+  };
+
+  const handleRemove = () => {
+    dispatch(cartActions.remove(id));
+    dispatch(cartActions.decreaseQuantity(quantity - 1));
+    handleTotal(-totalAmount);
   };
 
   return (
     <div className={styles.cart}>
       <div className={styles.cartInfo}>
         <div className={styles.cartItem}>
-          <button className={styles.removeButton}>
+          <button className={styles.removeButton} onClick={handleRemove}>
             <CloseIcon />
           </button>
           <img src={image} alt={`${name} photo`} className={styles.cartImage} />

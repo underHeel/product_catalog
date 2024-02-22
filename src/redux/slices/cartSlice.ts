@@ -30,12 +30,12 @@ const cartSlice = createSlice({
         state.quantity -= 1;
       }
     },
-    increaseQuantity: (state) => {
-      state.quantity += 1;
+    increaseQuantity: (state, action: PayloadAction<number>) => {
+      state.quantity += action.payload;
     },
-    decreaseQuantity: (state) => {
+    decreaseQuantity: (state, action: PayloadAction<number>) => {
       if (state.quantity > 1) {
-        state.quantity -= 1;
+        state.quantity -= action.payload;
       }
     },
   },

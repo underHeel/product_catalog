@@ -15,7 +15,7 @@ export const Cart: React.FC = () => {
   const cartTotal = productsList.reduce((acc, cur) => acc + cur.price, 0);
 
   const [total, setTotal] = useState(cartTotal);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleTotal = (sum: number) => {
     setTotal((prev) => prev + sum);
@@ -53,7 +53,7 @@ export const Cart: React.FC = () => {
               <Button
                 variant="contained"
                 onClick={() => {
-                  setIsOpen(true);
+                  setIsModalOpen(true);
                 }}
               >
                 Checkout
@@ -68,7 +68,7 @@ export const Cart: React.FC = () => {
         </div>
       )}
 
-      <PurchaseModal isOpen={isOpen} />
+      <PurchaseModal isOpen={isModalOpen} />
     </div>
   );
 };
