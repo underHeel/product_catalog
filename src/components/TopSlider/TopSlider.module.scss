@@ -18,6 +18,16 @@
 
 .slide {
   width: 100%;
+
+  img {
+    content: url("../../../public/img/mobile-top-slider-banner.png");
+  }
+
+  @include on-tablet {
+    img {
+      content: url("../../../public/img/top-slide-banner.png");
+    }
+  }
 }
 
 .slide>img {

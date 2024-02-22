@@ -17,10 +17,7 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <h2 className={styles.title}>
-        Welcome to Nice <br />
-        Gadgets store!
-      </h2>
+      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
       <TopSlider />
       <div className={styles.wrapper}>
         <SliderCard title="Brand new models" items={testPhone} id={1} />
