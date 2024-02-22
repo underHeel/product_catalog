@@ -1,16 +1,28 @@
 @import '../../styles/utils/main';
 
-.header {
+.headerContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: inherit;
+}
+
+.headerWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
-  box-shadow: 0 1px 0 0 #E2E6E9;
-  background-color: $white-color;
+  height: inherit;
 
   @include on-tablet {
     justify-content: flex-start;
   }
+}
+
+.header {
+  height: 48px;
+  box-shadow: 0 1px 0 0 #E2E6E9;
+  background-color: $white-color;
+  position: sticky;
+  top: 0;
 
   @include on-desktop {
     height: 64px;
@@ -50,11 +62,14 @@
   justify-content: center;
   align-items: center;
   height: 64px;
-  box-shadow: -1px 0 0 0 $elements-color;
+  border-inline: 1px solid $elements-color;
+
+  &:not(:last-child) {
+    border-right: 0;
+  }
 
   @include on-tablet {
     width: 48px;
-    box-shadow: -1px 0 0 0 $elements-color;
     height: 100%;
   }
 

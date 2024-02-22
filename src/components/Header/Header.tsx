@@ -25,30 +25,30 @@ export const Header: React.FC = () => {
   return (
     <>
       <header className={styles.header}>
-        <Link to="/" className={styles.link}>
-          <img src={Logo} alt="header_logo" className={styles.logo} />
-        </Link>
-
-        <NavBar />
-
-        <div className={styles.icons}>
-          <div className={styles.burger} onClick={toggleMenu}>
-            <BurgerIcon />
+        <div className={styles.headerContainer}>
+          <div className={styles.headerWrapper}>
+            <Link to="/" className={styles.link}>
+              <img src={Logo} alt="header_logo" className={styles.logo} />
+            </Link>
+            <NavBar />
+            <div className={styles.icons}>
+              <div className={styles.burger} onClick={toggleMenu}>
+                <BurgerIcon />
+              </div>
+              <Link to="/" className={cn(styles.container, styles.favourite)}>
+                <FavoriteIcon className={styles.icon} />
+              </Link>
+              <Link to="/cart" className={cn(styles.container, styles.cart)}>
+                {quantity !== 0 ? (
+                  <Badge value={quantity}>
+                    <CartIcon className={styles.icon} />
+                  </Badge>
+                ) : (
+                  <CartIcon className={styles.icon} />
+                )}
+              </Link>
+            </div>
           </div>
-
-          <Link to="/" className={cn(styles.container, styles.favourite)}>
-            <FavoriteIcon className={styles.icon} />
-          </Link>
-
-          <Link to="/cart" className={cn(styles.container, styles.cart)}>
-            {quantity !== 0 ? (
-              <Badge value={quantity}>
-                <CartIcon className={styles.icon} />
-              </Badge>
-            ) : (
-              <CartIcon className={styles.icon} />
-            )}
-          </Link>
         </div>
       </header>
       <BurgerMenu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
