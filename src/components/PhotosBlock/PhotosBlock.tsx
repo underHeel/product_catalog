@@ -1,66 +1,76 @@
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-console */
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState } from 'react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
+import { useEffect, useRef, useState } from 'react';
+import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules';
+import { Phone } from 'src/types/Phone';
 import styles from './PhotosBlock.module.scss';
+import './swiper/ProductPhotoSwiper.scss';
 
-export const PhotosBlock = () => {
-  const [offAutoplay, setOffAutoplay] = useState(true);
+type Props = {
+  phone: Phone;
+};
+
+export const PhotosBlock: React.FC<Props> = ({ phone }) => {
+  const [autoplayOff, setAutoplayOff] = useState(true);
+  const [bigSwiper, setBigSwiper] = useState<Swiper | null>(null);
+
+  const inputRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  console.log(bigSwiper);
 
   return (
-    <>
-      <div className={styles.wrapper}>
+    <div className={styles.pictureContainer}>
+      <div className={styles.pictureMain}>
         <Swiper
-          modules={[Autoplay]}
-          autoplay={offAutoplay}
           loop={true}
-          spaceBetween={50}
+          autoplay={autoplayOff}
+          thumbs={{ swiper: bigSwiper }}
           slidesPerView={1}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => {
-            console.log(swiper);
+          onSlideChange={() => {
+            console.log('slide change');
           }}
+          modules={[Autoplay, Thumbs, FreeMode, Navigation]}
           onClick={(swiper) => {
-            if (offAutoplay) {
-              setOffAutoplay(false);
+            if (autoplayOff) {
+              setAutoplayOff(false);
+            } else {
+              swiper.slideNext();
             }
-
-            return swiper.activeIndex < 6
-              ? swiper.slideTo(swiper.activeIndex + 1)
-              : swiper.slideTo(swiper.activeIndex - 1);
           }}
+          className="mySwiper2"
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
+          {phone.images.map((image) => (
+            <SwiperSlide key={image}>
+              <img src={image} alt="Slide" className="img" />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
-      <div className={styles.wrapperPortfolio}>
+      <div className={styles.picturePortfolio}>
         <Swiper
+          modules={[Autoplay, Thumbs, FreeMode, Navigation]}
           loop={true}
-          spaceBetween={50}
+          spaceBetween={6}
           slidesPerView={5}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => {
-            console.log(swiper.a11y);
+          freeMode={true}
+          onClick={(swiper) => {
+            setBigSwiper(swiper);
           }}
-          onClick={(swiper) => swiper.slideTo(swiper.activeIndex + 1)}
+          watchSlidesProgress={true}
+          className="mySwiperPhoto"
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
+          {phone.images.map((image) => (
+            <SwiperSlide key={image}>
+              <img src={image} alt="Slide" className="img" ref={inputRef} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
-    </>
+    </div>
   );
 };

@@ -1,13 +1,48 @@
-.wrapper {
-  max-width: 260px;
-  min-height: 60px;
+@import '../../styles/utils/main';
+
+.pictureContainer {
   display: flex;
-  align-items: center;
-  cursor: pointer;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 288px;
+  height: 353px;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+
+  @include on-desktop {
+    height: 560px;
+    width: 464px;
+  }
 }
 
-.wrapperPortfolio {
-  max-width: 260px;
-  max-height: 160px;
+.pictureMain {
+  align-items: center;
   cursor: pointer;
+  margin-bottom: 16px;
+  height: 288px;
+  width: 288px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+  
+  @include on-desktop {
+    height: 464px;
+  width: 464px;
+  }
+}
+
+.picturePortfolio {
+  width: 288px;
+  height: 49px;
+  cursor: pointer;
+  align-self: center;
+  flex-direction: row;
+
+  @include on-desktop {
+    height: 80px;
+    width: 464px;
+  }
 }

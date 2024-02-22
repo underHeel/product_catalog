@@ -7,22 +7,24 @@ import * as api from './api/phones';
 
 import './styles/utils/main.scss';
 import { PhotosBlock } from './components/PhotosBlock';
-import { Product } from './types/Product';
+import { Phone } from './types/Phone';
 
 const App: React.FC = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  const [phone, setPhone] = useState<Phone>({} as Phone);
 
   useEffect(() => {
-    api.getPhones().then((res) => setPhones(res));
+    api
+      .getPhone('apple-iphone-xs-max-256gb-spacegray')
+      .then((res) => setPhone(res));
   }, []);
 
-  console.log(phones[0]);
+  console.log(phone);
 
   return (
     <div>
       <Header />
       <Outlet />
-      <PhotosBlock />
+      {phone?.images?.length > 0 && <PhotosBlock phone={phone} />}
       <Footer />
     </div>
   );
