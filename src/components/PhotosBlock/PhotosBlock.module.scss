@@ -1,6 +1,13 @@
 .wrapper {
-  min-width: 260px;
+  max-width: 260px;
   min-height: 60px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.wrapperPortfolio {
+  max-width: 260px;
+  max-height: 160px;
+  cursor: pointer;
 }
