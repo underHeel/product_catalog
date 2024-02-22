@@ -1,4 +1,18 @@
-@import '../../styles/utils/main';
+@import '../../../styles/utils/main';
+
+.title {
+  margin-bottom: 24px;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 31px;
+  width: 136px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    width: 100%;
+  }
+}
 
 .buttons {
   display: flex;
@@ -13,8 +27,28 @@
   height: 32px;
   border: 1px  solid $primary-color;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .disabled {
-  opacity: 0.5;
+  opacity: 0.3;
+}
+
+.slider {
+  max-width: 212px;
+  
+  @include on-tablet {
+    max-width: 237px;
+  }
+
+  @include on-desktop {
+    max-width: 272px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
