@@ -3,6 +3,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  width: 100%;
   min-width: 212px;
   padding: 32px;
   border: 1px solid $elements-color;
@@ -29,16 +30,17 @@
 .cardImage {
   object-fit: contain;
   width: 100%;
-  height: 130px;
+  height: auto;
   flex-grow: 1;
   margin: 0 auto 24px;
+  aspect-ratio: 223/130;
 
   @include on-tablet {
-    height: 196px;
+    aspect-ratio: 224/196;
   }
 
   @include on-desktop {
-    height: 196px;
+    aspect-ratio: 208/196;
   }
 }
 

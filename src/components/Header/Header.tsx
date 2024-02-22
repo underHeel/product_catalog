@@ -35,7 +35,10 @@ export const Header: React.FC = () => {
               <div className={styles.burger} onClick={toggleMenu}>
                 <BurgerIcon />
               </div>
-              <Link to="/" className={cn(styles.container, styles.favourite)}>
+              <Link
+                to="/favourites"
+                className={cn(styles.container, styles.favourite)}
+              >
                 <FavoriteIcon className={styles.icon} />
               </Link>
               <Link to="/cart" className={cn(styles.container, styles.cart)}>
