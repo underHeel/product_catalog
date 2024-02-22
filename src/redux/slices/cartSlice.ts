@@ -4,12 +4,12 @@ import { Product } from 'src/types/Product';
 
 interface Cart {
   productsList: Product[];
-  total: number;
+  quantity: 0;
 }
 
 const initialState: Cart = {
   productsList: [],
-  total: 0,
+  quantity: 0,
 };
 
 const cartSlice = createSlice({
@@ -18,7 +18,7 @@ const cartSlice = createSlice({
   reducers: {
     add: (state, action: PayloadAction<Product>) => {
       state.productsList.push(action.payload);
-      state.total += action.payload.price;
+      state.quantity += 1;
     },
     remove: (state, action: PayloadAction<number>) => {
       const indexToRemove = state.productsList.findIndex(
@@ -26,8 +26,16 @@ const cartSlice = createSlice({
       );
 
       if (indexToRemove !== -1) {
-        state.total -= state.productsList[indexToRemove].price;
         state.productsList.splice(indexToRemove, 1);
+        state.quantity -= 1;
+      }
+    },
+    increaseQuantity: (state, action: PayloadAction<number>) => {
+      state.quantity += action.payload;
+    },
+    decreaseQuantity: (state, action: PayloadAction<number>) => {
+      if (state.quantity > 1) {
+        state.quantity -= action.payload;
       }
     },
   },
