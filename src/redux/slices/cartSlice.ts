@@ -34,7 +34,7 @@ const cartSlice = createSlice({
       state.quantity += action.payload;
     },
     decreaseQuantity: (state, action: PayloadAction<number>) => {
-      if (state.quantity > 1) {
+      if (state.quantity > 0) {
         state.quantity -= action.payload;
       }
     },
