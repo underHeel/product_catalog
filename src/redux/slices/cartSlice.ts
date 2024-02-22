@@ -1,45 +1,67 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from 'src/types/Product';
+import { CartItem } from 'src/types/CartItem';
 
 interface Cart {
-  productsList: Product[];
-  quantity: 0;
+  productsList: CartItem[];
 }
 
 const initialState: Cart = {
   productsList: [],
-  quantity: 0,
+};
+
+const findProductIndexById = (productsList: CartItem[], id: number) => {
+  return productsList.findIndex((product) => product.id === id);
 };
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<Product>) => {
-      // state.productsList = [
-      //   ...state.productsList,
-      //   { ...action.payload, count: 1 },
-      // ];
-      state.productsList.push(action.payload);
-      state.quantity += 1;
+    add: (state, action: PayloadAction<CartItem>) => {
+      const { payload } = action;
+      const existingProductIndex = findProductIndexById(
+        state.productsList,
+        payload.id,
+      );
+
+      if (existingProductIndex !== -1) {
+        state.productsList[existingProductIndex].count += 1;
+      } else {
+        state.productsList.push({ ...payload, count: 1 });
+      }
     },
     remove: (state, action: PayloadAction<number>) => {
-      const indexToRemove = state.productsList.findIndex(
-        (product) => product.id === action.payload,
+      const indexToRemove = findProductIndexById(
+        state.productsList,
+        action.payload,
       );
 
       if (indexToRemove !== -1) {
         state.productsList.splice(indexToRemove, 1);
-        state.quantity -= 1;
       }
     },
-    increaseQuantity: (state, action: PayloadAction<number>) => {
-      state.quantity += action.payload;
+    increaseCount: (state, action: PayloadAction<number>) => {
+      const indexToIncrease = findProductIndexById(
+        state.productsList,
+        action.payload,
+      );
+
+      if (indexToIncrease !== -1) {
+        state.productsList[indexToIncrease].count += 1;
+      }
     },
-    decreaseQuantity: (state, action: PayloadAction<number>) => {
-      if (state.quantity > 0) {
-        state.quantity -= action.payload;
+    decreaseCount: (state, action: PayloadAction<number>) => {
+      const indexToDecrease = findProductIndexById(
+        state.productsList,
+        action.payload,
+      );
+
+      if (
+        indexToDecrease !== -1 &&
+        state.productsList[indexToDecrease].count > 0
+      ) {
+        state.productsList[indexToDecrease].count -= 1;
       }
     },
   },
