@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
+import { PurchaseModal } from '../../components/PurchaseModal/PurchaseModal';
 import { CartItem } from '../../components/CartItem';
 import { useAppSelector } from '../../redux/hooks';
 import { Button } from '../../components/ui/buttons/Button';
@@ -10,6 +11,7 @@ import styles from './Cart.module.scss';
 
 export const Cart: React.FC = () => {
   const { productsList, total } = useAppSelector((state) => state.cart);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={styles.wrapper}>
@@ -36,7 +38,12 @@ export const Cart: React.FC = () => {
             <p className={styles.text}>Total for 3 items</p>
             <div className={styles.separator} />
             <div className={styles.checkoutButton}>
-              <Button variant="contained" onClick={() => {}}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setIsOpen(true);
+                }}
+              >
                 Checkout
               </Button>
             </div>
@@ -48,6 +55,8 @@ export const Cart: React.FC = () => {
           <h2 className={styles.title}>Your cart is empty</h2>
         </div>
       )}
+
+      <PurchaseModal isOpen={isOpen} />
     </div>
   );
 };
