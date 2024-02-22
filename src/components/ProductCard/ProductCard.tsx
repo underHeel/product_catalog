@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Product } from 'src/types/Product';
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { FavoriteFilledIcon } from '../ui/icons/FavoriteFilledIcon';
@@ -16,13 +16,16 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { name, fullPrice, price, screen, capacity, ram, image, id } = product;
   const [isFilled, setIsFilled] = useState(false);
-  const [inCart, setInCart] = useState(false);
 
   const dispatch = useAppDispatch();
+  const { productsList } = useAppSelector((state) => state.cart);
+
+  const isInCart = useMemo(() => {
+    return productsList.some((item) => item.id === id);
+  }, [productsList, id]);
 
   const handleCart = () => {
-    setInCart((prev) => !prev);
-    if (inCart) {
+    if (isInCart) {
       dispatch(cartActions.remove(id));
     } else {
       dispatch(cartActions.add(product));
@@ -62,7 +65,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={styles.buttonWrapper}>
-        {inCart ? (
+        {isInCart ? (
           <Button children="Added" variant="outlined" onClick={handleCart} />
         ) : (
           <Button
