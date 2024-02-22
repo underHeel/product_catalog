@@ -1,42 +1,29 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import '../../styles/swiper/Swiper.scss';
+import React, { useEffect, useState } from 'react';
+import { Product } from 'src/types/Product';
+import { Category } from '../../components/Category/Category';
+import { SliderCard } from '../../components/ui/slider/SliderCard';
+import { TopSlider } from '../../components/TopSlider/TopSlider';
+import styles from './Home.module.scss';
+import * as api from '../../api/phones';
 
 export const Home: React.FC = () => {
+  const [phones, setPhones] = useState<Product[]>([]);
+
+  const testPhone = phones.slice(0, 10);
+
+  useEffect(() => {
+    api.getAllPhones().then((res) => setPhones(res));
+  }, [phones]);
+
   return (
-    <Swiper
-      slidesPerView={1}
-      spaceBetween={0}
-      loop
-      pagination={{
-        clickable: true,
-      }}
-      navigation
-      modules={[Pagination, Navigation]}
-      className="mySwiper"
-    >
-      <SwiperSlide>
-        <img
-          src="https://s3-alpha-sig.figma.com/img/7d29/6526/af22f754728ae4cdd11e8cf94439d598?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A~HnA7MQXmU0XClL4dvwOfUroAepS64Wc8AP84llx9nkf1MYPjlLFRaz267UhUszGg6Bmpq-jsXVBq6q9FBy1IkvEuhvcSgcFoqu4WcOU3d~ZOCMklBTUSnUxh0IiYHcxlnbTMtwrqn5qHDGIdmSK0mJVrsaX3rsfY~1L~NqaaQ1fE49RbwrlksRBQQxvQ0YTRy4swJEw800V6cWYqrKPvEde1~rvZxI51AKIi2iCO41lMw6SQ8PdeS7NvQ4Uf2w3-anbdSuL4iEmAvSOJCKm2OmFGM6RqEZZlkjLlSssGi0-pIJimLXxyWLjFo~nVdf1~WoLyNgattbdp-~EmhuIQ__"
-          alt=""
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img
-          src="https://s3-alpha-sig.figma.com/img/7d29/6526/af22f754728ae4cdd11e8cf94439d598?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A~HnA7MQXmU0XClL4dvwOfUroAepS64Wc8AP84llx9nkf1MYPjlLFRaz267UhUszGg6Bmpq-jsXVBq6q9FBy1IkvEuhvcSgcFoqu4WcOU3d~ZOCMklBTUSnUxh0IiYHcxlnbTMtwrqn5qHDGIdmSK0mJVrsaX3rsfY~1L~NqaaQ1fE49RbwrlksRBQQxvQ0YTRy4swJEw800V6cWYqrKPvEde1~rvZxI51AKIi2iCO41lMw6SQ8PdeS7NvQ4Uf2w3-anbdSuL4iEmAvSOJCKm2OmFGM6RqEZZlkjLlSssGi0-pIJimLXxyWLjFo~nVdf1~WoLyNgattbdp-~EmhuIQ__"
-          alt=""
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img
-          src="https://s3-alpha-sig.figma.com/img/7d29/6526/af22f754728ae4cdd11e8cf94439d598?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A~HnA7MQXmU0XClL4dvwOfUroAepS64Wc8AP84llx9nkf1MYPjlLFRaz267UhUszGg6Bmpq-jsXVBq6q9FBy1IkvEuhvcSgcFoqu4WcOU3d~ZOCMklBTUSnUxh0IiYHcxlnbTMtwrqn5qHDGIdmSK0mJVrsaX3rsfY~1L~NqaaQ1fE49RbwrlksRBQQxvQ0YTRy4swJEw800V6cWYqrKPvEde1~rvZxI51AKIi2iCO41lMw6SQ8PdeS7NvQ4Uf2w3-anbdSuL4iEmAvSOJCKm2OmFGM6RqEZZlkjLlSssGi0-pIJimLXxyWLjFo~nVdf1~WoLyNgattbdp-~EmhuIQ__"
-          alt=""
-        />
-      </SwiperSlide>
-    </Swiper>
+    <>
+      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      <TopSlider />
+      <div className={styles.wrapper}>
+        <SliderCard title="Brand new models" items={testPhone} id={1} />
+        <Category />
+        <SliderCard title="Hot Prices" items={testPhone} id={2} />
+      </div>
+    </>
   );
 };

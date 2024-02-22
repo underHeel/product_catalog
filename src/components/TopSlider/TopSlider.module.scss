@@ -1,0 +1,69 @@
+@import '../../styles/utils/main';
+
+.mySwiper {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 1136px;
+  margin-bottom: 56px;
+  position: relative;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.slide {
+  width: 100%;
+
+  img {
+    content: url("../../../public/img/mobile-top-slider-banner.png");
+  }
+
+  @include on-tablet {
+    img {
+      content: url("../../../public/img/top-slide-banner.png");
+    }
+  }
+}
+
+.slide>img {
+  width: 100%;
+}
+
+.icons {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.icons>svg {
+  height: 50px;
+  width: 50px;
+}
+
+.next-top-slide {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+  height: 100%;
+}
+
+.prev-top-slide {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+  height: 100%;
+}

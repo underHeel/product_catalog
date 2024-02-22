@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 
@@ -5,10 +6,10 @@ import { PurchaseModal } from '../../components/PurchaseModal/PurchaseModal';
 
 import { CartItem } from '../../components/CartItem';
 import { useAppSelector } from '../../redux/hooks';
-import styles from './Cart.module.scss';
 import { Button } from '../../components/ui/buttons/Button';
 import { ArrowLeftIcon } from '../../components/ui/icons/ArrowLeftIcon';
 import EmptyCart from '/img/EmptyCart.png';
+import styles from './Cart.module.scss';
 
 export const Cart: React.FC = () => {
   const { productsList, quantity } = useAppSelector((state) => state.cart);
