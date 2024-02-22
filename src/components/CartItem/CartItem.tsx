@@ -29,19 +29,18 @@ export const CartItem: React.FC<Props> = ({ product, handleTotal }) => {
     setQuantity((prev) => {
       return prev === 1 ? 1 : prev - 1;
     });
-    dispatch(cartActions.decreaseQuantity(1));
+    dispatch(cartActions.decreaseCount(id));
     handleTotal(-price);
   };
 
   const handlerIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1);
-    dispatch(cartActions.increaseQuantity(1));
+    dispatch(cartActions.increaseCount(id));
     handleTotal(price);
   };
 
   const handleRemove = () => {
     dispatch(cartActions.remove(id));
-    dispatch(cartActions.decreaseQuantity(quantity - 1));
     handleTotal(-totalAmount);
   };
 
