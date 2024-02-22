@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   padding-block: 40px;
+  min-height: calc(100vh - 160px);
 
   @include content-indents;
 }
