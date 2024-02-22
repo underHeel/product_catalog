@@ -16,7 +16,7 @@ import { Badge } from '../ui/badge';
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { productsList } = useAppSelector((state) => state.cart);
+  const { quantity } = useAppSelector((state) => state.cart);
 
   const toggleMenu = () => {
     setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
@@ -41,8 +41,8 @@ export const Header: React.FC = () => {
           </Link>
 
           <Link to="/cart" className={cn(styles.container, styles.cart)}>
-            {productsList.length !== 0 ? (
-              <Badge value={productsList.length}>
+            {quantity !== 0 ? (
+              <Badge value={quantity}>
                 <CartIcon className={styles.icon} />
               </Badge>
             ) : (

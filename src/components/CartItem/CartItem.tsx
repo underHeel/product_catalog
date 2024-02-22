@@ -3,34 +3,40 @@
 /* eslint-disable react/button-has-type */
 import { useState } from 'react';
 import { Product } from 'src/types/Product';
-import styles from './CartItem.module.scss';
+import cn from 'classnames';
+import { useAppDispatch } from '../../redux/hooks';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { MinusIcon } from '../ui/icons/MinusIcon';
 import { PlusIcon } from '../ui/icons/PlusIcon';
+import { actions as cartActions } from '../../redux/slices/cartSlice';
+import styles from './CartItem.module.scss';
 
 type Props = {
   product: Product;
+  handleTotal: (sum: number) => void;
 };
 
-export const CartItem: React.FC<Props> = ({ product }) => {
+export const CartItem: React.FC<Props> = ({ product, handleTotal }) => {
   const { name, price, image } = product;
   const [quantity, setQuantity] = useState<number>(1);
+
+  const dispatch = useAppDispatch();
 
   const totalAmount = quantity * price;
 
   const handlerDecreaseQuantity = () => {
     setQuantity((prev) => {
-      if (prev <= 1) {
-        return 1;
-      }
-
-      return prev - 1;
+      return prev === 1 ? 1 : prev - 1;
     });
+    dispatch(cartActions.decreaseQuantity());
+    handleTotal(-price);
   };
 
   const handlerIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1);
+    dispatch(cartActions.increaseQuantity());
+    handleTotal(price);
   };
 
   return (
@@ -46,10 +52,11 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       </div>
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>
-          <div className={styles.onButton}>
+          <div className={cn({ [styles.onButton]: quantity > 1 })}>
             <IconButton
               onClick={handlerDecreaseQuantity}
               classNames={styles.iconButton}
+              isDisabled={quantity === 1}
             >
               <MinusIcon />
             </IconButton>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { CartItem } from '../../components/CartItem';
 import { useAppSelector } from '../../redux/hooks';
 import styles from './Cart.module.scss';
@@ -8,7 +8,14 @@ import { ArrowLeftIcon } from '../../components/ui/icons/ArrowLeftIcon';
 import EmptyCart from '/img/EmptyCart.png';
 
 export const Cart: React.FC = () => {
-  const { productsList, total } = useAppSelector((state) => state.cart);
+  const { productsList, quantity } = useAppSelector((state) => state.cart);
+  const cartTotal = productsList.reduce((acc, cur) => acc + cur.price, 0);
+
+  const [total, setTotal] = useState(cartTotal);
+
+  const handleTotal = (sum: number) => {
+    setTotal((prev) => prev + sum);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -26,13 +33,17 @@ export const Cart: React.FC = () => {
         <section className={styles.container}>
           <div className={styles.list}>
             {productsList.map((product) => (
-              <CartItem product={product} key={product.id} />
+              <CartItem
+                product={product}
+                handleTotal={handleTotal}
+                key={product.id}
+              />
             ))}
           </div>
 
           <div className={styles.total}>
             <p className={styles.amount}>{`$${total}`}</p>
-            <p className={styles.text}>Total for 3 items</p>
+            <p className={styles.text}>{`Total for ${quantity} items`}</p>
             <div className={styles.separator} />
             <div className={styles.checkoutButton}>
               <Button variant="contained" onClick={() => {}}>
