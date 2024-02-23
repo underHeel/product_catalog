@@ -3,11 +3,11 @@ import ReactPaginate from 'react-paginate';
 import { useSearchParams } from 'react-router-dom';
 import { getPhones } from '../../api/phones';
 import { Product } from '../../types/Product';
+import styles from './PaginatedStore.module.scss';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ProductCard } from '../ProductCard';
-import styles from './PaginatedStore.module.scss';
 
 interface Props {
   itemsPerPage: number;
