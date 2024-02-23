@@ -7,6 +7,7 @@ import { Tablets } from './pages/Tablets/Tablets';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ProductPage } from './pages/ProductPage';
 import { Cart } from './pages/Cart';
+import { Favourites } from './pages/Favourites';
 
 export const Root = () => (
   <HashRouter>
@@ -18,14 +19,17 @@ export const Root = () => (
           <Route path="/phones">
             <Route index element={<Phones />} />
           </Route>
-          <Route path="/cart">
-            <Route index element={<Cart />} />
-          </Route>
           <Route path="/tablets">
             <Route index element={<Tablets />} />
           </Route>
           <Route path="/accessories">
             <Route index element={<Accessories />} />
+          </Route>
+          <Route path="/cart">
+            <Route index element={<Cart />} />
+          </Route>
+          <Route path="/favourites">
+            <Route index element={<Favourites />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
