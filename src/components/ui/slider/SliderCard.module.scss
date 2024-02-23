@@ -25,7 +25,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px  solid $primary-color;
+  border: 1px solid var(--color);
   border-radius: 50%;
   cursor: pointer;
 }
@@ -36,7 +36,7 @@
 
 .slider {
   max-width: 212px;
-  
+
   @include on-tablet {
     max-width: 237px;
   }

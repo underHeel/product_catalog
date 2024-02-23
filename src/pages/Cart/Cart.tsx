@@ -28,7 +28,7 @@ export const Cart: React.FC = () => {
       <div className={styles.topMenu}>
         <div className={styles.backButton}>
           <Button variant="text" onClick={() => window.history.back()}>
-            <ArrowLeftIcon fill="#0F0F11" />
+            <ArrowLeftIcon fill="var(--color)" />
             Back
           </Button>
         </div>
