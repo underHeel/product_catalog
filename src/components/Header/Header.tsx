@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import cn from 'classnames';
 import Logo from '/img/Logo.png';
+import LogoDark from '/img/LogoDark.png';
 import { useAppSelector } from '../../redux/hooks';
 import { BurgerIcon } from '../ui/icons/BurgerIcon';
 import { CartIcon } from '../ui/icons/CartIcon';
@@ -18,6 +19,8 @@ export const Header: React.FC = () => {
 
   const { productsList } = useAppSelector((state) => state.cart);
   const itemsCount = productsList.reduce((acc, cur) => acc + cur.count, 0);
+
+  const currentTheme = document.documentElement.dataset.theme;
 
   const toggleMenu = () => {
     const { body } = document;
@@ -37,7 +40,11 @@ export const Header: React.FC = () => {
         <div className={styles.headerContainer}>
           <div className={styles.headerWrapper}>
             <Link to="/" className={styles.link}>
-              <img src={Logo} alt="header_logo" className={styles.logo} />
+              <img
+                src={currentTheme === 'dark' ? Logo : LogoDark}
+                alt="header_logo"
+                className={styles.logo}
+              />
             </Link>
             <NavBar />
             <div className={styles.icons}>
