@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItem } from 'src/types/CartItem';
+import { Product } from 'src/types/Product';
 import { getCartFromStorage, setProductToStorage } from '../storage';
 
 interface Cart {
@@ -19,7 +20,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<CartItem>) => {
+    add: (state, action: PayloadAction<Product>) => {
       const { payload } = action;
       const existingProductIndex = findProductIndexById(
         state.productsList,
