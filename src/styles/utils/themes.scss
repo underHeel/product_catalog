@@ -1,0 +1,23 @@
+@use 'colors' as *;
+
+html[data-theme="dark"] {
+    --background-color: #{$bg-hover-color-dark};
+    --color: #{$primary-color-dark};
+    --secondary-color: #{$secondary-color-dark};
+    --card-background-color: #{$grey-color};
+    --icons-color: #{$icons-color-dark};
+    --elements-color: #{$elements-color-dark};
+    --accent-color: #{$accent-color-dark};
+    --secondary-accent-color: #{$secondary-accent-color-dark};
+}
+
+html[data-theme="light"] {
+    --background-color: #{$bg-hover-color};
+    --color: #{primary-color};
+    --secondary-color: #{$secondary-color};
+    --card-background-color: #{$white-color};
+    --icons-color: #{$icons-color};
+    --elements-color: #{$elements-color};
+    --accent-color: #{$accent-color};
+    --secondary-accent-color: #{$secondary-accent-color};
+}

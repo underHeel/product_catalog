@@ -21,7 +21,7 @@
   z-index: 2;
   height: 48px;
   box-shadow: 0 1px 0 0 #E2E6E9;
-  background-color: $white-color;
+  background-color: var(--card-background-color);
   position: sticky;
   top: 0;
 
@@ -63,7 +63,7 @@
   justify-content: center;
   align-items: center;
   height: 64px;
-  border-inline: 1px solid $elements-color;
+  border-inline: 1px solid var(--elements-color);
 
   &:not(:last-child) {
     border-right: 0;
@@ -106,7 +106,7 @@
 .burger {
   display: flex;
   padding: 16px;
-  box-shadow: -1px 0 0 0 $elements-color;
+  box-shadow: -1px 0 0 0 var(--elements-color);
   height: 100%;
   cursor: pointer;
 

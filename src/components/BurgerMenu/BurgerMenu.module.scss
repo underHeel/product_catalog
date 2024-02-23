@@ -47,7 +47,7 @@
 .close {
   display: flex;
   padding: 16px;
-  box-shadow: -1px 0 0 0 $elements-color;
+  box-shadow: -1px 0 0 0 var(--elements-color);
   height: 100%;
   cursor: pointer;
 }
@@ -64,7 +64,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  box-shadow: -1px 0 0 0 $elements-color;
+  box-shadow: -1px 0 0 0 var(--elements-color);
   height: 64px;
   width: 100%;
 }

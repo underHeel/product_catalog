@@ -12,8 +12,8 @@
     font-weight: 600;
 
     &.contained {
-        background-color: $accent-color;
-        color: $white-color;
+        background-color: var(--accent-color);
+        color: var(--card-background-color);
 
         &:active {
             box-shadow: 0 3px 13px 0 #17203166;
@@ -26,13 +26,13 @@
     }
 
     &.outlined {
-        color: $accent-color;
-        border: 1px solid $elements-color;
+        color: var(--accent-color);
+        border: 1px solid var(--elements-color);
     }
 
     &.text {
         gap: 4px;
-        color: $secondary-color;
+        color: var(--secondary-color);
         width: auto;
         height: 20px;
         font-size: 12px;
@@ -44,12 +44,12 @@
         }
 
         &:active {
-            color: $primary-color;
+            color: var(--color);
         }
 
         @include on-desktop {
             &:hover {
-                color: $primary-color;
+                color: var(--color);
             }
         }
 
