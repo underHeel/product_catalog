@@ -40,8 +40,9 @@ h1 {
     font-weight: bold;
     font-size: 32px;
     line-height: 41px;
+    letter-spacing: -0.01em;
 
-    @include on-desktop {
+    @include on-tablet {
         font-size: 48px;
         line-height: 56px;
     }
@@ -52,7 +53,7 @@ h2 {
     font-size: 22px;
     line-height: 31px;
 
-    @include on-desktop {
+    @include on-tablet {
         font-size: 32px;
         line-height: 41px;
     }
@@ -63,7 +64,7 @@ h3 {
     font-size: 20px;
     line-height: 26px;
 
-    @include on-desktop {
+    @include on-tablet {
         font-weight: bold;
         font-size: 22;
         line-height: 31;
@@ -75,7 +76,7 @@ h4 {
     font-size: 16px;
     line-height: 20px;
 
-    @include on-desktop {
+    @include on-tablet {
         font-size: 20;
         line-height: 26;
     }

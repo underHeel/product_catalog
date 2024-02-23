@@ -9,7 +9,7 @@
 .dropdown {
     position: relative;
     display: inline-block;
-    width: 176px;
+    width: inherit;
     height: 40px;
     border-radius: 8px;
     border: 1px solid var(--icons-color);
@@ -58,6 +58,7 @@
     border: 1px solid var(--elements-color);
     border-radius: 8px;
     box-shadow: 0 2px 15px 0 #0000000D;
+    background-color: var(--background-color);
 }
 
 .option {
