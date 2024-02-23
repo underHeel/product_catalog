@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-console */
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules';
 import { Phone } from 'src/types/Phone';
 import './swiper/ProductPhotoSwiper.scss';
@@ -12,11 +12,24 @@ type Props = {
 
 export const PhotosBlock: React.FC<Props> = ({ phone }) => {
   const [autoplayOff, setAutoplayOff] = useState(true);
-  const [bigSwiper, setBigSwiper] = useState<Swiper | null>(null);
+  const [bigSwiper, setBigSwiper] = useState<any>();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const isScreenGreaterThan640px = () => {
     return window.innerWidth > 640;
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [windowWidth]);
 
   return (
     <div className="mySwiperWrapper">
