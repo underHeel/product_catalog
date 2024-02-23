@@ -4,7 +4,7 @@ import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
 import { PaginatedStore } from '../../components/PaginatedStore';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
-import notFoundImg from '/img/404.png';
+import errorImg from '../../../public/img/errorImage.png';
 import noProductImg from '../../../public/img/no_product.png';
 
 import styles from './Phones.module.scss';
@@ -20,10 +20,10 @@ export const Phones: React.FC = () => {
   if (loading) {
     return (
       <BallTriangle
-        height={100}
-        width={100}
+        height={150}
+        width={150}
         radius={5}
-        color="#f86800"
+        color="var(--accent-color)"
         ariaLabel="ball-triangle-loading"
         wrapperStyle={{}}
         wrapperClass={styles.loaderWrapper}
@@ -33,7 +33,7 @@ export const Phones: React.FC = () => {
   }
 
   if (error) {
-    return <ErrorComponent image={notFoundImg} errorMessage={error} />;
+    return <ErrorComponent image={errorImg} errorMessage={error} />;
   }
 
   if (phones.length === 0) {
