@@ -29,12 +29,21 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
   }, [currentPage]);
 
   const handlePageClick = (event: { selected: number }) => {
-    if (event.selected !== 0) {
-      const paramsString = `page=${event.selected + 1}`;
-      const params = new URLSearchParams(paramsString);
+    const selectedPage = event.selected + 1;
+    const newSearchParams = new URLSearchParams(searchParams);
 
-      setSearchParams(params);
+    if (selectedPage !== 1) {
+      newSearchParams.set('page', String(selectedPage));
+    } else {
+      newSearchParams.delete('page');
+      window.history.replaceState(
+        null,
+        '',
+        `${window.location.pathname}?${newSearchParams.toString()}`,
+      );
     }
+
+    setSearchParams(newSearchParams);
   };
 
   return (
@@ -51,7 +60,7 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
         <ReactPaginate
           breakLabel={<IconButton>...</IconButton>}
           nextLabel={
-            <IconButton>
+            <IconButton isDisabled={currentPage === pageCount}>
               <ArrowRightIcon />
             </IconButton>
           }
@@ -59,7 +68,7 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
           pageRangeDisplayed={2}
           pageCount={pageCount}
           previousLabel={
-            <IconButton>
+            <IconButton isDisabled={currentPage === 1}>
               <ArrowLeftIcon />
             </IconButton>
           }
