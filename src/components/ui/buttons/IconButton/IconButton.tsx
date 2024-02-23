@@ -4,7 +4,7 @@ import styles from './IconButton.module.scss';
 
 interface Props {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
   size?: 'small' | 'large';
   classNames?: string;
   isDisabled?: boolean;
@@ -17,9 +17,9 @@ export const IconButton: React.FC<Props> = ({
   classNames,
   isDisabled,
 }) => {
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent) => {
     if (onClick) {
-      onClick();
+      onClick(event);
     }
   };
 
