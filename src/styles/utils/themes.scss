@@ -11,6 +11,7 @@ html[data-theme="dark"] {
     --secondary-accent-color: #{$secondary-accent-color-dark};
     --pagination-button-color: #{$accent-color-dark};
     --bg-color-menu: #{$bg-hover-color-dark};
+    --white: #{$light-grey-color};
 }
 
 html[data-theme="light"] {
@@ -24,4 +25,5 @@ html[data-theme="light"] {
     --secondary-accent-color: #{$secondary-accent-color};
     --pagination-button-color: #{$primary-color};
     --bg-color-menu: #{$white-color};
+    --white: #{$white-color};
 }

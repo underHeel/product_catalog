@@ -1,31 +1,28 @@
 /* eslint-disable no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { actions as themeActions } from './redux/slices/themeSlice';
 
 import './styles/utils/main.scss';
+import { useAppDispatch, useAppSelector } from './redux/hooks';
 
 const App: React.FC = () => {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const { theme } = useAppSelector((state) => state.theme);
+  const dispatch = useAppDispatch();
 
   const toggleThemeHandler = () => {
-    setDarkTheme((prevState) => !prevState);
+    dispatch(themeActions.changeTheme());
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute(
-      'data-theme',
-      darkTheme ? 'dark' : 'light',
-    );
-  }, [darkTheme]);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <div>
-      <Header />
-      <button type="button" onClick={toggleThemeHandler}>
-        toggle
-      </button>
+      <Header onThemeChange={toggleThemeHandler} />
       <Outlet />
       <Footer />
     </div>
