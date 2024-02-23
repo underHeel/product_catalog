@@ -217,7 +217,7 @@
       justify-content: space-around;
       margin-bottom: 32px;
     }
-  
+
     .aboutBlock {
       margin-top: 64px;
       @include on-tablet {
@@ -226,7 +226,7 @@
 
       @include on-desktop {
         margin-top: 0;
-        width: 45%;
+        width: 50%;
       }
 
       .aboutText {
@@ -238,9 +238,9 @@
         margin-top: 24px;
         @include on-desktop {
           .paragraphTitle {
-            top: -300px;
             position: relative;
-            height: 20px;
+            top: -300px;
+            height: 10px;
           }
         }
 
