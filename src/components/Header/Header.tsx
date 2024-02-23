@@ -22,10 +22,11 @@ interface Props {
 export const Header: React.FC<Props> = ({ onThemeChange }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { productsList } = useAppSelector((state) => state.cart);
-  const itemsCount = productsList.reduce((acc, cur) => acc + cur.count, 0);
-
+  const { favoritesList } = useAppSelector((state) => state.favorites);
   const { theme } = useAppSelector((state) => state.theme);
+  const { productsList } = useAppSelector((state) => state.cart);
+
+  const itemsCount = productsList.reduce((acc, cur) => acc + cur.count, 0);
 
   const toggleMenu = () => {
     const { body } = document;
@@ -63,7 +64,13 @@ export const Header: React.FC<Props> = ({ onThemeChange }) => {
                 to="/favourites"
                 className={cn(styles.container, styles.favourite)}
               >
-                <FavoriteIcon className={styles.icon} />
+                {favoritesList.length > 0 ? (
+                  <Badge value={favoritesList.length}>
+                    <FavoriteIcon className={styles.icon} />
+                  </Badge>
+                ) : (
+                  <FavoriteIcon className={styles.icon} />
+                )}
               </Link>
               <Link to="/cart" className={cn(styles.container, styles.cart)}>
                 {itemsCount !== 0 ? (
