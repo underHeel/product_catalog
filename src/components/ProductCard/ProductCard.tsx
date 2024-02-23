@@ -1,5 +1,5 @@
 /* eslint-disable react/no-children-prop */
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Product } from 'src/types/Product';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -8,6 +8,7 @@ import { IconButton } from '../ui/buttons/IconButton';
 import { FavoriteFilledIcon } from '../ui/icons/FavoriteFilledIcon';
 import { Button } from '../ui/buttons/Button';
 import { actions as cartActions } from '../../redux/slices/cartSlice';
+import { actions as favoriteActions } from '../../redux/slices/favoritesSlice';
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -16,10 +17,10 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { name, fullPrice, price, screen, capacity, ram, image, id } = product;
-  const [isFilled, setIsFilled] = useState(false);
 
   const dispatch = useAppDispatch();
   const { productsList } = useAppSelector((state) => state.cart);
+  const { favoritesList } = useAppSelector((state) => state.favorites);
 
   const isInCart = useMemo(() => {
     return productsList.some((item) => item.id === id);
@@ -39,7 +40,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    setIsFilled((prev) => !prev);
+    if (favoritesList.includes(product)) {
+      dispatch(favoriteActions.remove(id));
+    } else {
+      dispatch(favoriteActions.add(product));
+    }
   };
 
   return (
@@ -84,7 +89,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             onClick={handleCart}
           />
         )}
-        {isFilled ? (
+        {favoritesList.includes(product) ? (
           <IconButton
             size="large"
             classNames={styles.favoriteButton}

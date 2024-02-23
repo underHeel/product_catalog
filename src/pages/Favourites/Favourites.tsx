@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Product } from 'src/types/Product';
+import React from 'react';
+import { useAppSelector } from '../../redux/hooks';
 import { ProductCard } from '../../components/ProductCard';
-import * as api from '../../api/phones';
 import styles from './Favourites.module.scss';
 
 export const Favourites: React.FC = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
-  const testPhone = phones.slice(0, 10);
-
-  useEffect(() => {
-    api.getAllPhones().then((res) => setPhones(res));
-  }, [phones]);
+  const { favoritesList } = useAppSelector((state) => state.favorites);
 
   return (
-    <>
-      <h1 className={styles.title}>Favourites</h1>
-      <div className={styles.wrapper}>
-        {testPhone.map((phone) => (
-          <ProductCard key={phone.id} product={phone} />
-        ))}
+    <div className={styles.container}>
+      <div className={styles.favoritesWrapper}>
+        <h1 className={styles.title}>Favourites</h1>
+        <p className={styles.subTitle}>{`${favoritesList.length} items`}</p>
+        <div className={styles.list}>
+          {favoritesList.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
