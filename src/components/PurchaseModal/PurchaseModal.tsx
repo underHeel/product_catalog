@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './PurchaseModal.module.scss';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Button } from '../ui/buttons/Button';
+import { actions as cartActions } from '../../redux/slices/cartSlice';
+import styles from './PurchaseModal.module.scss';
 
 interface Props {
   isOpen: boolean;
@@ -9,9 +11,12 @@ interface Props {
 
 export const PurchaseModal: React.FC<Props> = ({ isOpen }) => {
   const navigate = useNavigate();
+  const { productsList } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
 
   const goHome = () => {
     navigate('/');
+    productsList.forEach(({ id }) => dispatch(cartActions.remove(id)));
   };
 
   return (

@@ -19,6 +19,10 @@ export const Cart: React.FC = () => {
   );
   const itemsCount = productsList.reduce((acc, cur) => acc + cur.count, 0);
 
+  const handleCheckout = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.topMenu}>
@@ -44,12 +48,7 @@ export const Cart: React.FC = () => {
             <p className={styles.text}>{`Total for ${itemsCount} items`}</p>
             <div className={styles.separator} />
             <div className={styles.checkoutButton}>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  setIsModalOpen(true);
-                }}
-              >
+              <Button variant="contained" onClick={handleCheckout}>
                 Checkout
               </Button>
             </div>
