@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-
-type Theme = 'light' | 'dark';
+import { Theme } from 'src/types/Theme';
+import { getItemFromStorage, setItemToStorage } from '../storage';
 
 const initialState: { theme: Theme } = {
-  theme: 'light',
+  theme: getItemFromStorage('theme', 'light'),
 };
 
 const themeSlice = createSlice({
@@ -17,6 +17,8 @@ const themeSlice = createSlice({
       } else {
         state.theme = 'light';
       }
+
+      setItemToStorage('theme', state.theme);
     },
   },
 });

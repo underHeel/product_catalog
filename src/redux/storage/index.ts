@@ -1,12 +1,9 @@
-import { CartItem } from 'src/types/CartItem';
+export function getItemFromStorage<T>(key: string, defaultValue: T): T {
+  const itemFromStorage = localStorage.getItem(key);
 
-export function getCartFromStorage() {
-  const cartFromStorage = localStorage.getItem('cart');
-  const cart = cartFromStorage ? JSON.parse(cartFromStorage) : [];
-
-  return cart;
+  return itemFromStorage ? JSON.parse(itemFromStorage) : defaultValue;
 }
 
-export function setProductToStorage(cart: CartItem[]) {
-  localStorage.setItem('cart', JSON.stringify(cart));
+export function setItemToStorage<T>(key: string, value: T) {
+  localStorage.setItem(key, JSON.stringify(value));
 }

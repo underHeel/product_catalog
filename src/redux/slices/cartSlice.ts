@@ -2,14 +2,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItem } from 'src/types/CartItem';
 import { Product } from 'src/types/Product';
-import { getCartFromStorage, setProductToStorage } from '../storage';
+import { getItemFromStorage, setItemToStorage } from '../storage';
 
 interface Cart {
   productsList: CartItem[];
 }
 
 const initialState: Cart = {
-  productsList: getCartFromStorage(),
+  productsList: getItemFromStorage('cart', []),
 };
 
 const findProductIndexById = (productsList: CartItem[], id: number) => {
@@ -33,7 +33,7 @@ const cartSlice = createSlice({
         state.productsList.push({ ...payload, count: 1 });
       }
 
-      setProductToStorage(state.productsList);
+      setItemToStorage('cart', state.productsList);
     },
     remove: (state, action: PayloadAction<number>) => {
       const indexToRemove = findProductIndexById(
@@ -45,7 +45,7 @@ const cartSlice = createSlice({
         state.productsList.splice(indexToRemove, 1);
       }
 
-      setProductToStorage(state.productsList);
+      setItemToStorage('cart', state.productsList);
     },
     increaseCount: (state, action: PayloadAction<number>) => {
       const indexToIncrease = findProductIndexById(
@@ -57,7 +57,7 @@ const cartSlice = createSlice({
         state.productsList[indexToIncrease].count += 1;
       }
 
-      setProductToStorage(state.productsList);
+      setItemToStorage('cart', state.productsList);
     },
     decreaseCount: (state, action: PayloadAction<number>) => {
       const indexToDecrease = findProductIndexById(
@@ -72,7 +72,7 @@ const cartSlice = createSlice({
         state.productsList[indexToDecrease].count -= 1;
       }
 
-      setProductToStorage(state.productsList);
+      setItemToStorage('cart', state.productsList);
     },
   },
 });
