@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
 interface Props {
   children: React.ReactNode;
   variant: 'text' | 'contained' | 'outlined';
-  onClick: () => void;
+  onClick: (event: React.MouseEvent) => void;
 }
 
 export const Button: React.FC<Props> = ({ children, onClick, variant }) => {

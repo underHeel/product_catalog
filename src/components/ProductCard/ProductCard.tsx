@@ -1,6 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import React, { useMemo, useState } from 'react';
 import { Product } from 'src/types/Product';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
@@ -24,7 +25,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     return productsList.some((item) => item.id === id);
   }, [productsList, id]);
 
-  const handleCart = () => {
+  const handleCart = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
     if (isInCart) {
       dispatch(cartActions.remove(id));
     } else {
@@ -32,8 +35,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
   };
 
+  const handleFavorite = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    setIsFilled((prev) => !prev);
+  };
+
   return (
-    <div className={styles.card}>
+    <Link to="../product" className={styles.card}>
       <div className={styles.cardHeader}>
         <img className={styles.cardImage} src={image} alt={name} />
 
@@ -78,22 +88,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <IconButton
             size="large"
             classNames={styles.favoriteButton}
-            onClick={() => {
-              setIsFilled(false);
-            }}
+            onClick={handleFavorite}
             children={<FavoriteFilledIcon />}
           />
         ) : (
           <IconButton
             size="large"
             classNames={styles.favoriteButton}
-            onClick={() => {
-              setIsFilled(true);
-            }}
+            onClick={handleFavorite}
             children={<FavoriteIcon />}
           />
         )}
       </div>
-    </div>
+    </Link>
   );
 };
