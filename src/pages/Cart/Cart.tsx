@@ -10,15 +10,17 @@ import EmptyCart from '/img/EmptyCart.png';
 import styles from './Cart.module.scss';
 
 export const Cart: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { productsList } = useAppSelector((state) => state.cart);
-  const cartTotal = productsList.reduce((acc, cur) => acc + cur.price, 0);
+
+  const cartTotal = productsList.reduce(
+    (acc, cur) => acc + cur.price * cur.count,
+    0,
+  );
   const itemsCount = productsList.reduce((acc, cur) => acc + cur.count, 0);
 
-  const [total, setTotal] = useState(cartTotal);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleTotal = (sum: number) => {
-    setTotal((prev) => prev + sum);
+  const handleCheckout = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -37,25 +39,16 @@ export const Cart: React.FC = () => {
         <section className={styles.container}>
           <div className={styles.list}>
             {productsList.map((product) => (
-              <CartItem
-                product={product}
-                handleTotal={handleTotal}
-                key={product.id}
-              />
+              <CartItem product={product} key={product.id} />
             ))}
           </div>
 
           <div className={styles.total}>
-            <p className={styles.amount}>{`$${total}`}</p>
+            <p className={styles.amount}>{`$${cartTotal}`}</p>
             <p className={styles.text}>{`Total for ${itemsCount} items`}</p>
             <div className={styles.separator} />
             <div className={styles.checkoutButton}>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  setIsModalOpen(true);
-                }}
-              >
+              <Button variant="contained" onClick={handleCheckout}>
                 Checkout
               </Button>
             </div>
