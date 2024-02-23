@@ -39,9 +39,6 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
           autoplay={autoplayOff}
           thumbs={{ swiper: bigSwiper }}
           slidesPerView={1}
-          onSlideChange={() => {
-            console.log('slide change');
-          }}
           modules={[Autoplay, Thumbs, FreeMode, Navigation]}
           onClick={(swiper) => {
             if (autoplayOff) {
@@ -69,6 +66,7 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
           freeMode={true}
           onClick={(swiper) => {
             setBigSwiper(swiper);
+            setAutoplayOff(false);
           }}
           watchSlidesProgress={true}
           className="mySwiperPhotos"
