@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import { PurchaseModal } from '../../components/PurchaseModal/PurchaseModal';
+import { PurchaseModal } from '../../components/PurchaseModal';
 import { CartItem } from '../../components/CartItem';
 import { useAppSelector } from '../../redux/hooks';
 import { Button } from '../../components/ui/buttons/Button';

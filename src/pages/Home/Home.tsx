@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from 'src/types/Product';
-import { Category } from '../../components/Category/Category';
+import { Category } from '../../components/Category';
 import { SliderCard } from '../../components/ui/slider/SliderCard';
-import { TopSlider } from '../../components/TopSlider/TopSlider';
+import { TopSlider } from '../../components/TopSlider';
 import styles from './Home.module.scss';
 import * as api from '../../api/phones';
 
