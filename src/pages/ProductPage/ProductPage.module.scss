@@ -52,83 +52,117 @@
     margin-top: 16px;
   }
 
-  .picturesWrapper {
-    .mainPictureWrapper {
+  .picturesPreferences {
+    margin-top: 32px;
+    @include on-tablet {
       display: flex;
-      justify-content: center;
-
-      .mainPicture {
-        justify-content: center;
-        height: 288px;
-      }
+      justify-content: space-around;
     }
 
-    .miniPicturesWrapper {
-      margin-top: 16px;
+    @include on-desktop {
+      display: flex;
+      justify-content: space-around;
+    }
 
-      .miniPictures {
-        justify-content: center;
+    .picturesBlock {
+      @include on-tablet {
         display: flex;
-        gap: 8px;
+      }
 
-        .miniPicturesElement {
-          overflow: hidden;
-          width: 50px;
-          height: 50px;
-          border: 1px black solid;
-          border-radius: 5px;
+      .picturesWrapper {
+        @include on-tablet {
+          display: flex;
+        }
 
-          .miniPicture {
-            width: 100%;
-            height: auto;
+        .mainPictureWrapper {
+          display: flex;
+          justify-content: center;
+
+          .mainPicture {
+            justify-content: center;
+            height: 288px;
+            @include on-desktop {
+              height: 70%;
+            }
+          }
+        }
+
+        .miniPicturesWrapper {
+          margin-top: 16px;
+
+          .miniPictures {
+            justify-content: center;
+            display: flex;
+            gap: 8px;
+            @include on-tablet {
+              display: inline-block;
+            }
+
+            .miniPicturesElement {
+              overflow: hidden;
+              width: 50px;
+              height: 50px;
+              border: 1px black solid;
+              border-radius: 5px;
+
+              .miniPicture {
+                width: 100%;
+                height: auto;
+              }
+            }
           }
         }
       }
     }
-  }
 
-  .preferences {
-    margin-top: 32px;
+    .preferences {
+      margin-top: 32px;
 
-    .preferencesColor {
-      border-bottom: 0.5px solid #b4bdc3;
-
-      .colorsOption {
-        margin-bottom: 16px;
-        margin-top: 8px;
-        display: flex;
-        gap: 8px;
+      @include on-tablet {
+        margin-top: 0;
+        width: 40%;
       }
 
-      .textWrapper {
-        display: flex;
-        justify-content: space-between;
+      .preferencesColor {
+        border-bottom: 0.5px solid #b4bdc3;
 
-        .textColors {
+        .colorsOption {
+          margin-bottom: 16px;
+          margin-top: 8px;
+          display: flex;
+          gap: 8px;
+        }
+
+        .textWrapper {
+          display: flex;
+          justify-content: space-between;
+
+          .textColors {
+            color: $secondary-color;
+          }
+
+          .textId {
+            color: #b4bdc3;
+          }
+        }
+      }
+
+      .preferencesCapacity {
+        border-bottom: 0.5px #b4bdc3 solid;
+        margin-top: 16px;
+
+        .capacityText {
           color: $secondary-color;
         }
 
-        .textId {
-          color: #b4bdc3;
-        }
-      }
-    }
+        .capacityOptions {
+          margin-bottom: 16px;
 
-    .preferencesCapacity {
-      border-bottom: 0.5px #b4bdc3 solid;
-      margin-top: 16px;
-
-      .capacityText {
-        color: $secondary-color;
-      }
-
-      .capacityOptions {
-        margin-bottom: 16px;
-
-        .capacityButtons {
-          display: flex;
-          list-style: none;
-          gap: 8px;
+          .capacityButtons {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+          }
         }
       }
     }
@@ -164,7 +198,7 @@
 
     .infoList {
       list-style: none;
-      
+
       .infoElement {
         display: flex;
         justify-content: space-between;
@@ -177,54 +211,83 @@
     }
   }
 
-  .aboutBlock {
-    margin-top: 64px;
-
-    .aboutText {
-      padding-bottom: 16px;
-      border-bottom: 0.5px #b4bdc3 solid;
+  .aboutAndScpecsWrapper {
+    @include on-desktop {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 32px;
     }
-
-    .paragraph {
-      margin-top: 24px;
-
-      .paragraphText {
-        color: $secondary-color;
+  
+    .aboutBlock {
+      margin-top: 64px;
+      @include on-tablet {
+        margin-top: 0;
       }
-    }
-  }
 
-  .techSpecs {
-    margin-top: 64px;
-    margin-bottom: 64px;
+      @include on-desktop {
+        margin-top: 0;
+        width: 45%;
+      }
 
-    .techSpecsBlock {
-      .techSpecsText {
+      .aboutText {
         padding-bottom: 16px;
         border-bottom: 0.5px #b4bdc3 solid;
       }
 
-      .specsList {
+      .paragraph {
         margin-top: 24px;
-        list-style: none;
+        @include on-desktop {
+          .paragraphTitle {
+            top: -300px;
+            position: relative;
+            height: 20px;
+          }
+        }
+
+        .paragraphText {
+          color: $secondary-color;
+        }
+      }
+    }
+
+    .techSpecs {
+      margin-top: 64px;
+      margin-bottom: 64px;
+      @include on-desktop {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 45%;
       }
 
-      .specsElement {
-        display: flex;
-        justify-content: space-between;
-        color: $secondary-color;
+      .techSpecsBlock {
+        .techSpecsText {
+          padding-bottom: 16px;
+          border-bottom: 0.5px #b4bdc3 solid;
+        }
 
-        .specsValue {
-          color: $primary-color;
+        .specsList {
+          margin-top: 24px;
+          list-style: none;
+        }
+
+        .specsElement {
+          display: flex;
+          justify-content: space-between;
+          color: $secondary-color;
+
+          .specsValue {
+            color: $primary-color;
+          }
         }
       }
     }
   }
 
   .suggestions {
+    justify-content: space-between;
     display: flex;
     gap: 16px;
-    
+
     .moveButtons {
       display: flex;
       gap: 16px;
