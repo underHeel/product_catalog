@@ -20,6 +20,14 @@ export const Header: React.FC = () => {
   const itemsCount = productsList.reduce((acc, cur) => acc + cur.count, 0);
 
   const toggleMenu = () => {
+    const { body } = document;
+
+    if (!isMenuOpen) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = '';
+    }
+
     setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
   };
 

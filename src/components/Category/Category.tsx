@@ -11,38 +11,50 @@ export const Category: React.FC = () => {
       <h2 className={styles.title}>Shop by category</h2>
       <div className={styles.container}>
         <Link to="/phones?page=1">
-          <img
-            src={phonesCategory}
-            alt="phones category"
-            className={styles.image}
-          />
-          <div className={styles.cardTitle}>
-            <p className={styles.categoryName}>Mobile phones</p>
-            <p className={styles.categoryLength}>95 models</p>
+          <div className={styles.box}>
+            <div className={styles.inner}>
+              <img
+                src={phonesCategory}
+                alt="phones category"
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.cardTitle}>
+              <p className={styles.categoryName}>Mobile phones</p>
+              <p className={styles.categoryLength}>95 models</p>
+            </div>
           </div>
         </Link>
 
         <Link to="/tablets">
-          <img
-            src={tabletCategory}
-            alt="tablet category"
-            className={styles.image}
-          />
-          <div>
-            <p className={styles.categoryName}>Tablets</p>
-            <p className={styles.categoryLength}>24 models</p>
+          <div className={styles.box}>
+            <div className={styles.inner}>
+              <img
+                src={tabletCategory}
+                alt="tablet category"
+                className={styles.image}
+              />
+            </div>
+            <div>
+              <p className={styles.categoryName}>Tablets</p>
+              <p className={styles.categoryLength}>24 models</p>
+            </div>
           </div>
         </Link>
 
         <Link to="/accessories">
-          <img
-            src={accessoriesCategory}
-            alt="accessories category"
-            className={styles.image}
-          />
-          <div>
-            <p className={styles.categoryName}>Accessories</p>
-            <p className={styles.categoryLength}>100 models</p>
+          <div className={styles.box}>
+            <div className={styles.inner}>
+              <img
+                src={accessoriesCategory}
+                alt="accessories category"
+                className={styles.image}
+              />
+            </div>
+            <div>
+              <p className={styles.categoryName}>Accessories</p>
+              <p className={styles.categoryLength}>100 models</p>
+            </div>
           </div>
         </Link>
       </div>
