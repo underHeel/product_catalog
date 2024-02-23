@@ -9,6 +9,7 @@
   background: var(--bg-color-menu);
   transform: translateX(110%);
   transition: .5s;
+  z-index: 2;
 }
 
 .show {
@@ -56,7 +57,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  border: 1px solid var(--elements-color)ж
+  border: 1px solid var(--elements-color);
 }
 
 .box {

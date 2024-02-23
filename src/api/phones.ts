@@ -3,13 +3,21 @@ import { Product } from 'src/types/Product';
 
 const API_URL_PRODUCTS = `https://underheel.github.io/product_catalog/products.json`;
 const API_URL_PHONES = `https://underheel.github.io/product_catalog/phones.json`;
+const delay = <T>(data: T, ms = 1000): Promise<T> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(data);
+    }, ms);
+  });
+};
 
 export const getAllPhones = (): Promise<Product[]> => {
   return fetch(API_URL_PRODUCTS)
     .then((response) => response.json())
     .then((products) =>
       products.filter((product: Product) => product.category === 'phones'),
-    );
+    )
+    .then((phones) => delay(phones));
 };
 
 export const getPhones = (page = 1, perPage = 12): Promise<Product[]> => {
@@ -26,5 +34,6 @@ export const getPhones = (page = 1, perPage = 12): Promise<Product[]> => {
 export const getPhone = (id: string): Promise<Phone> => {
   return fetch(API_URL_PHONES)
     .then((response) => response.json())
-    .then((phones) => phones.find((phone: Phone) => phone.id === id));
+    .then((phones) => phones.find((phone: Phone) => phone.id === id))
+    .then((phone) => delay(phone));
 };
