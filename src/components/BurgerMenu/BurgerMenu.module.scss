@@ -6,7 +6,7 @@
   height: 100vh;
   position: fixed;
   inset: 0;
-  background: #fff;
+  background: var(--bg-color-menu);
   transform: translateX(110%);
   transition: .5s;
   z-index: 2;
@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   height: 48px;
-  box-shadow: 0 1px 0 0 #E2E6E9;
+  box-shadow: 0 1px 0 0 var(--elements-color);
 }
 
 .link {
@@ -48,7 +48,7 @@
 .close {
   display: flex;
   padding: 16px;
-  box-shadow: -1px 0 0 0 $elements-color;
+  box-shadow: -1px 0 0 0 var(--elements-color);
   height: 100%;
   cursor: pointer;
 }
@@ -57,7 +57,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  border: 1px solid #E2E6E9
+  border: 1px solid var(--elements-color);
 }
 
 .box {
@@ -65,7 +65,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  box-shadow: -1px 0 0 0 $elements-color;
+  box-shadow: -1px 0 0 0 var(--elements-color);
   height: 64px;
   width: 100%;
 }

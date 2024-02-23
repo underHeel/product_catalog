@@ -1,14 +1,14 @@
 @import '../../styles/utils/main';
 
 .footerWrapper {
-  box-shadow: 0 -1px 0 0 $elements-color;
-  background-color: $white-color;
+  box-shadow: 0 -1px 0 0 var(--elements-color);
+  background-color: var(--card-background-color);
 }
 
 .footer {
   max-height: 280px;
   padding-block: 32px;
-  color: $secondary-color;
+  color: var(--secondary-color);
   font-size: 12px;
   line-height: 12px;
   font-weight: 600;
@@ -66,11 +66,11 @@
   letter-spacing: 0.04em;
 
   &:active {
-    color: $primary-color;
+    color: var(--color);
   }
 
   @include on-desktop {
-    @include hover(color, $primary-color);
+    @include hover(color, var(--color));
   }
 
 }
@@ -82,29 +82,29 @@
   gap: 16px;
 
   &:active .text {
-    color: $primary-color;
+    color: var(--color);
   }
 
   &:active .iconButton {
-    border-color: $primary-color;
+    border-color: var(--color);
 
     & svg path {
-      fill: $primary-color;
+      fill: var(--color);
     }
   }
 
   @include on-desktop {
     &:hover .text {
-      color: $primary-color;
+      color: var(--color);
     }
 
     &:hover .iconButton {
       transform: scale(1.1);
       transition: transform 0.5s;
-      border-color: $primary-color;
+      border-color: var(--color);
 
       & svg path {
-        fill: $primary-color;
+        fill: var(--color);
       }
     }
   }

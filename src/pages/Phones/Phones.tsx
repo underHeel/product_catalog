@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { PaginatedStore } from '../../components/PaginatedStore/PaginatedStore';
+import { PaginatedStore } from '../../components/PaginatedStore';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
 
