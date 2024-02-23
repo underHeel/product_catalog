@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-console */
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules';
 import { Phone } from 'src/types/Phone';
-import styles from './PhotosBlock.module.scss';
 import './swiper/ProductPhotoSwiper.scss';
 
 type Props = {
@@ -15,17 +14,13 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
   const [autoplayOff, setAutoplayOff] = useState(true);
   const [bigSwiper, setBigSwiper] = useState<Swiper | null>(null);
 
-  const inputRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  console.log(bigSwiper);
+  const isScreenGreaterThan640px = () => {
+    return window.innerWidth > 640;
+  };
 
   return (
-    <div className={styles.pictureContainer}>
-      <div className={styles.pictureMain}>
+    <div className="mySwiperWrapper">
+      <div className="mySwiperPicture">
         <Swiper
           loop={true}
           autoplay={autoplayOff}
@@ -42,7 +37,7 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
               swiper.slideNext();
             }
           }}
-          className="mySwiper2"
+          className="mySwiperPicture"
         >
           {phone.images.map((image) => (
             <SwiperSlide key={image}>
@@ -51,22 +46,23 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
           ))}
         </Swiper>
       </div>
-      <div className={styles.picturePortfolio}>
+      <div className="mySwiperPhotos">
         <Swiper
           modules={[Autoplay, Thumbs, FreeMode, Navigation]}
           loop={true}
           spaceBetween={6}
           slidesPerView={5}
+          direction={isScreenGreaterThan640px() ? 'vertical' : 'horizontal'}
           freeMode={true}
           onClick={(swiper) => {
             setBigSwiper(swiper);
           }}
           watchSlidesProgress={true}
-          className="mySwiperPhoto"
+          className="mySwiperPhotos"
         >
           {phone.images.map((image) => (
             <SwiperSlide key={image}>
-              <img src={image} alt="Slide" className="img" ref={inputRef} />
+              <img src={image} alt="Slide" className="img" />
             </SwiperSlide>
           ))}
         </Swiper>
