@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={cn(styles.header, { [styles.isSticky]: !isMenuOpen })}>
         <div className={styles.headerContainer}>
           <div className={styles.headerWrapper}>
             <Link to="/" className={styles.link}>

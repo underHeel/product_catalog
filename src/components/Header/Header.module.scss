@@ -22,8 +22,11 @@
   height: 48px;
   box-shadow: 0 1px 0 0 #E2E6E9;
   background-color: $white-color;
-  position: sticky;
-  top: 0;
+
+  &.isSticky {
+    position: sticky;
+    top: 0;
+  }
 
   @include on-desktop {
     height: 64px;
