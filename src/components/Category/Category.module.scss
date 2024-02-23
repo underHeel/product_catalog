@@ -14,7 +14,22 @@
 
 .image {
   width: 100%;
-  margin-bottom: 24px;
+  transition: transform .3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inner {
+  overflow: hidden;
+  height: 368px;
 }
 
 .title {

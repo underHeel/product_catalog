@@ -34,6 +34,11 @@
   flex-grow: 1;
   margin: 0 auto 24px;
   aspect-ratio: 223/130;
+  transition: transform .3s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
 
   @include on-tablet {
     aspect-ratio: 224/196;

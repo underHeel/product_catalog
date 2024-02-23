@@ -1,6 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -23,25 +23,21 @@ export const TopSlider: React.FC = () => {
         nextEl: `.${styles['next-top-slide']}`,
         prevEl: `.${styles['prev-top-slide']}`,
       }}
-      modules={[Pagination, Navigation, Autoplay]}
+      modules={[Pagination, Navigation]}
       className={styles.mySwiper}
     >
       <SwiperSlide className={styles.slide}>
         <img src={Banner} alt="" />
       </SwiperSlide>
-
       <SwiperSlide className={styles.slide}>
         <img src={Banner} alt="" />
       </SwiperSlide>
-
       <SwiperSlide className={styles.slide}>
         <img src={Banner} alt="" />
       </SwiperSlide>
-
       <div className={`${styles.icons} ${styles['prev-top-slide']}`}>
         <ArrowLeftIcon fill="white" />
       </div>
-
       <div className={`${styles.icons} ${styles['next-top-slide']}`}>
         <ArrowRightIcon fill="white" />
       </div>

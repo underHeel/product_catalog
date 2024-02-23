@@ -1,6 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import React, { useMemo, useState } from 'react';
-import { CartItem } from 'src/types/CartItem';
+import { Product } from 'src/types/Product';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
@@ -10,7 +10,7 @@ import { actions as cartActions } from '../../redux/slices/cartSlice';
 import styles from './ProductCard.module.scss';
 
 type Props = {
-  product: CartItem;
+  product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
