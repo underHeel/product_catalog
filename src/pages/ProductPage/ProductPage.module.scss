@@ -1,297 +1,99 @@
 @import '../../styles/utils/main';
 
-.cardWrapper {
-  margin: 16px;
-  margin-top: 24px;
+.wrapper {
+  @include content-indents;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 31px;
+  text-align: left;
+  margin-bottom: 32px;
 
   @include on-tablet {
-    margin: 24px;
+    margin-bottom: 40px;
   }
+}
 
-  @include on-desktop {
-    margin-left: 120px;
-    margin-right: 120px;
-  }
+.slider {
+  background-color: aqua;
+  height: 400px;
+  margin-bottom: 40px;
+}
 
-  .headerPath {
-    display: flex;
-    box-sizing: border-box;
-    align-items: center;
-    gap: 8px;
+.color {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid $elements-color;
+}
 
-    .homeIcon {
-      display: flex;
-      cursor: pointer;
-      justify-content: center;
-      align-items: center;
-    }
+.colorTitle {
+  display: flex;
+  justify-content: space-between;
+}
 
-    .categoryText {
-      cursor: pointer;
-    }
+.optionsText {
+  font-size: 12px;
+  color: $secondary-color;
+  line-height: 15px;
+}
 
-    .productText {
-      color: $secondary-color;
-    }
-  }
+.colorButtons {
+  display: flex;
+  margin-bottom: 24px;
+  gap: 8px;
+}
 
-  .backButton {
-    display: flex;
-    width: 55px;
-    cursor: pointer;
-    margin-top: 20px;
-    align-items: center;
-    gap: 4px;
-    color: $secondary-color;
-    @include on-tablet {
-      margin-top: 40px;
-    }
-  }
+.capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-bottom: 1px solid $elements-color;
+  margin-bottom: 32px;
+}
 
-  .productTitle {
-    margin-top: 16px;
-  }
+.capacityButton {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
 
-  .picturesPreferences {
-    margin-top: 32px;
-    @include on-tablet {
-      display: flex;
-      justify-content: space-around;
-    }
+.buttonWrapper {
+  color: black;
+  border: 1px solid $icons-color;
+  border-radius: 4px;
+}
 
-    @include on-desktop {
-      display: flex;
-      justify-content: space-around;
-    }
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
 
-    .picturesBlock {
-      @include on-tablet {
-        display: flex;
-      }
+.priceText {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+}
 
-      .picturesWrapper {
-        @include on-tablet {
-          display: flex;
-        }
+.discountPrice {
+  font-size: 22px;
+  color: $secondary-color;
+  text-decoration: line-through;
+}
 
-        .mainPictureWrapper {
-          display: flex;
-          justify-content: center;
+.addButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  max-width: 350px;
+}
 
-          .mainPicture {
-            justify-content: center;
-            height: 288px;
-            @include on-desktop {
-              height: 70%;
-            }
-          }
-        }
-
-        .miniPicturesWrapper {
-          margin-top: 16px;
-
-          .miniPictures {
-            justify-content: center;
-            display: flex;
-            gap: 8px;
-            @include on-tablet {
-              display: inline-block;
-            }
-
-            .miniPicturesElement {
-              overflow: hidden;
-              width: 50px;
-              height: 50px;
-              border: 1px black solid;
-              border-radius: 5px;
-
-              .miniPicture {
-                width: 100%;
-                height: auto;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .preferences {
-      margin-top: 32px;
-
-      @include on-tablet {
-        margin-top: 0;
-        width: 40%;
-      }
-
-      .preferencesColor {
-        border-bottom: 0.5px solid #b4bdc3;
-
-        .colorsOption {
-          margin-bottom: 16px;
-          margin-top: 8px;
-          display: flex;
-          gap: 8px;
-        }
-
-        .textWrapper {
-          display: flex;
-          justify-content: space-between;
-
-          .textColors {
-            color: $secondary-color;
-          }
-
-          .textId {
-            color: #b4bdc3;
-          }
-        }
-      }
-
-      .preferencesCapacity {
-        border-bottom: 0.5px #b4bdc3 solid;
-        margin-top: 16px;
-
-        .capacityText {
-          color: $secondary-color;
-        }
-
-        .capacityOptions {
-          margin-bottom: 16px;
-
-          .capacityButtons {
-            display: flex;
-            list-style: none;
-            gap: 8px;
-          }
-        }
-      }
-    }
-  }
-
-  .priceAndCart {
-    margin-top: 16px;
-
-    .priceText {
-      font-size: large;
-      display: flex;
-      gap: 8px;
-      line-height: 40px;
-
-      .oldPrice {
-        color: $secondary-color;
-      }
-    }
-
-    .cartButtons {
-      display: flex;
-      justify-content: space-between;
-
-      .addToCart {
-        width: 80%;
-      }
-    }
-  }
-
-  .generalInfo {
-    font-weight: 600;
-    margin-top: 32px;
-
-    .infoList {
-      list-style: none;
-
-      .infoElement {
-        display: flex;
-        justify-content: space-between;
-        color: $secondary-color;
-
-        .infoNums {
-          color: $primary-color;
-        }
-      }
-    }
-  }
-
-  .aboutAndScpecsWrapper {
-    @include on-desktop {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 32px;
-    }
-
-    .aboutBlock {
-      margin-top: 64px;
-      @include on-tablet {
-        margin-top: 0;
-      }
-
-      @include on-desktop {
-        margin-top: 0;
-        width: 50%;
-      }
-
-      .aboutText {
-        padding-bottom: 16px;
-        border-bottom: 0.5px #b4bdc3 solid;
-      }
-
-      .paragraph {
-        margin-top: 24px;
-        @include on-desktop {
-          .paragraphTitle {
-            position: relative;
-            top: -300px;
-            height: 10px;
-          }
-        }
-
-        .paragraphText {
-          color: $secondary-color;
-        }
-      }
-    }
-
-    .techSpecs {
-      margin-top: 64px;
-      margin-bottom: 64px;
-      @include on-desktop {
-        margin-top: 0;
-        margin-bottom: 0;
-        width: 45%;
-      }
-
-      .techSpecsBlock {
-        .techSpecsText {
-          padding-bottom: 16px;
-          border-bottom: 0.5px #b4bdc3 solid;
-        }
-
-        .specsList {
-          margin-top: 24px;
-          list-style: none;
-        }
-
-        .specsElement {
-          display: flex;
-          justify-content: space-between;
-          color: $secondary-color;
-
-          .specsValue {
-            color: $primary-color;
-          }
-        }
-      }
-    }
-  }
-
-  .suggestions {
-    justify-content: space-between;
-    display: flex;
-    gap: 16px;
-
-    .moveButtons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-    }
-  }
+.addToCart {
+  width: 100%;
 }
