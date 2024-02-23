@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
+import { BallTriangle } from 'react-loader-spinner';
+import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
 import { PaginatedStore } from '../../components/PaginatedStore';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
+import notFoundImg from '/img/404.png';
+import noProductImg from '../../../public/img/no_product.png';
 
 import styles from './Phones.module.scss';
 
@@ -14,11 +18,28 @@ export const Phones: React.FC = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <p>Loadig...</p>;
+    return (
+      <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
+        color="#f86800"
+        ariaLabel="ball-triangle-loading"
+        wrapperStyle={{}}
+        wrapperClass={styles.loaderWrapper}
+        visible
+      />
+    );
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <ErrorComponent image={notFoundImg} errorMessage={error} />;
+  }
+
+  if (phones.length === 0) {
+    return (
+      <ErrorComponent image={noProductImg} errorMessage="No products there" />
+    );
   }
 
   return (

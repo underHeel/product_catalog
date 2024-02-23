@@ -14,7 +14,7 @@ export const TopSlider: React.FC = () => {
     <Swiper
       autoplay={{ delay: 3000 }}
       slidesPerView={1}
-      spaceBetween={0}
+      spaceBetween={10}
       loop
       pagination={{
         clickable: true,
