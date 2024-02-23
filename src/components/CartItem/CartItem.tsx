@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react/button-has-type */
-import { useState } from 'react';
-import { Product } from 'src/types/Product';
 import cn from 'classnames';
+import { CartItem as CartItemType } from 'src/types/CartItem';
 import { useAppDispatch } from '../../redux/hooks';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { IconButton } from '../ui/buttons/IconButton';
@@ -13,35 +12,26 @@ import { actions as cartActions } from '../../redux/slices/cartSlice';
 import styles from './CartItem.module.scss';
 
 type Props = {
-  product: Product;
-  handleTotal: (sum: number) => void;
+  product: CartItemType;
 };
 
-export const CartItem: React.FC<Props> = ({ product, handleTotal }) => {
-  const { name, price, image, id } = product;
-  const [quantity, setQuantity] = useState(1);
+export const CartItem: React.FC<Props> = ({ product }) => {
+  const { name, price, image, id, count } = product;
 
   const dispatch = useAppDispatch();
 
-  const totalAmount = quantity * price;
+  const totalAmount = count * price;
 
   const handlerDecreaseQuantity = () => {
-    setQuantity((prev) => {
-      return prev === 1 ? 1 : prev - 1;
-    });
     dispatch(cartActions.decreaseCount(id));
-    handleTotal(-price);
   };
 
   const handlerIncreaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
     dispatch(cartActions.increaseCount(id));
-    handleTotal(price);
   };
 
   const handleRemove = () => {
     dispatch(cartActions.remove(id));
-    handleTotal(-totalAmount);
   };
 
   return (
@@ -57,16 +47,16 @@ export const CartItem: React.FC<Props> = ({ product, handleTotal }) => {
       </div>
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>
-          <div className={cn({ [styles.onButton]: quantity > 1 })}>
+          <div className={cn({ [styles.onButton]: count > 1 })}>
             <IconButton
               onClick={handlerDecreaseQuantity}
               classNames={styles.iconButton}
-              isDisabled={quantity === 1}
+              isDisabled={count === 1}
             >
               <MinusIcon />
             </IconButton>
           </div>
-          <span className={styles.quantityValue}>{quantity}</span>
+          <span className={styles.quantityValue}>{count}</span>
           <div className={styles.onButton}>
             <IconButton
               onClick={handlerIncreaseQuantity}
