@@ -18,8 +18,8 @@
     height: 14px;
     font-size: 8px;
     line-height: 11px;
-    color: $white-color;
+    color: var(--white);
     border-radius: 50%;
-    border: 1px solid $white-color;
-    background-color: $secondary-accent-color;
+    border: 1px solid var(--card-background-color);
+    background-color: var(--secondary-accent-color);
 }

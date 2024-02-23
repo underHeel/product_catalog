@@ -23,10 +23,10 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
 
         <div className={styles.buttons}>
           <div className={`${styles.arrowButton} prev-${id}`}>
-            <ArrowLeftIcon fill="#0F0F11" />
+            <ArrowLeftIcon fill="var(--color)" />
           </div>
           <div className={`${styles.arrowButton} next-${id}`}>
-            <ArrowRightIcon fill="#0F0F11" />
+            <ArrowRightIcon fill="var(--color)" />
           </div>
         </div>
       </div>
