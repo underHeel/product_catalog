@@ -12,24 +12,18 @@
   }
 }
 
+.box {
+  width: 368px;
+}
+
 .image {
   width: 100%;
   transition: transform .3s ease-in-out;
+  margin-bottom: 24px;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.inner {
-  overflow: hidden;
-  height: 368px;
 }
 
 .title {
