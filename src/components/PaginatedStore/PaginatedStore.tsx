@@ -52,7 +52,7 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
           breakLabel={<IconButton>...</IconButton>}
           nextLabel={
             <IconButton>
-              <ArrowRightIcon />
+              <ArrowRightIcon fill="var(--color)" />
             </IconButton>
           }
           onPageChange={handlePageClick}
@@ -60,7 +60,7 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
           pageCount={pageCount}
           previousLabel={
             <IconButton>
-              <ArrowLeftIcon />
+              <ArrowLeftIcon fill="var(--color)" />
             </IconButton>
           }
           initialPage={currentPage - 1}

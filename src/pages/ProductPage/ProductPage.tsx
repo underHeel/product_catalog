@@ -38,7 +38,7 @@ export const ProductPage: React.FC = () => {
           <div className={styles.productText}>Some Product</div>
         </div>
         <div className={styles.backButton} onClick={handleNavigateToPhones}>
-          <ArrowLeftIcon fill="#0F0F11" />
+          <ArrowLeftIcon fill="var(--color)" />
           <div className={styles.backText}>Back</div>
         </div>
         <div className={styles.productTitle}>
@@ -283,8 +283,8 @@ export const ProductPage: React.FC = () => {
             <h2>You may also like</h2>
           </div>
           <div className={styles.moveButtons}>
-            <IconButton children={<ArrowLeftIcon fill="#0F0F11" />} />
-            <IconButton children={<ArrowRightIcon fill="#0F0F11" />} />
+            <IconButton children={<ArrowLeftIcon fill="var(--color)" />} />
+            <IconButton children={<ArrowRightIcon fill="var(--color)" />} />
           </div>
         </div>
       </div>

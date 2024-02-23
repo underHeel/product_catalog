@@ -29,7 +29,7 @@ export const Footer = () => {
             Back to top
           </Link>
           <IconButton onClick={() => {}} classNames={styles.iconButton}>
-            <ArrowUpIcon fill="#0f0f11" />
+            <ArrowUpIcon fill="var(--color)" />
           </IconButton>
         </div>
       </footer>
