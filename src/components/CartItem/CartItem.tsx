@@ -1,9 +1,84 @@
-import { Phone } from 'src/types/Phone';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable react/button-has-type */
+import { useState } from 'react';
+import { Product } from 'src/types/Product';
+import cn from 'classnames';
+import { useAppDispatch } from '../../redux/hooks';
+import { CloseIcon } from '../ui/icons/CloseIcon';
+import { IconButton } from '../ui/buttons/IconButton';
+import { MinusIcon } from '../ui/icons/MinusIcon';
+import { PlusIcon } from '../ui/icons/PlusIcon';
+import { actions as cartActions } from '../../redux/slices/cartSlice';
+import styles from './CartItem.module.scss';
 
 type Props = {
-  phone: Phone;
+  product: Product;
+  handleTotal: (sum: number) => void;
 };
 
-export const CartItem: React.FC<Props> = ({ phone }) => {
-  return <div> {phone.name} </div>;
+export const CartItem: React.FC<Props> = ({ product, handleTotal }) => {
+  const { name, price, image, id } = product;
+  const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useAppDispatch();
+
+  const totalAmount = quantity * price;
+
+  const handlerDecreaseQuantity = () => {
+    setQuantity((prev) => {
+      return prev === 1 ? 1 : prev - 1;
+    });
+    dispatch(cartActions.decreaseQuantity(1));
+    handleTotal(-price);
+  };
+
+  const handlerIncreaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+    dispatch(cartActions.increaseQuantity(1));
+    handleTotal(price);
+  };
+
+  const handleRemove = () => {
+    dispatch(cartActions.remove(id));
+    dispatch(cartActions.decreaseQuantity(quantity - 1));
+    handleTotal(-totalAmount);
+  };
+
+  return (
+    <div className={styles.cart}>
+      <div className={styles.cartInfo}>
+        <div className={styles.cartItem}>
+          <button className={styles.removeButton} onClick={handleRemove}>
+            <CloseIcon />
+          </button>
+          <img src={image} alt={`${name} photo`} className={styles.cartImage} />
+        </div>
+        <div className={styles.productName}>{name}</div>
+      </div>
+      <div className={styles.quantityControl}>
+        <div className={styles.quantity}>
+          <div className={cn({ [styles.onButton]: quantity > 1 })}>
+            <IconButton
+              onClick={handlerDecreaseQuantity}
+              classNames={styles.iconButton}
+              isDisabled={quantity === 1}
+            >
+              <MinusIcon />
+            </IconButton>
+          </div>
+          <span className={styles.quantityValue}>{quantity}</span>
+          <div className={styles.onButton}>
+            <IconButton
+              onClick={handlerIncreaseQuantity}
+              classNames={styles.iconButton}
+            >
+              <PlusIcon />
+            </IconButton>
+          </div>
+        </div>
+        <span className={styles.price}>{`$${totalAmount}`}</span>
+      </div>
+    </div>
+  );
 };

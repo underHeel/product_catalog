@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Phone } from 'src/types/Phone';
-import { getPhones } from '../api/phones';
+import { Product } from 'src/types/Product';
+import { getAllPhones } from '../../api/phones';
 
 interface PhonesState {
-  phones: Phone[];
+  phones: Product[];
   loading: boolean;
   error: string;
 }
@@ -15,23 +15,26 @@ const initialState: PhonesState = {
   error: '',
 };
 
-export const init = createAsyncThunk('phones/fetch', () => getPhones());
+export const fetchPhones = createAsyncThunk('phones/fetch', () =>
+  getAllPhones(),
+);
 
 const phonesSlice = createSlice({
   name: 'phones',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(init.pending, (state) => {
+    builder.addCase(fetchPhones.pending, (state) => {
+      state.error = '';
       state.loading = true;
     });
 
-    builder.addCase(init.fulfilled, (state, action) => {
+    builder.addCase(fetchPhones.fulfilled, (state, action) => {
       state.loading = false;
       state.phones = action.payload;
     });
 
-    builder.addCase(init.rejected, (state) => {
+    builder.addCase(fetchPhones.rejected, (state) => {
       state.loading = false;
       state.error = 'Something went wrong';
     });

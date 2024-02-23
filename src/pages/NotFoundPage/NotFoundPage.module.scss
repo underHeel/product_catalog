@@ -2,40 +2,55 @@
 
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
-  @include on-tablet {
-    height: 100vh;
-  }
+  padding-block: 40px;
+  min-height: calc(100vh - 160px);
+
+  @include content-indents;
 }
 
 .main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  width: 100%;
   text-align: center;
 }
 
-.mainNumbers {
-  font-size: 8rem;
-  color: #333;
+.mainLetters {
+  font-weight: bold;
+  color: $primary-color;
+  font-size: 32px;
+  line-height: 56px;
+
   @include on-tablet {
-    font-size: 6rem;
+    font-size: 48px;
   }
 }
 
-.mainLetters {
-  margin-top: 55px;
-  font-size: 1.2rem;
-  @include on-tablet {
-    margin-top: 40px;
-    font-size: 1.5rem;
-  }
-}
 
 .buttonWrapper {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
+
   @include on-tablet {
     margin-top: 12px;
+    max-width: 300px;
+  }
+}
+
+.image {
+  max-width: 350px;
+  width: 300px;
+  margin: 24px;
+
+  @include on-tablet {
+    width: 50%;
   }
 }

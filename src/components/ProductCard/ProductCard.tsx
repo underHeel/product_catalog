@@ -1,32 +1,47 @@
 /* eslint-disable react/no-children-prop */
-import React, { useState } from 'react';
-import { Phone } from 'src/types/Phone';
-import styles from './ProductCard.module.scss';
+import React, { useMemo, useState } from 'react';
+import { Product } from 'src/types/Product';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { FavoriteFilledIcon } from '../ui/icons/FavoriteFilledIcon';
 import { Button } from '../ui/buttons/Button';
+import { actions as cartActions } from '../../redux/slices/cartSlice';
+import styles from './ProductCard.module.scss';
 
 type Props = {
-  phone: Phone;
+  product: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, priceRegular, priceDiscount, screen, capacity, ram, images } =
-    phone;
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { name, fullPrice, price, screen, capacity, ram, image, id } = product;
   const [isFilled, setIsFilled] = useState(false);
-  const [inCart, setInCart] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const { productsList } = useAppSelector((state) => state.cart);
+
+  const isInCart = useMemo(() => {
+    return productsList.some((item) => item.id === id);
+  }, [productsList, id]);
+
+  const handleCart = () => {
+    if (isInCart) {
+      dispatch(cartActions.remove(id));
+    } else {
+      dispatch(cartActions.add(product));
+    }
+  };
 
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
-        <img className={styles.cardImage} src={images[0]} alt={name} />
+        <img className={styles.cardImage} src={image} alt={name} />
 
         <h2 className={styles.cardTitle}>{`${name}`}</h2>
 
         <div className={styles.cardPrice}>
-          <p className={styles.cardPriceActual}>{`$${priceDiscount}`}</p>
-          <p className={styles.cardPriceFull}>{`$${priceRegular}`}</p>
+          <p className={styles.cardPriceActual}>{`$${price}`}</p>
+          <p className={styles.cardPriceFull}>{`$${fullPrice}`}</p>
         </div>
       </div>
 
@@ -49,23 +64,20 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         </div>
       </div>
 
-      <div className={styles.cardBuy}>
-        {inCart ? (
-          <Button
-            children="Added"
-            variant="outlined"
-            onClick={() => setInCart(false)}
-          />
+      <div className={styles.buttonWrapper}>
+        {isInCart ? (
+          <Button children="Added" variant="outlined" onClick={handleCart} />
         ) : (
           <Button
             children="Add to cart"
             variant="contained"
-            onClick={() => setInCart(true)}
+            onClick={handleCart}
           />
         )}
         {isFilled ? (
           <IconButton
             size="large"
+            classNames={styles.favoriteButton}
             onClick={() => {
               setIsFilled(false);
             }}
@@ -74,6 +86,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         ) : (
           <IconButton
             size="large"
+            classNames={styles.favoriteButton}
             onClick={() => {
               setIsFilled(true);
             }}

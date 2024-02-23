@@ -47,4 +47,188 @@
       margin-top: 40px;
     }
   }
+
+  .productTitle {
+    margin-top: 16px;
+  }
+
+  .picturesWrapper {
+    .mainPictureWrapper {
+      display: flex;
+      justify-content: center;
+
+      .mainPicture {
+        justify-content: center;
+        height: 288px;
+      }
+    }
+
+    .miniPicturesWrapper {
+      margin-top: 16px;
+
+      .miniPictures {
+        justify-content: center;
+        display: flex;
+        gap: 8px;
+
+        .miniPicturesElement {
+          overflow: hidden;
+          width: 50px;
+          height: 50px;
+          border: 1px black solid;
+          border-radius: 5px;
+
+          .miniPicture {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .preferences {
+    margin-top: 32px;
+
+    .preferencesColor {
+      border-bottom: 0.5px solid #b4bdc3;
+
+      .colorsOption {
+        margin-bottom: 16px;
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .textWrapper {
+        display: flex;
+        justify-content: space-between;
+
+        .textColors {
+          color: $secondary-color;
+        }
+
+        .textId {
+          color: #b4bdc3;
+        }
+      }
+    }
+
+    .preferencesCapacity {
+      border-bottom: 0.5px #b4bdc3 solid;
+      margin-top: 16px;
+
+      .capacityText {
+        color: $secondary-color;
+      }
+
+      .capacityOptions {
+        margin-bottom: 16px;
+
+        .capacityButtons {
+          display: flex;
+          list-style: none;
+          gap: 8px;
+        }
+      }
+    }
+  }
+
+  .priceAndCart {
+    margin-top: 16px;
+
+    .priceText {
+      font-size: large;
+      display: flex;
+      gap: 8px;
+      line-height: 40px;
+
+      .oldPrice {
+        color: $secondary-color;
+      }
+    }
+
+    .cartButtons {
+      display: flex;
+      justify-content: space-between;
+
+      .addToCart {
+        width: 80%;
+      }
+    }
+  }
+
+  .generalInfo {
+    font-weight: 600;
+    margin-top: 32px;
+
+    .infoList {
+      list-style: none;
+      
+      .infoElement {
+        display: flex;
+        justify-content: space-between;
+        color: $secondary-color;
+
+        .infoNums {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .aboutBlock {
+    margin-top: 64px;
+
+    .aboutText {
+      padding-bottom: 16px;
+      border-bottom: 0.5px #b4bdc3 solid;
+    }
+
+    .paragraph {
+      margin-top: 24px;
+
+      .paragraphText {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .techSpecs {
+    margin-top: 64px;
+    margin-bottom: 64px;
+
+    .techSpecsBlock {
+      .techSpecsText {
+        padding-bottom: 16px;
+        border-bottom: 0.5px #b4bdc3 solid;
+      }
+
+      .specsList {
+        margin-top: 24px;
+        list-style: none;
+      }
+
+      .specsElement {
+        display: flex;
+        justify-content: space-between;
+        color: $secondary-color;
+
+        .specsValue {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .suggestions {
+    display: flex;
+    gap: 16px;
+    
+    .moveButtons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+  }
 }

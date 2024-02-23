@@ -3,22 +3,19 @@
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 212px;
+  min-width: 212px;
   padding: 32px;
   border: 1px solid $elements-color;
   border-radius: 8px;
+  background-color: $white-color;
   transition: all 0.3s ease;
-
-  @include on-tablet {
-    max-width: 237px;
-  }
+  height: 100%;
+  cursor: pointer;
 
   @include on-desktop {
-    max-width: 272px;
-  }
-
-  &:hover {
-    border: 1px solid $secondary-color;
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
   }
 }
 
@@ -26,14 +23,23 @@
   display: flex;
   flex-direction: column;
   height: auto;
+  flex-grow: 1;
 }
 
 .cardImage {
   object-fit: contain;
-  width: 100%;  
-  min-height: 100px;
+  width: 100%;
+  height: 130px;
   flex-grow: 1;
   margin: 0 auto 24px;
+
+  @include on-tablet {
+    height: 196px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+  }
 }
 
 .cardTitle {
@@ -42,6 +48,7 @@
   font-size: 14px;
   line-height: 21px;
   color: $primary-color;
+  height: 42px;
 }
 
 .cardPrice {
@@ -96,6 +103,8 @@
   font-size: 12px;
   line-height: 15px;
   color: $primary-color;
+  max-width: 110px;
+  text-align: right;
 }
 
 .cardContainer {
@@ -104,10 +113,14 @@
   margin-bottom: 8px;
 }
 
-.cardBuy {
+.buttonWrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  gap: 8px;
   width: 100%;
+}
+
+.favoriteButton {
+  @include on-desktop {
+    @include hover(transform, scale(1.1))
+  }
 }
