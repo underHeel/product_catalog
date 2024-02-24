@@ -35,18 +35,13 @@ export const PaginatedStore: React.FC<Props> = ({
     const selectedPage = event.selected + 1;
     const newSearchParams = new URLSearchParams(searchParams);
 
-    if (selectedPage !== 1) {
+    if (selectedPage > 1) {
       newSearchParams.set('page', String(selectedPage));
-    } else {
+      setSearchParams(newSearchParams);
+    } else if (selectedPage === 1 && newSearchParams.get('page')) {
       newSearchParams.delete('page');
-      window.history.replaceState(
-        null,
-        '',
-        `${window.location.pathname}?${newSearchParams.toString()}`,
-      );
+      setSearchParams(newSearchParams);
     }
-
-    setSearchParams(newSearchParams);
   };
 
   return (

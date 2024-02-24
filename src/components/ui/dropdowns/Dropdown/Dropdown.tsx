@@ -3,34 +3,26 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState, useRef } from 'react';
 import cn from 'classnames';
+import { Select } from 'src/types/Select';
 import styles from './Dropdown.module.scss';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
-
-interface Select {
-  key: string;
-  label: string;
-}
 
 interface Props {
   options: Select[];
   description: string;
+  value: string;
   onSelect: (selectedOption: string) => void;
 }
 
 export const Dropdown: React.FC<Props> = ({
   options,
   description,
+  value,
   onSelect,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<string>(
-    options[0].label,
-  );
+  const [selectedOption, setSelectedOption] = useState<string>(value);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    onSelect(selectedOption);
-  }, [selectedOption, onSelect]);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -51,6 +43,7 @@ export const Dropdown: React.FC<Props> = ({
 
   const handleSelect = (option: string) => {
     setSelectedOption(option);
+    onSelect(option);
     setIsOpen(false);
   };
 
@@ -62,7 +55,7 @@ export const Dropdown: React.FC<Props> = ({
           className={styles.selectedOption}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {selectedOption}
+          {options.find((option) => option.value === selectedOption)?.label}
 
           <div className={cn(styles.iconWrapper, { [styles.open]: isOpen })}>
             <ArrowDownIcon />
@@ -70,15 +63,15 @@ export const Dropdown: React.FC<Props> = ({
         </div>
         {isOpen && (
           <ul className={styles.options}>
-            {options.map(({ key, label }) => (
+            {options.map((option) => (
               <li
-                key={key}
-                onClick={() => handleSelect(label)}
+                key={option.value}
+                onClick={() => handleSelect(option.value)}
                 className={cn(styles.option, {
-                  [styles.selected]: selectedOption === label,
+                  [styles.selected]: selectedOption === option.value,
                 })}
               >
-                {label}
+                {option.label}
               </li>
             ))}
           </ul>

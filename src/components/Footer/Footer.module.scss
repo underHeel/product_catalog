@@ -81,6 +81,13 @@
   align-items: center;
   gap: 16px;
 
+  .text {
+    color: var(--secondary-color);
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+  }
+
   &:active .text {
     color: var(--color);
   }

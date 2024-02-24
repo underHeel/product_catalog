@@ -9,6 +9,13 @@ import LogoDark from '/img/LogoDark.png';
 export const Footer = () => {
   const { theme } = useAppSelector((state) => state.theme);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className={styles.footerWrapper}>
       <footer className={styles.footer}>
@@ -33,10 +40,10 @@ export const Footer = () => {
           </a>
         </div>
         <div className={styles.button}>
-          <Link to="/" className={styles.text}>
+          <button type="button" className={styles.text} onClick={scrollToTop}>
             Back to top
-          </Link>
-          <IconButton onClick={() => {}} classNames={styles.iconButton}>
+          </button>
+          <IconButton onClick={scrollToTop} classNames={styles.iconButton}>
             <ArrowUpIcon fill="var(--color)" />
           </IconButton>
         </div>
