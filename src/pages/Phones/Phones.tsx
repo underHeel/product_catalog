@@ -56,18 +56,6 @@ export const Phones: React.FC = () => {
     setSearchParams(newSearchParams);
   };
 
-  useEffect(() => {
-    const handleBackButton = () => {
-      window.history.back();
-    };
-
-    window.addEventListener('popstate', handleBackButton);
-
-    return () => {
-      window.removeEventListener('popstate', handleBackButton);
-    };
-  }, []);
-
   if (loading) {
     return (
       <BallTriangle
