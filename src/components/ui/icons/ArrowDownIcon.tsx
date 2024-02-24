@@ -4,7 +4,9 @@ interface Props {
   fill?: string;
 }
 
-export const ArrowDownIcon: React.FC<Props> = ({ fill = '#B4BDC3' }) => {
+export const ArrowDownIcon: React.FC<Props> = ({
+  fill = 'var(--icons-color)',
+}) => {
   return (
     <svg
       width="16"
@@ -12,6 +14,7 @@ export const ArrowDownIcon: React.FC<Props> = ({ fill = '#B4BDC3' }) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ fill }}
     >
       <path
         fillRule="evenodd"

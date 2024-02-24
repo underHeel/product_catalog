@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header';
@@ -19,10 +20,32 @@ const App: React.FC = () => {
   }, []);
 
   console.log(phone);
+=======
+import React, { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { actions as themeActions } from './redux/slices/themeSlice';
+
+import './styles/utils/main.scss';
+import { useAppDispatch, useAppSelector } from './redux/hooks';
+
+const App: React.FC = () => {
+  const { theme } = useAppSelector((state) => state.theme);
+  const dispatch = useAppDispatch();
+
+  const toggleThemeHandler = () => {
+    dispatch(themeActions.changeTheme());
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+>>>>>>> 973cc27ed3b37342c35c23a1c772a2c6caff5bfa
 
   return (
     <div>
-      <Header />
+      <Header onThemeChange={toggleThemeHandler} />
       <Outlet />
       {phone?.images?.length > 0 && <PhotosBlock phone={phone} />}
       <Footer />

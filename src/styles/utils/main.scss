@@ -1,6 +1,8 @@
+@use 'themes' as *;
+
+@import 'variables';
 @import 'reset';
 @import 'mixins';
-@import 'variables';
 
 @font-face {
     font-family: Mont;
@@ -30,7 +32,8 @@ body {
     font-size: 14px;
     line-height: 21px;
     overflow-x: hidden;
-    background-color: $bg-hover-color;
+    background-color: var(--background-color);
+    color: var(--color);
 }
 
 h1 {
