@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { useSearchParams } from 'react-router-dom';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../constants/selectsData';
@@ -16,18 +16,26 @@ import styles from './Phones.module.scss';
 export const Phones: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
+  const isFirstRender = useRef(true);
+
   const { phones, loading, error } = useAppSelector((state) => state.phones);
 
   const sort = searchParams.get('sort') || SORT_BY[0].value;
-  const perPage =
-    (searchParams.get('perPage') && Number(searchParams.get('perPage'))) ||
-    +ITEMS_PER_PAGE[0].value;
 
+  function getProductsPerPage() {
+    if (isFirstRender.current) {
+      return Number(ITEMS_PER_PAGE[0].value);
+    }
+
+    if (searchParams.get('perPage')) {
+      return Number(searchParams.get('perPage'));
+    }
+
+    return phones.length;
+  }
+
+  const perPage = getProductsPerPage();
   const pageCount = Math.ceil(phones.length / perPage);
-
-  useEffect(() => {
-    dispatch(phonesActions.fetchPhones());
-  }, []);
 
   const handleSortSelect = (selectedOption: string) => {
     const newSearchParams = new URLSearchParams(searchParams);
@@ -46,7 +54,12 @@ export const Phones: React.FC = () => {
     }
 
     setSearchParams(newSearchParams);
+    isFirstRender.current = false;
   };
+
+  useEffect(() => {
+    dispatch(phonesActions.fetchPhones());
+  }, []);
 
   if (loading) {
     return (
