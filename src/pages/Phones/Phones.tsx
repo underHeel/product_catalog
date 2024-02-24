@@ -4,7 +4,7 @@ import { BallTriangle } from 'react-loader-spinner';
 import { useSearchParams } from 'react-router-dom';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../constants/selectsData';
 import { Dropdown } from '../../components/ui/dropdowns/Dropdown';
-import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
+import { ErrorComponent } from '../../components/ErrorComponent';
 import { PaginatedStore } from '../../components/PaginatedStore';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
