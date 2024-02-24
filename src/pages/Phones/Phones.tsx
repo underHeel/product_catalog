@@ -18,23 +18,15 @@ export const Phones: React.FC = () => {
   const dispatch = useAppDispatch();
   const { phones, loading, error } = useAppSelector((state) => state.phones);
 
-  const sort = searchParams.get('sort') || 'age';
+  const sort = searchParams.get('sort') || SORT_BY[0].value;
   const perPage =
     (searchParams.get('perPage') && Number(searchParams.get('perPage'))) ||
-    phones.length;
+    +ITEMS_PER_PAGE[0].value;
 
   const pageCount = Math.ceil(phones.length / perPage);
 
   useEffect(() => {
     dispatch(phonesActions.fetchPhones());
-
-    const newSearchParams = new URLSearchParams(searchParams);
-
-    if (!searchParams.get('sort') && !searchParams.get('perPage')) {
-      newSearchParams.set('perPage', ITEMS_PER_PAGE[0].value);
-      newSearchParams.set('sort', SORT_BY[0].value);
-      setSearchParams(newSearchParams);
-    }
   }, []);
 
   const handleSortSelect = (selectedOption: string) => {
@@ -98,7 +90,7 @@ export const Phones: React.FC = () => {
           <div className={styles.itemsPerPage}>
             <Dropdown
               description="Items on page"
-              value={perPage.toString()}
+              value={ITEMS_PER_PAGE[0].value}
               options={ITEMS_PER_PAGE}
               onSelect={(selectedOption) => handleItemSelect(selectedOption)}
             />
