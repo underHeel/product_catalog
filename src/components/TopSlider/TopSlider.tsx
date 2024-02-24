@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import styles from './TopSlider.module.scss';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
-import Banner from '../../../public/img/top-slide-banner.png';
+import Banner from '/img/top-slide-banner.png';
 
 export const TopSlider: React.FC = () => {
   return (

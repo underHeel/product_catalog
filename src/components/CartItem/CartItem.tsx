@@ -3,6 +3,7 @@
 /* eslint-disable react/button-has-type */
 import cn from 'classnames';
 import { CartItem as CartItemType } from 'src/types/CartItem';
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { IconButton } from '../ui/buttons/IconButton';
@@ -22,20 +23,29 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const totalAmount = count * price;
 
-  const handlerDecreaseQuantity = () => {
+  const handlerDecreaseQuantity = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     dispatch(cartActions.decreaseCount(id));
   };
 
-  const handlerIncreaseQuantity = () => {
+  const handlerIncreaseQuantity = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     dispatch(cartActions.increaseCount(id));
   };
 
-  const handleRemove = () => {
+  const handleRemove = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     dispatch(cartActions.remove(id));
   };
 
   return (
-    <div className={styles.cart}>
+    <Link to="../product" className={styles.cart}>
       <div className={styles.cartInfo}>
         <div className={styles.cartItem}>
           <button className={styles.removeButton} onClick={handleRemove}>
@@ -68,6 +78,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         </div>
         <span className={styles.price}>{`$${totalAmount}`}</span>
       </div>
-    </div>
+    </Link>
   );
 };
