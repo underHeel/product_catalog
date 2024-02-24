@@ -7,9 +7,9 @@ export const sortProducts = (
 ): Product[] => {
   return [...products].sort((a, b) => {
     switch (sortBy) {
-    case 'Alphabetically':
+    case 'title':
       return a.name.localeCompare(b.name);
-    case 'Cheapest':
+    case 'price':
       return a.price - b.price;
     default:
       return b.year - a.year;

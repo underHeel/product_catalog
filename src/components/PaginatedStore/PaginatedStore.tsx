@@ -39,11 +39,11 @@ export const PaginatedStore: React.FC<Props> = ({
       newSearchParams.set('page', String(selectedPage));
     } else {
       newSearchParams.delete('page');
-      window.history.replaceState(
-        null,
-        '',
-        `${window.location.pathname}?${newSearchParams.toString()}`,
-      );
+      // window.history.replaceState(
+      //   null,
+      //   '',
+      //   `${window.location.pathname}${newSearchParams.toString()}`,
+      // );
     }
 
     setSearchParams(newSearchParams);

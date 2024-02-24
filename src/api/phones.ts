@@ -15,7 +15,7 @@ export const getAllPhones = (): Promise<Product[]> => {
 
 export const getPhones = (
   page = 1,
-  perPage = 12,
+  perPage: number,
   sortBy: string,
 ): Promise<Product[]> => {
   const end = perPage * page;

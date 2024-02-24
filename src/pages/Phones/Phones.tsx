@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
+import { useSearchParams } from 'react-router-dom';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../constants/selectsData';
 import { Dropdown } from '../../components/ui/dropdowns/Dropdown';
 import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
@@ -12,28 +14,59 @@ import noProductImg from '/img/no_product.png';
 import styles from './Phones.module.scss';
 
 export const Phones: React.FC = () => {
-  const [itemsPerPage, setItemsPerPage] = useState(4);
-  const [sortBy, setSortBy] = useState('Newest');
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const { phones, loading, error } = useAppSelector((state) => state.phones);
 
-  const pageCount = Math.ceil(phones.length / itemsPerPage);
+  const sort = searchParams.get('sort') || 'age';
+  const perPage =
+    (searchParams.get('perPage') && Number(searchParams.get('perPage'))) ||
+    phones.length;
+
+  const pageCount = Math.ceil(phones.length / perPage);
 
   useEffect(() => {
     dispatch(phonesActions.fetchPhones());
-  }, [dispatch]);
+
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    if (!searchParams.get('sort') && !searchParams.get('perPage')) {
+      newSearchParams.set('perPage', ITEMS_PER_PAGE[0].value);
+      newSearchParams.set('sort', SORT_BY[0].value);
+      setSearchParams(newSearchParams);
+    }
+  }, []);
 
   const handleSortSelect = (selectedOption: string) => {
-    setSortBy(selectedOption);
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    newSearchParams.set('sort', selectedOption);
+    setSearchParams(newSearchParams);
   };
 
   const handleItemSelect = (selectedOption: string) => {
-    if (selectedOption === 'all') {
-      setItemsPerPage(phones.length);
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    if (selectedOption !== 'all') {
+      newSearchParams.set('perPage', selectedOption);
     } else {
-      setItemsPerPage(+selectedOption);
+      newSearchParams.delete('perPage');
     }
+
+    setSearchParams(newSearchParams);
   };
+
+  useEffect(() => {
+    const handleBackButton = () => {
+      window.history.back();
+    };
+
+    window.addEventListener('popstate', handleBackButton);
+
+    return () => {
+      window.removeEventListener('popstate', handleBackButton);
+    };
+  }, []);
 
   if (loading) {
     return (
@@ -69,6 +102,7 @@ export const Phones: React.FC = () => {
           <div className={styles.sortBy}>
             <Dropdown
               description="Sort by"
+              value={sort}
               options={SORT_BY}
               onSelect={(selectedOption) => handleSortSelect(selectedOption)}
             />
@@ -76,6 +110,7 @@ export const Phones: React.FC = () => {
           <div className={styles.itemsPerPage}>
             <Dropdown
               description="Items on page"
+              value={perPage.toString()}
               options={ITEMS_PER_PAGE}
               onSelect={(selectedOption) => handleItemSelect(selectedOption)}
             />
@@ -83,8 +118,8 @@ export const Phones: React.FC = () => {
         </div>
         <PaginatedStore
           pageCount={pageCount}
-          itemsPerPage={itemsPerPage}
-          sortBy={sortBy}
+          itemsPerPage={perPage}
+          sortBy={sort}
         />
       </div>
     </div>

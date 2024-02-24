@@ -1,12 +1,12 @@
 export const ITEMS_PER_PAGE = [
-  { key: '1', label: '4' },
-  { key: '2', label: '8' },
-  { key: '3', label: '16' },
-  { key: '4', label: 'all' },
+  { value: '4', label: '4' },
+  { value: '8', label: '8' },
+  { value: '16', label: '16' },
+  { value: 'all', label: 'all' },
 ];
 
 export const SORT_BY = [
-  { key: '1', label: 'Newest' },
-  { key: '2', label: 'Alphabetically' },
-  { key: '3', label: 'Cheapest' },
+  { value: 'age', label: 'Newest' },
+  { value: 'title', label: 'Alphabetically' },
+  { value: 'price', label: 'Cheapest' },
 ];
