@@ -1,28 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { Product } from 'src/types/Product';
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Category } from '../../components/Category';
 import { SliderCard } from '../../components/ui/slider/SliderCard';
 import { TopSlider } from '../../components/TopSlider';
+import * as phonesActions from '../../redux/slices/phonesSlice';
 import styles from './Home.module.scss';
-import * as api from '../../api/phones';
 
 export const Home: React.FC = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
-
-  const testPhone = phones.slice(0, 10);
+  const dispatch = useAppDispatch();
+  const { phones } = useAppSelector((state) => state.phones);
 
   useEffect(() => {
-    api.getAllPhones().then((res) => setPhones(res));
-  }, [phones]);
+    dispatch(phonesActions.fetchPhones());
+  }, [dispatch]);
+
+  const brandNewModels = [...phones]
+    .sort((a, b) => b.year - a.year)
+    .slice(0, 10);
+
+  const hotPrices = phones
+    .filter(({ price, fullPrice }) => fullPrice - price >= 100)
+    .sort((a, b) => b.year - a.year);
 
   return (
     <>
       <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
       <TopSlider />
       <div className={styles.wrapper}>
-        <SliderCard title="Brand new models" items={testPhone} id={1} />
+        <SliderCard title="Brand new models" items={brandNewModels} id={1} />
         <Category />
-        <SliderCard title="Hot Prices" items={testPhone} id={2} />
+        <SliderCard title="Hot Prices" items={hotPrices} id={2} />
       </div>
     </>
   );

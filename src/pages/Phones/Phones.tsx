@@ -6,8 +6,8 @@ import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
 import { PaginatedStore } from '../../components/PaginatedStore';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
-import errorImg from '../../../public/img/errorImage.png';
-import noProductImg from '../../../public/img/no_product.png';
+import errorImg from '/img/errorImage.png';
+import noProductImg from '/img/no_product.png';
 
 import styles from './Phones.module.scss';
 
