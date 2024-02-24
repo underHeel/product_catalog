@@ -1,5 +1,6 @@
-import { Phone } from 'src/types/Phone';
-import { Product } from 'src/types/Product';
+import { sortProducts } from '../services/sortProducts';
+import { Phone } from '../types/Phone';
+import { Product } from '../types/Product';
 
 const API_URL_PRODUCTS = `https://underheel.github.io/product_catalog/products.json`;
 const API_URL_PHONES = `https://underheel.github.io/product_catalog/phones.json`;
@@ -12,14 +13,16 @@ export const getAllPhones = (): Promise<Product[]> => {
     );
 };
 
-export const getPhones = (page = 1, perPage = 12): Promise<Product[]> => {
+export const getPhones = (
+  page = 1,
+  perPage = 12,
+  sortBy: string,
+): Promise<Product[]> => {
   const end = perPage * page;
   const start = end - perPage;
 
   return getAllPhones().then((phones) => {
-    return phones
-      .sort((a: Product, b: Product) => b.year - a.year)
-      .slice(start, end);
+    return sortProducts(sortBy, phones).slice(start, end);
   });
 };
 

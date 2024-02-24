@@ -10,11 +10,16 @@ import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ProductCard } from '../ProductCard';
 
 interface Props {
+  pageCount: number;
   itemsPerPage: number;
-  items: Product[];
+  sortBy: string;
 }
 
-export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
+export const PaginatedStore: React.FC<Props> = ({
+  pageCount,
+  itemsPerPage,
+  sortBy,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [phones, setPhones] = useState<Product[]>([]);
 
@@ -22,11 +27,9 @@ export const PaginatedStore: React.FC<Props> = ({ itemsPerPage, items }) => {
     ? Number(searchParams.get('page'))
     : 1;
 
-  const pageCount = Math.ceil(items.length / itemsPerPage);
-
   useEffect(() => {
-    getPhones(currentPage, 12).then(setPhones);
-  }, [currentPage]);
+    getPhones(currentPage, itemsPerPage, sortBy).then(setPhones);
+  }, [currentPage, itemsPerPage, sortBy]);
 
   const handlePageClick = (event: { selected: number }) => {
     const selectedPage = event.selected + 1;
