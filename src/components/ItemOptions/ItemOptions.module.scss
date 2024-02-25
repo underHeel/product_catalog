@@ -1,0 +1,150 @@
+@import '../../styles/utils/main';
+
+.options {
+  display: flex;
+  flex-direction: column;
+  @include on-tablet {
+    @include page-grid;
+  }
+}
+
+.title {
+  margin-bottom: 32px;
+  font-size: 22px;
+  font-weight: bold;
+
+  @include on-tablet {
+    margin-bottom: 0;
+    font-size: 32px;
+    grid-column: 1/13;
+  }
+
+  @include on-desktop {
+    grid-column: 1/25;
+  }
+}
+
+.another {
+  @include on-desktop {
+    grid-column: 14/21;
+  }
+}
+
+.slider {
+  background-color: aqua;
+  height: 400px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    grid-column: 1/8;
+  }
+
+  @include on-desktop {
+    grid-column: 1/13;
+  }
+}
+
+.container {
+  @include on-tablet {
+    grid-column: 8/13;
+  }
+
+  @include on-desktop {
+    grid-column: 14/25;
+  }
+}
+
+.color {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--elements-color);
+}
+
+.colorTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grayText {
+  font-size: 12px;
+  color: var(--secondary-color);
+  line-height: 15px;
+}
+
+.colorButtons {
+  display: flex;
+  margin-bottom: 24px;
+  gap: 8px;
+}
+
+.capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-bottom: 1px solid var(--elements-color);
+  margin-bottom: 32px;
+}
+
+.capacityButton {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.buttonWrapper {
+  color: black;
+  border: 1px solid var(--icons-color);
+  border-radius: 4px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.priceText {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+}
+
+.discountPrice {
+  font-size: 22px;
+  color: var(--secondary-color);
+  text-decoration: line-through;
+}
+
+.addButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  align-items: center;
+  gap: 8px;
+  max-width: 350px;
+}
+
+.addToCart {
+  width: 100%;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.featuresText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.featuresParams {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+}
