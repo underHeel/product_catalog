@@ -66,8 +66,8 @@ h3 {
 
     @include on-tablet {
         font-weight: bold;
-        font-size: 22;
-        line-height: 31;
+        font-size: 22px;
+        line-height: 31px;
     }
 }
 
@@ -77,8 +77,8 @@ h4 {
     line-height: 20px;
 
     @include on-tablet {
-        font-size: 20;
-        line-height: 26;
+        font-size: 20px;
+        line-height: 26px;
     }
 }
 

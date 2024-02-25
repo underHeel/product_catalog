@@ -1,76 +1,32 @@
-import React from 'react';
-import { Button } from '../../components/ui/buttons/Button';
-import { ColorButton } from '../../components/ui/buttons/ColorButton/ColorButton';
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { SliderCard } from '../../components/ui/slider/SliderCard';
+import { ItemOptions } from '../../components/ItemOptions/ItemOptions';
+import { ItemAbout } from '../../components/ItemAbout';
+import { ItemSpech } from '../../components/ItemSpec';
+import * as phonesActions from '../../redux/slices/phonesSlice';
 import styles from './ProductPage.module.scss';
-import { FavoriteIcon } from '../../components/ui/icons/FavoriteIcon';
-import { IconButton } from '../../components/ui/buttons/IconButton';
 
 export const ProductPage: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { phones } = useAppSelector((state) => state.phones);
+
+  useEffect(() => {
+    dispatch(phonesActions.fetchPhones());
+  }, [dispatch]);
+
+  const brandNewModels = [...phones]
+    .sort((a, b) => b.year - a.year)
+    .slice(0, 10);
+
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-      </h1>
-
-      <div className={styles.slider}>SLIDER</div>
-
-      <section className={styles.options}>
-        <div className={styles.color}>
-          <div className={styles.colorTitle}>
-            <p className={styles.optionsText}>Avaliable colors</p>
-            <p className={styles.optionsText}>ID: 802390</p>
-          </div>
-          <div className={styles.colorButtons}>
-            <ColorButton color="yellow" onClick={() => {}} />
-            <ColorButton color="green" onClick={() => {}} />
-            <ColorButton color="black" onClick={() => {}} />
-            <ColorButton color="white" onClick={() => {}} />
-          </div>
-        </div>
-
-        <div className={styles.capacity}>
-          <p className={styles.optionsText}>Select capacity</p>
-          <div className={styles.capacityButton}>
-            <div className={styles.buttonWrapper}>
-              <Button variant="text" onClick={() => {}}>
-                64 GB
-              </Button>
-            </div>
-            <div className={styles.buttonWrapper}>
-              <Button variant="text" onClick={() => {}}>
-                256 GB
-              </Button>
-            </div>
-            <div className={styles.buttonWrapper}>
-              <Button variant="text" onClick={() => {}}>
-                512 GB
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.price}>
-          <p className={styles.priceText}>$799</p>
-          <p className={styles.discountPrice}>$1199</p>
-        </div>
-
-        <div className={styles.addButtons}>
-          <div className={styles.addToCart}>
-            <Button variant="contained" onClick={() => {}}>
-              Add to cart
-            </Button>
-          </div>
-          <div>
-            <IconButton
-              size="large"
-              classNames={styles.favoriteButton}
-              onClick={() => {}}
-            >
-              <FavoriteIcon />
-            </IconButton>
-          </div>
-        </div>
-      </section>
+      <ItemOptions />
+      <div className={styles.container}>
+        <ItemAbout />
+        <ItemSpech />
+      </div>
+      <SliderCard title="You may also like" items={brandNewModels} id={1} />
     </div>
   );
 };

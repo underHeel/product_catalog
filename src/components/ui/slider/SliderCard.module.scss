@@ -1,11 +1,10 @@
 @import '../../../styles/utils/main';
 
 .title {
-  margin-bottom: 24px;
   font-size: 22px;
   font-weight: bold;
   line-height: 31px;
-  width: 136px;
+  width: max-content;
 
   @include on-tablet {
     font-size: 32px;
