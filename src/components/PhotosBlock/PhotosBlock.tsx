@@ -5,10 +5,10 @@ import { DetailedProduct } from 'src/types/DetailedProduct';
 import './swiper/ProductPhotoSwiper.scss';
 
 type Props = {
-  phone: DetailedProduct;
+  product: DetailedProduct;
 };
 
-export const PhotosBlock: React.FC<Props> = ({ phone }) => {
+export const PhotosBlock: React.FC<Props> = ({ product }) => {
   const [bigSwiper, setBigSwiper] = useState<SwiperClass>();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -45,7 +45,7 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
           }}
           className="mySwiperPicture"
         >
-          {phone.images.map((image) => (
+          {product.images.map((image) => (
             <SwiperSlide key={image}>
               <img src={image} alt="Slide" className="img" />
             </SwiperSlide>
@@ -66,7 +66,7 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
           }}
           className="mySwiperPhotos"
         >
-          {phone.images.map((image) => (
+          {product.images.map((image) => (
             <SwiperSlide key={image}>
               <img src={image} alt="Slide" className="img" />
             </SwiperSlide>

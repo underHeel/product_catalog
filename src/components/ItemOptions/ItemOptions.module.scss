@@ -32,8 +32,7 @@
 }
 
 .slider {
-  background-color: aqua;
-  height: 400px;
+  grid-column: 1/4;
   margin-bottom: 40px;
 
   @include on-tablet {
@@ -52,6 +51,13 @@
 
   @include on-desktop {
     grid-column: 14/25;
+  }
+}
+
+.wrapper {
+
+  @include on-tablet {
+    max-width: 320px;
   }
 }
 
@@ -131,7 +137,6 @@
   margin-bottom: 32px;
   align-items: center;
   gap: 8px;
-  max-width: 350px;
 }
 
 .addToCart {

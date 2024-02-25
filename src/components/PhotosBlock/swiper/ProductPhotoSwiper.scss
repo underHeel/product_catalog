@@ -3,28 +3,22 @@
 .mySwiperWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 288px;
-  height: 353px;
-
+  gap: 16px;
 
   @include on-tablet {
-    flex-direction: row-reverse;
-    width: 353px;
+    width: 100%;
     height: 288px;
+    flex-direction: row;
   }
-
 
   @include on-desktop {
     height: 464px;
     width: 560px;
   }
 
-
   .swiper {
-  display: flex;
-  width: 288px;
-  height: 288px;
+    display: flex;
+    height: 288px;
   }
 
   .swiper-slide {
@@ -41,11 +35,14 @@
   }
 
   .mySwiperPicture {
-    height: 288px;
-    width: 288px;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    width: inherit;
+
+    @include on-tablet {
+      order: 1;
+    }
 
     @include on-desktop {
       height: 464px;
@@ -74,7 +71,6 @@
   .mySwiperPhotos {
     box-sizing: border-box;
     border-radius: 4px;
-    width: 288px;
     height: 49px;
 
     @include on-tablet {
@@ -90,12 +86,12 @@
     }
 
     .img {
-      height: 40px; 
+      height: 40px;
       width: auto;
-      
+
       @include on-tablet {
-        height: 30px; 
-      width: auto;
+        height: 30px;
+        width: auto;
       }
 
       @include on-desktop {
@@ -109,18 +105,29 @@
   }
 
   .mySwiperPhotos .swiper-slide {
-    width: 100%;
+    width: 49px !important;
     height: 100%;
     opacity: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--icons-color);
+    border: 1px solid var(--elements-color);
+
+    @include on-tablet {
+      width: 100% !important;
+      height: 35px !important;
+      margin-bottom: 8px !important;
+    }
+
+    @include on-desktop {
+      height: 80px !important;
+      margin-bottom: 16px !important;
+    }
   }
 
   .mySwiperPhotos .swiper-slide-thumb-active {
     opacity: 1;
-    border: 3px solid var(--secondary-accent-color);
+    border: 1px solid var(--color);
     border-radius: 4px;
   }
 }
