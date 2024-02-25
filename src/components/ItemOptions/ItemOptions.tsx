@@ -1,5 +1,6 @@
 import React from 'react';
 import { DetailedProduct } from 'src/types/DetailedProduct';
+import cn from 'classnames';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { Button } from '../ui/buttons/Button';
@@ -20,6 +21,7 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
     resolution,
     processor,
     ram,
+    capacity,
   } = product;
 
   return (
@@ -44,12 +46,16 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
         <div className={styles.capacity}>
           <p className={styles.grayText}>Select capacity</p>
           <div className={styles.capacityButton}>
-            {capacityAvailable.map((capacity) => (
-              <div className={styles.buttonWrapper}>
-                <Button variant="text" onClick={() => {}} key={capacity}>
-                  {capacity}
-                </Button>
-              </div>
+            {capacityAvailable.map((value) => (
+              <button
+                type="button"
+                className={cn(styles.button, {
+                  [styles.active]: value === capacity,
+                })}
+                key={value}
+              >
+                {value}
+              </button>
             ))}
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DetailedProduct } from 'src/types/DetailedProduct';
-import { getSuggestedProducts } from 'src/services/getSuggestedProducts';
+import { DetailedProduct } from '../../types/DetailedProduct';
+import { getSuggestedProducts } from '../../services/getSuggestedProducts';
 import { getPhone } from '../../api/products';
 import { Product } from '../../types/Product';
 import { SliderCard } from '../../components/ui/slider/SliderCard';
@@ -29,8 +29,8 @@ export const ProductPage: React.FC = () => {
         <div className={styles.wrapper}>
           <ItemOptions product={product} />
           <div className={styles.container}>
-            <ItemAbout />
-            <ItemSpech />
+            <ItemAbout product={product} />
+            <ItemSpech product={product} />
           </div>
           <SliderCard
             title="You may also like"

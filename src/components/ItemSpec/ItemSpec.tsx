@@ -1,7 +1,15 @@
 import React from 'react';
+import { DetailedProduct } from 'src/types/DetailedProduct';
 import styles from './ItemsSpec.module.scss';
 
-export const ItemSpech: React.FC = () => {
+interface Props {
+  product: DetailedProduct;
+}
+
+export const ItemSpech: React.FC<Props> = ({ product }) => {
+  const { screen, resolution, processor, ram, capacity, camera, zoom, cell } =
+    product;
+
   return (
     <div className={styles.specs}>
       <h2 className={styles.title}>Tech specs</h2>
@@ -10,42 +18,42 @@ export const ItemSpech: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.text}>
           <p className={styles.subtitle}>Screen</p>
-          <p className={styles.params}>6.5” OLED</p>
+          <p className={styles.params}>{screen}</p>
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Resolution</p>
-          <p className={styles.params}>2688x1242</p>
+          <p className={styles.params}>{resolution}</p>
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Processor</p>
-          <p className={styles.params}>Apple A12 Bionic</p>
+          <p className={styles.params}>{processor}</p>
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>RAM</p>
-          <p className={styles.params}>3 GB</p>
+          <p className={styles.params}>{ram}</p>
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Built in memory</p>
-          <p className={styles.params}>64 GB</p>
+          <p className={styles.params}>{capacity}</p>
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Camera</p>
-          <p className={styles.params}>12 Mp + 12 Mp + 12 Mp (Triple)</p>
+          <p className={styles.params}>{camera}</p>
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Zoom</p>
-          <p className={styles.params}>Optical, 2x</p>
+          <p className={styles.params}>{zoom}</p>
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Cell</p>
-          <p className={styles.params}>GSM, LTE, UMTS</p>
+          <p className={styles.params}>{cell.join(', ')}</p>
         </div>
       </div>
     </div>
