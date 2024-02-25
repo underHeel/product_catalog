@@ -53,6 +53,10 @@ export const ProductsList: React.FC<Props> = ({
       newSearchParams.delete('perPage');
     }
 
+    if (searchParams.get('page')) {
+      newSearchParams.delete('page');
+    }
+
     setSearchParams(newSearchParams);
     isFirstRender.current = false;
   };
