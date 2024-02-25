@@ -16,7 +16,8 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image, id } = product;
+  const { name, fullPrice, price, screen, capacity, ram, image, id, itemId } =
+    product;
 
   const dispatch = useAppDispatch();
   const { productsList } = useAppSelector((state) => state.cart);
@@ -48,7 +49,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <Link to="../product" className={styles.card}>
+    <Link to={`/product/${itemId}`} className={styles.card}>
       <div className={styles.cardHeader}>
         <img className={styles.cardImage} src={image} alt={name} />
 

@@ -16,24 +16,14 @@ export const Root = () => (
         <Route path="/">
           <Route index element={<Home />} />
           <Route path="home" element={<Navigate to=".." />} />
-          <Route path="/phones">
-            <Route index element={<Phones />} />
-          </Route>
-          <Route path="/tablets">
-            <Route index element={<Tablets />} />
-          </Route>
-          <Route path="/accessories">
-            <Route index element={<Accessories />} />
-          </Route>
-          <Route path="/cart">
-            <Route index element={<Cart />} />
-          </Route>
-          <Route path="/favourites">
-            <Route index element={<Favourites />} />
-          </Route>
+          <Route path="/phones" element={<Phones />} />
+          <Route path="/tablets" element={<Tablets />} />
+          <Route path="/accessories" element={<Accessories />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/product/:slug" element={<ProductPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="/product" element={<ProductPage />} />
       </Route>
     </Routes>
   </HashRouter>
