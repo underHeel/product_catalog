@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useSearchParams } from 'react-router-dom';
-import { getPhones } from '../../api/phones';
+import { Category } from '../../types/Category';
+import { getProducts } from '../../api/products';
 import { Product } from '../../types/Product';
 import styles from './PaginatedStore.module.scss';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
@@ -10,12 +11,14 @@ import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ProductCard } from '../ProductCard';
 
 interface Props {
+  category: Category;
   pageCount: number;
   itemsPerPage: number;
   sortBy: string;
 }
 
 export const PaginatedStore: React.FC<Props> = ({
+  category,
   pageCount,
   itemsPerPage,
   sortBy,
@@ -28,8 +31,8 @@ export const PaginatedStore: React.FC<Props> = ({
     : 1;
 
   useEffect(() => {
-    getPhones(currentPage, itemsPerPage, sortBy).then(setPhones);
-  }, [currentPage, itemsPerPage, sortBy]);
+    getProducts(category, currentPage, itemsPerPage, sortBy).then(setPhones);
+  }, [category, currentPage, itemsPerPage, sortBy]);
 
   const handlePageClick = (event: { selected: number }) => {
     const selectedPage = event.selected + 1;

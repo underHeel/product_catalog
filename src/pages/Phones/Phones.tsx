@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
+import { Category } from '../../types/Category';
 import { ProductsList } from '../../components/ProductList/ProductsList';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -13,6 +14,7 @@ import styles from './Phones.module.scss';
 export const Phones: React.FC = () => {
   const dispatch = useAppDispatch();
   const { phones, loading, error } = useAppSelector((state) => state.phones);
+  const category = Category.phones;
 
   useEffect(() => {
     dispatch(phonesActions.fetchPhones());
@@ -43,5 +45,7 @@ export const Phones: React.FC = () => {
     );
   }
 
-  return <ProductsList title="Mobile phones" products={phones} />;
+  return (
+    <ProductsList title="Mobile phones" category={category} products={phones} />
+  );
 };

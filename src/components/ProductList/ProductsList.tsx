@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Category } from '../../types/Category';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../constants/selectsData';
 import { Product } from '../../types/Product';
 import { Dropdown } from '../ui/dropdowns/Dropdown';
@@ -8,10 +9,15 @@ import styles from './ProductsList.module.scss';
 
 interface Props {
   title: string;
+  category: Category;
   products: Product[];
 }
 
-export const ProductsList: React.FC<Props> = ({ title, products }) => {
+export const ProductsList: React.FC<Props> = ({
+  title,
+  category,
+  products,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort') || SORT_BY[0].value;
   const isFirstRender = useRef(true);
@@ -75,6 +81,7 @@ export const ProductsList: React.FC<Props> = ({ title, products }) => {
           </div>
         </div>
         <PaginatedStore
+          category={category}
           pageCount={pageCount}
           itemsPerPage={perPage}
           sortBy={sort}
