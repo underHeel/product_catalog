@@ -1,11 +1,11 @@
 import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
 import { useEffect, useState } from 'react';
 import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules';
-import { Phone } from 'src/types/Phone';
+import { DetailedProduct } from 'src/types/DetailedProduct';
 import './swiper/ProductPhotoSwiper.scss';
 
 type Props = {
-  phone: Phone;
+  phone: DetailedProduct;
 };
 
 export const PhotosBlock: React.FC<Props> = ({ phone }) => {
