@@ -1,7 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Product } from 'src/types/Product';
-import { getAllPhones } from '../../api/phones';
+import { Category } from '../../types/Category';
+import { Product } from '../../types/Product';
+import { getAllProducts } from '../../api/products';
 
 interface PhonesState {
   phones: Product[];
@@ -16,7 +17,7 @@ const initialState: PhonesState = {
 };
 
 export const fetchPhones = createAsyncThunk('phones/fetch', () =>
-  getAllPhones(),
+  getAllProducts(Category.phones),
 );
 
 const phonesSlice = createSlice({

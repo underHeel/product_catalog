@@ -2,7 +2,7 @@ export const ITEMS_PER_PAGE = [
   { value: '4', label: '4' },
   { value: '8', label: '8' },
   { value: '16', label: '16' },
-  { value: 'all', label: 'all' },
+  { value: 'all', label: 'All' },
 ];
 
 export const SORT_BY = [

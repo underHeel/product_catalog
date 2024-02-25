@@ -8,6 +8,8 @@ import accessoriesCategory from '/img/accessories-block.png';
 
 export const Category: React.FC = () => {
   const { phones } = useAppSelector((state) => state.phones);
+  const { tablets } = useAppSelector((state) => state.tablets);
+  const { accessories } = useAppSelector((state) => state.accessories);
 
   return (
     <section>
@@ -33,7 +35,9 @@ export const Category: React.FC = () => {
           />
           <div>
             <p className={styles.categoryName}>Tablets</p>
-            <p className={styles.categoryLength}>24 models</p>
+            <p
+              className={styles.categoryLength}
+            >{`${tablets.length} models`}</p>
           </div>
         </Link>
 
@@ -45,7 +49,9 @@ export const Category: React.FC = () => {
           />
           <div>
             <p className={styles.categoryName}>Accessories</p>
-            <p className={styles.categoryLength}>100 models</p>
+            <p
+              className={styles.categoryLength}
+            >{`${accessories.length} models`}</p>
           </div>
         </Link>
       </div>
