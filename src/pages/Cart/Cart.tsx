@@ -3,15 +3,17 @@
 import React, { useState } from 'react';
 import { PurchaseModal } from '../../components/PurchaseModal';
 import { CartItem } from '../../components/CartItem';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Button } from '../../components/ui/buttons/Button';
 import { ArrowLeftIcon } from '../../components/ui/icons/ArrowLeftIcon';
+import { actions as cartActions } from '../../redux/slices/cartSlice';
 import EmptyCart from '/img/EmptyCart.png';
 import styles from './Cart.module.scss';
 
 export const Cart: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { productsList } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
 
   const cartTotal = productsList.reduce(
     (acc, cur) => acc + cur.price * cur.count,
@@ -21,6 +23,7 @@ export const Cart: React.FC = () => {
 
   const handleCheckout = () => {
     setIsModalOpen(true);
+    productsList.forEach(({ id }) => dispatch(cartActions.remove(id)));
   };
 
   return (
