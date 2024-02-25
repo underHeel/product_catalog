@@ -47,7 +47,7 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
           <div className={styles.capacityButton}>
             {capacityAvailable.map((capacity) => (
               <div className={styles.buttonWrapper}>
-                <Button variant="text" onClick={() => {}}>
+                <Button variant="text" onClick={() => {}} key={capacity}>
                   {capacity}
                 </Button>
               </div>
