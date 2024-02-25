@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import React, { useMemo } from 'react';
-import { Product } from 'src/types/Product';
 import { Link } from 'react-router-dom';
+import { Product } from '../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
@@ -16,8 +16,18 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image, id, itemId } =
-    product;
+  const {
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    image,
+    id,
+    itemId,
+    category,
+  } = product;
 
   const dispatch = useAppDispatch();
   const { productsList } = useAppSelector((state) => state.cart);
@@ -41,7 +51,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    if (favoritesList.includes(product)) {
+    if (favoritesList.some((favorite) => favorite.id === product.id)) {
       dispatch(favoriteActions.remove(id));
     } else {
       dispatch(favoriteActions.add(product));
@@ -49,7 +59,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <Link to={`/product/${itemId}`} className={styles.card}>
+    <Link
+      to={`/product/${itemId}`}
+      state={{ data: category }}
+      className={styles.card}
+    >
       <div className={styles.cardHeader}>
         <img className={styles.cardImage} src={image} alt={name} />
 
