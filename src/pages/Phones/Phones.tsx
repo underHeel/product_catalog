@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
+import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Category } from '../../types/Category';
-import { ProductsList } from '../../components/ProductList/ProductsList';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';

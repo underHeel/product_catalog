@@ -73,7 +73,7 @@ export const PaginatedStore: React.FC<Props> = ({
               <ArrowLeftIcon fill="var(--color)" />
             </IconButton>
           }
-          initialPage={currentPage - 1}
+          forcePage={currentPage - 1}
           pageClassName={styles.buttons}
           renderOnZeroPageCount={null}
           className={styles.line}
