@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { DetailedProduct } from 'src/types/DetailedProduct';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';

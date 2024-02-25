@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { DetailedProduct } from 'src/types/DetailedProduct';
-import { getPhone, getSuggestedProducts } from '../../api/products';
+import { getSuggestedProducts } from 'src/services/getSuggestedProducts';
+import { getPhone } from '../../api/products';
 import { Product } from '../../types/Product';
 import { SliderCard } from '../../components/ui/slider/SliderCard';
 import { ItemOptions } from '../../components/ItemOptions/ItemOptions';

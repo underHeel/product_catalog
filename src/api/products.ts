@@ -1,7 +1,5 @@
-/* eslint-disable indent */
 import { DetailedProduct } from 'src/types/DetailedProduct';
 import { Category } from '../types/Category';
-import { getRandomProduct } from '../services/getRandomProduct';
 import { sortProducts } from '../services/sortProducts';
 import { Product } from '../types/Product';
 
@@ -27,28 +25,6 @@ export const getProducts = (
 
   return getAllProducts(category).then((products) => {
     return sortProducts(sortBy, products).slice(start, end);
-  });
-};
-
-export const getSuggestedProducts = (
-  category: Category,
-): Promise<Product[]> => {
-  return getAllProducts(category).then((products) => {
-    const suggestedProducts: Product[] = [];
-
-    while (suggestedProducts.length < 10) {
-      const randomProduct = getRandomProduct(products);
-
-      if (!suggestedProducts.some(({ id }) => id === randomProduct.id)) {
-        suggestedProducts.push(randomProduct);
-      }
-
-      if (suggestedProducts.length === 10) {
-        break;
-      }
-    }
-
-    return suggestedProducts;
   });
 };
 
