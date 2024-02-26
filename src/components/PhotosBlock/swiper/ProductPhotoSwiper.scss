@@ -72,6 +72,7 @@
     box-sizing: border-box;
     border-radius: 4px;
     height: 49px;
+    overflow-x: auto;
 
     @include on-tablet {
       flex-direction: column;

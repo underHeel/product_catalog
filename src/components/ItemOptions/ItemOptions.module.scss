@@ -66,12 +66,16 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 24px;
+}
+
+.colorWrapper {
   border-bottom: 1px solid var(--elements-color);
 }
 
 .colorTitle {
   display: flex;
   justify-content: space-between;
+
 }
 
 .grayText {
