@@ -44,6 +44,7 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
           prevEl: `.prev-${id}`,
           disabledClass: styles.disabled,
         }}
+        loop
         modules={[Navigation]}
         spaceBetween={16}
         breakpoints={{

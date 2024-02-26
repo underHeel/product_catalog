@@ -1,18 +1,25 @@
-import React from 'react';
-import { DetailedProduct } from 'src/types/DetailedProduct';
+import React, { useMemo } from 'react';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { DetailedProduct } from '../../types/DetailedProduct';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { Button } from '../ui/buttons/Button';
 import { ColorButton } from '../ui/buttons/ColorButton/ColorButton';
 import { PhotosBlock } from '../PhotosBlock';
+import { Product } from '../../types/Product';
+import { actions as cartActions } from '../../redux/slices/cartSlice';
+import { actions as favoriteActions } from '../../redux/slices/favoritesSlice';
+import { FavoriteFilledIcon } from '../ui/icons/FavoriteFilledIcon';
 import styles from './ItemOptions.module.scss';
 
 interface Props {
   product: DetailedProduct;
+  allProducts: Product[];
 }
 
-export const ItemOptions: React.FC<Props> = ({ product }) => {
+export const ItemOptions: React.FC<Props> = ({ product, allProducts }) => {
   const {
     name,
     capacityAvailable,
@@ -25,7 +32,50 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
     capacity,
     color,
     colorsAvailable,
+    id,
   } = product;
+
+  const dispatch = useAppDispatch();
+  const { productsList } = useAppSelector((state) => state.cart);
+  const { favoritesList } = useAppSelector((state) => state.favorites);
+
+  const isInCart = useMemo(() => {
+    return productsList.some((item) => item.itemId === id);
+  }, [id, productsList]);
+
+  const isInFavorite = useMemo(() => {
+    return favoritesList.some((favorite) => favorite.itemId === id);
+  }, [id, favoritesList]);
+
+  const productToAdd = allProducts.find((item) => item.itemId === id);
+
+  const getProductUrl = (
+    selectedColor: string = color,
+    selectedCapacity: string = capacity,
+  ) => {
+    const splitedId = id.split('-');
+
+    splitedId[splitedId.length - 1] = selectedColor.toLowerCase();
+    splitedId[splitedId.length - 2] = selectedCapacity.toLowerCase();
+
+    return splitedId.join('-');
+  };
+
+  const handleCart = () => {
+    if (isInCart && productToAdd) {
+      dispatch(cartActions.remove(productToAdd?.id));
+    } else if (productToAdd) {
+      dispatch(cartActions.add(productToAdd));
+    }
+  };
+
+  const handleFavorite = () => {
+    if (isInFavorite && productToAdd) {
+      dispatch(favoriteActions.remove(productToAdd.id));
+    } else if (productToAdd) {
+      dispatch(favoriteActions.add(productToAdd));
+    }
+  };
 
   return (
     <section className={styles.options}>
@@ -44,12 +94,16 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
             <div className={cn(styles.wrapper, styles.colorWrapper)}>
               <div className={styles.colorButtons}>
                 {colorsAvailable.map((availableColor) => (
-                  <ColorButton
-                    color={availableColor}
-                    isSelected={availableColor === color}
-                    onClick={() => {}}
+                  <Link
+                    to={`/product/${getProductUrl(availableColor)}`}
                     key={availableColor}
-                  />
+                  >
+                    <ColorButton
+                      color={availableColor}
+                      isSelected={availableColor === color}
+                      onClick={() => {}}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
@@ -59,15 +113,19 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
               <p className={styles.grayText}>Select capacity</p>
               <div className={styles.capacityButton}>
                 {capacityAvailable.map((value) => (
-                  <button
-                    type="button"
-                    className={cn(styles.button, {
-                      [styles.active]: value === capacity,
-                    })}
+                  <Link
+                    to={`/product/${getProductUrl(undefined, value)}`}
                     key={value}
                   >
-                    {value}
-                  </button>
+                    <button
+                      type="button"
+                      className={cn(styles.button, {
+                        [styles.active]: value === capacity,
+                      })}
+                    >
+                      {value}
+                    </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -79,18 +137,35 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
 
             <div className={styles.addButtons}>
               <div className={styles.addToCart}>
-                <Button variant="contained" onClick={() => {}}>
-                  Add to cart
-                </Button>
+                {isInCart ? (
+                  <Button variant="outlined" onClick={handleCart}>
+                    {' '}
+                    Added
+                  </Button>
+                ) : (
+                  <Button variant="contained" onClick={handleCart}>
+                    Add to cart
+                  </Button>
+                )}
               </div>
               <div>
-                <IconButton
-                  size="large"
-                  classNames={styles.favoriteButton}
-                  onClick={() => {}}
-                >
-                  <FavoriteIcon />
-                </IconButton>
+                {isInFavorite ? (
+                  <IconButton
+                    size="large"
+                    classNames={styles.favoriteButton}
+                    onClick={handleFavorite}
+                  >
+                    <FavoriteFilledIcon />
+                  </IconButton>
+                ) : (
+                  <IconButton
+                    size="large"
+                    classNames={styles.favoriteButton}
+                    onClick={handleFavorite}
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                )}
               </div>
             </div>
 

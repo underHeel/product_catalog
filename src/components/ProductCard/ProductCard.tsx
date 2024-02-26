@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
@@ -96,28 +95,31 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.buttonWrapper}>
         {isInCart ? (
-          <Button children="Added" variant="outlined" onClick={handleCart} />
+          <Button variant="outlined" onClick={handleCart}>
+            {' '}
+            Added
+          </Button>
         ) : (
-          <Button
-            children="Add to cart"
-            variant="contained"
-            onClick={handleCart}
-          />
+          <Button variant="contained" onClick={handleCart}>
+            Add to cart
+          </Button>
         )}
         {favoritesList.includes(product) ? (
           <IconButton
             size="large"
             classNames={styles.favoriteButton}
             onClick={handleFavorite}
-            children={<FavoriteFilledIcon />}
-          />
+          >
+            <FavoriteFilledIcon />
+          </IconButton>
         ) : (
           <IconButton
             size="large"
             classNames={styles.favoriteButton}
             onClick={handleFavorite}
-            children={<FavoriteIcon />}
-          />
+          >
+            <FavoriteIcon />
+          </IconButton>
         )}
       </div>
     </Link>
