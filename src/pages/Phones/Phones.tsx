@@ -5,6 +5,7 @@ import { Category } from '../../types/Category';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
+import styles from './Phones.module.scss';
 import errorImg from '/img/errorImage.png';
 import noProductImg from '/img/no_product.png';
 
@@ -23,7 +24,9 @@ export const Phones: React.FC = () => {
 
   if (phones.length === 0) {
     return (
-      <ErrorComponent image={noProductImg} errorMessage="No products there" />
+      <div className={styles.wrapper}>
+        <ErrorComponent image={noProductImg} errorMessage="No products there" />
+      </div>
     );
   }
 

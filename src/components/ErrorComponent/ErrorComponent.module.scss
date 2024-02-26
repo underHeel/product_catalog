@@ -1,8 +1,7 @@
 @import '../../styles/utils/main';
 
 .errorWrapper {
-  padding: 10px;
-  height: calc(100vh - 257px - 48px);
+  height: 100%;
   display: flex;
   font-family: Mont, Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -11,12 +10,10 @@
   align-items: center;
 
   @include on-tablet {
-    height: calc(100vh - 96px - 48px);
     font-size: 22px;
   }
 
   @include on-desktop {
-    height: calc(100vh - 96px - 64px);
     font-size: 30px;
   }
 
