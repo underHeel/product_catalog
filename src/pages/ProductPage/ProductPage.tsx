@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { ErrorComponent } from '../../components/ErrorComponent';
 import { Category } from '../../types/Category';
 import { DetailedProduct } from '../../types/DetailedProduct';
 import { getSuggestedProducts } from '../../services/getSuggestedProducts';
@@ -9,6 +11,7 @@ import { SliderCard } from '../../components/ui/slider/SliderCard';
 import { ItemOptions } from '../../components/ItemOptions/ItemOptions';
 import { ItemAbout } from '../../components/ItemAbout';
 import { ItemSpech } from '../../components/ItemSpec';
+import errorImg from '/img/errorImage.png';
 
 import styles from './ProductPage.module.scss';
 
@@ -37,11 +40,11 @@ export const ProductPage: React.FC = () => {
       getSuggestedProducts(category).then(setSuggestedProducts);
       getProduct(category, itemId).then(setProduct);
     }
-  }, [category, itemId, state, allProducts]);
+  }, [category, itemId, state]);
 
   return (
     <>
-      {product && (
+      {product ? (
         <div className={styles.wrapper}>
           <ItemOptions product={product} allProducts={allProducts} />
           <div className={styles.container}>
@@ -54,6 +57,8 @@ export const ProductPage: React.FC = () => {
             id={1}
           />
         </div>
+      ) : (
+        <ErrorComponent image={errorImg} errorMessage="Product was not found" />
       )}
     </>
   );
