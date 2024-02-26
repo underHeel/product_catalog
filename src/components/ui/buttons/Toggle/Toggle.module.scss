@@ -22,7 +22,7 @@
     height: 16px;
     border-radius: 50%;
     background-color: var(--white);
-    transition: .3s;
+    transition: left 0.3s;
 
     &.isChecked {
         left: calc(100% - 18px);
