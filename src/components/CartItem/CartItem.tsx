@@ -17,7 +17,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const { name, price, image, id, count, itemId } = product;
+  const { name, price, image, id, count, itemId, category } = product;
 
   const dispatch = useAppDispatch();
 
@@ -45,7 +45,11 @@ export const CartItem: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <Link to={`/product/${itemId}`} className={styles.cart}>
+    <Link
+      to={`/product/${itemId}`}
+      state={{ data: category }}
+      className={styles.cart}
+    >
       <div className={styles.cartInfo}>
         <div className={styles.cartItem}>
           <button className={styles.removeButton} onClick={handleRemove}>

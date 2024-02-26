@@ -6,7 +6,18 @@ import { Product } from '../types/Product';
 const API_URL_PRODUCTS = `https://underheel.github.io/product_catalog/products.json`;
 const API_URL_PHONES = `https://underheel.github.io/product_catalog/phones.json`;
 
-export const getAllProducts = (category: string): Promise<Product[]> => {
+export const getAllProducts = (): Promise<Product[]> =>
+  fetch(API_URL_PRODUCTS).then((response) => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch products');
+    }
+
+    return response.json();
+  });
+
+export const getAllProductsByCategory = (
+  category: string,
+): Promise<Product[]> => {
   return fetch(API_URL_PRODUCTS)
     .then((response) => response.json())
     .then((products) =>
@@ -23,7 +34,7 @@ export const getProducts = (
   const end = perPage * page;
   const start = end - perPage;
 
-  return getAllProducts(category).then((products) => {
+  return getAllProductsByCategory(category).then((products) => {
     return sortProducts(sortBy, products).slice(start, end);
   });
 };
