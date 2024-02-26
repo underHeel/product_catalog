@@ -66,6 +66,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
 
   .mySwiperPhotos {
@@ -73,6 +74,7 @@
     border-radius: 4px;
     height: 49px;
     overflow-x: auto;
+    cursor: pointer;
 
     @include on-tablet {
       flex-direction: column;
