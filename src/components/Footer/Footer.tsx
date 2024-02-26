@@ -30,7 +30,7 @@ export const Footer = () => {
         </div>
         <div className={styles.additional}>
           <a
-            href="https://github.com"
+            href="https://github.com/underHeel"
             target="_blank"
             rel="noreferrer"
             className={styles.additionalLink}
