@@ -31,13 +31,13 @@ export const TopSlider: React.FC = () => {
       modules={[Pagination, Navigation, Autoplay]}
       className={styles.mySwiper}
     >
-      <SwiperSlide className={styles.slide}>
+      <SwiperSlide className={styles.firstSlide}>
         <img src={phonesBanner} alt="" />
       </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
+      <SwiperSlide className={styles.secondSlide}>
         <img src={tabletsBanner} alt="" />
       </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
+      <SwiperSlide className={styles.thirdSlide}>
         <img src={accesBanner} alt="" />
       </SwiperSlide>
       <div
