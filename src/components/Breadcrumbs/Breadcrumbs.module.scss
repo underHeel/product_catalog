@@ -1,2 +1,21 @@
 @import '../../styles/utils/main';
 
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  padding-top: 16px;
+  cursor: pointer;
+}
+
+.crumb {
+  display: flex;
+  flex-direction: row;
+  max-height: 16px;
+  width: auto;
+  font-size: 12px;
+  font-weight: 700;
+  padding-right: 8px;
+  padding-left: 8px;
+  align-items: center;
+  color: var(--secondary-color);
+}

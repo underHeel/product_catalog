@@ -1,11 +1,16 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HomeIcon } from '../ui/icons/HomeIcon';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
+import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
+import styles from './Breadcrumbs.module.scss';
 
 export default function Breadcrumbs() {
   const location = useLocation();
+  const history = useNavigate();
 
-  console.log(location);
+  const goBack = () => {
+    history('..');
+  };
 
   let currenrLink = '';
 
@@ -17,24 +22,44 @@ export default function Breadcrumbs() {
       const isLastCrumb = index === array.length - 1;
 
       return (
-        <div className="crumb" key={crumb}>
+        <div className={styles.crumb} key={crumb}>
           <Link to={currenrLink}>{crumb}</Link>
-          {!isLastCrumb && <ArrowRightIcon />}
+          {!isLastCrumb && (
+            <div className={styles.crumb}>
+              <ArrowRightIcon />
+            </div>
+          )}
         </div>
       );
     });
 
   return (
-    <div className="breadcrumbs">
+    <>
+      <div className={styles.breadcrumbs}>
+        {location.pathname !== '/' && (
+          <>
+            <Link to="/" className={styles.crumb}>
+              <div className={styles.crumb}>
+                <HomeIcon />
+              </div>
+              <div className={styles.crumb}>
+                <ArrowRightIcon />
+              </div>
+            </Link>{' '}
+            <div className={styles.crumb}>{crumbs}</div>
+          </>
+        )}
+      </div>
       {location.pathname !== '/' && (
-        <>
-          <Link to="/">
-            <HomeIcon />
-            <ArrowRightIcon />
-          </Link>{' '}
-          <span>{crumbs}</span>
-        </>
+        <div className={styles.breadcrumbs}>
+          <div className={styles.crumb}>
+            <ArrowLeftIcon />
+            <button type="submit" onClick={goBack} className={styles.crumb}>
+              Back
+            </button>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 }
