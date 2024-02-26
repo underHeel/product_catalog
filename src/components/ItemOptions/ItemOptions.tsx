@@ -1,6 +1,7 @@
 import React from 'react';
 import { DetailedProduct } from 'src/types/DetailedProduct';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { Button } from '../ui/buttons/Button';
@@ -25,7 +26,20 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
     capacity,
     color,
     colorsAvailable,
+    id,
   } = product;
+
+  const getProductUrl = (
+    selectedColor: string = color,
+    selectedCapacity: string = capacity,
+  ) => {
+    const splitedId = id.split('-');
+
+    splitedId[splitedId.length - 1] = selectedColor.toLowerCase();
+    splitedId[splitedId.length - 2] = selectedCapacity.toLowerCase();
+
+    return splitedId.join('-');
+  };
 
   return (
     <section className={styles.options}>
@@ -44,12 +58,16 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
             <div className={cn(styles.wrapper, styles.colorWrapper)}>
               <div className={styles.colorButtons}>
                 {colorsAvailable.map((availableColor) => (
-                  <ColorButton
-                    color={availableColor}
-                    isSelected={availableColor === color}
-                    onClick={() => {}}
+                  <Link
+                    to={`/product/${getProductUrl(availableColor)}`}
                     key={availableColor}
-                  />
+                  >
+                    <ColorButton
+                      color={availableColor}
+                      isSelected={availableColor === color}
+                      onClick={() => {}}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
@@ -59,15 +77,19 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
               <p className={styles.grayText}>Select capacity</p>
               <div className={styles.capacityButton}>
                 {capacityAvailable.map((value) => (
-                  <button
-                    type="button"
-                    className={cn(styles.button, {
-                      [styles.active]: value === capacity,
-                    })}
+                  <Link
+                    to={`/product/${getProductUrl(undefined, value)}`}
                     key={value}
                   >
-                    {value}
-                  </button>
+                    <button
+                      type="button"
+                      className={cn(styles.button, {
+                        [styles.active]: value === capacity,
+                      })}
+                    >
+                      {value}
+                    </button>
+                  </Link>
                 ))}
               </div>
             </div>

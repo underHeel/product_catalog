@@ -37,10 +37,12 @@
 
   @include on-tablet {
     max-width: 338px;
+    min-width: 338px;
   }
 
   @include on-desktop {
     max-width: 560px;
+    min-width: 560px;
   }
 }
 

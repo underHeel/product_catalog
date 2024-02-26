@@ -13,7 +13,7 @@ interface Props {
 const colorMap: Record<string, string> = {
   black: '#4c4c4c',
   green: '#5f7170',
-  yellow: '#fcdbc1',
+  yellow: '#FFD700',
   white: '#f0f0f0',
   purple: '#9195f6',
   spacegray: '#4f5b66',
