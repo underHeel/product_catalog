@@ -6,11 +6,16 @@
   gap: 32px;
   padding-top: 24px;
   padding-bottom: 56px;
-  min-height: 100vh;
+  min-height: calc(100vh - 257px - 48px);
 
   @include on-tablet {
     padding-top: 40px;
     padding-bottom: 64px;
+    min-height: calc(100vh - 96px - 48px);
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - 96px - 64px);
   }
 
   @include content-indents;

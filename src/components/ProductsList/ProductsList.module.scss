@@ -2,6 +2,16 @@
 
 .container {
     @include content-indents;
+
+    min-height: calc(100vh - 257px - 48px);
+
+    @include on-tablet {
+        min-height: calc(100vh - 96px - 48px);
+    }
+
+    @include on-desktop {
+        min-height: calc(100vh - 96px - 64px);
+    }
 }
 
 .catalogWrapper {
