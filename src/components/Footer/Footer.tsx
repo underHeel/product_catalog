@@ -39,8 +39,13 @@ export const Footer = () => {
           >
             GITHUB
           </a>
-          <a href="/contacts" className={styles.additionalLink}>
-            <PreviewWindow />
+          <a
+            href="https://github.com/underHeel"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.additionalLink}
+          >
+            CONTACTS
           </a>
           <a
             href="https://docs.github.com/en/site-policy/privacy-policies/"
