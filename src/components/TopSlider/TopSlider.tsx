@@ -44,13 +44,13 @@ export const TopSlider: React.FC = () => {
         className={`${styles.icons} ${styles['prev-top-slide']}`}
         onMouseDown={(event) => event.preventDefault()}
       >
-        <ArrowLeftIcon fill="#0F0F11" />
+        <ArrowLeftIcon fill="var(--pagination-button-color)" />
       </div>
       <div
         className={`${styles.icons} ${styles['next-top-slide']}`}
         onMouseDown={(event) => event.preventDefault()}
       >
-        <ArrowRightIcon fill="#0F0F11" />
+        <ArrowRightIcon fill="var(--pagination-button-color)" />
       </div>
     </Swiper>
   );

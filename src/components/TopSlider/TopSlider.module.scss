@@ -51,18 +51,19 @@
   @include on-tablet {
     display: flex;
     align-items: center;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s;
 
-    &:hover {
-      background-color: $secondary-color;
-      opacity: 0.2;
+    @include on-desktop {
+      &:hover {
+        background-color: rgba(137 147 154 / 30%);
+      }
     }
   }
-}
 
-.icons>svg {
-  height: 50px;
-  width: 50px;
+  & svg {
+    height: 50px;
+    width: 50px;
+  }
 }
 
 .next-top-slide {
