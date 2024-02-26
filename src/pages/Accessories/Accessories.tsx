@@ -48,6 +48,10 @@ export const Accessories: React.FC = () => {
   }
 
   return (
-    <ProductsList title="Tablets" category={category} products={accessories} />
+    <ProductsList
+      title="Accessories"
+      category={category}
+      products={accessories}
+    />
   );
 };

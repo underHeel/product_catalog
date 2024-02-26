@@ -20,7 +20,7 @@ export const Home: React.FC = () => {
 
   const hotPrices = phones
     .filter(({ price, fullPrice }) => fullPrice - price >= 100)
-    .sort((a, b) => b.year - a.year);
+    .sort((a, b) => b.price - a.price);
 
   return (
     <>
