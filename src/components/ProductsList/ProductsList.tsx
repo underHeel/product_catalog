@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Category } from '../../types/Category';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../constants/selectsData';
@@ -20,19 +20,25 @@ export const ProductsList: React.FC<Props> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort') || SORT_BY[0].value;
-  const isFirstRender = useRef(true);
+  const itemsPerPage = searchParams.get('perPage') || ITEMS_PER_PAGE[3].value;
 
   function getProductsPerPage() {
-    if (isFirstRender.current) {
-      return Number(ITEMS_PER_PAGE[0].value);
-    }
-
     if (searchParams.get('perPage')) {
       return Number(searchParams.get('perPage'));
     }
 
     return products.length;
   }
+
+  useEffect(() => {
+    if (!searchParams.get('sort') && !searchParams.get('perPage')) {
+      const newSearchParams = new URLSearchParams(searchParams);
+
+      newSearchParams.set('sort', SORT_BY[0].value);
+      newSearchParams.set('perPage', ITEMS_PER_PAGE[0].value);
+      setSearchParams(newSearchParams);
+    }
+  }, []);
 
   const perPage = getProductsPerPage();
   const pageCount = Math.ceil(products.length / perPage);
@@ -58,7 +64,6 @@ export const ProductsList: React.FC<Props> = ({
     }
 
     setSearchParams(newSearchParams);
-    isFirstRender.current = false;
   };
 
   return (
@@ -78,7 +83,7 @@ export const ProductsList: React.FC<Props> = ({
           <div className={styles.itemsPerPage}>
             <Dropdown
               description="Items on page"
-              value={ITEMS_PER_PAGE[0].value}
+              value={itemsPerPage}
               options={ITEMS_PER_PAGE}
               onSelect={(selectedOption) => handleItemSelect(selectedOption)}
             />
