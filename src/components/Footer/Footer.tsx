@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
 import styles from './Footer.module.scss';
@@ -6,7 +5,6 @@ import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowUpIcon } from '../ui/icons/ArrowUpIcon';
 import Logo from '/img/Logo.png';
 import LogoDark from '/img/LogoDark.png';
-import { PreviewWindow } from './PreviewWindow';
 
 export const Footer = () => {
   const { theme } = useAppSelector((state) => state.theme);
