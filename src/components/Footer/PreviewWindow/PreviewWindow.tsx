@@ -12,23 +12,46 @@ export const PreviewWindow = () => {
   };
 
   return (
-    <div className="GitHubUsersPreview-container">
+    <div>
       <a
         href="#/"
-        className="GitHubUsersPreview-link"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        GitHub Users
+        CONTACTS
       </a>
       {isHovered && (
-        <div className="GitHubUsersPreview-window">
-          <h3>Top 5 GitHub Users:</h3>
-          <ul className="GitHubUsersPreview-list">
-            <li className="GitHubUsersPreview-item">Some Github account 1</li>
-            <li className="GitHubUsersPreview-item">Some Github account 2</li>
-            <li className="GitHubUsersPreview-item">Some Github account 3</li>
-            <li className="GitHubUsersPreview-item">Some Github account 4</li>
+        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <ul>
+            <li>
+              <a href="https://github.com/" target="_blank" rel="noreferrer">
+                Alyona
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/" target="_blank" rel="noreferrer">
+                Vlad
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/" target="_blank" rel="noreferrer">
+                Nazariy
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/YevhenOstrovskiy"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Yevhen
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/" target="_blank" rel="noreferrer">
+                Danil
+              </a>
+            </li>
           </ul>
         </div>
       )}

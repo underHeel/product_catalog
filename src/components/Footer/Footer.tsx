@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
 import styles from './Footer.module.scss';
@@ -30,14 +31,23 @@ export const Footer = () => {
           </Link>
         </div>
         <div className={styles.additional}>
-          <PreviewWindow />
-          <a href="https://github.com" className={styles.additionalLink}>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.additionalLink}
+          >
             GITHUB
           </a>
           <a href="/contacts" className={styles.additionalLink}>
-            CONTACTS
+            <PreviewWindow />
           </a>
-          <a href="/contacts" className={styles.additionalLink}>
+          <a
+            href="https://docs.github.com/en/site-policy/privacy-policies/"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.additionalLink}
+          >
             RIGHTS
           </a>
         </div>
