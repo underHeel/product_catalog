@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Product } from 'src/types/Product';
 import { Navigation } from 'swiper/modules';
@@ -8,6 +8,7 @@ import { ArrowRightIcon } from '../icons/ArrowRightIcon';
 import 'swiper/css';
 import styles from './SliderCard.module.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
+import { CardSkeleton } from '../../CardSkeleton/CardSkeleton';
 
 interface Props {
   title: string;
@@ -16,6 +17,10 @@ interface Props {
 }
 
 export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 2000);
+
   return (
     <div>
       <div className={styles.header}>
@@ -53,7 +58,7 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
       >
         {items.map((item) => (
           <SwiperSlide key={item.id} className={styles.slider}>
-            <ProductCard product={item} />
+            {loading ? <CardSkeleton /> : <ProductCard product={item} />}
           </SwiperSlide>
         ))}
       </Swiper>
