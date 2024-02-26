@@ -23,6 +23,8 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
     processor,
     ram,
     capacity,
+    color,
+    colorsAvailable,
   } = product;
 
   return (
@@ -38,12 +40,16 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
             <p className={styles.grayText}>Avaliable colors</p>
             <p className={styles.grayText}>ID: 802390</p>
           </div>
-          <div className={styles.wrapper}>
+          <div className={cn(styles.wrapper, styles.colorWrapper)}>
             <div className={styles.colorButtons}>
-              <ColorButton color="yellow" onClick={() => {}} />
-              <ColorButton color="green" onClick={() => {}} />
-              <ColorButton color="black" onClick={() => {}} />
-              <ColorButton color="white" onClick={() => {}} />
+              {colorsAvailable.map((availableColor) => (
+                <ColorButton
+                  color={availableColor}
+                  isSelected={availableColor === color}
+                  onClick={() => {}}
+                  key={availableColor}
+                />
+              ))}
             </div>
           </div>
         </div>

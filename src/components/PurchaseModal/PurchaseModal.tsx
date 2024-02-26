@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../ui/buttons/Button';
 import styles from './PurchaseModal.module.scss';
+import { IconButton } from '../ui/buttons/IconButton';
+import { CloseIcon } from '../ui/icons/CloseIcon';
 
 interface Props {
   isOpen: boolean;
@@ -9,19 +11,41 @@ interface Props {
 
 export const PurchaseModal: React.FC<Props> = ({ isOpen }) => {
   const navigate = useNavigate();
-
-  const goHome = () => {
+  const modalContentRef = useRef<HTMLDivElement>(null);
+  const closeModalAndRedirect = () => {
     navigate('/');
   };
+
+  useEffect(() => {
+    const handleClickOutsideModal = (event: MouseEvent) => {
+      if (
+        modalContentRef.current &&
+        !modalContentRef.current.contains(event.target as Node)
+      ) {
+        closeModalAndRedirect();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutsideModal);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsideModal);
+    };
+  });
 
   return (
     isOpen && (
       <div className={styles.modal}>
-        <div className={styles.modalContent}>
-          <div className={styles.modalHeader} />
+        <div ref={modalContentRef} className={styles.modalContent}>
+          <IconButton
+            onClick={closeModalAndRedirect}
+            classNames={styles.closeButton}
+          >
+            <CloseIcon />
+          </IconButton>
           <p className={styles.modalText}>Thank you for purchase!</p>
           <div className={styles.buttonContainer}>
-            <Button variant="contained" onClick={goHome}>
+            <Button variant="contained" onClick={closeModalAndRedirect}>
               Go Home
             </Button>
           </div>

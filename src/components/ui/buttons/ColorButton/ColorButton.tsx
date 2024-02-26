@@ -16,6 +16,16 @@ const colorMap: Record<string, string> = {
   yellow: '#fcdbc1',
   white: '#f0f0f0',
   purple: '#9195f6',
+  spacegray: '#4f5b66',
+  midnightgreen: '#004953',
+  gold: '	#ffdc73',
+  silver: '#c0c0c0',
+  rosegold: '#f8b996',
+  coral: '#f88379 ',
+  midnight: '#000E34',
+  graphite: '#605D53',
+  sierrablue: '#BFDAF7',
+  spaceblack: '404140',
 };
 
 export const ColorButton: React.FC<Props> = ({
@@ -36,7 +46,7 @@ export const ColorButton: React.FC<Props> = ({
     >
       <div
         className={styles.colorWrapper}
-        style={{ backgroundColor: colorMap[color] }}
+        style={{ backgroundColor: colorMap[color] || `${color}` }}
       />
     </button>
   );
