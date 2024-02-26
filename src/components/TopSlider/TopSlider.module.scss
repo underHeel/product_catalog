@@ -1,4 +1,5 @@
 @import '../../styles/utils/main';
+@import '../../styles/utils/colors';
 
 .mySwiper {
   border-radius: 9px;
@@ -18,6 +19,9 @@
 }
 
 .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 
   img {
@@ -25,9 +29,15 @@
   }
 
   @include on-tablet {
+    height: 190px;
+
     img {
-      content: url("/img/top-slide-banner.png");
+      content: none;
     }
+  }
+
+  @include on-desktop {
+    height: 400px;
   }
 }
 
@@ -41,6 +51,12 @@
   @include on-tablet {
     display: flex;
     align-items: center;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $secondary-color;
+      opacity: 0.2;
+    }
   }
 }
 
