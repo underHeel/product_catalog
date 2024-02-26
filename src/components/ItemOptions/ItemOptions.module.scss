@@ -3,6 +3,7 @@
 .options {
   display: flex;
   flex-direction: column;
+
   @include on-tablet {
     @include page-grid;
   }
@@ -31,8 +32,7 @@
 }
 
 .slider {
-  background-color: aqua;
-  height: 400px;
+  grid-column: 1/4;
   margin-bottom: 40px;
 
   @include on-tablet {
@@ -51,6 +51,13 @@
 
   @include on-desktop {
     grid-column: 14/25;
+  }
+}
+
+.wrapper {
+
+  @include on-tablet {
+    max-width: 320px;
   }
 }
 
@@ -93,10 +100,16 @@
   margin-bottom: 24px;
 }
 
-.buttonWrapper {
-  color: black;
+.button {
+  color: var(--color);
   border: 1px solid var(--icons-color);
   border-radius: 4px;
+  padding: 7px 8px 4px;
+
+  &.active {
+    background-color: var(--color);
+    color: var(--bg-color-menu);
+  }
 }
 
 .price {
@@ -124,7 +137,6 @@
   margin-bottom: 32px;
   align-items: center;
   gap: 8px;
-  max-width: 350px;
 }
 
 .addToCart {

@@ -1,18 +1,14 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/jsx-boolean-value */
-/* eslint-disable no-console */
 import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
 import { useEffect, useState } from 'react';
 import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules';
-import { Phone } from 'src/types/Phone';
+import { DetailedProduct } from 'src/types/DetailedProduct';
 import './swiper/ProductPhotoSwiper.scss';
 
 type Props = {
-  phone: Phone;
+  product: DetailedProduct;
 };
 
-export const PhotosBlock: React.FC<Props> = ({ phone }) => {
+export const PhotosBlock: React.FC<Props> = ({ product }) => {
   const [bigSwiper, setBigSwiper] = useState<SwiperClass>();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -36,7 +32,7 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
     <div className="mySwiperWrapper">
       <div className="mySwiperPicture">
         <Swiper
-          loop={true}
+          loop
           autoplay={{
             delay: 3000,
             disableOnInteraction: true,
@@ -49,7 +45,7 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
           }}
           className="mySwiperPicture"
         >
-          {phone.images.map((image) => (
+          {product.images.map((image) => (
             <SwiperSlide key={image}>
               <img src={image} alt="Slide" className="img" />
             </SwiperSlide>
@@ -61,16 +57,16 @@ export const PhotosBlock: React.FC<Props> = ({ phone }) => {
           modules={[Thumbs]}
           spaceBetween={6}
           slidesPerView={5}
-          updateOnWindowResize={true}
+          updateOnWindowResize
           direction={isScreenGreaterThan640px() ? 'vertical' : 'horizontal'}
-          freeMode={true}
-          watchSlidesProgress={true}
+          freeMode
+          watchSlidesProgress
           onClick={(swiper) => {
             setBigSwiper(swiper);
           }}
           className="mySwiperPhotos"
         >
-          {phone.images.map((image) => (
+          {product.images.map((image) => (
             <SwiperSlide key={image}>
               <img src={image} alt="Slide" className="img" />
             </SwiperSlide>

@@ -1,6 +1,6 @@
-import { Category } from 'src/types/Category';
+import { DetailedProduct } from 'src/types/DetailedProduct';
+import { Category } from '../types/Category';
 import { sortProducts } from '../services/sortProducts';
-import { Phone } from '../types/Phone';
 import { Product } from '../types/Product';
 
 const API_URL_PRODUCTS = `https://underheel.github.io/product_catalog/products.json`;
@@ -28,8 +28,10 @@ export const getProducts = (
   });
 };
 
-export const getPhone = (id: string): Promise<Phone> => {
+export const getPhone = (itemId: string): Promise<DetailedProduct> => {
   return fetch(API_URL_PHONES)
     .then((response) => response.json())
-    .then((phones) => phones.find((phone: Phone) => phone.id === id));
+    .then((products) =>
+      products.find((phone: DetailedProduct) => phone.id === itemId),
+    );
 };
