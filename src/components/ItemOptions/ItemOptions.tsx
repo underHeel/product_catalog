@@ -30,85 +30,87 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
   return (
     <section className={styles.options}>
       <h1 className={styles.title}>{name}</h1>
-      <div className={styles.slider}>
-        <PhotosBlock product={product} />
-      </div>
-
-      <div className={styles.container}>
-        <div className={styles.color}>
-          <div className={styles.colorTitle}>
-            <p className={styles.grayText}>Avaliable colors</p>
-            <p className={styles.grayText}>ID: 802390</p>
-          </div>
-          <div className={cn(styles.wrapper, styles.colorWrapper)}>
-            <div className={styles.colorButtons}>
-              {colorsAvailable.map((availableColor) => (
-                <ColorButton
-                  color={availableColor}
-                  isSelected={availableColor === color}
-                  onClick={() => {}}
-                  key={availableColor}
-                />
-              ))}
-            </div>
-          </div>
+      <div className={styles.main}>
+        <div className={styles.slider}>
+          <PhotosBlock product={product} />
         </div>
-        <div className={styles.wrapper}>
-          <div className={styles.capacity}>
-            <p className={styles.grayText}>Select capacity</p>
-            <div className={styles.capacityButton}>
-              {capacityAvailable.map((value) => (
-                <button
-                  type="button"
-                  className={cn(styles.button, {
-                    [styles.active]: value === capacity,
-                  })}
-                  key={value}
+
+        <div className={styles.container}>
+          <div className={styles.color}>
+            <div className={styles.colorTitle}>
+              <p className={styles.grayText}>Avaliable colors</p>
+              <p className={styles.grayText}>ID: 802390</p>
+            </div>
+            <div className={cn(styles.wrapper, styles.colorWrapper)}>
+              <div className={styles.colorButtons}>
+                {colorsAvailable.map((availableColor) => (
+                  <ColorButton
+                    color={availableColor}
+                    isSelected={availableColor === color}
+                    onClick={() => {}}
+                    key={availableColor}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className={styles.wrapper}>
+            <div className={styles.capacity}>
+              <p className={styles.grayText}>Select capacity</p>
+              <div className={styles.capacityButton}>
+                {capacityAvailable.map((value) => (
+                  <button
+                    type="button"
+                    className={cn(styles.button, {
+                      [styles.active]: value === capacity,
+                    })}
+                    key={value}
+                  >
+                    {value}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.price}>
+              <p className={styles.priceText}>{`$${priceDiscount}`}</p>
+              <p className={styles.discountPrice}>{`$${priceRegular}`}</p>
+            </div>
+
+            <div className={styles.addButtons}>
+              <div className={styles.addToCart}>
+                <Button variant="contained" onClick={() => {}}>
+                  Add to cart
+                </Button>
+              </div>
+              <div>
+                <IconButton
+                  size="large"
+                  classNames={styles.favoriteButton}
+                  onClick={() => {}}
                 >
-                  {value}
-                </button>
-              ))}
+                  <FavoriteIcon />
+                </IconButton>
+              </div>
             </div>
-          </div>
 
-          <div className={styles.price}>
-            <p className={styles.priceText}>{`$${priceDiscount}`}</p>
-            <p className={styles.discountPrice}>{`$${priceRegular}`}</p>
-          </div>
-
-          <div className={styles.addButtons}>
-            <div className={styles.addToCart}>
-              <Button variant="contained" onClick={() => {}}>
-                Add to cart
-              </Button>
-            </div>
-            <div>
-              <IconButton
-                size="large"
-                classNames={styles.favoriteButton}
-                onClick={() => {}}
-              >
-                <FavoriteIcon />
-              </IconButton>
-            </div>
-          </div>
-
-          <div className={styles.features}>
-            <div className={styles.featuresText}>
-              <p className={styles.grayText}>Screen</p>
-              <p className={styles.featuresParams}>{screen}</p>
-            </div>
-            <div className={styles.featuresText}>
-              <p className={styles.grayText}>Resolution</p>
-              <p className={styles.featuresParams}>{resolution}</p>
-            </div>
-            <div className={styles.featuresText}>
-              <p className={styles.grayText}>Processor</p>
-              <p className={styles.featuresParams}>{processor}</p>
-            </div>
-            <div className={styles.featuresText}>
-              <p className={styles.grayText}>RAM</p>
-              <p className={styles.featuresParams}>{ram}</p>
+            <div className={styles.features}>
+              <div className={styles.featuresText}>
+                <p className={styles.grayText}>Screen</p>
+                <p className={styles.featuresParams}>{screen}</p>
+              </div>
+              <div className={styles.featuresText}>
+                <p className={styles.grayText}>Resolution</p>
+                <p className={styles.featuresParams}>{resolution}</p>
+              </div>
+              <div className={styles.featuresText}>
+                <p className={styles.grayText}>Processor</p>
+                <p className={styles.featuresParams}>{processor}</p>
+              </div>
+              <div className={styles.featuresText}>
+                <p className={styles.grayText}>RAM</p>
+                <p className={styles.featuresParams}>{ram}</p>
+              </div>
             </div>
           </div>
         </div>
