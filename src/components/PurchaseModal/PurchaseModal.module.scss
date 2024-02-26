@@ -9,7 +9,25 @@
   height: 100%;
   background-color: #0006;
 
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    @include on-tablet {
+      top: 15px;
+      right: 15px;
+    }
+
+    @include on-desktop {
+      top: 20px;
+      right: 20px;
+    }
+  }
+
   &Content {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
