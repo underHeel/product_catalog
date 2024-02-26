@@ -25,7 +25,7 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
   return (
     <div className={cn(styles.menu, { [styles.show]: isMenuOpen })}>
       <section className={styles.header}>
-        <Link to="/" className={styles.link}>
+        <Link to="/" className={styles.link} onClick={toggleMenu}>
           <img
             src={theme === 'light' ? Logo : LogoDark}
             alt="header_logo"
@@ -42,7 +42,11 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
         <NavBar displayMobile toggleMenu={toggleMenu} />
 
         <div className={styles.icons}>
-          <Link to="/" className={cn(styles.box, styles.favourite)}>
+          <Link
+            to="/favourites"
+            className={cn(styles.box, styles.favourite)}
+            onClick={toggleMenu}
+          >
             <FavoriteIcon className={styles.icon} />
           </Link>
 
