@@ -5,6 +5,7 @@ import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowUpIcon } from '../ui/icons/ArrowUpIcon';
 import Logo from '/img/Logo.png';
 import LogoDark from '/img/LogoDark.png';
+import { PreviewWindow } from './PreviewWindow';
 
 export const Footer = () => {
   const { theme } = useAppSelector((state) => state.theme);
@@ -29,6 +30,7 @@ export const Footer = () => {
           </Link>
         </div>
         <div className={styles.additional}>
+          <PreviewWindow />
           <a href="https://github.com" className={styles.additionalLink}>
             GITHUB
           </a>
