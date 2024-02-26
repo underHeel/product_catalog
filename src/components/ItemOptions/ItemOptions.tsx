@@ -11,8 +11,8 @@ import { PhotosBlock } from '../PhotosBlock';
 import { Product } from '../../types/Product';
 import { actions as cartActions } from '../../redux/slices/cartSlice';
 import { actions as favoriteActions } from '../../redux/slices/favoritesSlice';
-import styles from './ItemOptions.module.scss';
 import { FavoriteFilledIcon } from '../ui/icons/FavoriteFilledIcon';
+import styles from './ItemOptions.module.scss';
 
 interface Props {
   product: DetailedProduct;
