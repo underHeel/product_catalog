@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Category } from '../../types/Category';
 import { DetailedProduct } from '../../types/DetailedProduct';
 import { getSuggestedProducts } from '../../services/getSuggestedProducts';
-import { getAllProducts, getPhone } from '../../api/products';
+import { getAllProducts, getProduct } from '../../api/products';
 import { Product } from '../../types/Product';
 import { SliderCard } from '../../components/ui/slider/SliderCard';
 import { ItemOptions } from '../../components/ItemOptions/ItemOptions';
@@ -35,9 +35,8 @@ export const ProductPage: React.FC = () => {
 
     if (category) {
       getSuggestedProducts(category).then(setSuggestedProducts);
+      getProduct(category, itemId).then(setProduct);
     }
-
-    getPhone(itemId).then(setProduct);
   }, [category, itemId, state, allProducts]);
 
   return (
