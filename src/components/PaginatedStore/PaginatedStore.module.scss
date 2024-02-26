@@ -66,3 +66,11 @@
   background-color: var(--pagination-button-color);
   color: var(--white);
 }
+
+.tempCard {
+  display: flex;
+  border-color: var(--card-background-color);
+  width: 250px;
+  height: 400px;
+  background-color: grey;
+}

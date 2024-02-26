@@ -9,6 +9,7 @@ import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ProductCard } from '../ProductCard';
+import { CardSkeleton } from '../CardSkeleton/CardSkeleton';
 
 interface Props {
   category: Category;
@@ -25,6 +26,9 @@ export const PaginatedStore: React.FC<Props> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [phones, setPhones] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 3000);
 
   const currentPage = searchParams.get('page')
     ? Number(searchParams.get('page'))
@@ -50,38 +54,47 @@ export const PaginatedStore: React.FC<Props> = ({
   return (
     <>
       <div className={styles.cardsList}>
-        {phones.map((phone) => (
-          <div className={styles.cardWrapper} key={phone.id}>
-            <ProductCard product={phone} />
-          </div>
-        ))}
+        {loading &&
+          [...Array(itemsPerPage)].map(() => (
+            <div className={styles.cardWrapper}>
+              <CardSkeleton />
+            </div>
+          ))}
+        {!loading &&
+          phones.map((phone) => (
+            <div className={styles.cardWrapper} key={phone.id}>
+              <ProductCard product={phone} />
+            </div>
+          ))}
       </div>
 
-      <div className={styles.paginateWrapper}>
-        <ReactPaginate
-          breakLabel={<IconButton>...</IconButton>}
-          nextLabel={
-            <IconButton isDisabled={currentPage === pageCount}>
-              <ArrowRightIcon fill="var(--color)" />
-            </IconButton>
-          }
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={2}
-          pageCount={pageCount}
-          previousLabel={
-            <IconButton isDisabled={currentPage === 1}>
-              <ArrowLeftIcon fill="var(--color)" />
-            </IconButton>
-          }
-          forcePage={currentPage - 1}
-          pageClassName={styles.buttons}
-          renderOnZeroPageCount={null}
-          className={styles.line}
-          pageLinkClassName={styles.links}
-          activeLinkClassName={styles.activeButton}
-          marginPagesDisplayed={2}
-        />
-      </div>
+      {!loading && (
+        <div className={styles.paginateWrapper}>
+          <ReactPaginate
+            breakLabel={<IconButton>...</IconButton>}
+            nextLabel={
+              <IconButton isDisabled={currentPage === pageCount}>
+                <ArrowRightIcon fill="var(--color)" />
+              </IconButton>
+            }
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={2}
+            pageCount={pageCount}
+            previousLabel={
+              <IconButton isDisabled={currentPage === 1}>
+                <ArrowLeftIcon fill="var(--color)" />
+              </IconButton>
+            }
+            forcePage={currentPage - 1}
+            pageClassName={styles.buttons}
+            renderOnZeroPageCount={null}
+            className={styles.line}
+            pageLinkClassName={styles.links}
+            activeLinkClassName={styles.activeButton}
+            marginPagesDisplayed={2}
+          />
+        </div>
+      )}
     </>
   );
 };
