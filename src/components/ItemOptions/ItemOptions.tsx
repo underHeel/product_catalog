@@ -38,7 +38,7 @@ export const ItemOptions: React.FC<Props> = ({ product }) => {
             <p className={styles.grayText}>Avaliable colors</p>
             <p className={styles.grayText}>ID: 802390</p>
           </div>
-          <div className={styles.wrapper}>
+          <div className={cn(styles.wrapper, styles.colorWrapper)}>
             <div className={styles.colorButtons}>
               <ColorButton color="yellow" onClick={() => {}} />
               <ColorButton color="green" onClick={() => {}} />
