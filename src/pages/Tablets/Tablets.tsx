@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Category } from '../../types/Category';
@@ -46,6 +47,9 @@ export const Tablets: React.FC = () => {
   }
 
   return (
-    <ProductsList title="Tablets" category={category} products={tablets} />
+    <>
+      <Breadcrumbs />
+      <ProductsList title="Tablets" category={category} products={tablets} />
+    </>
   );
 };

@@ -1,22 +1,61 @@
 /* eslint-disable no-console */
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { HomeIcon } from '../ui/icons/HomeIcon';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import styles from './Breadcrumbs.module.scss';
+import { Category } from '../../types/Category';
 
-export const Breadcrumbs = () => {
+type Props = {
+  category?: Category | null;
+};
+
+export const Breadcrumbs: React.FC<Props> = ({ category }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
   const goBack = useNavigate();
+
+  let currentLink = '';
+  let previousProductType = '';
 
   const handleGoBack = () => {
     goBack('..');
   };
 
-  console.log(location);
+  function capitalizeFirstLetter(str: string) {
+    if (!str) return '';
 
-  let currentLink = '';
-  let previousProductType = '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function truncateAfterFifthWord(str: string) {
+    const words = str.split('-');
+
+    if (words.length <= 4) {
+      return str;
+    }
+
+    const truncatedWords = words.slice(0, 4);
+
+    truncatedWords.push('...');
+
+    return truncatedWords.join(' ');
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [windowWidth]);
+
+  // console.log(location.pathname);
 
   const crumbs = location.pathname
     .split('/')
@@ -26,8 +65,8 @@ export const Breadcrumbs = () => {
       let newCrumb = crumb;
 
       if (crumb.includes('product')) {
-        newCrumb = crumb.replace('product', location.state?.data || 'phones');
-        currentLink += `/${newCrumb}`;
+        newCrumb = crumb.replace('product', location.state?.data || category);
+        currentLink += `/${truncateAfterFifthWord(newCrumb)}`;
         isLastCrumb = index === array.length - 1;
       } else {
         currentLink += `/${crumb}`;
@@ -37,13 +76,13 @@ export const Breadcrumbs = () => {
       if (newCrumb !== '' && !newCrumb.includes('product')) {
         previousProductType = newCrumb;
 
-        console.log(previousProductType);
-        console.log(`${location.pathname}`);
+        console.log(truncateAfterFifthWord(previousProductType));
+        console.log(`${truncateAfterFifthWord(location.pathname)}`);
       }
 
       return (
         <div className={styles.crumb} key={crumb}>
-          <Link to={currentLink}>{newCrumb}</Link>
+          <Link to={currentLink}>{capitalizeFirstLetter(newCrumb)}</Link>
           {!isLastCrumb && (
             <div className={styles.crumb}>
               <ArrowRightIcon />
@@ -70,18 +109,14 @@ export const Breadcrumbs = () => {
           </>
         )}
       </div>
-      {location.pathname !== '/' && (
+      {location.pathname !== '/' && location.pathname.includes('product') && (
         <div className={styles.breadcrumbs}>
           <div className={styles.crumb}>
             <ArrowLeftIcon />
-            <button
-              type="submit"
-              onClick={handleGoBack}
-              className={styles.crumb}
-            >
-              Back
-            </button>
           </div>
+          <button type="submit" onClick={handleGoBack} className={styles.crumb}>
+            Back
+          </button>
         </div>
       )}
     </>

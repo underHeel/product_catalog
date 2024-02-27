@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { Category } from '../../types/Category';
 import { DetailedProduct } from '../../types/DetailedProduct';
@@ -51,6 +52,7 @@ export const ProductPage: React.FC = () => {
     <>
       {product ? (
         <>
+          <Breadcrumbs category={category} />
           <div className={styles.wrapper}>
             <ItemOptions product={product} allProducts={allProducts} />
             <div className={styles.container}>
