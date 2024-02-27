@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { BallTriangle } from 'react-loader-spinner';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Category } from '../../types/Category';
 import { ErrorComponent } from '../../components/ErrorComponent';
@@ -7,15 +8,38 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
 import errorImg from '/img/errorImage.png';
 import noProductImg from '/img/no_product.png';
+import styles from './Phones.module.scss';
 
 export const Phones: React.FC = () => {
+  const [loading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
-  const { phones, error } = useAppSelector((state) => state.phones);
+  const {
+    phones,
+    loading: apiLoading,
+    error,
+  } = useAppSelector((state) => state.phones);
   const category = Category.phones;
+
+  setTimeout(() => setLoading(false), 1000);
 
   useEffect(() => {
     dispatch(phonesActions.fetchPhones());
   }, []);
+
+  if (loading || apiLoading) {
+    return (
+      <BallTriangle
+        height={150}
+        width={150}
+        radius={5}
+        color="var(--accent-color)"
+        ariaLabel="ball-triangle-loading"
+        wrapperStyle={{}}
+        wrapperClass={styles.loaderWrapper}
+        visible
+      />
+    );
+  }
 
   if (error) {
     return <ErrorComponent image={errorImg} errorMessage={error} />;

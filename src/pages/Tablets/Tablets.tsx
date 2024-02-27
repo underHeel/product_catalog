@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -12,15 +12,22 @@ import noProductImg from '/img/no_product.png';
 import styles from './Tablets.module.scss';
 
 export const Tablets: React.FC = () => {
+  const [loading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
-  const { tablets, loading, error } = useAppSelector((state) => state.tablets);
+  const {
+    tablets,
+    loading: apiLoading,
+    error,
+  } = useAppSelector((state) => state.tablets);
   const category = Category.tablets;
+
+  setTimeout(() => setLoading(false), 1000);
 
   useEffect(() => {
     dispatch(tabletsActions.fetchTablets());
   }, []);
 
-  if (loading) {
+  if (loading || apiLoading) {
     return (
       <BallTriangle
         height={150}
