@@ -26,6 +26,9 @@ export const ProductPage: React.FC = () => {
 
   useEffect(() => {
     getAllProducts().then(setAllProducts);
+  }, []);
+
+  useEffect(() => {
     if (state) {
       setCategory(state.data);
     } else {
@@ -35,12 +38,14 @@ export const ProductPage: React.FC = () => {
 
       setCategory(foundCategory as Category);
     }
+  }, [allProducts, itemId, state]);
 
+  useEffect(() => {
     if (category) {
       getSuggestedProducts(category).then(setSuggestedProducts);
       getProduct(category, itemId).then(setProduct);
     }
-  }, [category, itemId, state]);
+  }, [category]);
 
   return (
     <>
