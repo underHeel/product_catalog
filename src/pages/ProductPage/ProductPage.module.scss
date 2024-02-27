@@ -30,3 +30,11 @@
     @include page-grid;
   }
 }
+
+.sliderWrapper {
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
