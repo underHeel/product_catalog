@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
+import { ItemAboutSkeleton } from '../../components/Skeletons/ItemAboutSkeleton/ItemAboutSkeleton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { ItemOptionsSkeleton } from '../../components/Skeletons/ItemOptionsSkeleton/ItemOptionsSkeleton';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { Category } from '../../types/Category';
 import { DetailedProduct } from '../../types/DetailedProduct';
@@ -74,7 +74,7 @@ export const ProductPage: React.FC = () => {
 
   return (
     <>
-      <ItemOptionsSkeleton />
+      <ItemAboutSkeleton />
       {product ? (
         <>
           <div className={styles.breadCrumbsWrapper}>
