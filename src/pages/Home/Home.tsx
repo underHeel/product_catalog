@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
+import { SliderCard } from '../../components/ui/slider';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Category } from '../../components/Category';
-import { SliderCard } from '../../components/ui/slider/SliderCard';
 import { TopSlider } from '../../components/TopSlider';
 import * as phonesActions from '../../redux/slices/phonesSlice';
 import * as tabletActions from '../../redux/slices/tabletsSlice';

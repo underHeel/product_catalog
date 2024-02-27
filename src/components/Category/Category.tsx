@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
 import styles from './Category.module.scss';
@@ -10,6 +10,9 @@ export const Category: React.FC = () => {
   const { phones } = useAppSelector((state) => state.phones);
   const { tablets } = useAppSelector((state) => state.tablets);
   const { accessories } = useAppSelector((state) => state.accessories);
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 1000);
 
   return (
     <section>
@@ -23,7 +26,13 @@ export const Category: React.FC = () => {
           />
           <div className={styles.cardTitle}>
             <p className={styles.categoryName}>Mobile phones</p>
-            <p className={styles.categoryLength}>{`${phones.length} models`}</p>
+            {loading ? (
+              <div className={styles.categoryLoading} />
+            ) : (
+              <p
+                className={styles.categoryLength}
+              >{`${phones.length} models`}</p>
+            )}
           </div>
         </Link>
 
@@ -35,9 +44,13 @@ export const Category: React.FC = () => {
           />
           <div>
             <p className={styles.categoryName}>Tablets</p>
-            <p
-              className={styles.categoryLength}
-            >{`${tablets.length} models`}</p>
+            {loading ? (
+              <div className={styles.categoryLoading} />
+            ) : (
+              <p
+                className={styles.categoryLength}
+              >{`${tablets.length} models`}</p>
+            )}
           </div>
         </Link>
 
@@ -49,9 +62,13 @@ export const Category: React.FC = () => {
           />
           <div>
             <p className={styles.categoryName}>Accessories</p>
-            <p
-              className={styles.categoryLength}
-            >{`${accessories.length} models`}</p>
+            {loading ? (
+              <div className={styles.categoryLoading} />
+            ) : (
+              <p
+                className={styles.categoryLength}
+              >{`${accessories.length} models`}</p>
+            )}
           </div>
         </Link>
       </div>

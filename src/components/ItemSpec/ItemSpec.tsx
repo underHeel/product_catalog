@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DetailedProduct } from 'src/types/DetailedProduct';
 import styles from './ItemsSpec.module.scss';
 
@@ -10,6 +10,10 @@ export const ItemSpech: React.FC<Props> = ({ product }) => {
   const { screen, resolution, processor, ram, capacity, camera, zoom, cell } =
     product;
 
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 1000);
+
   return (
     <div className={styles.specs}>
       <h2 className={styles.title}>Tech specs</h2>
@@ -18,42 +22,74 @@ export const ItemSpech: React.FC<Props> = ({ product }) => {
       <div className={styles.container}>
         <div className={styles.text}>
           <p className={styles.subtitle}>Screen</p>
-          <p className={styles.params}>{screen}</p>
+          {loading ? (
+            <div className={(styles.skeletonContainer, styles.skeleton)} />
+          ) : (
+            <p className={styles.params}>{screen}</p>
+          )}
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Resolution</p>
-          <p className={styles.params}>{resolution}</p>
+          {loading ? (
+            <div className={(styles.skeletonContainer, styles.skeleton)} />
+          ) : (
+            <p className={styles.params}>{resolution}</p>
+          )}
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Processor</p>
-          <p className={styles.params}>{processor}</p>
+          {loading ? (
+            <div className={(styles.skeletonContainer, styles.skeleton)} />
+          ) : (
+            <p className={styles.params}>{processor}</p>
+          )}
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>RAM</p>
-          <p className={styles.params}>{ram}</p>
+          {loading ? (
+            <div className={(styles.skeletonContainer, styles.skeleton)} />
+          ) : (
+            <p className={styles.params}>{ram}</p>
+          )}
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Built in memory</p>
-          <p className={styles.params}>{capacity}</p>
+          {loading ? (
+            <div className={(styles.skeletonContainer, styles.skeleton)} />
+          ) : (
+            <p className={styles.params}>{capacity}</p>
+          )}
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Camera</p>
-          <p className={styles.params}>{camera}</p>
+          {loading ? (
+            <div className={(styles.skeletonContainer, styles.skeleton)} />
+          ) : (
+            <p className={styles.params}>{camera}</p>
+          )}
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Zoom</p>
-          <p className={styles.params}>{zoom}</p>
+          {loading ? (
+            <div className={(styles.skeletonContainer, styles.skeleton)} />
+          ) : (
+            <p className={styles.params}>{zoom}</p>
+          )}
         </div>
 
         <div className={styles.text}>
           <p className={styles.subtitle}>Cell</p>
-          <p className={styles.params}>{cell.join(', ')}</p>
+          {loading ? (
+            <div className={(styles.skeletonContainer, styles.skeleton)} />
+          ) : (
+            <p className={styles.params}>{cell.join(', ')}</p>
+          )}
         </div>
       </div>
     </div>
