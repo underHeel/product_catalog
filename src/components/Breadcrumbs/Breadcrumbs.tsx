@@ -1,29 +1,49 @@
+/* eslint-disable no-console */
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HomeIcon } from '../ui/icons/HomeIcon';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import styles from './Breadcrumbs.module.scss';
 
-export default function Breadcrumbs() {
+export const Breadcrumbs = () => {
   const location = useLocation();
-  const history = useNavigate();
+  const goBack = useNavigate();
 
-  const goBack = () => {
-    history('..');
+  const handleGoBack = () => {
+    goBack('..');
   };
 
-  let currenrLink = '';
+  console.log(location);
+
+  let currentLink = '';
+  let previousProductType = '';
 
   const crumbs = location.pathname
     .split('/')
     .filter((crumb) => crumb !== '')
     .map((crumb, index, array) => {
-      currenrLink += `/${crumb}`;
-      const isLastCrumb = index === array.length - 1;
+      let isLastCrumb = false;
+      let newCrumb = crumb;
+
+      if (crumb.includes('product')) {
+        newCrumb = crumb.replace('product', location.state?.data || 'phones');
+        currentLink += `/${newCrumb}`;
+        isLastCrumb = index === array.length - 1;
+      } else {
+        currentLink += `/${crumb}`;
+        isLastCrumb = index === array.length - 1;
+      }
+
+      if (newCrumb !== '' && !newCrumb.includes('product')) {
+        previousProductType = newCrumb;
+
+        console.log(previousProductType);
+        console.log(`${location.pathname}`);
+      }
 
       return (
         <div className={styles.crumb} key={crumb}>
-          <Link to={currenrLink}>{crumb}</Link>
+          <Link to={currentLink}>{newCrumb}</Link>
           {!isLastCrumb && (
             <div className={styles.crumb}>
               <ArrowRightIcon />
@@ -54,7 +74,11 @@ export default function Breadcrumbs() {
         <div className={styles.breadcrumbs}>
           <div className={styles.crumb}>
             <ArrowLeftIcon />
-            <button type="submit" onClick={goBack} className={styles.crumb}>
+            <button
+              type="submit"
+              onClick={handleGoBack}
+              className={styles.crumb}
+            >
               Back
             </button>
           </div>
@@ -62,4 +86,4 @@ export default function Breadcrumbs() {
       )}
     </>
   );
-}
+};
