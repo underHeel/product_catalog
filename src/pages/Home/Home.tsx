@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { SliderCard } from '../../components/ui/slider';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Category } from '../../components/Category';
+import { SliderCard } from '../../components/ui/slider/SliderCard';
 import { TopSlider } from '../../components/TopSlider';
 import * as phonesActions from '../../redux/slices/phonesSlice';
 import * as tabletActions from '../../redux/slices/tabletsSlice';
@@ -10,7 +10,7 @@ import styles from './Home.module.scss';
 
 export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { phones } = useAppSelector((state) => state.phones);
+  const { phones, error } = useAppSelector((state) => state.phones);
 
   useEffect(() => {
     dispatch(phonesActions.fetchPhones());
@@ -30,13 +30,19 @@ export const Home: React.FC = () => {
     <>
       <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
       <TopSlider />
-      <div className={styles.wrapper}>
-        <SliderCard title="Brand new models" items={brandNewModels} id={1} />
-        <div className={styles.сategoryWrapper}>
-          <Category />
+      {!error && (
+        <div className={styles.sliderWrapper}>
+          <SliderCard title="Brand new models" items={brandNewModels} id={1} />
         </div>
-        <SliderCard title="Hot Prices" items={hotPrices} id={2} />
+      )}
+      <div className={styles.сategoryWrapper}>
+        <Category />
       </div>
+      {!error && (
+        <div className={styles.sliderWrapper}>
+          <SliderCard title="Hot Prices" items={hotPrices} id={2} />
+        </div>
+      )}
     </>
   );
 };

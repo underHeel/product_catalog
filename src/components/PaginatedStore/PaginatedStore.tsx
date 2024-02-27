@@ -29,14 +29,17 @@ export const PaginatedStore: React.FC<Props> = ({
   const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => setLoading(false), 1000);
-
   const currentPage = searchParams.get('page')
     ? Number(searchParams.get('page'))
     : 1;
 
   useEffect(() => {
-    getProducts(category, currentPage, itemsPerPage, sortBy).then(setPhones);
+    setLoading(true);
+    setTimeout(() => {
+      getProducts(category, currentPage, itemsPerPage, sortBy)
+        .then(setPhones)
+        .finally(() => setLoading(false));
+    }, 1000);
   }, [category, currentPage, itemsPerPage, sortBy]);
 
   const handlePageClick = (event: { selected: number }) => {
