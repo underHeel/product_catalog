@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
-import { ItemAboutSkeleton } from '../../components/Skeletons/ItemAboutSkeleton/ItemAboutSkeleton';
+import { ItemSpecSkeleton } from '../../components/Skeletons/ItemSpecSkeleton/ItemSpecSkeleton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { Category } from '../../types/Category';
@@ -74,7 +74,7 @@ export const ProductPage: React.FC = () => {
 
   return (
     <>
-      <ItemAboutSkeleton />
+      <ItemSpecSkeleton />
       {product ? (
         <>
           <div className={styles.breadCrumbsWrapper}>
