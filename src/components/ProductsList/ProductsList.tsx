@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Category } from '../../types/Category';
