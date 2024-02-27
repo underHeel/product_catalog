@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import { BallTriangle } from 'react-loader-spinner';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Category } from '../../types/Category';
@@ -9,31 +8,14 @@ import * as tabletsActions from '../../redux/slices/tabletsSlice';
 import errorImg from '/img/errorImage.png';
 import noProductImg from '/img/no_product.png';
 
-import styles from './Tablets.module.scss';
-
 export const Tablets: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { tablets, loading, error } = useAppSelector((state) => state.tablets);
+  const { tablets, error } = useAppSelector((state) => state.tablets);
   const category = Category.tablets;
 
   useEffect(() => {
     dispatch(tabletsActions.fetchTablets());
   }, []);
-
-  if (loading) {
-    return (
-      <BallTriangle
-        height={150}
-        width={150}
-        radius={5}
-        color="var(--accent-color)"
-        ariaLabel="ball-triangle-loading"
-        wrapperStyle={{}}
-        wrapperClass={styles.loaderWrapper}
-        visible
-      />
-    );
-  }
 
   if (error) {
     return <ErrorComponent image={errorImg} errorMessage={error} />;
