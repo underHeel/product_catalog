@@ -101,7 +101,7 @@
   @include on-desktop {
     grid-column: 1/17;
     max-height: 416px;
-    overflow: auto;
+    overflow: hidden auto;
   }
 }
 
