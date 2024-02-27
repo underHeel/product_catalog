@@ -17,7 +17,7 @@ export const PhotosBlock: React.FC<Props> = ({ product }) => {
   setTimeout(() => setLoading(false), 1000);
 
   const isScreenGreaterThan640px = () => {
-    return window.innerWidth > 640;
+    return window.innerWidth > 639;
   };
 
   useEffect(() => {
