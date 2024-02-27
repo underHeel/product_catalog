@@ -3,19 +3,18 @@
 .options {
   display: flex;
   flex-direction: column;
+  
+  @include on-desktop {
+    margin-bottom: 65px;
+  }
 }
 
 .title {
-  margin-bottom: 32px;
-  height: 22px;
+  margin-bottom: 40px;
+  height: 56px;
   width: 70%;
   border-radius: 100px;
   background-color: var(--elements-color);
-
-  @include on-tablet {
-    margin-bottom: 40px;
-    height: 32px;
-  }
 }
 
 .main {
@@ -104,11 +103,15 @@
 }
 
 .grayTextLong {
-  height: 15px;
+  height: 12px;
   width: 100%;
   background-color: var(--elements-color);
   line-height: 15px;
   border-radius: 100px;
+
+  @include on-tablet {
+    height: 15px;
+  }
 }
 
 .colorButtons {
@@ -119,8 +122,8 @@
 
 .roundedButton {
   display: block;
-  height: 26px;
-  width: 26px;
+  height: 32px;
+  width: 32px;
   background-color: var(--elements-color);
   border-radius: 100px;
 }
@@ -143,7 +146,6 @@
   color: var(--color);
   border: 1px solid var(--icons-color);
   border-radius: 4px;
-  padding: 7px 8px 4px;
 
   &.active {
     background-color: var(--color);

@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
+import { ItemOptionsSkeleton } from '../../components/Skeletons/ItemOptionsSkeleton/ItemOptionsSkeleton';
+import { ItemAboutSkeleton } from '../../components/Skeletons/ItemAboutSkeleton/ItemAboutSkeleton';
 import { ItemSpecSkeleton } from '../../components/Skeletons/ItemSpecSkeleton/ItemSpecSkeleton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ErrorComponent } from '../../components/ErrorComponent';
@@ -59,22 +60,30 @@ export const ProductPage: React.FC = () => {
 
   if (loading) {
     return (
-      <BallTriangle
-        height={150}
-        width={150}
-        radius={5}
-        color="var(--accent-color)"
-        ariaLabel="ball-triangle-loading"
-        wrapperStyle={{}}
-        wrapperClass={styles.loaderWrapper}
-        visible
-      />
+      <>
+        <div className={styles.breadCrumbsWrapper}>
+          <Breadcrumbs category={category} />
+        </div>
+        <div className={styles.wrapper}>
+          <ItemOptionsSkeleton />
+          <div className={styles.container}>
+            <ItemAboutSkeleton />
+            <ItemSpecSkeleton />
+          </div>
+        </div>
+        <div className={styles.sliderWrapper}>
+          <SliderCard
+            title="You may also like"
+            items={suggestedProducts}
+            id={1}
+          />
+        </div>
+      </>
     );
   }
 
   return (
     <>
-      <ItemSpecSkeleton />
       {product ? (
         <>
           <div className={styles.breadCrumbsWrapper}>

@@ -11,15 +11,11 @@
 }
 
 .title {
-  height: 26px;
+  height: 41px;
   width: 200px;
   margin-bottom: 16px;
   background-color: var(--elements-color);
   border-radius: 20px;
-
-  @include on-tablet {
-    font-size: 22px;
-  }
 }
 
 .borderLine {
