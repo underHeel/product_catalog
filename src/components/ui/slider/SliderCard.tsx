@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -27,10 +28,16 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
         <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.buttons}>
-          <div className={`${styles.arrowButton} prev-${id}`}>
+          <div
+            className={`${styles.arrowButton} prev-${id}`}
+            onMouseDown={(event) => event.preventDefault()}
+          >
             <ArrowLeftIcon fill="var(--color)" />
           </div>
-          <div className={`${styles.arrowButton} next-${id}`}>
+          <div
+            className={`${styles.arrowButton} next-${id}`}
+            onMouseDown={(event) => event.preventDefault()}
+          >
             <ArrowRightIcon fill="var(--color)" />
           </div>
         </div>
@@ -42,6 +49,7 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
           prevEl: `.prev-${id}`,
           disabledClass: styles.disabled,
         }}
+        loop
         modules={[Navigation]}
         spaceBetween={16}
         breakpoints={{

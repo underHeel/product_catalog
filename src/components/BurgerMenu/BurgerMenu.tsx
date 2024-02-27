@@ -7,6 +7,7 @@ import { useAppSelector } from '../../redux/hooks';
 import { CartIcon } from '../ui/icons/CartIcon';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
 import Logo from '/img/Logo.png';
+import LogoDark from '/img/LogoDark.png';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { NavBar } from '../NavBar';
 import styles from './BurgerMenu.module.scss';
@@ -19,12 +20,17 @@ interface Props {
 
 export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
   const { productsList } = useAppSelector((state) => state.cart);
+  const { theme } = useAppSelector((state) => state.theme);
 
   return (
     <div className={cn(styles.menu, { [styles.show]: isMenuOpen })}>
       <section className={styles.header}>
-        <Link to="/" className={styles.link}>
-          <img src={Logo} alt="header_logo" className={styles.logo} />
+        <Link to="/" className={styles.link} onClick={toggleMenu}>
+          <img
+            src={theme === 'light' ? Logo : LogoDark}
+            alt="header_logo"
+            className={styles.logo}
+          />
         </Link>
 
         <div className={styles.close} onClick={toggleMenu}>
@@ -36,7 +42,11 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
         <NavBar displayMobile toggleMenu={toggleMenu} />
 
         <div className={styles.icons}>
-          <Link to="/" className={cn(styles.box, styles.favourite)}>
+          <Link
+            to="/favourites"
+            className={cn(styles.box, styles.favourite)}
+            onClick={toggleMenu}
+          >
             <FavoriteIcon className={styles.icon} />
           </Link>
 

@@ -2,7 +2,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Category } from '../../types/Category';
 import { Product } from '../../types/Product';
-import { getAllProducts } from '../../api/products';
+import { getAllProductsByCategory } from '../../api/products';
 
 interface PhonesState {
   phones: Product[];
@@ -17,7 +17,7 @@ const initialState: PhonesState = {
 };
 
 export const fetchPhones = createAsyncThunk('phones/fetch', () =>
-  getAllProducts(Category.phones),
+  getAllProductsByCategory(Category.phones),
 );
 
 const phonesSlice = createSlice({

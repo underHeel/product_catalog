@@ -1,12 +1,12 @@
 import { Category } from '../types/Category';
 import { Product } from '../types/Product';
-import { getAllProducts } from '../api/products';
+import { getAllProductsByCategory } from '../api/products';
 import { getRandomProduct } from './getRandomProduct';
 
 export const getSuggestedProducts = (
   category: Category,
 ): Promise<Product[]> => {
-  return getAllProducts(category).then((products) => {
+  return getAllProductsByCategory(category).then((products) => {
     const suggestedProducts: Product[] = [];
 
     while (suggestedProducts.length < 10) {

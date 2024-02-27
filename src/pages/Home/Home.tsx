@@ -4,6 +4,8 @@ import { Category } from '../../components/Category';
 import { SliderCard } from '../../components/ui/slider/SliderCard';
 import { TopSlider } from '../../components/TopSlider';
 import * as phonesActions from '../../redux/slices/phonesSlice';
+import * as tabletActions from '../../redux/slices/tabletsSlice';
+import * as accessoriesActions from '../../redux/slices/accessoriesSlice';
 import styles from './Home.module.scss';
 
 export const Home: React.FC = () => {
@@ -12,6 +14,8 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     dispatch(phonesActions.fetchPhones());
+    dispatch(tabletActions.fetchTablets());
+    dispatch(accessoriesActions.fetchAccessories());
   }, [dispatch]);
 
   const brandNewModels = [...phones]
@@ -20,7 +24,7 @@ export const Home: React.FC = () => {
 
   const hotPrices = phones
     .filter(({ price, fullPrice }) => fullPrice - price >= 100)
-    .sort((a, b) => b.year - a.year);
+    .sort((a, b) => b.price - a.price);
 
   return (
     <>
