@@ -1,0 +1,42 @@
+@import '../../styles/utils/main';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-top: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  width: auto;
+
+  @include content-indents;
+}
+
+.crumb {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--secondary-color);
+
+  &:last-child {
+    overflow: hidden;
+  }
+}
+
+.text {
+  padding-top: 3px;
+  white-space: nowrap;
+
+
+  &:last-child {
+    cursor: auto;
+
+    & a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      pointer-events: none;
+    }
+  }
+}

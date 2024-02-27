@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { Category } from '../../types/Category';
 import { DetailedProduct } from '../../types/DetailedProduct';
@@ -74,6 +75,9 @@ export const ProductPage: React.FC = () => {
     <>
       {product ? (
         <>
+          <div className={styles.breadCrumbsWrapper}>
+            <Breadcrumbs category={category} />
+          </div>
           <div className={styles.wrapper}>
             <ItemOptions product={product} allProducts={allProducts} />
             <div className={styles.container}>
