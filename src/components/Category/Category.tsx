@@ -12,7 +12,7 @@ export const Category: React.FC = () => {
   const { accessories } = useAppSelector((state) => state.accessories);
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => setLoading(false), 2000);
+  setTimeout(() => setLoading(false), 1000);
 
   return (
     <section>
