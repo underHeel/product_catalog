@@ -42,34 +42,42 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
           </div>
         </div>
       </div>
-
-      <Swiper
-        navigation={{
-          nextEl: `.next-${id}`,
-          prevEl: `.prev-${id}`,
-          disabledClass: styles.disabled,
-        }}
-        loop
-        modules={[Navigation]}
-        spaceBetween={16}
-        breakpoints={{
-          0: {
-            slidesPerView: 'auto',
-          },
-          640: {
-            slidesPerView: 'auto',
-          },
-          1200: {
-            slidesPerView: 4,
-          },
-        }}
-      >
-        {items.map((item) => (
-          <SwiperSlide key={item.id} className={styles.slider}>
-            {loading ? <CardSkeleton /> : <ProductCard product={item} />}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className={styles.swippeWrapper}>
+        <Swiper
+          navigation={{
+            nextEl: `.next-${id}`,
+            prevEl: `.prev-${id}`,
+            disabledClass: styles.disabled,
+          }}
+          loop
+          modules={[Navigation]}
+          spaceBetween={16}
+          breakpoints={{
+            0: {
+              slidesPerView: 'auto',
+            },
+            640: {
+              slidesPerView: 'auto',
+            },
+            1200: {
+              slidesPerView: 4,
+            },
+          }}
+        >
+          {loading &&
+            [...Array(10)].map(() => (
+              <SwiperSlide className={styles.slider}>
+                <CardSkeleton />
+              </SwiperSlide>
+            ))}
+          {!loading &&
+            items.map((item) => (
+              <SwiperSlide key={item.id} className={styles.slider}>
+                <ProductCard product={item} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </div>
     </div>
   );
 };
