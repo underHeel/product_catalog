@@ -50,4 +50,18 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
+
+  @include content-indents;
+}
+
+.swippeWrapper {
+  padding-left: 16px;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    @include content-indents;
+  }
 }

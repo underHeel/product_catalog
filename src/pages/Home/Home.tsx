@@ -32,7 +32,9 @@ export const Home: React.FC = () => {
       <TopSlider />
       <div className={styles.wrapper}>
         <SliderCard title="Brand new models" items={brandNewModels} id={1} />
-        <Category />
+        <div className={styles.сategoryWrapper}>
+          <Category />
+        </div>
         <SliderCard title="Hot Prices" items={hotPrices} id={2} />
       </div>
     </>
