@@ -1,8 +1,21 @@
-@import '../../styles/utils/main';
+@import '../../../styles/utils/main';
 
 .options {
   display: flex;
   flex-direction: column;
+}
+
+.title {
+  margin-bottom: 32px;
+  height: 22px;
+  width: 70%;
+  border-radius: 100px;
+  background-color: var(--elements-color);
+
+  @include on-tablet {
+    margin-bottom: 40px;
+    height: 32px;
+  }
 }
 
 .main {
@@ -20,20 +33,13 @@
   }
 }
 
-.title {
-  margin-bottom: 32px;
-  font-size: 22px;
-  font-weight: bold;
-
-  @include on-tablet {
-    margin-bottom: 40px;
-    font-size: 32px;
-  }
-}
-
-
 .slider {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
   margin-bottom: 40px;
+  background-color: var(--elements-color);
+  border-radius: 10px;
 
   @include on-tablet {
     max-width: 338px;
@@ -72,6 +78,14 @@
   margin-bottom: 24px;
 }
 
+.buttonCapacity {
+  width: 55px;
+  height: 31px;
+  background-color: var(--elements-color);
+  border-radius: 5px;
+
+}
+
 .colorWrapper {
   border-bottom: 1px solid var(--elements-color);
 }
@@ -79,19 +93,36 @@
 .colorTitle {
   display: flex;
   justify-content: space-between;
-
 }
 
 .grayText {
-  font-size: 12px;
-  color: var(--secondary-color);
+  height: 15px;
+  width: 90px;
+  background-color: var(--elements-color);
   line-height: 15px;
+  border-radius: 100px;
+}
+
+.grayTextLong {
+  height: 15px;
+  width: 100%;
+  background-color: var(--elements-color);
+  line-height: 15px;
+  border-radius: 100px;
 }
 
 .colorButtons {
   display: flex;
   margin-bottom: 24px;
   gap: 8px;
+}
+
+.roundedButton {
+  display: block;
+  height: 26px;
+  width: 26px;
+  background-color: var(--elements-color);
+  border-radius: 100px;
 }
 
 .capacity {
@@ -128,15 +159,17 @@
 }
 
 .priceText {
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 41px;
+  height: 41px;
+  width: 120px;
+  background-color: var(--elements-color);
+  border-radius: 10px;
 }
 
 .discountPrice {
-  font-size: 22px;
-  color: var(--secondary-color);
-  text-decoration: line-through;
+  height: 36px;
+  width: 100px;
+  background-color: var(--elements-color);
+  border-radius: 10px;
 }
 
 .addButtons {
@@ -147,24 +180,22 @@
   gap: 8px;
 }
 
-.addToCart {
-  width: 100%;
+.addToCartButton {
+  width: calc(100% - 8px - 40px);
+  height: 40px;
+  background-color: var(--elements-color);
+  border-radius: 10px;
+}
+
+.addToFavoriteButton {
+  height: 40px;
+  width: 40px;
+  background-color: var(--elements-color);
+  border-radius: 100px;
 }
 
 .features {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-.featuresText {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.featuresParams {
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 15px;
 }

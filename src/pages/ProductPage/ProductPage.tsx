@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
+import { ItemOptionsSkeleton } from '../../components/Skeletons/ItemOptionsSkeleton/ItemOptionsSkeleton';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { Category } from '../../types/Category';
 import { DetailedProduct } from '../../types/DetailedProduct';
@@ -72,6 +73,7 @@ export const ProductPage: React.FC = () => {
 
   return (
     <>
+      <ItemOptionsSkeleton />
       {product ? (
         <>
           <div className={styles.wrapper}>
