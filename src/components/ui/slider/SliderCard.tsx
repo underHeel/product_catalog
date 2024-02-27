@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Product } from 'src/types/Product';
 import { Navigation } from 'swiper/modules';
+import { useAppSelector } from '../../../redux/hooks';
+import { Product } from '../../../types/Product';
 import { ArrowLeftIcon } from '../icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../icons/ArrowRightIcon';
 import styles from './SliderCard.module.scss';
@@ -20,6 +20,7 @@ interface Props {
 
 export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
   const [loading, setLoading] = useState(true);
+  const { loading: apiLoading } = useAppSelector((state) => state.phones);
 
   setTimeout(() => setLoading(false), 1000);
 
@@ -65,13 +66,14 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
             },
           }}
         >
-          {loading &&
+          {(loading || apiLoading) &&
             [...Array(10)].map(() => (
               <SwiperSlide className={styles.slider} key={uuidv4()}>
                 <CardSkeleton />
               </SwiperSlide>
             ))}
           {!loading &&
+            !apiLoading &&
             items.map((item) => (
               <SwiperSlide key={item.id} className={styles.slider}>
                 <ProductCard product={item} />

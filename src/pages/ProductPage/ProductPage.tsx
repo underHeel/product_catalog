@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ErrorComponent } from '../../components/ErrorComponent';
@@ -21,6 +22,7 @@ export const ProductPage: React.FC = () => {
   const [category, setCategory] = useState<Category | null>(null);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const { state, pathname } = useLocation();
 
   const itemId = pathname.substring(pathname.lastIndexOf('/') + 1);
@@ -44,9 +46,30 @@ export const ProductPage: React.FC = () => {
   useEffect(() => {
     if (category) {
       getSuggestedProducts(category).then(setSuggestedProducts);
-      getProduct(category, itemId).then(setProduct);
+      setLoading(true);
+
+      setTimeout(() => {
+        getProduct(category, itemId)
+          .then(setProduct)
+          .finally(() => setLoading(false));
+      }, 1000);
     }
   }, [category, itemId]);
+
+  if (loading) {
+    return (
+      <BallTriangle
+        height={150}
+        width={150}
+        radius={5}
+        color="var(--accent-color)"
+        ariaLabel="ball-triangle-loading"
+        wrapperStyle={{}}
+        wrapperClass={styles.loaderWrapper}
+        visible
+      />
+    );
+  }
 
   return (
     <>

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
@@ -13,17 +13,22 @@ import noProductImg from '/img/no_product.png';
 import styles from './Accessories.module.scss';
 
 export const Accessories: React.FC = () => {
+  const [loading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
-  const { accessories, loading, error } = useAppSelector(
-    (state) => state.accessories,
-  );
+  const {
+    accessories,
+    loading: apiLoading,
+    error,
+  } = useAppSelector((state) => state.accessories);
   const category = Category.accessories;
+
+  setTimeout(() => setLoading(false), 1000);
 
   useEffect(() => {
     dispatch(accessoriesActions.fetchAccessories());
   }, []);
 
-  if (loading) {
+  if (loading || apiLoading) {
     return (
       <BallTriangle
         height={150}
