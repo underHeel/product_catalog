@@ -6,7 +6,6 @@ import { actions as themeActions } from './redux/slices/themeSlice';
 
 import './styles/utils/main.scss';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
-import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 
 const App: React.FC = () => {
   const { theme } = useAppSelector((state) => state.theme);
@@ -23,7 +22,6 @@ const App: React.FC = () => {
   return (
     <div>
       <Header onThemeChange={toggleThemeHandler} />
-      <Breadcrumbs />
       <Outlet />
       <Footer />
     </div>

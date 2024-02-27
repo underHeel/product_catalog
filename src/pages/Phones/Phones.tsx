@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Category } from '../../types/Category';
 import { ErrorComponent } from '../../components/ErrorComponent';
@@ -46,6 +47,13 @@ export const Phones: React.FC = () => {
   }
 
   return (
-    <ProductsList title="Mobile phones" category={category} products={phones} />
+    <>
+      <Breadcrumbs />
+      <ProductsList
+        title="Mobile phones"
+        category={category}
+        products={phones}
+      />
+    </>
   );
 };
