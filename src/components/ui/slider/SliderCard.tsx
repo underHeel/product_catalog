@@ -1,14 +1,16 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Product } from 'src/types/Product';
 import { Navigation } from 'swiper/modules';
 import { ArrowLeftIcon } from '../icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../icons/ArrowRightIcon';
-import 'swiper/css';
 import styles from './SliderCard.module.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
+import { CardSkeleton } from '../../CardSkeleton/CardSkeleton';
+import 'swiper/css';
 
 interface Props {
   title: string;
@@ -17,6 +19,10 @@ interface Props {
 }
 
 export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 1000);
+
   return (
     <div>
       <div className={styles.header}>
@@ -59,11 +65,18 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
             },
           }}
         >
-          {items.map((item) => (
-            <SwiperSlide key={item.id} className={styles.slider}>
-              <ProductCard product={item} />
-            </SwiperSlide>
-          ))}
+          {loading &&
+            [...Array(10)].map(() => (
+              <SwiperSlide className={styles.slider} key={uuidv4()}>
+                <CardSkeleton />
+              </SwiperSlide>
+            ))}
+          {!loading &&
+            items.map((item) => (
+              <SwiperSlide key={item.id} className={styles.slider}>
+                <ProductCard product={item} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

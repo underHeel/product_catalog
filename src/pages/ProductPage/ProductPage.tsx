@@ -7,7 +7,7 @@ import { DetailedProduct } from '../../types/DetailedProduct';
 import { getSuggestedProducts } from '../../services/getSuggestedProducts';
 import { getAllProducts, getProduct } from '../../api/products';
 import { Product } from '../../types/Product';
-import { SliderCard } from '../../components/ui/slider/SliderCard';
+import { SliderCard } from '../../components/ui/slider';
 import { ItemOptions } from '../../components/ItemOptions/ItemOptions';
 import { ItemAbout } from '../../components/ItemAbout';
 import { ItemSpech } from '../../components/ItemSpec';
