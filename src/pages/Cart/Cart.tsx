@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
+import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
 import { PurchaseModal } from '../../components/PurchaseModal';
 import { CartItem } from '../../components/CartItem';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -58,10 +59,7 @@ export const Cart: React.FC = () => {
           </div>
         </section>
       ) : (
-        <div className={styles.noItems}>
-          <img src={EmptyCart} alt="Empty Cart" className={styles.emptyCart} />
-          <h2 className={styles.title}>Your cart is empty</h2>
-        </div>
+        <ErrorComponent image={EmptyCart} errorMessage="Your cart is empty" />
       )}
 
       <PurchaseModal isOpen={isModalOpen} />
