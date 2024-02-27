@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { SliderCard } from '../../components/ui/slider';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Category } from '../../components/Category';
+import { SliderCard } from '../../components/ui/slider/SliderCard';
 import { TopSlider } from '../../components/TopSlider';
 import * as phonesActions from '../../redux/slices/phonesSlice';
 import * as tabletActions from '../../redux/slices/tabletsSlice';
@@ -30,11 +30,13 @@ export const Home: React.FC = () => {
     <>
       <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
       <TopSlider />
-      <div className={styles.wrapper}>
+      <div className={styles.sliderWrapper}>
         <SliderCard title="Brand new models" items={brandNewModels} id={1} />
-        <div className={styles.сategoryWrapper}>
-          <Category />
-        </div>
+      </div>
+      <div className={styles.сategoryWrapper}>
+        <Category />
+      </div>
+      <div className={styles.sliderWrapper}>
         <SliderCard title="Hot Prices" items={hotPrices} id={2} />
       </div>
     </>
