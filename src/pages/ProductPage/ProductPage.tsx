@@ -45,7 +45,7 @@ export const ProductPage: React.FC = () => {
       getSuggestedProducts(category).then(setSuggestedProducts);
       getProduct(category, itemId).then(setProduct);
     }
-  }, [category]);
+  }, [category, itemId]);
 
   return (
     <>
