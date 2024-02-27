@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Category } from '../../types/Category';
@@ -35,7 +36,6 @@ export const ProductsList: React.FC<Props> = ({
       const newSearchParams = new URLSearchParams(searchParams);
 
       newSearchParams.set('sort', SORT_BY[0].value);
-      newSearchParams.set('perPage', ITEMS_PER_PAGE[0].value);
       setSearchParams(newSearchParams);
     }
   }, []);
