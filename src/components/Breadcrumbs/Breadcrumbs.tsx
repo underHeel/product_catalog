@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { HomeIcon } from '../ui/icons/HomeIcon';
@@ -17,7 +16,6 @@ export const Breadcrumbs: React.FC<Props> = ({ category }) => {
   const goBack = useNavigate();
 
   let currentLink = '';
-  let previousProductType = '';
 
   const handleGoBack = () => {
     goBack('..');
@@ -55,8 +53,6 @@ export const Breadcrumbs: React.FC<Props> = ({ category }) => {
     };
   }, [windowWidth]);
 
-  // console.log(location.pathname);
-
   const crumbs = location.pathname
     .split('/')
     .filter((crumb) => crumb !== '')
@@ -66,23 +62,18 @@ export const Breadcrumbs: React.FC<Props> = ({ category }) => {
 
       if (crumb.includes('product')) {
         newCrumb = crumb.replace('product', location.state?.data || category);
-        currentLink += `/${truncateAfterFifthWord(newCrumb)}`;
+        currentLink += `/${newCrumb}`;
         isLastCrumb = index === array.length - 1;
       } else {
         currentLink += `/${crumb}`;
         isLastCrumb = index === array.length - 1;
       }
 
-      if (newCrumb !== '' && !newCrumb.includes('product')) {
-        previousProductType = newCrumb;
-
-        console.log(truncateAfterFifthWord(previousProductType));
-        console.log(`${truncateAfterFifthWord(location.pathname)}`);
-      }
-
       return (
         <div className={styles.crumb} key={crumb}>
-          <Link to={currentLink}>{capitalizeFirstLetter(newCrumb)}</Link>
+          <Link to={currentLink}>
+            {truncateAfterFifthWord(capitalizeFirstLetter(newCrumb))}
+          </Link>
           {!isLastCrumb && (
             <div className={styles.crumb}>
               <ArrowRightIcon />
