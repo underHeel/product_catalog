@@ -26,6 +26,9 @@ export const ProductPage: React.FC = () => {
 
   useEffect(() => {
     getAllProducts().then(setAllProducts);
+  }, []);
+
+  useEffect(() => {
     if (state) {
       setCategory(state.data);
     } else {
@@ -35,28 +38,34 @@ export const ProductPage: React.FC = () => {
 
       setCategory(foundCategory as Category);
     }
+  }, [allProducts, itemId, state]);
 
+  useEffect(() => {
     if (category) {
       getSuggestedProducts(category).then(setSuggestedProducts);
       getProduct(category, itemId).then(setProduct);
     }
-  }, [category, itemId, state]);
+  }, [category]);
 
   return (
     <>
       {product ? (
-        <div className={styles.wrapper}>
-          <ItemOptions product={product} allProducts={allProducts} />
-          <div className={styles.container}>
-            <ItemAbout product={product} />
-            <ItemSpech product={product} />
+        <>
+          <div className={styles.wrapper}>
+            <ItemOptions product={product} allProducts={allProducts} />
+            <div className={styles.container}>
+              <ItemAbout product={product} />
+              <ItemSpech product={product} />
+            </div>
           </div>
-          <SliderCard
-            title="You may also like"
-            items={suggestedProducts}
-            id={1}
-          />
-        </div>
+          <div className={styles.sliderWrapper}>
+            <SliderCard
+              title="You may also like"
+              items={suggestedProducts}
+              id={1}
+            />
+          </div>
+        </>
       ) : (
         <ErrorComponent image={errorImg} errorMessage="Product was not found" />
       )}
