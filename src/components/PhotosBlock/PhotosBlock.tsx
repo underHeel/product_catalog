@@ -14,7 +14,7 @@ export const PhotosBlock: React.FC<Props> = ({ product }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => setLoading(false), 2000);
+  setTimeout(() => setLoading(false), 1000);
 
   const isScreenGreaterThan640px = () => {
     return window.innerWidth > 640;

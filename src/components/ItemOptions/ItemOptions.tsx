@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import cn from 'classnames';
+import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { DetailedProduct } from '../../types/DetailedProduct';
@@ -40,7 +41,7 @@ export const ItemOptions: React.FC<Props> = ({ product, allProducts }) => {
   const { favoritesList } = useAppSelector((state) => state.favorites);
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => setLoading(false), 2000);
+  setTimeout(() => setLoading(false), 1000);
 
   const isInCart = useMemo(() => {
     return productsList.some((item) => item.itemId === id);
@@ -98,7 +99,7 @@ export const ItemOptions: React.FC<Props> = ({ product, allProducts }) => {
               <div className={styles.colorButtons}>
                 {loading &&
                   [...Array(4)].map(() => (
-                    <div className={styles.skeletonRounded} />
+                    <div className={styles.skeletonRounded} key={uuidv4()} />
                   ))}
                 {!loading &&
                   colorsAvailable.map((availableColor) => (
@@ -122,7 +123,7 @@ export const ItemOptions: React.FC<Props> = ({ product, allProducts }) => {
               <div className={styles.capacityButton}>
                 {loading &&
                   [...Array(3)].map(() => (
-                    <div className={styles.skeletonButtons} />
+                    <div className={styles.skeletonButtons} key={uuidv4()} />
                   ))}
                 {!loading &&
                   capacityAvailable.map((value) => (

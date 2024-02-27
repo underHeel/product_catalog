@@ -12,7 +12,7 @@ export const ItemSpech: React.FC<Props> = ({ product }) => {
 
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => setLoading(false), 2000);
+  setTimeout(() => setLoading(false), 1000);
 
   return (
     <div className={styles.specs}>

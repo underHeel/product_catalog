@@ -10,7 +10,7 @@ export const ItemAbout: React.FC<Props> = ({ product }) => {
   const { description } = product;
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => setLoading(false), 2000);
+  setTimeout(() => setLoading(false), 1000);
 
   return (
     <section className={styles.about}>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import ReactPaginate from 'react-paginate';
 import { useSearchParams } from 'react-router-dom';
 import { Category } from '../../types/Category';
@@ -28,7 +29,7 @@ export const PaginatedStore: React.FC<Props> = ({
   const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => setLoading(false), 3000);
+  setTimeout(() => setLoading(false), 1000);
 
   const currentPage = searchParams.get('page')
     ? Number(searchParams.get('page'))
@@ -56,7 +57,7 @@ export const PaginatedStore: React.FC<Props> = ({
       <div className={styles.cardsList}>
         {loading &&
           [...Array(itemsPerPage)].map(() => (
-            <div className={styles.cardWrapper}>
+            <div className={styles.cardWrapper} key={uuidv4()}>
               <CardSkeleton />
             </div>
           ))}
