@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
 import { useAppSelector } from '../../redux/hooks';
 import { ProductCard } from '../../components/ProductCard';
@@ -8,6 +8,10 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const Favourites: React.FC = () => {
   const { favoritesList } = useAppSelector((state) => state.favorites);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

@@ -13,7 +13,8 @@
 
   @include on-desktop {
     gap: 80px;
-    padding-inline: 152px;
+    margin: 0 auto;
+    max-width: 1200px;
   }
 
 }
@@ -24,11 +25,11 @@
   gap: 56px;
 
   @include on-tablet {
-    gap: 64px;
+    margin-bottom: 64px;
   }
 
   @include on-desktop {
-    @include page-grid;
+    margin-bottom: 80px;
   }
 }
 
@@ -39,7 +40,6 @@
     margin-bottom: 80px;
   }
 }
-
 
 .loaderWrapper {
   min-height: calc(100vh - 257px - 48px);
