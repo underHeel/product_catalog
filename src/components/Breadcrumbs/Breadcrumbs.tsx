@@ -5,6 +5,7 @@ import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import { Category } from '../../types/Category';
 import styles from './Breadcrumbs.module.scss';
+import { Button } from '../ui/buttons/Button';
 
 type Props = {
   category?: Category | null;
@@ -86,21 +87,14 @@ export const Breadcrumbs: React.FC<Props> = ({ category }) => {
           </>
         )}
       </div>
-      {location.pathname !== '/' ||
-        (location.pathname.includes('product') && (
-          <div className={styles.breadcrumbs}>
-            <div className={styles.crumb}>
-              <ArrowLeftIcon />
-            </div>
-            <button
-              type="submit"
-              onClick={handleGoBack}
-              className={styles.crumb}
-            >
-              Back
-            </button>
-          </div>
-        ))}
+      {location.pathname !== '/' && location.pathname.includes('product') && (
+        <div className={styles.breadcrumbs}>
+          <Button variant="text" onClick={handleGoBack}>
+            <ArrowLeftIcon fill="var(--color)" />
+            Back
+          </Button>
+        </div>
+      )}
     </>
   );
 };

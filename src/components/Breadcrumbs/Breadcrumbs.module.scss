@@ -1,8 +1,6 @@
 @import '../../styles/utils/main';
 
 .breadcrumbs {
-  @include content-indents;
-
   display: flex;
   gap: 8px;
   align-items: center;
@@ -10,6 +8,8 @@
   cursor: pointer;
   overflow: hidden;
   width: auto;
+
+  @include content-indents;
 }
 
 .crumb {
@@ -29,10 +29,14 @@
   padding-top: 3px;
   white-space: nowrap;
 
+
   &:last-child {
-    a {
+    cursor: auto;
+
+    & a {
       overflow: hidden;
       text-overflow: ellipsis;
+      pointer-events: none;
     }
   }
 }

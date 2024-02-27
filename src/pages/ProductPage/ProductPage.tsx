@@ -75,7 +75,9 @@ export const ProductPage: React.FC = () => {
     <>
       {product ? (
         <>
-          <Breadcrumbs category={category} />
+          <div className={styles.breadCrumbsWrapper}>
+            <Breadcrumbs category={category} />
+          </div>
           <div className={styles.wrapper}>
             <ItemOptions product={product} allProducts={allProducts} />
             <div className={styles.container}>
