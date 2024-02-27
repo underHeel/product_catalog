@@ -35,7 +35,6 @@ export const ProductsList: React.FC<Props> = ({
       const newSearchParams = new URLSearchParams(searchParams);
 
       newSearchParams.set('sort', SORT_BY[0].value);
-      newSearchParams.set('perPage', ITEMS_PER_PAGE[0].value);
       setSearchParams(newSearchParams);
     }
   }, []);
