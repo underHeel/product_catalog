@@ -1,5 +1,70 @@
 @import '../../styles/utils/main';
 
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.skeletonRounded {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color: var(--elements-color);
+  border-radius: 100px;
+  animation: pulse 1.2s infinite alternate;
+}
+
+.skeletonButtons {
+  display: block;
+  width: 55px;
+  height: 32px;
+  border-radius: 5px;
+  background-color: var(--elements-color);
+  animation: pulse 1.2s infinite alternate;
+}
+
+.skeletonPrice {
+  display: block;
+  width: 160px;
+  height: 40px;
+  background-color: var(--elements-color);
+  border-radius: 5px;
+  animation: pulse 1.2s infinite alternate;
+}
+
+.skeletonButton {
+  display: block;
+  width: 100%;
+  max-width: 272px;
+  height: 40px;
+  background-color: var(--elements-color);
+  border-radius: 5px;
+  animation: pulse 1.2s infinite alternate;
+}
+
+.skeletonFavouriteButton {
+  display: block;
+  width: 42px;
+  height: 42px;
+  background-color: var(--elements-color);
+  border-radius: 100px;
+  animation: pulse 1.2s infinite alternate;
+}
+
+.skeletonLine {
+  display: block;
+  height: 15px;
+  width: 150px;
+  background-color: var(--elements-color);
+  border-radius: 100px;
+  animation: pulse 1.2s infinite alternate;
+}
+
 .options {
   display: flex;
   flex-direction: column;

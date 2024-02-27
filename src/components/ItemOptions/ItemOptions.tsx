@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -38,6 +38,9 @@ export const ItemOptions: React.FC<Props> = ({ product, allProducts }) => {
   const dispatch = useAppDispatch();
   const { productsList } = useAppSelector((state) => state.cart);
   const { favoritesList } = useAppSelector((state) => state.favorites);
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 2000);
 
   const isInCart = useMemo(() => {
     return productsList.some((item) => item.itemId === id);
@@ -93,18 +96,23 @@ export const ItemOptions: React.FC<Props> = ({ product, allProducts }) => {
             </div>
             <div className={cn(styles.wrapper, styles.colorWrapper)}>
               <div className={styles.colorButtons}>
-                {colorsAvailable.map((availableColor) => (
-                  <Link
-                    to={`/product/${getProductUrl(availableColor)}`}
-                    key={availableColor}
-                  >
-                    <ColorButton
-                      color={availableColor}
-                      isSelected={availableColor === color}
-                      onClick={() => {}}
-                    />
-                  </Link>
-                ))}
+                {loading &&
+                  [...Array(4)].map(() => (
+                    <div className={styles.skeletonRounded} />
+                  ))}
+                {!loading &&
+                  colorsAvailable.map((availableColor) => (
+                    <Link
+                      to={`/product/${getProductUrl(availableColor)}`}
+                      key={availableColor}
+                    >
+                      <ColorButton
+                        color={availableColor}
+                        isSelected={availableColor === color}
+                        onClick={() => {}}
+                      />
+                    </Link>
+                  ))}
               </div>
             </div>
           </div>
@@ -112,79 +120,114 @@ export const ItemOptions: React.FC<Props> = ({ product, allProducts }) => {
             <div className={styles.capacity}>
               <p className={styles.grayText}>Select capacity</p>
               <div className={styles.capacityButton}>
-                {capacityAvailable.map((value) => (
-                  <Link
-                    to={`/product/${getProductUrl(undefined, value)}`}
-                    key={value}
-                  >
-                    <button
-                      type="button"
-                      className={cn(styles.button, {
-                        [styles.active]: value === capacity,
-                      })}
+                {loading &&
+                  [...Array(3)].map(() => (
+                    <div className={styles.skeletonButtons} />
+                  ))}
+                {!loading &&
+                  capacityAvailable.map((value) => (
+                    <Link
+                      to={`/product/${getProductUrl(undefined, value)}`}
+                      key={value}
                     >
-                      {value}
-                    </button>
-                  </Link>
-                ))}
+                      <button
+                        type="button"
+                        className={cn(styles.button, {
+                          [styles.active]: value === capacity,
+                        })}
+                      >
+                        {value}
+                      </button>
+                    </Link>
+                  ))}
               </div>
             </div>
 
             <div className={styles.price}>
-              <p className={styles.priceText}>{`$${priceDiscount}`}</p>
-              <p className={styles.discountPrice}>{`$${priceRegular}`}</p>
+              {loading && <div className={styles.skeletonPrice} />}
+              {!loading && (
+                <>
+                  <p className={styles.priceText}>{`$${priceDiscount}`}</p>
+                  <p className={styles.discountPrice}>{`$${priceRegular}`}</p>
+                </>
+              )}
             </div>
 
             <div className={styles.addButtons}>
-              <div className={styles.addToCart}>
-                {isInCart ? (
-                  <Button variant="outlined" onClick={handleCart}>
-                    {' '}
-                    Added
-                  </Button>
-                ) : (
-                  <Button variant="contained" onClick={handleCart}>
-                    Add to cart
-                  </Button>
-                )}
-              </div>
-              <div>
-                {isInFavorite ? (
-                  <IconButton
-                    size="large"
-                    classNames={styles.favoriteButton}
-                    onClick={handleFavorite}
-                  >
-                    <FavoriteFilledIcon />
-                  </IconButton>
-                ) : (
-                  <IconButton
-                    size="large"
-                    classNames={styles.favoriteButton}
-                    onClick={handleFavorite}
-                  >
-                    <FavoriteIcon />
-                  </IconButton>
-                )}
-              </div>
+              {loading ? (
+                <>
+                  <div className={styles.skeletonButton} />
+                  <div className={styles.skeletonFavouriteButton} />
+                </>
+              ) : (
+                <>
+                  <div className={styles.addToCart}>
+                    {isInCart ? (
+                      <Button variant="outlined" onClick={handleCart}>
+                        {' '}
+                        Added
+                      </Button>
+                    ) : (
+                      <Button variant="contained" onClick={handleCart}>
+                        Add to cart
+                      </Button>
+                    )}
+                  </div>
+                  <div>
+                    {isInFavorite ? (
+                      <IconButton
+                        size="large"
+                        classNames={styles.favoriteButton}
+                        onClick={handleFavorite}
+                      >
+                        <FavoriteFilledIcon />
+                      </IconButton>
+                    ) : (
+                      <IconButton
+                        size="large"
+                        classNames={styles.favoriteButton}
+                        onClick={handleFavorite}
+                      >
+                        <FavoriteIcon />
+                      </IconButton>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
 
             <div className={styles.features}>
               <div className={styles.featuresText}>
                 <p className={styles.grayText}>Screen</p>
-                <p className={styles.featuresParams}>{screen}</p>
+                {loading ? (
+                  <div className={styles.skeletonLine} />
+                ) : (
+                  <p className={styles.featuresParams}>{screen}</p>
+                )}
               </div>
               <div className={styles.featuresText}>
                 <p className={styles.grayText}>Resolution</p>
-                <p className={styles.featuresParams}>{resolution}</p>
+                {loading ? (
+                  <div className={styles.skeletonLine} />
+                ) : (
+                  <p className={styles.featuresParams}>{resolution}</p>
+                )}
               </div>
               <div className={styles.featuresText}>
                 <p className={styles.grayText}>Processor</p>
-                <p className={styles.featuresParams}>{processor}</p>
+                {loading ? (
+                  <div className={styles.skeletonLine} />
+                ) : (
+                  <p className={styles.featuresParams}>{processor}</p>
+                )}
               </div>
               <div className={styles.featuresText}>
                 <p className={styles.grayText}>RAM</p>
-                <p className={styles.featuresParams}>{ram}</p>
+                {loading ? (
+                  <div className={styles.skeletonLine} />
+                ) : (
+                  <p className={styles.featuresParams}>{ram}</p>
+                )}
               </div>
             </div>
           </div>
