@@ -1,15 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import accesBanner from '/img/banner-accessories.png';
-import phonesBanner from '/img/banner-phones.png';
-import tabletsBanner from '/img/banner-tablets.png';
+import topSlide from '/img/top-slide-banner.png';
 import styles from './TopSlider.module.scss';
 
 export const TopSlider: React.FC = () => {
@@ -28,17 +26,17 @@ export const TopSlider: React.FC = () => {
       }}
       effect="fade"
       speed={1500}
-      modules={[Pagination, Navigation, Autoplay]}
+      modules={[Pagination, Navigation]}
       className={styles.mySwiper}
     >
-      <SwiperSlide className={styles.firstSlide}>
-        <img src={phonesBanner} alt="" />
+      <SwiperSlide className={styles.slide}>
+        <img src={topSlide} alt="" />
       </SwiperSlide>
-      <SwiperSlide className={styles.secondSlide}>
-        <img src={tabletsBanner} alt="" />
+      <SwiperSlide className={styles.slide}>
+        <img src={topSlide} alt="" />
       </SwiperSlide>
-      <SwiperSlide className={styles.thirdSlide}>
-        <img src={accesBanner} alt="" />
+      <SwiperSlide className={styles.slide}>
+        <img src={topSlide} alt="" />
       </SwiperSlide>
       <div
         className={`${styles.icons} ${styles['prev-top-slide']}`}
