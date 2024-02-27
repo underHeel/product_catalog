@@ -4,6 +4,7 @@
 import cn from 'classnames';
 import { CartItem as CartItemType } from 'src/types/CartItem';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { useAppDispatch } from '../../redux/hooks';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { IconButton } from '../ui/buttons/IconButton';
@@ -37,11 +38,26 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     dispatch(cartActions.increaseCount(id));
   };
 
-  const handleRemove = (event: React.MouseEvent) => {
+  const handleRemove = async (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
 
-    dispatch(cartActions.remove(id));
+    const result = await Swal.fire({
+      title: 'Are u sure?',
+      text: 'Do you really want to delete this item?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+      customClass: {
+        confirmButton: styles.confirmButton,
+        cancelButton: styles.cancelButton,
+      },
+    });
+
+    if (result.isConfirmed) {
+      dispatch(cartActions.remove(id));
+    }
   };
 
   return (
