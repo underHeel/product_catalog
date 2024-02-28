@@ -26,7 +26,6 @@
 .cartInfo {
   display: flex;
   margin: 16px 0;
-  justify-content: space-between;
 
   @include on-tablet {
     margin: 16px 0;
@@ -37,7 +36,7 @@
 .cartItem {
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 23px 0 16px;
 
   @include on-tablet {
     padding: 0 24px;
@@ -74,7 +73,6 @@
 }
 
 .productName {
-  width: 128px;
   height: 80px;
   font-size: 14px;
   font-weight: 600;
