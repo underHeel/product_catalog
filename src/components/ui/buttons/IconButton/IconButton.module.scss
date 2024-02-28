@@ -28,6 +28,10 @@
         transition: .3s;
     }
 
+    &:active {
+        border-color: var(--color);
+    }
+
     @include on-desktop {
         &:hover {
             border-color: var(--color);
