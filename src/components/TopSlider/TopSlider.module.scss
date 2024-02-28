@@ -2,15 +2,17 @@
 @import '../../styles/utils/colors';
 
 .mySwiper {
-  border-radius: 9px;
   overflow-x: hidden;
   width: 100%;
   max-width: 1136px;
   margin-bottom: 56px;
   position: relative;
+  background-color: black;
 
   @include on-tablet {
     margin-bottom: 64px;
+    border-radius: 9px;
+    background-color: inherit;
   }
 
   @include on-desktop {
