@@ -1,15 +1,17 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable prettier/prettier */
+import React, { createContext, useState, useEffect } from 'react';
 import { getItemFromStorage, setItemToStorage } from '../services/storage';
 import { Theme } from '../types/Theme';
 
 const initialTheme = getItemFromStorage('theme', 'light');
 
-const ThemeContext = createContext<{ theme: Theme; toggleTheme: () => void }>({
-  theme: initialTheme,
-  toggleTheme: () => {},
-});
-
-export const useTheme = () => useContext(ThemeContext);
+export const ThemeContext = createContext<{
+  theme: Theme;
+  toggleTheme: () => void;
+    }>({
+      theme: initialTheme,
+      toggleTheme: () => {},
+    });
 
 interface Props {
   children: React.ReactNode;

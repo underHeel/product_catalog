@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -7,23 +7,21 @@ import { useAppSelector } from '../../../redux/hooks';
 import { Product } from '../../../types/Product';
 import { ArrowLeftIcon } from '../icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../icons/ArrowRightIcon';
-import styles from './SliderCard.module.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
-import { CardSkeleton } from '../../CardSkeleton/CardSkeleton';
-import 'swiper/css';
+import { CardSkeleton } from '../skeletons/CardSkeleton';
 import { IconButton } from '../buttons/IconButton';
+import 'swiper/css';
+import styles from './SliderCard.module.scss';
 
 interface Props {
   title: string;
   items: Product[];
   id: number;
+  loading?: boolean;
 }
 
-export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
-  const [loading, setLoading] = useState(true);
-  const { loading: apiLoading } = useAppSelector((state) => state.phones);
-
-  setTimeout(() => setLoading(false), 1000);
+export const SliderCard: React.FC<Props> = ({ title, items, id, loading }) => {
+  const { loading: phonesLoading } = useAppSelector((state) => state.phones);
 
   return (
     <div>
@@ -71,14 +69,14 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
             },
           }}
         >
-          {(loading || apiLoading) &&
+          {(loading || phonesLoading) &&
             [...Array(10)].map(() => (
               <SwiperSlide className={styles.slider} key={uuidv4()}>
                 <CardSkeleton />
               </SwiperSlide>
             ))}
           {!loading &&
-            !apiLoading &&
+            !phonesLoading &&
             items.map((item) => (
               <SwiperSlide key={item.id} className={styles.slider}>
                 <ProductCard product={item} />

@@ -1,0 +1,66 @@
+@import '../../../../styles/utils/main';
+
+.about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+        grid-column: 1/13;
+    }
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+
+.borderLine {
+    border-bottom: 1px solid #E2E6E9
+}
+
+.textArea {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.subtitle {
+    height: 24px;
+    width: 70%;
+    max-width: 330px;
+    background-color: var(--elements-color);
+    border-radius: 20px;
+
+    @include on-tablet {
+        font-size: 20px;
+        max-width: 400px;
+    }
+}
+
+.paragraph {
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.textLine {
+    height: 14px;
+    width: 100%;
+    background-color: var(--elements-color);
+    border-radius: 10px;
+}

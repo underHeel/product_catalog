@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
 import phonesCategory from '/img/phone-block.png';
@@ -16,17 +16,18 @@ export const Category: React.FC = () => {
   const { accessories, loading: accessoriesLoading } = useAppSelector(
     (state) => state.accessories,
   );
-  const [loading, setLoading] = useState(true);
 
-  setTimeout(() => setLoading(false), 1000);
   const isSkeletonDisplayed =
-    phonesLoading || tabletsLoading || accessoriesLoading || loading;
+    phonesLoading || tabletsLoading || accessoriesLoading;
 
   return (
     <section>
       <h2 className={styles.title}>Shop by category</h2>
       <div className={styles.container}>
-        <Link to="/phones?page=1" className={styles.box}>
+        <Link
+          to="/product/apple-iphone-14-pro-128gb-spaceblack"
+          className={styles.box}
+        >
           <img
             src={phonesCategory}
             alt="phones category"

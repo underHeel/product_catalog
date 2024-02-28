@@ -129,6 +129,10 @@
 
 .favoriteButton {
   @include on-desktop {
-    @include hover(transform, scale(1.1))
+    transition: .3s;
+
+    &:hover {
+      transform: scale(1.1)
+    }
   }
 }

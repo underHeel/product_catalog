@@ -27,6 +27,7 @@
   width: 100%;
 
   img {
+    width: 100%;
     content: url('/img/mobile-top-slider-banner.png');
   }
 
@@ -48,6 +49,7 @@
   @include on-tablet {
     aspect-ratio: 490/189;
   }
+
   @include on-desktop {
     aspect-ratio: 1040/400;
   }

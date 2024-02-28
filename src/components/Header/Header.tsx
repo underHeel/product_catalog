@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import cn from 'classnames';
-import { useTheme } from '../../context/ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 import { useAppSelector } from '../../redux/hooks';
 import { BurgerIcon } from '../ui/icons/BurgerIcon';
 import { CartIcon } from '../ui/icons/CartIcon';
@@ -22,7 +22,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ onThemeChange }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme } = useTheme();
+  const { theme } = useContext(ThemeContext);
 
   const { favoritesList } = useAppSelector((state) => state.favorites);
   const { productsList } = useAppSelector((state) => state.cart);

@@ -27,15 +27,15 @@
 }
 
 .title {
-    padding-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .subTitle {
-    padding-bottom: 32px;
+    margin-bottom: 32px;
     color: var(--secondary-color);
 
     @include on-tablet {
-        padding-bottom: 40px;
+        margin-bottom: 40px;
     }
 }
 
@@ -55,4 +55,17 @@
 
 .itemsPerPage {
     width: 148px;
+}
+
+.subTitleLoading {
+    background-color: var(--elements-color);
+    width: 100px;
+    height: 21px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+    color: var(--secondary-color);
+
+    @include on-tablet {
+        margin-bottom: 40px;
+    }
 }

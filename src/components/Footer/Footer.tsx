@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 import styles from './Footer.module.scss';
 import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowUpIcon } from '../ui/icons/ArrowUpIcon';
@@ -7,7 +8,7 @@ import Logo from '/img/Logo.png';
 import LogoDark from '/img/LogoDark.png';
 
 export const Footer = () => {
-  const { theme } = useTheme();
+  const { theme } = useContext(ThemeContext);
 
   const scrollToTop = () => {
     window.scrollTo({

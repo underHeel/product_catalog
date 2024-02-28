@@ -16,11 +16,15 @@
         color: var(--card-background-color);
 
         &:active {
-            box-shadow: 0 3px 13px 0 #17203166;
+            box-shadow: 0 3px 13px 0 var(--shadow-color);
         }
 
         @include on-desktop {
-            @include hover (box-shadow, 0 3px 13px 0 #17203166);
+            transition: .3s;
+
+            &:hover {
+                box-shadow: 0 3px 13px 0 var(--shadow-color)
+            }
         }
 
     }

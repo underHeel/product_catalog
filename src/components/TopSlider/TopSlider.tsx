@@ -2,6 +2,8 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import 'swiper/css';
@@ -29,15 +31,13 @@ export const TopSlider: React.FC = () => {
       modules={[Pagination, Navigation, Autoplay]}
       className={styles.mySwiper}
     >
-      <SwiperSlide className={styles.slide}>
-        <img src={topSlide} alt="" />
-      </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
-        <img src={topSlide} alt="" />
-      </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
-        <img src={topSlide} alt="" />
-      </SwiperSlide>
+      {[...Array(3)].map(() => (
+        <SwiperSlide className={styles.slide} key={uuidv4()}>
+          <Link to="product/apple-iphone-14-pro-128gb-spaceblack">
+            <img src={topSlide} alt="" />
+          </Link>
+        </SwiperSlide>
+      ))}
       <div
         className={`${styles.icons} ${styles['prev-top-slide']}`}
         onMouseDown={(event) => event.preventDefault()}

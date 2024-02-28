@@ -1,7 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { BallTriangle } from 'react-loader-spinner';
+// import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
+import { ItemSpecSkeleton } from '../../components/ui/skeletons/ItemSpecSkeleton';
+import { ItemOptionsSkeleton } from '../../components/ui/skeletons/ItemOptionsSkeleton';
+import { ItemAboutSkeleton } from '../../components/ui/skeletons/ItemAboutSkeleton';
 import { ErrorPage } from '../../components/ErrorPage';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Category } from '../../types/Category';
@@ -32,6 +35,10 @@ export const ProductPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
     if (state) {
       setCategory(state.data);
     } else {
@@ -45,44 +52,39 @@ export const ProductPage: React.FC = () => {
 
   useEffect(() => {
     if (category) {
-      getSuggestedProducts(category).then(setSuggestedProducts);
       setLoading(true);
 
-      setTimeout(() => {
-        getProduct(category, itemId)
-          .then(setProduct)
-          .finally(() => setLoading(false));
-      }, 1000);
+      getProduct(category, itemId).then(setProduct);
+      getSuggestedProducts(category)
+        .then(setSuggestedProducts)
+        .finally(() => setLoading(false));
     }
   }, [category, itemId]);
 
-  if (loading) {
-    return (
-      <BallTriangle
-        height={150}
-        width={150}
-        radius={5}
-        color="var(--accent-color)"
-        ariaLabel="ball-triangle-loading"
-        wrapperStyle={{}}
-        wrapperClass={styles.loaderWrapper}
-        visible
-      />
-    );
-  }
-
   return (
     <>
-      {product ? (
+      {product || loading ? (
         <>
           <div className={styles.breadCrumbsWrapper}>
             <Breadcrumbs category={category} />
           </div>
           <div className={styles.wrapper}>
-            <ItemOptions product={product} allProducts={allProducts} />
+            {!product || loading ? (
+              <ItemOptionsSkeleton />
+            ) : (
+              <ItemOptions product={product} allProducts={allProducts} />
+            )}
             <div className={styles.container}>
-              <ItemAbout product={product} />
-              <ItemSpech product={product} />
+              {!product || loading ? (
+                <ItemAboutSkeleton />
+              ) : (
+                <ItemAbout product={product} />
+              )}
+              {!product || loading ? (
+                <ItemSpecSkeleton />
+              ) : (
+                <ItemSpech product={product} />
+              )}
             </div>
           </div>
           <div className={styles.sliderWrapper}>
@@ -90,6 +92,7 @@ export const ProductPage: React.FC = () => {
               title="You may also like"
               items={suggestedProducts}
               id={1}
+              loading={loading}
             />
           </div>
         </>
