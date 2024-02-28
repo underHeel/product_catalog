@@ -10,6 +10,7 @@ import { ProductCard } from '../ProductCard';
 import { CardSkeleton } from '../ui/skeletons/CardSkeleton';
 import { ErrorPage } from '../ErrorPage';
 import errorImg from '/img/errorImage.png';
+import noProductImg from '/img/no_product.png';
 import styles from './PaginatedStore.module.scss';
 
 interface Props {
@@ -64,31 +65,35 @@ export const PaginatedStore: React.FC<Props> = ({
           ))}
       </div>
 
-      <div className={styles.paginateWrapper}>
-        <ReactPaginate
-          breakLabel={<IconButton>...</IconButton>}
-          nextLabel={
-            <IconButton isDisabled={currentPage === pageCount}>
-              <ArrowRightIcon fill="var(--color)" />
-            </IconButton>
-          }
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={2}
-          pageCount={pageCount}
-          previousLabel={
-            <IconButton isDisabled={currentPage === 1}>
-              <ArrowLeftIcon fill="var(--color)" />
-            </IconButton>
-          }
-          forcePage={currentPage - 1}
-          pageClassName={styles.buttons}
-          renderOnZeroPageCount={null}
-          className={styles.line}
-          pageLinkClassName={styles.links}
-          activeLinkClassName={styles.activeButton}
-          marginPagesDisplayed={2}
-        />
-      </div>
+      {products.length === 0 ? (
+        <ErrorPage image={noProductImg} errorMessage="No products there" />
+      ) : (
+        <div className={styles.paginateWrapper}>
+          <ReactPaginate
+            breakLabel={<IconButton>...</IconButton>}
+            nextLabel={
+              <IconButton isDisabled={currentPage === pageCount}>
+                <ArrowRightIcon fill="var(--color)" />
+              </IconButton>
+            }
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={2}
+            pageCount={pageCount}
+            previousLabel={
+              <IconButton isDisabled={currentPage === 1}>
+                <ArrowLeftIcon fill="var(--color)" />
+              </IconButton>
+            }
+            forcePage={currentPage - 1}
+            pageClassName={styles.buttons}
+            renderOnZeroPageCount={null}
+            className={styles.line}
+            pageLinkClassName={styles.links}
+            activeLinkClassName={styles.activeButton}
+            marginPagesDisplayed={2}
+          />
+        </div>
+      )}
     </>
   );
 };

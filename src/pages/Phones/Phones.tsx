@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-// import { BallTriangle } from 'react-loader-spinner';
 import { useSearchParams } from 'react-router-dom';
 import { SORT_BY } from '../../constants/selectsData';
 import { ErrorPage } from '../../components/ErrorPage';
@@ -10,14 +9,13 @@ import { Category } from '../../types/Category';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as productsActions from '../../redux/slices/productsSlice';
 import errorImg from '/img/errorImage.png';
-import noProductImg from '/img/no_product.png';
 
 export const Phones: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const {
     products: { productsList, totalCount },
-    loading,
+
     error,
   } = useAppSelector((state) => state.products);
   const category = Category.phones;
@@ -81,22 +79,16 @@ export const Phones: React.FC = () => {
 
   return (
     <>
-      {loading || productsList ? (
-        <>
-          <Breadcrumbs />
-          <ProductsList
-            title="Mobile phones"
-            products={productsList}
-            searchParams={searchParams}
-            onSort={handleSortSelect}
-            onPerPage={handleItemSelect}
-            currentPage={currentPage}
-            perPage={perPage}
-          />
-        </>
-      ) : (
-        <ErrorPage image={noProductImg} errorMessage="No products there" />
-      )}
+      <Breadcrumbs />
+      <ProductsList
+        title="Mobile phones"
+        products={productsList}
+        searchParams={searchParams}
+        onSort={handleSortSelect}
+        onPerPage={handleItemSelect}
+        currentPage={currentPage}
+        perPage={perPage}
+      />
     </>
   );
 };
