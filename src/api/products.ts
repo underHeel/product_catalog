@@ -32,16 +32,24 @@ export const getAllProductsByCategory = (
 
 export const getProducts = (
   category: Category,
-  page = 1,
-  perPage: number,
-  sortBy: string,
-): Promise<Product[]> => {
-  const end = perPage * page;
-  const start = end - perPage;
+  page?: number,
+  perPage?: number,
+  sortBy?: string,
+): Promise<{ productsList: Product[]; totalCount: number }> => {
+  if (sortBy && page && perPage) {
+    const end = perPage * page;
+    const start = end - perPage;
 
-  return getAllProductsByCategory(category).then((products) =>
-    sortProducts(sortBy, products).slice(start, end),
-  );
+    return getAllProductsByCategory(category).then((products) => ({
+      productsList: sortProducts(sortBy, products).slice(start, end),
+      totalCount: products.length,
+    }));
+  }
+
+  return getAllProductsByCategory(category).then((products) => ({
+    productsList: products,
+    totalCount: products.length,
+  }));
 };
 
 export const getProduct = (

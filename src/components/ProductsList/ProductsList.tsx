@@ -1,70 +1,50 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Category } from '../../types/Category';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
+import { Product } from 'src/types/Product';
+import { useAppSelector } from '../../redux/hooks';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../constants/selectsData';
-import { Product } from '../../types/Product';
 import { Dropdown } from '../ui/dropdowns/Dropdown';
 import { PaginatedStore } from '../PaginatedStore';
+import { ErrorPage } from '../ErrorPage';
+import errorImg from '/img/errorImage.png';
 import styles from './ProductsList.module.scss';
 
 interface Props {
   title: string;
-  category: Category;
   products: Product[];
+  searchParams: any;
+  currentPage: number;
+  perPage: number;
+  onSort: (selectedOption: string) => void;
+  onPerPage: (selectedOption: string) => void;
 }
 
 export const ProductsList: React.FC<Props> = ({
   title,
-  category,
   products,
+  searchParams,
+  currentPage,
+  perPage,
+  onSort,
+  onPerPage,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const {
+    error,
+    loading,
+    products: { totalCount },
+  } = useAppSelector((state) => state.products);
+
   const sort = searchParams.get('sort') || SORT_BY[0].value;
   const itemsPerPage = searchParams.get('perPage') || ITEMS_PER_PAGE[3].value;
+  const pageCount = Math.ceil(totalCount / perPage);
 
-  function getProductsPerPage() {
-    if (searchParams.get('perPage')) {
-      return Number(searchParams.get('perPage'));
-    }
-
-    return products.length;
+  if (loading) {
+    return <p>Loading</p>;
   }
 
-  useEffect(() => {
-    if (!searchParams.get('sort') && !searchParams.get('perPage')) {
-      const newSearchParams = new URLSearchParams(searchParams);
-
-      newSearchParams.set('sort', SORT_BY[0].value);
-      setSearchParams(newSearchParams);
-    }
-  }, []);
-
-  const perPage = getProductsPerPage();
-  const pageCount = Math.ceil(products.length / perPage);
-
-  const handleSortSelect = (selectedOption: string) => {
-    const newSearchParams = new URLSearchParams(searchParams);
-
-    newSearchParams.set('sort', selectedOption);
-    setSearchParams(newSearchParams);
-  };
-
-  const handleItemSelect = (selectedOption: string) => {
-    const newSearchParams = new URLSearchParams(searchParams);
-
-    if (selectedOption !== 'all') {
-      newSearchParams.set('perPage', selectedOption);
-    } else {
-      newSearchParams.delete('perPage');
-    }
-
-    if (searchParams.get('page')) {
-      newSearchParams.delete('page');
-    }
-
-    setSearchParams(newSearchParams);
-  };
+  if (error) {
+    return <ErrorPage image={errorImg} errorMessage={error} />;
+  }
 
   return (
     <div className={styles.container}>
@@ -77,7 +57,7 @@ export const ProductsList: React.FC<Props> = ({
               description="Sort by"
               value={sort}
               options={SORT_BY}
-              onSelect={(selectedOption) => handleSortSelect(selectedOption)}
+              onSelect={(selectedOption) => onSort(selectedOption)}
             />
           </div>
           <div className={styles.itemsPerPage}>
@@ -85,15 +65,14 @@ export const ProductsList: React.FC<Props> = ({
               description="Items on page"
               value={itemsPerPage}
               options={ITEMS_PER_PAGE}
-              onSelect={(selectedOption) => handleItemSelect(selectedOption)}
+              onSelect={(selectedOption) => onPerPage(selectedOption)}
             />
           </div>
         </div>
         <PaginatedStore
-          category={category}
           pageCount={pageCount}
-          itemsPerPage={perPage}
-          sortBy={sort}
+          products={products}
+          currentPage={currentPage}
         />
       </div>
     </div>
