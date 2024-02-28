@@ -11,8 +11,8 @@ import Logo from '/img/Logo.png';
 import LogoDark from '/img/LogoDark.png';
 import { CloseIcon } from '../ui/icons/CloseIcon';
 import { NavBar } from '../NavBar';
-import styles from './BurgerMenu.module.scss';
 import { Badge } from '../ui/badge';
+import styles from './BurgerMenu.module.scss';
 
 interface Props {
   toggleMenu: () => void;
@@ -21,6 +21,7 @@ interface Props {
 
 export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
   const { productsList } = useAppSelector((state) => state.cart);
+  const { favoritesList } = useAppSelector((state) => state.favorites);
   const { theme } = useTheme();
 
   return (
@@ -48,7 +49,13 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
             className={cn(styles.box, styles.favourite)}
             onClick={toggleMenu}
           >
-            <FavoriteIcon className={styles.icon} />
+            {favoritesList.length !== 0 ? (
+              <Badge value={favoritesList.length}>
+                <FavoriteIcon className={styles.icon} />
+              </Badge>
+            ) : (
+              <FavoriteIcon className={styles.icon} />
+            )}
           </Link>
 
           <Link

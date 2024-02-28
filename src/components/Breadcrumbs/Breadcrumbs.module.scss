@@ -18,7 +18,7 @@
   align-items: center;
   font-size: 12px;
   font-weight: 600;
-  color: var(--secondary-color);
+  color: var(--color);
 
   &:last-child {
     overflow: hidden;
@@ -32,6 +32,7 @@
 
   &:last-child {
     cursor: auto;
+    color: var(--secondary-color);
 
     & a {
       overflow: hidden;

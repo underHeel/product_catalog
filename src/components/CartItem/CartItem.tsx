@@ -23,42 +23,42 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const totalAmount = count * price;
 
-  const handlerDecreaseQuantity = (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-
+  const handlerDecreaseQuantity = () => {
     dispatch(cartActions.decreaseCount(id));
   };
 
-  const handlerIncreaseQuantity = (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-
+  const handlerIncreaseQuantity = () => {
     dispatch(cartActions.increaseCount(id));
   };
 
-  const handleRemove = (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-
+  const handleRemove = () => {
     dispatch(cartActions.remove(id));
   };
 
   return (
-    <Link
-      to={`/product/${itemId}`}
-      state={{ data: category }}
-      className={styles.cart}
-    >
+    <div className={styles.cart}>
       <div className={styles.cartInfo}>
         <div className={styles.cartItem}>
           <button className={styles.removeButton} onClick={handleRemove}>
             <CloseIcon />
           </button>
-          <img src={image} alt={`${name} photo`} className={styles.cartImage} />
+          <Link to={`/product/${itemId}`} state={{ data: category }}>
+            <img
+              src={image}
+              alt={`${name} photo`}
+              className={styles.cartImage}
+            />
+          </Link>
         </div>
-        <div className={styles.productName}>{name}</div>
+        <Link
+          className={styles.productName}
+          to={`/product/${itemId}`}
+          state={{ data: category }}
+        >
+          {name}
+        </Link>
       </div>
+
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>
           <div className={cn({ [styles.onButton]: count > 1 })}>
@@ -82,6 +82,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         </div>
         <span className={styles.price}>{`$${totalAmount}`}</span>
       </div>
-    </Link>
+    </div>
   );
 };
