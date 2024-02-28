@@ -18,7 +18,9 @@
     line-height: 21px;
     font-weight: 600;
 
-    @include hover (border-color, var(--secondary-color));
+    &:hover {
+        border-color: var(--secondary-color)
+    }
 }
 
 .description {

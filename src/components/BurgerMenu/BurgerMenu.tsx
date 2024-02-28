@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-import { useTheme } from '../../context/ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 import { useAppSelector } from '../../redux/hooks';
 import { CartIcon } from '../ui/icons/CartIcon';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
@@ -22,7 +22,7 @@ interface Props {
 export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
   const { productsList } = useAppSelector((state) => state.cart);
   const { favoritesList } = useAppSelector((state) => state.favorites);
-  const { theme } = useTheme();
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div className={cn(styles.menu, { [styles.show]: isMenuOpen })}>

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ThemeContext } from './context/ThemeContext';
 
 import './styles/utils/main.scss';
-import { useTheme } from './context/ThemeContext';
 
 const App: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const toggleThemeHandler = () => {
     toggleTheme();

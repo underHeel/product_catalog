@@ -9,7 +9,7 @@ import { ArrowLeftIcon } from '../icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../icons/ArrowRightIcon';
 import styles from './SliderCard.module.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
-import { CardSkeleton } from '../../CardSkeleton/CardSkeleton';
+import { CardSkeleton } from '../skeletons/CardSkeleton';
 import 'swiper/css';
 import { IconButton } from '../buttons/IconButton';
 

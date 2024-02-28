@@ -70,7 +70,9 @@
   }
 
   @include on-desktop {
-    @include hover(color, var(--color));
+    &:hover {
+      color: var(--color)
+    }
   }
 
 }

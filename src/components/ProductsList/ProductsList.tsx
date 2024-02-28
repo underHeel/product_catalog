@@ -5,8 +5,6 @@ import { useAppSelector } from '../../redux/hooks';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../constants/selectsData';
 import { Dropdown } from '../ui/dropdowns/Dropdown';
 import { PaginatedStore } from '../PaginatedStore';
-import { ErrorPage } from '../ErrorPage';
-import errorImg from '/img/errorImage.png';
 import styles from './ProductsList.module.scss';
 
 interface Props {
@@ -29,7 +27,6 @@ export const ProductsList: React.FC<Props> = ({
   onPerPage,
 }) => {
   const {
-    error,
     loading,
     products: { totalCount },
   } = useAppSelector((state) => state.products);
@@ -38,19 +35,15 @@ export const ProductsList: React.FC<Props> = ({
   const itemsPerPage = searchParams.get('perPage') || ITEMS_PER_PAGE[3].value;
   const pageCount = Math.ceil(totalCount / perPage);
 
-  if (loading) {
-    return <p>Loading</p>;
-  }
-
-  if (error) {
-    return <ErrorPage image={errorImg} errorMessage={error} />;
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.catalogWrapper}>
         <h1 className={styles.title}>{title}</h1>
-        <p className={styles.subTitle}>{`${products.length} models`}</p>
+        {loading ? (
+          <div className={styles.subTitleLoading} />
+        ) : (
+          <p className={styles.subTitle}>{`${totalCount} models`}</p>
+        )}
         <div className={styles.dropdownsWrapper}>
           <div className={styles.sortBy}>
             <Dropdown
@@ -73,6 +66,7 @@ export const ProductsList: React.FC<Props> = ({
           pageCount={pageCount}
           products={products}
           currentPage={currentPage}
+          itemsPerPage={itemsPerPage}
         />
       </div>
     </div>

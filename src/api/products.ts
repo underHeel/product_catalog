@@ -22,13 +22,28 @@ export const getAllProducts = (): Promise<Product[]> =>
   });
 
 export const getAllProductsByCategory = (
-  category: string,
+  category: Category,
 ): Promise<Product[]> =>
-  fetch(API_URL_PRODUCTS)
-    .then((response) => response.json())
-    .then((products) =>
-      products.filter((product: Product) => product.category === category),
-    );
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      fetch(API_URL_PRODUCTS)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch products by category');
+          }
+
+          return response.json();
+        })
+        .then((products) => {
+          const filteredProducts = products.filter(
+            (product: Product) => product.category === category,
+          );
+
+          resolve(filteredProducts);
+        })
+        .catch((error) => reject(error));
+    }, 1000);
+  });
 
 export const getProducts = (
   category: Category,

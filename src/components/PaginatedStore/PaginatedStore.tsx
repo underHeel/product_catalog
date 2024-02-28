@@ -1,26 +1,30 @@
-// import { v4 as uuidv4 } from 'uuid';
 import ReactPaginate from 'react-paginate';
+import { v4 as uuidv4 } from 'uuid';
 import { useSearchParams } from 'react-router-dom';
+import { useAppSelector } from '../../redux/hooks';
 import { Product } from '../../types/Product';
-import styles from './PaginatedStore.module.scss';
 import { ArrowLeftIcon } from '../ui/icons/ArrowLeftIcon';
 import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ProductCard } from '../ProductCard';
-// import { CardSkeleton } from '../CardSkeleton/CardSkeleton';
+import { CardSkeleton } from '../ui/skeletons/CardSkeleton';
+import styles from './PaginatedStore.module.scss';
 
 interface Props {
   products: Product[];
   pageCount: number;
   currentPage: number;
+  itemsPerPage: string;
 }
 
 export const PaginatedStore: React.FC<Props> = ({
   products,
   pageCount,
   currentPage,
+  itemsPerPage,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { loading } = useAppSelector((state) => state.products);
 
   const handlePageClick = (event: { selected: number }) => {
     const selectedPage = event.selected + 1;
@@ -35,20 +39,23 @@ export const PaginatedStore: React.FC<Props> = ({
     }
   };
 
+  const itemsLength = itemsPerPage === 'all' ? 16 : itemsPerPage;
+
   return (
     <>
       <div className={styles.cardsList}>
-        {/* {loading &&
-          [...Array(itemsPerPage)].map(() => (
+        {loading &&
+          [...Array(Number(itemsLength))].map(() => (
             <div className={styles.cardWrapper} key={uuidv4()}>
               <CardSkeleton />
             </div>
-          ))} */}
-        {products.map((product) => (
-          <div className={styles.cardWrapper} key={product.id}>
-            <ProductCard product={product} />
-          </div>
-        ))}
+          ))}
+        {!loading &&
+          products.map((product) => (
+            <div className={styles.cardWrapper} key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
       </div>
 
       <div className={styles.paginateWrapper}>

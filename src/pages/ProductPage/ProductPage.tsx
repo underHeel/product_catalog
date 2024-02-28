@@ -1,7 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { BallTriangle } from 'react-loader-spinner';
+// import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
+import { ItemOptionsSkeleton } from '../../components/ui/skeletons/ItemOptionsSkeleton';
+import { ItemAboutSkeleton } from '../../components/ui/skeletons/ItemAboutSkeleton';
 import { ErrorPage } from '../../components/ErrorPage';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Category } from '../../types/Category';
@@ -56,33 +58,30 @@ export const ProductPage: React.FC = () => {
     }
   }, [category, itemId]);
 
-  if (loading) {
-    return (
-      <BallTriangle
-        height={150}
-        width={150}
-        radius={5}
-        color="var(--accent-color)"
-        ariaLabel="ball-triangle-loading"
-        wrapperStyle={{}}
-        wrapperClass={styles.loaderWrapper}
-        visible
-      />
-    );
-  }
-
   return (
     <>
-      {product ? (
+      {product || loading ? (
         <>
           <div className={styles.breadCrumbsWrapper}>
             <Breadcrumbs category={category} />
           </div>
           <div className={styles.wrapper}>
-            <ItemOptions product={product} allProducts={allProducts} />
+            {!product ? (
+              <ItemOptionsSkeleton />
+            ) : (
+              <ItemOptions product={product} allProducts={allProducts} />
+            )}
             <div className={styles.container}>
-              <ItemAbout product={product} />
-              <ItemSpech product={product} />
+              {!product ? (
+                <ItemAboutSkeleton />
+              ) : (
+                <ItemAbout product={product} />
+              )}
+              {!product ? (
+                <ItemAboutSkeleton />
+              ) : (
+                <ItemSpech product={product} />
+              )}
             </div>
           </div>
           <div className={styles.sliderWrapper}>

@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import { BallTriangle } from 'react-loader-spinner';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SORT_BY } from '../../constants/selectsData';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -12,15 +11,12 @@ import * as productsActions from '../../redux/slices/productsSlice';
 import errorImg from '/img/errorImage.png';
 import noProductImg from '/img/no_product.png';
 
-import styles from './Tablets.module.scss';
-
 export const Tablets: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [loading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
   const {
     products: { productsList, totalCount },
-    loading: apiLoading,
+    loading,
     error,
   } = useAppSelector((state) => state.products);
   const category = Category.tablets;
@@ -34,8 +30,6 @@ export const Tablets: React.FC = () => {
   const perPage = searchParams.get('perPage')
     ? Number(searchParams.get('perPage'))
     : totalCount;
-
-  setTimeout(() => setLoading(false), 1000);
 
   const handleSortSelect = (selectedOption: string) => {
     const newSearchParams = new URLSearchParams(searchParams);
@@ -80,41 +74,28 @@ export const Tablets: React.FC = () => {
     );
   }, [category, perPage, currentPage, sort]);
 
-  if (loading || apiLoading) {
-    return (
-      <BallTriangle
-        height={150}
-        width={150}
-        radius={5}
-        color="var(--accent-color)"
-        ariaLabel="ball-triangle-loading"
-        wrapperStyle={{}}
-        wrapperClass={styles.loaderWrapper}
-        visible
-      />
-    );
-  }
-
   if (error) {
     return <ErrorPage image={errorImg} errorMessage={error} />;
   }
 
-  if (totalCount === 0) {
-    return <ErrorPage image={noProductImg} errorMessage="No products there" />;
-  }
-
   return (
     <>
-      <Breadcrumbs />
-      <ProductsList
-        title="Tablets"
-        products={productsList}
-        searchParams={searchParams}
-        onSort={handleSortSelect}
-        onPerPage={handleItemSelect}
-        currentPage={currentPage}
-        perPage={perPage}
-      />
+      {loading || productsList ? (
+        <>
+          <Breadcrumbs />
+          <ProductsList
+            title="Tablets"
+            products={productsList}
+            searchParams={searchParams}
+            onSort={handleSortSelect}
+            onPerPage={handleItemSelect}
+            currentPage={currentPage}
+            perPage={perPage}
+          />
+        </>
+      ) : (
+        <ErrorPage image={noProductImg} errorMessage="No products there" />
+      )}
     </>
   );
 };

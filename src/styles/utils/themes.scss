@@ -12,6 +12,7 @@ html[data-theme="dark"] {
     --pagination-button-color: #{$accent-color-dark};
     --bg-color-menu: #{$bg-hover-color-dark};
     --white: #{$light-grey-color};
+    --shadow-color: #{$shadow-color-dark};
 }
 
 html[data-theme="light"] {
@@ -26,4 +27,5 @@ html[data-theme="light"] {
     --pagination-button-color: #{$primary-color};
     --bg-color-menu: #{$white-color};
     --white: #{$white-color};
+    --shadow-color: #{$shadow-color};
 }
