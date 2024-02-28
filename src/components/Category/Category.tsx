@@ -24,7 +24,10 @@ export const Category: React.FC = () => {
     <section>
       <h2 className={styles.title}>Shop by category</h2>
       <div className={styles.container}>
-        <Link to="/phones?page=1" className={styles.box}>
+        <Link
+          to="/product/apple-iphone-14-pro-128gb-spaceblack"
+          className={styles.box}
+        >
           <img
             src={phonesCategory}
             alt="phones category"

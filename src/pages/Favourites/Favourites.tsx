@@ -19,7 +19,9 @@ export const Favourites: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.favoritesWrapper}>
           <h1 className={styles.title}>Favourites</h1>
-          <p className={styles.subTitle}>{`${favoritesList.length} items`}</p>
+          {favoritesList.length !== 0 && (
+            <p className={styles.subTitle}>{`${favoritesList.length} items`}</p>
+          )}
           {favoritesList.length === 0 && (
             <ErrorComponent
               image={noProductImg}
