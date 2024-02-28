@@ -48,11 +48,11 @@ export const ProductPage: React.FC = () => {
 
   useEffect(() => {
     if (category) {
-      getSuggestedProducts(category).then(setSuggestedProducts);
       setLoading(true);
 
-      getProduct(category, itemId)
-        .then(setProduct)
+      getProduct(category, itemId).then(setProduct);
+      getSuggestedProducts(category)
+        .then(setSuggestedProducts)
         .finally(() => setLoading(false));
     }
   }, [category, itemId]);
@@ -65,18 +65,18 @@ export const ProductPage: React.FC = () => {
             <Breadcrumbs category={category} />
           </div>
           <div className={styles.wrapper}>
-            {!product ? (
+            {!product || loading ? (
               <ItemOptionsSkeleton />
             ) : (
               <ItemOptions product={product} allProducts={allProducts} />
             )}
             <div className={styles.container}>
-              {!product ? (
+              {!product || loading ? (
                 <ItemAboutSkeleton />
               ) : (
                 <ItemAbout product={product} />
               )}
-              {!product ? (
+              {!product || loading ? (
                 <ItemSpecSkeleton />
               ) : (
                 <ItemSpech product={product} />
@@ -88,6 +88,7 @@ export const ProductPage: React.FC = () => {
               title="You may also like"
               items={suggestedProducts}
               id={1}
+              loading={loading}
             />
           </div>
         </>
