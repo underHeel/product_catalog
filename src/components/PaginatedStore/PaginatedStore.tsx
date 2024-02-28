@@ -8,6 +8,8 @@ import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowRightIcon } from '../ui/icons/ArrowRightIcon';
 import { ProductCard } from '../ProductCard';
 import { CardSkeleton } from '../ui/skeletons/CardSkeleton';
+import { ErrorPage } from '../ErrorPage';
+import errorImg from '/img/errorImage.png';
 import styles from './PaginatedStore.module.scss';
 
 interface Props {
@@ -24,7 +26,7 @@ export const PaginatedStore: React.FC<Props> = ({
   itemsPerPage,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { loading } = useAppSelector((state) => state.products);
+  const { loading, error } = useAppSelector((state) => state.products);
 
   const handlePageClick = (event: { selected: number }) => {
     const selectedPage = event.selected + 1;
@@ -40,6 +42,10 @@ export const PaginatedStore: React.FC<Props> = ({
   };
 
   const itemsLength = itemsPerPage === 'all' ? 16 : itemsPerPage;
+
+  if (error) {
+    return <ErrorPage image={errorImg} errorMessage={error} />;
+  }
 
   return (
     <>
