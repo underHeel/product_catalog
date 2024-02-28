@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import { useTheme } from '../../context/ThemeContext';
 import { useAppSelector } from '../../redux/hooks';
 import { CartIcon } from '../ui/icons/CartIcon';
 import { FavoriteIcon } from '../ui/icons/FavoriteIcon';
@@ -20,7 +21,7 @@ interface Props {
 
 export const BurgerMenu: React.FC<Props> = ({ toggleMenu, isMenuOpen }) => {
   const { productsList } = useAppSelector((state) => state.cart);
-  const { theme } = useAppSelector((state) => state.theme);
+  const { theme } = useTheme();
 
   return (
     <div className={cn(styles.menu, { [styles.show]: isMenuOpen })}>
