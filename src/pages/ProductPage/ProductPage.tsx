@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 // import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
+import { ItemSpecSkeleton } from '../../components/ui/skeletons/ItemSpecSkeleton';
 import { ItemOptionsSkeleton } from '../../components/ui/skeletons/ItemOptionsSkeleton';
 import { ItemAboutSkeleton } from '../../components/ui/skeletons/ItemAboutSkeleton';
 import { ErrorPage } from '../../components/ErrorPage';
@@ -50,11 +51,9 @@ export const ProductPage: React.FC = () => {
       getSuggestedProducts(category).then(setSuggestedProducts);
       setLoading(true);
 
-      setTimeout(() => {
-        getProduct(category, itemId)
-          .then(setProduct)
-          .finally(() => setLoading(false));
-      }, 1000);
+      getProduct(category, itemId)
+        .then(setProduct)
+        .finally(() => setLoading(false));
     }
   }, [category, itemId]);
 
@@ -78,7 +77,7 @@ export const ProductPage: React.FC = () => {
                 <ItemAbout product={product} />
               )}
               {!product ? (
-                <ItemAboutSkeleton />
+                <ItemSpecSkeleton />
               ) : (
                 <ItemSpech product={product} />
               )}
