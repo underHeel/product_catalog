@@ -16,11 +16,13 @@
   width: 100%;
   transition: transform .3s ease-in-out;
   margin-bottom: 24px;
+  -webkit-user-drag: none;
 
   &:hover {
     transform: scale(1.05);
   }
 }
+
 
 .title {
   margin-bottom: 24px;
@@ -58,4 +60,8 @@
   width: 100px;
   height: 21px;
   border-radius: 10px;
+}
+
+.box {
+  -webkit-user-drag: none;
 }

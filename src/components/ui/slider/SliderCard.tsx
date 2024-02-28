@@ -11,6 +11,7 @@ import styles from './SliderCard.module.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
 import { CardSkeleton } from '../../CardSkeleton/CardSkeleton';
 import 'swiper/css';
+import { IconButton } from '../buttons/IconButton';
 
 interface Props {
   title: string;
@@ -34,13 +35,17 @@ export const SliderCard: React.FC<Props> = ({ title, items, id }) => {
             className={`${styles.arrowButton} prev-${id}`}
             onMouseDown={(event) => event.preventDefault()}
           >
-            <ArrowLeftIcon fill="var(--color)" />
+            <IconButton>
+              <ArrowLeftIcon fill="var(--color)" />
+            </IconButton>
           </div>
           <div
             className={`${styles.arrowButton} next-${id}`}
             onMouseDown={(event) => event.preventDefault()}
           >
-            <ArrowRightIcon fill="var(--color)" />
+            <IconButton>
+              <ArrowRightIcon fill="var(--color)" />
+            </IconButton>
           </div>
         </div>
       </div>
