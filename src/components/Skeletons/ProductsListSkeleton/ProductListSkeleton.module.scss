@@ -1,0 +1,86 @@
+@import '../../../styles/utils/main';
+
+.container {
+    @include content-indents;
+
+    min-height: calc(100vh - 257px - 48px);
+
+    @include on-tablet {
+        min-height: calc(100vh - 96px - 48px);
+    }
+
+    @include on-desktop {
+        min-height: calc(100vh - 96px - 64px);
+    }
+}
+
+.catalogWrapper {
+    padding-block: 24px 64px;
+
+    @include on-tablet {
+        padding-top: 40px;
+    }
+
+    @include on-desktop {
+        padding-bottom: 80px;
+    }
+}
+
+.title {
+  margin-bottom : 8px;
+  height: 41px;
+  background-color: var(--elements-color);
+  width: 300px;
+  border-radius: 20px;
+
+  @include on-tablet {
+    height: 56px;
+    width: 400px;
+  }
+}
+
+.subTitle {
+    margin-bottom: 32px;
+    background-color: var(--elements-color);
+    height: 21px;
+    width: 140px;
+    border-radius: 10px;
+
+    @include on-tablet {
+        margin-bottom: 40px;
+    }
+}
+
+.dropdownsWrapper {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 24px;
+}
+
+.parameter {
+  color: var(--secondary-color);
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.sortBy {
+    width: 148px;
+    height: 41px;
+    background-color: var(--elements-color);
+    border-radius: 10px;
+
+    @include on-tablet {
+        width: 187px;
+    }
+}
+
+.itemsPerPage {
+  border-radius: 10px;
+  height: 41px;
+  width: 148px;
+  background-color: var(--elements-color);
+}

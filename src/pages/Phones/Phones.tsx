@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { BallTriangle } from 'react-loader-spinner';
+import { ProductListSkeleton } from '../../components/Skeletons/ProductsListSkeleton/ProductListSkeleton';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Category } from '../../types/Category';
@@ -9,7 +9,6 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import * as phonesActions from '../../redux/slices/phonesSlice';
 import errorImg from '/img/errorImage.png';
 import noProductImg from '/img/no_product.png';
-import styles from './Phones.module.scss';
 
 export const Phones: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -29,16 +28,10 @@ export const Phones: React.FC = () => {
 
   if (loading || apiLoading) {
     return (
-      <BallTriangle
-        height={150}
-        width={150}
-        radius={5}
-        color="var(--accent-color)"
-        ariaLabel="ball-triangle-loading"
-        wrapperStyle={{}}
-        wrapperClass={styles.loaderWrapper}
-        visible
-      />
+      <>
+        <Breadcrumbs />
+        <ProductListSkeleton />
+      </>
     );
   }
 

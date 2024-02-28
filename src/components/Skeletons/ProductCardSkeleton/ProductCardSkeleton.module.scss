@@ -1,0 +1,123 @@
+@import '../../../styles//utils/main.scss';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 212px;
+  padding: 32px;
+  border: 1px solid var(--elements-color);
+  border-radius: 8px;
+  background-color: var(--card-background-color);
+  height: 100%;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  flex-grow: 1;
+}
+
+.cardImage {
+  background-color: var(--elements-color);
+  width: 100%;
+  height: auto;
+  flex-grow: 1;
+  margin: 0 auto 24px;
+  aspect-ratio: 223/130;
+  border-radius: 5px;
+
+  @include on-tablet {
+    aspect-ratio: 224/196;
+  }
+
+  @include on-desktop {
+    aspect-ratio: 208/196;
+  }
+}
+
+.cardTitle {
+  background-color: (var(--elements-color));
+  height: 42px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+
+.cardPrice {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+.cardPriceActual {
+  margin-right: 8px;
+  height: 26px;
+  width: 70px;
+  background-color: var(--elements-color);
+  border-radius: 5px;
+}
+
+.cardPriceFull {
+  height: 24px;
+  background-color: var(--elements-color);
+  width: 65px;
+  border-radius: 5px;
+}
+
+.cardLine {
+  width: 100%;
+  border-bottom: 1px solid var(--elements-color);
+  margin-bottom: 16px;
+}
+
+.cardSpecs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.cardSpecsText {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--secondary-color);
+}
+
+.cardSpecsValue {
+  line-height: 15px;
+  background-color: var(--elements-color);
+  width: 80px;
+  border-radius: 5px;
+  max-width: 110px;
+  text-align: right;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.buyButton {
+  width: calc(100% - 8px - 40px);
+  height: 40px;
+  background-color: var(--elements-color);
+  border-radius: 10px;
+}
+
+.favoriteButton {
+  height: 40px;
+  width: 40px;
+  background-color: var(--elements-color);
+  border-radius: 100px;
+}
