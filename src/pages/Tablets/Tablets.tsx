@@ -5,7 +5,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Category } from '../../types/Category';
-import { ErrorComponent } from '../../components/ErrorComponent';
+import { ErrorPage } from '../../components/ErrorPage';
 import * as tabletsActions from '../../redux/slices/tabletsSlice';
 import errorImg from '/img/errorImage.png';
 import noProductImg from '/img/no_product.png';
@@ -44,13 +44,11 @@ export const Tablets: React.FC = () => {
   }
 
   if (error) {
-    return <ErrorComponent image={errorImg} errorMessage={error} />;
+    return <ErrorPage image={errorImg} errorMessage={error} />;
   }
 
   if (tablets.length === 0) {
-    return (
-      <ErrorComponent image={noProductImg} errorMessage="No products there" />
-    );
+    return <ErrorPage image={noProductImg} errorMessage="No products there" />;
   }
 
   return (
