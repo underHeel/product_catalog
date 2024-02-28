@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
+import { ErrorPage } from '../../components/ErrorPage';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { ErrorComponent } from '../../components/ErrorComponent';
 import { Category } from '../../types/Category';
 import { DetailedProduct } from '../../types/DetailedProduct';
 import { getSuggestedProducts } from '../../services/getSuggestedProducts';
@@ -94,7 +94,7 @@ export const ProductPage: React.FC = () => {
           </div>
         </>
       ) : (
-        <ErrorComponent image={errorImg} errorMessage="Product was not found" />
+        <ErrorPage image={errorImg} errorMessage="Product was not found" />
       )}
     </>
   );
