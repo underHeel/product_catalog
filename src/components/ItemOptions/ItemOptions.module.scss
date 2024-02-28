@@ -113,14 +113,6 @@
 
 .container {
   width: 100%;
-
-  @include on-tablet {
-    max-width: 50%;
-  }
-
-  @include on-desktop {
-    max-width: 540px;
-  }
 }
 
 .wrapper {
@@ -169,6 +161,7 @@
 
 .capacityButton {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 24px;
 }
