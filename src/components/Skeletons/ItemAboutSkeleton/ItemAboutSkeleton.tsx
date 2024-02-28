@@ -4,7 +4,7 @@ export function ItemAboutSkeleton() {
   return (
     <section className={styles.about}>
       <div>
-        <div className={styles.title} />
+        <h2 className={styles.title}>About</h2>
         <div className={styles.borderLine} />
       </div>
       <div className={styles.textArea}>

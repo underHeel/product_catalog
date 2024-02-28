@@ -11,8 +11,8 @@ export function ItemOptionsSkeleton() {
         <div className={styles.container}>
           <div className={styles.color}>
             <div className={styles.colorTitle}>
-              <div className={styles.grayText} />
-              <div className={styles.grayText} />
+              <p className={styles.grayText}>Avaliable colors</p>
+              <p className={styles.grayText}>ID: 802390</p>
             </div>
             <div className={styles.colorWrapper}>
               <div className={styles.colorButtons}>
@@ -24,7 +24,7 @@ export function ItemOptionsSkeleton() {
           </div>
           <div className={styles.wrapper}>
             <div className={styles.capacity}>
-              <div className={styles.grayText} />
+              <p className={styles.grayText}>Select Capacity</p>
               <div className={styles.capacityButton}>
                 {[...Array(3)].map(() => (
                   <div className={styles.buttonCapacity} />
@@ -43,10 +43,22 @@ export function ItemOptionsSkeleton() {
             </div>
 
             <div className={styles.features}>
-              <div className={styles.grayTextLong} />
-              <div className={styles.grayTextLong} />
-              <div className={styles.grayTextLong} />
-              <div className={styles.grayTextLong} />
+              <div className={styles.featuresText}>
+                <p className={styles.grayText}>Screen</p>
+                <div className={styles.grayTextLong} />
+              </div>
+              <div className={styles.featuresText}>
+                <p className={styles.grayText}>Resolution</p>
+                <div className={styles.grayTextLong} />
+              </div>
+              <div className={styles.featuresText}>
+                <p className={styles.grayText}>Processor</p>
+                <div className={styles.grayTextLong} />
+              </div>
+              <div className={styles.featuresText}>
+                <p className={styles.grayText}>RAM</p>
+                <div className={styles.grayTextLong} />
+              </div>
             </div>
           </div>
         </div>

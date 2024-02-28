@@ -7,18 +7,18 @@
 }
 
 .title {
-  width: 250px;
-  height: 26px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
   margin-bottom: 16px;
-  background-color: var(--elements-color);
-  border-radius: 20px;
+
+  @include on-tablet {
+    font-size: 22px;
+  }
 }
 
 .subtitle {
-  height: 14px;
-  width: 130px;
-  background-color: var(--elements-color);
-  border-radius: 10px;
+  color: var(--secondary-color);
 }
 
 .border {
