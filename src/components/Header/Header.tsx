@@ -3,6 +3,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import cn from 'classnames';
+import { useTheme } from '../../context/ThemeContext';
 import { useAppSelector } from '../../redux/hooks';
 import { BurgerIcon } from '../ui/icons/BurgerIcon';
 import { CartIcon } from '../ui/icons/CartIcon';
@@ -21,9 +22,9 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ onThemeChange }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   const { favoritesList } = useAppSelector((state) => state.favorites);
-  const { theme } = useAppSelector((state) => state.theme);
   const { productsList } = useAppSelector((state) => state.cart);
 
   const itemsCount = productsList.reduce((acc, cur) => acc + cur.count, 0);

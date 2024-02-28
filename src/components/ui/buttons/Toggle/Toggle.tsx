@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import cn from 'classnames';
-import { useAppSelector } from '../../../../redux/hooks';
+import { useTheme } from '../../../../context/ThemeContext';
 import { SunIcon } from '../../icons/SunIcon';
 import styles from './Toggle.module.scss';
 import { MoonIcon } from '../../icons/MoonIcon';
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Toggle: React.FC<Props> = ({ onClick }) => {
-  const { theme } = useAppSelector((state) => state.theme);
+  const { theme } = useTheme();
 
   const handleToggle = () => {
     onClick();

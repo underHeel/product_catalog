@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItem } from 'src/types/CartItem';
 import { Product } from 'src/types/Product';
-import { getItemFromStorage, setItemToStorage } from '../storage';
+import { getItemFromStorage, setItemToStorage } from '../../services/storage';
 
 interface Cart {
   productsList: CartItem[];

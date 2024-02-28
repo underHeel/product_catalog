@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from 'src/types/Product';
-import { getItemFromStorage, setItemToStorage } from '../storage';
+import { getItemFromStorage, setItemToStorage } from '../../services/storage';
 
 interface Favorites {
   favoritesList: Product[];

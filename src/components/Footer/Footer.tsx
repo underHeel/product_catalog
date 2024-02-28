@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../redux/hooks';
+import { useTheme } from '../../context/ThemeContext';
 import styles from './Footer.module.scss';
 import { IconButton } from '../ui/buttons/IconButton';
 import { ArrowUpIcon } from '../ui/icons/ArrowUpIcon';
@@ -7,7 +7,7 @@ import Logo from '/img/Logo.png';
 import LogoDark from '/img/LogoDark.png';
 
 export const Footer = () => {
-  const { theme } = useAppSelector((state) => state.theme);
+  const { theme } = useTheme();
 
   const scrollToTop = () => {
     window.scrollTo({
