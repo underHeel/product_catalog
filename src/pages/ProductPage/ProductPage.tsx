@@ -35,6 +35,10 @@ export const ProductPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
     if (state) {
       setCategory(state.data);
     } else {
